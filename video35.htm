@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item active'><a class='nav-link' href='videos.htm'>Videos <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<center><h5>A robot learning to roll out pizza dough</h5></center>
+<p>The aim of robot learning by imitation is to provide user-friendly means of transferring skills to robots, by exploiting the natural teaching capability of the users. Imitation is not simply recording and replaying movements. Instead, the learned skills require to be generalized to new situations.</p>
+
+<p>Machine learning can help to extract relevant patterns from multiple demonstrations of the skill (invariant characteristics of the task). The research challenge is to develop tools with good extrapolation capability and working with small datasets. In learning from demonstrations, the robot should be able to start generalizing the task early in the interaction. This can be done in several ways, with techniques that can learn the underlying structure of the task, that can extract the meanings behind the actions, or that can understand how the robot, user and environment can modify the task.</p>
+
+<p>The user can increase the robot's learning speed by providing several relevant examples of the same task. By scaffolding the environment and by introducing variability, the robot can then extract which parts of the movement matter the most, and how the movement is modulated by external cues such as positions of objects.</p>
+
+<p>The more complex the task are, the more difficult it is for the user to pre-determine and keep track of the possible variations of a task. To reduce this cognitive load, it might thus be relevant to consider machine learning approaches that can not only interpolate between multiple demonstrations, but that can also extrapolate the task to new situations that could be far from the observed situations. Such extrapolation capability would avoid that the requirement of carefully covering all the possible situations in which a motion can be used.</p>
+
+<p>This video presents an example in which five demonstrations of rolling out a pizza dough are provided to the robot by kinesthetic teaching. The controller of the robot compensates for the gravity to facilitate the demonstrations. The user can in this way move the robot as if it had no weight and no motor in its articulations, while the robot records proprioceptive information about the position of its arm, as well as visual information about the pizza dough from an external camera. After demonstration, the robot knows how to move the rolling pin toward the dough and how to change the amplitude and direction of the movement with respect to the current shape of the dough.</p>
+
+<p>The underlying goal of this task is to locally change the rolling motion such that it becomes parallel to the smallest eigenvector of the dough shape extracted by image processing. The adaptation of the movement is not provided to the robot. Instead, the robot learns how to locally modify the trajectory of the end-effector with respect to the dough position, orientation and elongation.
+</p>
+
+<center>
+<iframe src="https://player.vimeo.com/video/69537057?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+	<center><a class='btn btn-primary' href='videos.htm'>Go back to the list of videos</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

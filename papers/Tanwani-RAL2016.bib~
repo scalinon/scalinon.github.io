@@ -1,0 +1,11 @@
+@article{Tanwani16RAL,
+  author="Tanwani, A. K. and Calinon, S.",
+  title="Learning Robot Manipulation Tasks with Task-Parameterized Semi-Tied Hidden Semi-{M}arkov Model",
+  journal="{IEEE} Robotics and Automation Letters ({RA-L})",
+  doi="10.1109/LRA.2016.2517825",
+  year="2016",
+  volume="1",
+  number="1",
+  month="January",
+  pages="235--242"
+} 

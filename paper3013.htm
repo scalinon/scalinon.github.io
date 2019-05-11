@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/3013.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S., Evrard, P., Gribovskaya, E., Billard A. and Kheddar, A.  (2009)</h5>
+<h5><strong>Learning collaborative manipulation tasks by demonstration using a haptic interface</strong></h5> 
+<h5>In Proc. of the Intl Conf. on Advanced Robotics (ICAR), Munich, Germany, pp. 1-6.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-ICAR2009.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://www.icar2009.org' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-ICAR2009.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>This paper presents a method by which a robot can learn through observation to perform a collaborative manipulation task, namely lifting an
+object. The task is first demonstrated by a user controlling the robot's hand via a haptic interface. Learning extracts statistical
+redundancies in the examples provided during training by using Gaussian Mixture Regression and Hidden Markov Model. Haptic communication
+reflects more than pure dynamic information on the task, and includes communication patterns, which result from the two users constantly
+adapting their hand motion to coordinate in time and space their respective motions. We show that the proposed statistical model can
+efficiently encapsulate typical communication patterns across different dyads of users, that are stereotypical of collaborative behaviours
+between humans and robots. The proposed learning approach is generative and can be used to drive the robot's retrieval of the task by
+ensuring a faithful reproduction of the overall dynamics of the task, namely by reproducing the force patterns for both lift the object and
+adapt to the human user's hand motion. This work shows the potential that teleoperation holds for transmitting both dynamic and
+communicative information on the task, which classical methods for programming by demonstration have traditionally overlooked.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@inproceedings{Calinon09ICAR,
+  author = "S. Calinon and P. Evrard and E. Gribovskaya and A. Billard and A. Kheddar",
+  title = "Learning collaborative manipulation tasks by demonstration using a haptic interface",
+  booktitle = "Proc. Intl Conf. on Advanced Robotics ({ICAR})",
+  year = "2009",
+  month="June",
+  location="Munich, Germany",
+  pages="1--6"
+}</pre>
+	
+<h3>Video</h3>
+<p>Learning of a collaborative manipulation skill with HRP-2 by
+showing multiple demonstrations of the skill in slightly different
+situations (different initial position and orientation of the
+object). The robot is standing in an half-sitting posture during the
+experiment, where the 7 DOFs of the right arm and torso are used
+in the experiment. A built-in stereoscopic vision is used to track
+colored patches, and a 6-axes force sensor at the level of the
+right wrist is used to track the interaction forces with the
+environment during task execution. The robot is
+teleoperated through a <i>Phantom</i> Desktop haptic device from
+<i>Sensable Technologies</i>. An impedance controller is used to
+control the robot.<br>
+This work is in collaboration with the <a
+href="http://www.is.aist.go.jp/jrl" target="_BLANK">Joint Japanese-French Robotics Laboratory (JRL)</a> at
+AIST, Tsukuba, Japan.</p>
+<div align="center"> <embed
+src="flvplayer.swf" width="320" height="240"
+allowfullscreen="true" allowscriptaccess="always"
+flashvars="&displayheight=240&file=videos/HRP2-collaboration.flv&image=images/HRP2-collaboration.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
+</div>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

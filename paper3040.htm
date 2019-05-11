@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/3040.jpg'></div>
+<div class='col-md-10'>
+<h5>Rozo, L., Calinon, S. and Caldwell, D.G. (2014)</h5>
+<h5><strong>Learning Force and Position Constraints in Human-robot Cooperative Transportation</strong></h5> 
+<h5>In Proc. of the IEEE Intl Symp. on Robot and Human Interactive Communication (Ro-Man), Edinburgh, Scotland, UK, pp. 619-624.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Rozo-ROMAN2014.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://rehabilitationrobotics.net/ro-man14/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Rozo-ROMAN2014.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>Physical interaction between humans and robots arises a large set of challenging problems involving hardware, safety, control and cognitive aspects, among others. In this context, the cooperative (two or more people/robots) transportation of bulky loads in manufacturing plants is a practical example where these challenges are evident. In this paper, we address the problem of teaching a robot collaborative behaviors from human demonstrations. Specifically, we present an approach that combines: probabilistic learning and dynamical systems, to encode the robot's motion along the task. Our method allows us to learn not only a desired path to take the object through, but also, the force the robot needs to apply to the load during the interaction. Moreover, the robot is able to learn and reproduce the task with varying initial and final locations of the object. The proposed approach can be used in scenarios where not only the path to be followed by the transported object matters, but also the force applied to it. Tests were successfully carried out in a scenario where a 7 DOFs backdrivable manipulator learns to cooperate, with a human, to transport an object while satisfying the position and force constraints of the task.
+</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@inproceedings{Rozo14ROMAN,
+  author="Rozo, L. and Calinon, S. and Caldwell, D. G.",
+  title="Learning Force and Position Constraints in Human-robot Cooperative Transportation",
+  booktitle = "Proc. {IEEE} Intl Symposium on Robot and Human Interactive Communication ({Ro-Man})",
+  year="2014",
+  address="Edinburgh, Scotland, UK",
+  pages="619--624"
+}</pre>
+	
+<h3>Video</h3>
+<p>This video shows the experimental results of a learning approach in human-robot cooperative transportation task.</p>
+<strong>Demonstration phase</strong>
+  <ul>
+    <li>The robot is <em>kinesthetically guided</em> by a human teacher, who shows the robot its collaborative behavior while transporting an object with its human partner. </li>
+    <li>Note that <em>different starting and target locations</em> of the object are set across demonstrations, which allows the robot to <em>generalize to new positions during reproduction by exploiting a task-parametrized formulation of Gaussian mixture model</em>.</li>
+    <li>Notice that the teacher shows the robot not only the trajectory to follow (given the start and target positions), but also <em>the force needed to be applied to the object</em>.</li>
+  </ul>
+<strong>Reproduction phase</strong>
+    <ul>
+      <li>Once the robot has learned the task, it is able to carry out the collaborative skill with the user successfully. The robot is able to handle both position and force constraints of the task.</li>
+      <li>Three different reproductions are shown. The first and second reproductions display two executions of the task with <em>different start and target locations of the object</em>. The third reproduction shows the robot's behavior when <em>the human partner applies a different force to those sensed during the demonstration phase</em>. Note that the robot adapts to these force perturbations while still following a similar path to the desired trajectory.
+      </li>
+      <li>All reproductions are followed by an animation showing the Gaussian components of the task-parametrized model, the trajectory followed by the robot and the attractor path. Also, we can observe three different projections of the resulting trajectories and the applied force during the reproduction.</li>
+    </ul>
+<br>
+
+<center>
+<iframe src="https://player.vimeo.com/video/96700762?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+
+	
+<h3>Source codes</h3>
+<p><a href="images/tensor-GMM-LQR01.png" rel="lightbox">
+<img class="widethumb" src='images/tensor-GMM-LQR-thumbnail01.png'>
+</a>
+
+<p>Demonstration a task-parameterized probabilistic model encoding movements in the form of virtual spring-damper systems acting in multiple frames of reference. Each candidate coordinate system observes a set of demonstrations from its own perspective, by extracting an attractor path whose variations depend on the relevance of the frame through the task. This information is exploited to generate a new attractor path corresponding to new situations (new positions and orientation of the frames), while the predicted covariances are exploited by a linear quadratic regulator (LQR) to estimate the stiffness and damping feedback terms of the spring-damper systems, resulting in a minimal intervention control strategy.</p>  
+
+<h4>Download</h4>
+<p><img class='miniicon' src='minipng/compress.png'>
+<a href="download/task-parameterized-tensor-GMM-with-LQR.zip">Download task-parameterized tensor GMM with LQR sourcecode</a></p>
+
+<h4>Usage</h4>
+<p>Unzip the file and run 'demo01' in Matlab. Several reproduction algorithms can be selected by commenting/uncommenting lines 89-91 and 110-112 in demo01.m (finite/infinite horizon LQR or dynamical system with constant gains). 'demo_testLQR01' and 'demo_testLQR02' can also be run as examples of LQR.</p>
+
+<h4>Reference</h4>
+<ul><li>Calinon, S., Bruno, D. and Caldwell, D.G. (2014) <b>A task-parameterized probabilistic model with minimal intervention control</b>. Proc. of the IEEE Intl Conf. on Robotics and Automation (ICRA).</li></ul>
+<br>
+</p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

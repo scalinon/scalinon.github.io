@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item active'><a class='nav-link' href='research.htm'>Research <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<p>This page presents our research on robot learning and interaction. The descriptions of past research themes are available <a href='research_prev.php'>here</a>.</p>
+
+<hr>
+<h3>Robot Learning & Interaction</h3>
+
+<p>Our work focuses on human-centered robotic applications in which the robots can learn new skills by interacting with the end-users. From a machine learning perspective, the challenge is to acquire skills from only few demonstrations and interactions, with strong generalization demands. It requires the development of intuitive active learning interfaces to acquire meaningful demonstrations, the development of models that can exploit the structure and geometry of the acquired data in an efficient way, and the development of adaptive control techniques that can exploit the learned task variations and coordination patterns.</p>
+<p>The developed models typically need to serve several purposes (recognition, prediction, online synthesis), and be compatible with different learning strategies (imitation, emulation, incremental refinement or exploration). For the reproduction of skills, these models need to be enriched with force and impedance information to enable human-robot collaboration and to generate safe and natural movements.</p>
+
+<p>These models and algorithms can be applied to a wide range of robotic applications, with robots that are either close to us (assistive robots in <a href='https://www.i-dress-project.eu/' target='_blank'>I-DRESS</a>), parts of us (prosthetic hands in <a href='http://www.idiap.ch/project/tact-hand/' target='_blank'>TACT-HAND</a>), or far away from us (manipulation skills in deep water with <a href='http://www.dexrov.eu/' target='_blank'>DexROV</a>), which are projects supported by the <a href='https://ec.europa.eu/programmes/horizon2020/' target='_blank'>European Commission</a> and by the <a href='http://www.snf.ch/en/' target='_blank'>Swiss National Science Foundation</a>, and by the <a href='https://www.innosuisse.ch/inno/en/home.html' target='_blank'>Swiss Innovation Agency</a>.</p> 
+
+
+<b><i class='fa fa-flask fa-fw'></i> Techniques:</b>
+<ul>
+<li><a href='#control'>A distinctive view of optimal control</a></li>
+<li><a href='#prob'>Probabilistic models of movements and skills</a></li>
+<li><a href='#GMR'>Gaussian mixture regression (GMR)</a></li>
+<li><a href='#geometry'>Geometry-aware learning and control</a></li>
+</ul>
+
+<b><i class='fa fa-cogs fa-fw'></i> Applications:</b>
+<ul>
+<li><a href='#teleop'>Assistive teleoperation of a bimanual underwater robot (DexROV)</a></li>
+<li><a href='#assist'>Personalized assistance in dressing (I-DRESS)</a></li>
+<li><a href='#tensor'>Riemannian geometry and tensor methods for the control of prosthetic hands (TACT-HAND)</a></li>
+<li><a href='#UI'>Intuitive user interfaces for the generation of natural movements</a></li>
+<li><a href='#HRI'>Robot skills acquisition through active learning and social interaction strategies (ROSALIS)</a></li>
+</ul>
+<br>
+
+<hr>
+<h3><i class='fa fa-flask fa-fw'></i> Techniques</h3>
+<hr><br>
+
+<a class='anchor' id='control'></a>
+<h4>A DISTINCTIVE VIEW OF OPTIMAL CONTROL</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>Model predictive control (MPC) is ubiquitous in robot control, but the core formulation of this control problem and its associated algorithms can be extended to a wider range of problems, which has often been overlooked in robot learning. In particular, the most simple form of MPC (unconstrained and linear, with a homogeneous double integrator system) already has advantage for motion synthesis and planning problems, where it can be combined elegantly with probabilistic representations of movements.</p>
+<p>This method allows the retrieval of smooth and natural trajectories analytically, by taking into account variation and coordination constraints. Instead of learning trajectories directly, the approach allows the learning of the underlying controllers to drive the robot. Namely, it learns to reject perturbations only in the directions that would affect task performance (minimal intervention control). This can typically be exploited with torque-controlled robots to regulate the tracking gain and compliance required to reproduce a task in an adaptive manner.</p>
+<p>Interestingly, when combined with mixture models, this basic form of MPC also has links with B&eacute;zier curves and the use of dynamic features in generative models such as hidden Markov models (trajectory-HMM).</p>
+<p><b>References:</b></p>
+<p><a href='paper5004.htm' class='nodecor'>Calinon, S. and Lee, D. (2018). <strong>Learning Control</strong>. Vadakkepat, P. and Goswami, A. (eds.). Humanoid Robotics: a Reference. Springer.</a> <a href='paper5004.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-Lee-learningControl.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3054.htm' class='nodecor'>Calinon, S. (2016). <strong>Stochastic learning and control in multiple coordinate systems</strong>. Intl Workshop on Human-Friendly Robotics (HFR).</a> <a href='paper3054.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-HFR2016.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><b>Code examples:</b></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/tree/master/demos/demo_batchLQR01.m' target='_blank'><i class='fa fa-link fa-fw'></i>demo_batchLQR01.m</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/' target='_blank'>pbdlib-matlab</a></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/tree/master/demos/demo_MPC_batch01.cpp' target='_blank'><i class='fa fa-link fa-fw'></i>demo_MPC_batch01.cpp</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>pbdlib-cpp</a></p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/MPC_medres01.png'>
+<figcaption class='figure-caption'>MPC combined with a statistical representation of the task to achieve. An MPC problem is typically composed of a tracking cost and a control cost (top part of the image), which is minimized to find a set of control commands or a set of tracking gains. The weighting terms and the target references in the cost function can be learned from demonstrations, with a compact generative model of the task (bottom part of the image). Solving the MPC problem with a double integrator system (center of the image) results in an analytical solution, fast to compute, corresponding to a controller smoothly tracking the stepwise reference generated by the model, anticipating the step changes and modulating the tracking gains in accordance to the extracted precision and coordination patterns.</figcaption>
+</figure>
+</div>
+
+</div>
+
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/MPC_LIC_medres01.png'>
+<figcaption class='figure-caption'>Hidden semi-Markov model (HSMM) combined with model predictive control (MPC) for the learning and synthesis of movements.</figcaption>
+</figure>
+</div>
+
+</div>
+
+
+
+
+<hr><br>
+<a class='anchor' id='prob'></a>
+<h4>PROBABILISTIC MODELS OF MOVEMENTS AND SKILLS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/PoG01.png'>
+<figcaption class='figure-caption'>Statistical learning in multiple coordinate systems, and retrieval in a new situation.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/TPGMM01.png'>
+<figcaption class='figure-caption'>Task-parameterized Gaussian mixture model (TP-GMM) combined with model predictive control (MPC).</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/TPGMM-repro-web01.png'>
+<figcaption class='figure-caption'>The proposed task-parameterized approach can generalize the five demonstrations (in semi-transparent color) to new situations, by providing a trajectory distribution adapted to the situation (new position and orientation of the two objects).</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/LQTasProd_medres01.png'>
+<figcaption class='figure-caption'>The solution of MPC with a quadratic cost corresponds to a product of Gaussian distributions with a vector representation of the control commands and states (i.e. stacking the control commands and states for each time step of the time horizon). The solution has a direct interpretation as a fusion of controllers, with the control cost corresponding to a Gaussian centered on 0 depicted in blue, and the tracking cost for different coordinate systems depicted in green. The solution of the problem is given by the gray Gaussian. In MPC, the center of this Gaussian would typically be used as solution. Our work explores the use of the retrieved covariance, which contains additional information about the solution. A distribution on the control commands provides a mechanism to adapt to other constraints or to generate stochastic reproduction attempts.</figcaption>
+</figure>
+</div>
+
+<div class='col-md-7'>
+<p>In many robotics applications, demonstrations or experiences are sparse. In such situation, it is important to get as much information as possible from each demonstration. We explore approaches encoding demonstrations from the perspective of multiple coordinate systems. This is achieved by providing a list of observers that could potentially be relevant for the movement or the task to transfer. A statistical learning approach is then used to determine the variability and coordination patterns in the movement by considering the different coordinate systems simultaneously, which then allows the orchestration of the different coordinate systems to reproduce the movement in new situations (typically, to adapt a movement to new positions of objects).</p>
+<!--<p>The proposed task-parameterized model exploits the structure of the task, which can in many robotics problems be expressed in the form of coordinate systems or local projections. It was shown that such approach provides better generalization capability than conventional regression (i.e., by conditional distributions with context parameters as inputs and policy parameters as outputs).</p>-->
+<p>This approach provides better generalization capability than the conventional approach of associating task parameters (describing the situation/context) with policy parameters (describing the motion/skill), which would consist of mapping the two as a joint distribution, and then use regression to retrieve a new motion for a given new situation. The proposed task-parameterized models instead exploit the structure of the task parameters, which can in many robotics problems be expressed in the form of coordinate systems or local projections (including nullspace projection operators). It was shown that such approach can provide extrapolation capability that could not be achieved by treating the problem as standard regression.</p>
+<p><b>References:</b></p>
+<p><a href='paper4018.htm' class='nodecor'>Calinon, S. (2016). <strong>A Tutorial on Task-Parameterized Movement Learning and Retrieval</strong>. Intelligent Service Robotics (Springer), 9:1, 1-29.</a> <a href='paper4018.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-JIST2015.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3045.htm' class='nodecor'>Calinon, S. (2015). <strong>Robot learning with task-parameterized generative models</strong>. Intl Symp. on Robotics Research (ISRR).</a> <a href='paper3045.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-ISRR2015.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><b>Code examples:</b></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/tree/master/demos/demo_TPbatchLQR01.m' target='_blank'><i class='fa fa-link fa-fw'></i>demo_TPbatchLQR01.m</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/' target='_blank'>pbdlib-matlab</a></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/tree/master/src/demo_TPbatchLQR01.cpp' target='_blank'><i class='fa fa-link fa-fw'></i>demo_TPbatchLQR01.cpp</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>pbdlib-cpp</a></p>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/taskConditioning-demo01.png'>&nbsp;&nbsp;&nbsp;&nbsp;
+<img class='figure-img img-fluid' src='images/taskConditioning-repro01.png'>
+<figcaption class='figure-caption'>The conventional method would be to treat the problem as regression. It would consist of jointly learning the movement parameters and the task parameters, corresponding to the position and orientation of the objects (left), and then retrieve a movement based on new task parameters used as inputs of a regression problem. Such approach is generic since the task parameters can take any form, and it can usually interpolate well (top-left). However, such approach fails at extrapolating to situations that are further away (bottom-left). It is for this reason that we prefer to exploit a task-parameterized approach exploiting candidate coordinate systems, providing extrapolation capability in problems that can be structured in the form of coordinate systems, which is most often the case in robotics.</figcaption>
+</figure>
+</div>
+
+</div>
+
+
+
+<hr><br>
+<a class='anchor' id='GMR'></a>
+<h4>GAUSSIAN MIXTURE REGRESSION</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/lawTotalCov_medres01.png'>
+<figcaption class='figure-caption'>Gaussian estimate of a mixture of Gaussians (law of total covariance). The three red distributions depict the density functions of three Gaussians in a GMM weighted by their respective priors. The red dashed line depicts the density function of the resulting sum. The green distribution represents the density function as a single Gaussian estimate of this mixture of Gaussians. 
+</figcaption>
+<!--GMR relies on the law of total covariance to estimate a mixture of Gaussians as a single Gaussian distribution.-->
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/GMR_medres01.png'>
+<figcaption class='figure-caption'>Gaussian mixture regression (GMR) with a 2D example (1D input, 1D output), based on a mixture of 2 Gaussians representing the joint distribution of the data.</figcaption>
+</figure>
+</div>
+
+<div class='col-md-7'>
+<p>Gaussian mixture regression (GMR) is a simple nonlinear regression technique that does not model the regression function directly, but instead first models the joint probability density of input-output data in the form of a Gaussian mixture model (GMM), which can for example be estimated by an expectation-maximization (EM) procedure.</p> 
+<p>Its computation relies on linear transformation and conditional distribution properties of multivariate normal distributions. GMR provides a fast regression approach in which multivariate output distributions can be computed in an online manner, with a computation time independent of the number of datapoints used to train the model, by exploiting the learned joint density model. In GMR, both input and output variables can be multivariate, and after learning, any subset of input-output dimensions can be selected for regression. This can for example be exploited to handle different sources of missing data, where expectations on the remaining dimensions can be computed as a multivariate distribution. These properties make GMR an attractive tool for robotics, which can be used in a wide range of problems and that can be combined fluently with other techniques or be used as a base for new developments.</p> 
+<p><b>References:</b></p>
+<p><a href='paper4018.htm' class='nodecor'>Calinon, S. (2016). <strong>A Tutorial on Task-Parameterized Movement Learning and Retrieval</strong>. Intelligent Service Robotics (Springer), 9:1, 1-29.</a> <a href='paper4018.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-JIST2015.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper5004.htm' class='nodecor'>Calinon, S. and Lee, D. (2018). <strong>Learning Control</strong>. Vadakkepat, P. and Goswami, A. (eds.). Humanoid Robotics: a Reference. Springer.</a> <a href='paper5004.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-Lee-learningControl.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><b>Code examples:</b></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/tree/master/demos/demo_GMR01.m' target='_blank'><i class='fa fa-link fa-fw'></i>demo_GMR01.m</a> 
+in <a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/' target='_blank'>pbdlib-matlab</a></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/tree/master/src/demo_GMR01.cpp' target='_blank'><i class='fa fa-link fa-fw'></i>demo_GMR01.cpp</a> 
+in <a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>pbdlib-cpp</a></p>
+</div>
+
+</div>
+
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/GaussCond_medres01.png'>
+<img class='figure-img img-fluid' src='images/GaussCond_medres02.png'>
+<figcaption class='figure-caption'>Gaussian conditioning in standard GMR (left) can directly be extended to conditional distribution with uncertainty on the input (right).</figcaption>
+</figure>
+</div>
+
+</div>
+
+<hr><br>
+<a class='anchor' id='geometry'></a>
+<h4>GEOMETRY-AWARE LEARNING AND CONTROL</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>The data encountered in robotics are characterized by simple but varied geometries, which are often underexploited when developing learning and control algorithms. Such data range from joint angles in revolving articulations, rigid body motions, orientations represented as unit quaternions, sensory data processed as spatial covariance features, or other forms of symmetric positive definite matrices such as inertia or manipulability ellipsoids. Moreover, many applications require these data to be handled altogether.</p> 
+<p>We exploit Riemannian manifold techniques to extend algorithms initially developed for Euclidean data, by efficiently taking into account prior knowledge about these manifolds and by modeling joint distributions among these heterogeneous data. The use of these differential geometry techniques allow us to treat data of various forms in a unified manner (including data in standard Euclidean spaces). It can typically be used to revisit common optimization problems in robotics formulated in standard Euclidean spaces, by treating them as unconstrained problems inherently taking into account the geometry of the data.</p>
+<!--
+<p>Data in robot learning and control problems have structures and symmetries that are often underexploited. We explore the use of Riemannian manifolds to provide geometry-aware algorithms that can be exploited in several learning and control problems.</p>
+<p>Examples of Riemannian manifolds in robotics with well known geometries include stiffness and damping gains, inertia, manipulability ellipsoids (symmetric positive definite matrices), rigid body motions, orientations (unit quaternions), period movements (phase variable on circle manifold), or joint angles in revolving articulations (e.g., a 2-link planar robot forms a torus manifold).</p>
+<p>We explore the use of differential geometry techniques to treat data of various forms in a unified manner, including data in standard Euclidean spaces. In particular, we exploit the potential that several Riemannian manifolds can be efficiently combined together to treat problems such as learning/controlling the pose of an end-effector (e.g., position and orientation).</p> 
+<p>This technique can be exploited to revisit common optimization problems in robotics formulated in standard Euclidean spaces. This is typically achieved by removing the constraint of staying on a given manifold, and instead considering an unconstrained problems in spaces that inherently take into account this constraint.</p>-->
+<p><b>References:</b></p>
+<p><a href='paper4023.htm' class='nodecor'>Zeestraten, M.J.A., Havoutis, I., Silv&eacute;rio, J., Calinon, S. and Caldwell, D.G. (2017). <strong>An Approach for Imitation Learning on Riemannian Manifolds</strong>. IEEE Robotics and Automation Letters (RA-L), 2:3, 1240-1247.</a> <a href='paper4023.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Zeestraten-RAL2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3066.htm' class='nodecor'>Jaquier, N., Rozo, L., Caldwell, D.G. and Calinon, S. (2018). <strong>Geometry-aware Tracking of Manipulability Ellipsoids</strong>. In Proc. Robotics: Science and Systems (RSS).</a> <a href='paper3066.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-RSS2018.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><b>Code examples:</b></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/tree/master/demos/demo_Riemannian_sphere_GMM01.m' target='_blank'><i class='fa fa-link fa-fw'></i>demo_Riemannian_sphere_GMM01.m</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/' target='_blank'>pbdlib-matlab</a></p>
+<p><a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/tree/master/src/demo_Riemannian_sphere_GMM01.cpp' target='_blank'><i class='fa fa-link fa-fw'></i>demo_Riemannian_sphere_GMM01.cpp</a> 
+from <a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>pbdlib-cpp</a></p>
+</div>
+
+<div class='col-md-5'>
+<!--<figure class='figure'>
+<img class='figure-img img-fluid' src='images/Riemannian_gradient01.png'>
+<figcaption class='figure-caption'>Minimization of geodesic distances as a gradient descent in the tangent space of the current solution estimate on the Riemannian manifold.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/Riemannian_sphere_GMM02.png'>
+<figcaption class='figure-caption'>Gaussian mixture model (GMM) on a Riemannian manifold, where the centers of the Gaussians are defined on the manifold, and the covariances are defined in the tangent spaces of the corresponding centers.</figcaption>
+</figure>-->
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/Riemannian_sphere_4problems_medres01.png'>
+<figcaption class='figure-caption'>Many problems of robotics can be extended to Riemannian manifolds, including interpolation, fusion, statistical learning, segmentation, regression and control. The main advantage of this approach is that existing algorithms based on Gaussian distributions and initially developed for Euclidean data can be readily extended to any other smooth manifolds.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/SPD_geodesics_medres01.png'>
+<figcaption class='figure-caption'>Geodesics on a symmetric positive definite manifold for a 2x2 matrix A.</figcaption>
+</figure>
+</div>
+
+</div>
+
+
+<hr>
+<h3><i class='fa fa-cogs fa-fw'></i> Applications</h3>
+<hr><br>
+
+<a class='anchor' id='teleop'></a>
+<h4>ASSISTIVE TELEOPERATION OF A BIMANUAL UNDERWATER ROBOT (DEXROV)</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/DexROV_Idiap_web01.png'>
+<figcaption class='figure-caption'>Assistive teleoperation by exploiting probabilistic models for both classification and synthesis purposes.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/DexROV-graspExample01.png'>
+<figcaption class='figure-caption'>Minimal intervention controller able to exploit the task variations extracted from the set of demonstrations.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/DexROV_dryTrials_medres01.jpg'>
+<figcaption class='figure-caption'>Dry trials with the DexROV robot and test panel.</figcaption>
+</figure>
+
+</div>
+
+<div class='col-md-7'>
+<p>The DexROV project aims at controlling a bimanual underwater robot from a teleoperation center, with a user wearing an exoskeleton, controlling the robot in a virtual reality environment.</p>
+<p>In DexROV, we develop approaches recasting teleoperation as a collaborative human-robot teamwork. The combination of model predictive control and task-parameterized probabilistic models is explored as a way to cope with teleoperation with long transmission delays (up to a second), and/or the simultaneous teleoperation of many degrees of freedom.</p>
+<p>In this approach, the model parameters are first transmitted to both the teleoperator side and the robot side. The task parameters on the robot side can then update the model of the skill at fast pace by local sensing, without requiring the transmission of this change to the teleoperator.</p>
+<p>As an example, if the robot has observed that the task of drilling requires the drill to be perpendicular when it approaches a surface, the robot will then automatically orient the drill when it approaches another surface, letting the teleoperator concentrate on the position to drill by delegating the orientation tracking aspect to the robot. The robot will automatically react to perturbations transparently to the user (e.g., when reorienting the surface). The aim is to reduce the cognitive load of the teleoperator for repetitive or well structured tasks.</p>
+<p><b>Project website:</b> <a href='http://www.dexrov.eu/' target='_blank'>http://www.dexrov.eu/</a></p>
+<p><b>References:</b></p>
+
+<p><a href='paper4030.htm' class='nodecor'>Havoutis, I. and Calinon, S. (2018). <strong>Learning from demonstration for semi-autonomous teleoperation</strong>. Autonomous Robots.</a> <a href='paper4030.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Havoutis-AURO2018.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3057.htm' class='nodecor'>Havoutis, I. and Calinon, S. (2017). <strong>Supervisory teleoperation with online learning and optimal control</strong>. In Proc. of the IEEE Intl Conf. on Robotics and Automation (ICRA).</a> <a href='paper3057.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Havoutis-ICRA2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper4019.htm' class='nodecor'>Tanwani, A.K. and Calinon, S. (2016). <strong>Learning Robot Manipulation Tasks with Task-Parameterized Semi-Tied Hidden Semi-Markov Model</strong>. IEEE Robotics and Automation Letters (RA-L), 1:1, 235-242.</a> <a href='paper4019.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Tanwani-RAL2016.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div>
+
+</div>
+
+
+<hr><br>
+<a class='anchor' id='assist'></a>
+<h4>PERSONALIZED ASSISTANCE IN DRESSING (I-DRESS)</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>The I-DRESS project aims at providing dressing assistance to persons with limited mobility. Two case studies are considered: to put on a jacket and to put on shoes.</p> 
+<p>In I-DRESS, we tackle the problem of transferring assistive skills to robots, by letting the robots acquire not only movements, but also force and compliance behaviors. We explore extensions of movement primitives frequently employed in robotics to a wider repertoire of skills composed of reactive, time-dependent and time-independent behaviors based on force, impedance, position and orientation information.</p>
+<p>Assisting a person to dress is a challenging case study, in which the robot needs to adapt to different morphologies, pathologies or stages of recovery, with varied requirements for movement generation and physical interaction. Since this assistance is person-dependent, with preferences and requirements that can evolve with time, it cannot be pre-programmed. Dressing assistance is typically provided by healthcare workers, which is not always convenient. From the worker perspective, the activity takes time and is not particularly gratifying. From the patient perspective, such assistance is often viewed negatively because it reduces the sense of independence.</p>
+<p>In this context, learning from demonstration can provide a solution to transfer dressing assistance skills to the robot. We explore if this could be achieved by means of kinesthetic teaching, where demonstrations are used to let the robot acquire person-specific requirements and preferences.</p> 
+<p><b>Project website:</b> <a href='https://www.i-dress-project.eu/' target='_blank'>https://www.i-dress-project.eu/</a></p>
+<p><b>References:</b></p>
+<p><a href='paper4024.htm' class='nodecor'>Pignat, E. and Calinon, S. (2017). <strong>Learning adaptive dressing assistance from human demonstration</strong>. Robotics and Autonomous Systems, 93, 61-75.</a> <a href='paper4024.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Pignat-RAS2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3065.htm' class='nodecor'>Canal, G., Pignat, E., Alenya, G., Calinon, S. and Torras, C. (2018). <strong>Joining high-level symbolic planning with low-level motion primitives in adaptive HRI: application to dressing assistance</strong>. In Proc. of the IEEE Intl Conf. on Robotics and Automation (ICRA). </a> <a href='paper3065.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Canal-ICRA2018.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p> 
+</div>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/IDRESS_medres01.jpg' style='width: 35%;'>
+<img class='figure-img img-fluid' src='images/IDRESSshoe_medres01.png' style='width: 55%;'>
+<figcaption class='figure-caption'>Adaptive robotic assistance to put on a jacket (left) and shoes (right).</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/IDRESSsimu_medres01.jpg'>
+<figcaption class='figure-caption'>For the underlying representation of the assistive skills, I-DRESS uses a task-parameterized hidden semi-Markov model (TP-HSMM), combined with linear quadratic tracking (LQT). The red and blue Gaussians show the movement learned in the robot and shoe coordinate systems, respectively. The yellow Gaussians are used to generate the movement, which are computed as a product of Gaussians, effectively fusing the controllers associated to the two coordinate systems.<br>
+<i>Images from [Canal, Pignat et al, ICRA'2018]</i>.</figcaption>
+</figure>
+</div>
+
+</div>
+
+
+<hr><br>
+<a class='anchor' id='tensor'></a>
+<h4>RIEMANNIAN GEOMETRY AND TENSOR METHODS FOR THE CONTROL OF PROSTHETIC HANDS (TACT-HAND)</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/TACTHAND_Idiap_web01.png'>
+<figcaption class='figure-caption'>Joint treatment of sEMG and tactile sensing data for the control of a prosthetic hand.</figcaption>
+</figure>
+<br><br>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/manipulability_medres01.png'>
+<figcaption class='figure-caption'>Learning and control of manipulability ellipsoids (symmetric positive definite matrices) by relying on Riemannian manifolds. In these examples, the task does not require the end-effectors in red to be in a specific location. Instead, the aim is to find poses that are robust to expected perturbations (changes of force to be applied in a direction, expectation of motion perturbations in certain directions, etc.). Manipulability ellipsoids are well suited to represent such skills, but they are currently only used for analysis. Our work aims at incorporating these structures in learning and adaptive control applications.</figcaption>
+</figure>
+</div>
+
+<div class='col-md-7'>
+<p>We apply Riemannian geometry approaches and tensor methods to the control of prosthetic hands by exploiting several sensor modalities. A tactile bracelet is providing sensory data organized as a cylindric grid, which are augmented with noisy surface electromyography (sEMG) signals typically processed as spatial covariance features. Instead of flattening or vectorizing the above data, we aim at treating the different sources statistically as a joint distribution, by keeping the original geometry and structure of the data.
+</p>
+<p><b>Project website:</b> <a href='http://www.idiap.ch/project/tact-hand/' target='_blank'>http://www.idiap.ch/project/tact-hand/</a></p>
+<p><b>References:</b></p>
+<p><a href='paper3064.htm' class='nodecor'>Jaquier, N. and Calinon, S. (2017). <strong>Gaussian Mixture Regression on Symmetric Positive Definite Matrices Manifolds: Application to Wrist Motion Estimation with sEMG</strong>. In Proc. of the IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS).</a> <a href='paper3064.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-IROS2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3060.htm' class='nodecor'>Jaquier, N., Castellini, C. and Calinon, S. (2017). <strong>Improving Hand and Wrist Activity Detection Using Tactile Sensors and Tensor Regression Methods on Riemannian Manifolds</strong>. Myoelectric Controls Symposium (MEC).</a> <a href='paper3060.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-MEC2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div>
+
+</div>
+
+
+<hr><br>
+<a class='anchor' id='UI'></a>
+<h4>INTUITIVE USER INTERFACES FOR THE GENERATION OF NATURAL MOVEMENTS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>Many computer aided design applications require the generation of continuous traces, where the most common interface is to edit the control points of some form of interpolating spline. In this research, conducted in collaboration with Daniel Berio and Frederic Fol Leymarie at Goldsmiths University of London, we study how tools from computational motor control can be used to extend such methods to encapsulate movement dynamics, precision and coordination.</p> 
+<p>Our approach relies on a probabilistic formulation of model predictive control, by providing users with a simple interactive interface to generate multiple movements and traces at once by defining a distribution of trajectories rather then a single one. A dynamical system is then used to generate natural looking curves stochastically.</p> 
+<p>The method is applied to the generation of traces and patterns that are similar to the ones that can be seen in art forms such as calligraphy and graffiti.</p> 
+<p><b>Reference:</b></p>
+<p><a href='paper3058.htm' class='nodecor'>Berio, D., Calinon, S. and Fol Leymarie, F. (2017). <strong>Generating Calligraphic Trajectories with Model Predictive Control</strong>. In Proc. of the 43rd Conf. on Graphics Interface.</a> <a href='paper3058.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Berio-GI2017.pdf'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/Berio_E_web01.png'>
+<figcaption class='figure-caption'>Alphabet letter edited by the proposed interface, enabling the definition of a path, together with additional variation and coordination information to generate naturally-looking variants of the path.</figcaption>
+</figure>
+</div>
+
+</div>
+
+<hr><br>
+<a class='anchor' id='HRI'></a>
+<h4>ROBOT SKILLS ACQUISITION THROUGH ACTIVE LEARNING AND SOCIAL INTERACTION STRATEGIES (ROSALIS)</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-5'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/learningModalities_medres01.png'>
+<figcaption class='figure-caption'>ROSALIS considers an active and adaptive selection of the learning modalities that best benefit the skill acquisition process.</figcaption>
+</figure>
+</div>
+
+<div class='col-md-7'>
+<p>Most efforts in robot learning from demonstration are turned toward developing algorithms for the acquisition of specific skills from training data. While such developments are important, they often do not take into account the social structure of the process, in particular, that the interaction with the user and the selection of the different interaction steps can directly influence the quality of the collected data.</p> 
+<p>Similarly, while skills acquisition encompasses a wide range of social and self-refinement learning strategies, including mimicking (without understanding the objective), goal-level emulation (discovering the objectives by discarding the specific way in which a task is achieved), exploration with self-assessed rewards or feedback from the users, they each require the design of dedicated algorithms, but the ways in which they can be organized have been overlooked so far. We address this challenge in the ROSALIS project, by exploiting social interaction to transfer skills efficiently to robots.</p>
+</div>
+
+</div>
+
+
+</div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

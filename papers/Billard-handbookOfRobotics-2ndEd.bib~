@@ -1,0 +1,12 @@
+@incollection{Billard16chapter,
+  author="Billard, A. G. and Calinon, S. and Dillmann, R.",
+  title="Learning From Humans",
+  booktitle="Handbook of Robotics",
+  editor="B. Siciliano and O. Khatib",
+  publisher="Springer",
+  address="Secaucus, NJ, USA",
+  year="2016",
+  pages="1995--2014",
+  chapter="74",
+  note="2nd Edition"
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item active'><a class='nav-link' href='videos.htm'>Videos <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<center><h5>Statistical dynamical systems for skills acquisition in humanoids</h5></center>
+<p>Imitation is not simply recording and replaying movements. The learned skills require to be generalized to new situations. For example, if someone grasps a bottle of orange juice, shakes it and pours its content into a glass, the robot should be able to reproduce the task even if the position of the bottle and the glass are different than during the demonstrations. The robot should be able to shake the bottle even if its body does not have the same exact shape and configuration of articulations (a.k.a. correspondence problem, retargeting problem, mapping problem).</p>
+
+<p>In contrast to robots in standard industrial settings, humanoids and compliant robots can work in unpredictable environment and in the proximity of users.
+Two sets of tools are relevant for learning and reproducing skills in unpredictable environment:<br>
+<ul>
+<li><strong>Probabilistic machine learning tools</strong>: they can extract and exploit the regularities and relevant characteristics of the task.</li>
+<li><strong>Dynamical systems</strong>: they are able to cope with perturbations in real-time without having to replan the whole trajectory.</li>
+</ul>
+</p>
+
+<p>We study how to make these two sets of tools work together. The problem can be illustrated as follows. We assume that the motion of the robot is driven by a set of virtual springs that are related (connected) to a set of candidate objects or body parts of the robot. The learning problem consists of estimating when and where to activate these springs. This can be learned from demonstrations by exploiting the invariant characteristics of the task (the parts of the movement that are the same between the multiple demonstrations). The consistent characteristics will result in strong springs, and the irrelevant will result in soft springs.</p>
+
+<p><strong>What does the video show?</strong></p>
+
+<p>By using the same software, we can teach different skills to the robot. Demonstrations were recorded by placing visual markers on an object and on the hands of the user, tracked by the Optitrack system.</p>
+
+<p>When the model is tested with hand clapping movements, the robot extracted that bimanual coordination was required. Namely, that the position of one hand is regulated with respect to the other hand. The clapping motion is not perturbed by moving the object around the robot, because the robot learned that the object was not relevant for this skill (i.e., the springs attached to the object frame are too weak to influence the movement).</p>
+
+<p>When the model is tested with reaching movements, the robot learned that it should use one or the other hand depending on the position of the object. If the object is in the center, the robot can try to grasp it with both hands, by following the behavior previously demonstrated by the user. The hand that is not used for tracking the object automatically comes back to a neutral pose.</p>
+
+<center>
+<iframe src="https://player.vimeo.com/video/52004228?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+	<center><a class='btn btn-primary' href='videos.htm'>Go back to the list of videos</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

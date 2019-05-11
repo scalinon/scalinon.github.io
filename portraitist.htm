@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item active'><a class='nav-link' href='contact.htm'>Contact/Links <span class='sr-only'>(current)</span></a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<h3>Salvador DaBot, the portraitist robot</h3>
+
+<img class='quoteimg' src='images/quote01.png'><blockquote>Your printer is only botching its job and does not know anything about pop-art! It even can't dance!</blockquote>
+<div align="right"><i>Salvador DaBot, 2008</i></div>
+<br>
+<p>The Portraitist Robot recognizes human faces in its surroundings and extracts relevant characteristics from them. By using its uncanny artistic talent, it then draws portraits of the participants from the captured images by converting them into vector art and by using inverse kinematics to control the robot's arm.</p>
+<p>You can find previous videos of the <b>Portraitist Robot v1.0</b> <a href="showVideo.php?video=5">here</a>. Among the new features, the <b>Portraitist Robot v2.0</b> has been patched with moustache and beret add-ons.</p> 
+<br>
+<div align="center"> <embed
+src="flvplayer.swf" width="320" height="240"
+allowfullscreen="true" allowscriptaccess="always"
+flashvars="&displayheight=240&file=videos/portraitist.flv&image=images/portraitist.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
+</div>
+<br>
+<div align='center'>Click on &nbsp;<img src='images/play.png'>&nbsp; to play the video and on &nbsp;<img src='images/fullscreen.png'>&nbsp; to view the video in fullscreen mode</div>
+<br>
+<p>Contours of the faces are first extracted from the images captured through the robot's internal cameras. The contours are then converted to paths by organizing them with respect to their lengths.<p>
+<p>Then, the image is segmented into several shades of gray. The contours and extracted areas are simplified to keep only the important features of the face and make it look similar to a cartoon representation. The different shades of gray will be reproduced by the robot by adding several layers of drawing patterns that are painted by the robot. These patterns are designed to make the painting look more artistic. The different areas are filled similarly as a human would do by recursively starting from one point, filling the current area, and jumping to another area when it is finished.</p>
+<p>Finally, a robust inverse kinematics controller is used to convert the 2D drawing into a set of joint angles that are run on the robot.<p>
+<br>
+<p>To look more human-like, motions of the left arm and head have been recorded through the use of motion sensors attached to the body of a person demonstrating the gesture to the robot. This process is indeed highly relevant as even when standing in a fixed posture, humans are producing small oscillations which are important to reproduce gestures that look natural and which can be reproduced on the robot to make it look more lively.</p>
+<br>
+<div align="center"> <embed
+src="flvplayer.swf" width="320" height="240"
+allowfullscreen="true" allowscriptaccess="always"
+flashvars="&displayheight=240&file=videos/xsens.flv&image=images/avatar-task01.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
+</div>
+<br>
+<div align='center'>Click on &nbsp;<img src='images/play.png'>&nbsp; to play the video and on &nbsp;<img src='images/fullscreen.png'>&nbsp; to view the video in fullscreen mode</div>
+<br>
+
+<p>Apart from promoting Robotics as being a fun and interesting research area, this work also aims at showcasing the capabilities of the HOAP-3 robot as well as the integration of different motor and sensory components such as vision processing, clustering, human-robot interaction, speech synthesis, inverse kinematics and redundant control of humanoid robots.</p>
+<br>
+
+<p>Here are the first masterpieces of our mustachioed artist created during the <a href="http://www.sparksonline.com/products-services/google.htm" target="_BLANK">Google Zeitgeist'08</a> event!</p><br> 
+<center>
+<img src="images/Zeitgeist2008/ds19.jpg">&nbsp;<img src="images/Zeitgeist2008/ds20.jpg">&nbsp;<img src="images/Zeitgeist2008/ds21.jpg">&nbsp;<img src="images/Zeitgeist2008/ds18.jpg"><br>
+<img src="images/Zeitgeist2008/ps19.jpg">&nbsp;<img src="images/Zeitgeist2008/ps20.jpg">&nbsp;<img src="images/Zeitgeist2008/ps21.jpg">&nbsp;<img src="images/Zeitgeist2008/ps18.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds22.jpg">&nbsp;<img src="images/Zeitgeist2008/ds23.jpg">&nbsp;<img src="images/Zeitgeist2008/ds24.jpg">&nbsp;<img src="images/Zeitgeist2008/ds17.jpg"><br>
+<img src="images/Zeitgeist2008/ps22.jpg">&nbsp;<img src="images/Zeitgeist2008/ps23.jpg">&nbsp;<img src="images/Zeitgeist2008/ps24.jpg">&nbsp;<img src="images/Zeitgeist2008/ps17.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds27.jpg">&nbsp;<img src="images/Zeitgeist2008/ds28.jpg">&nbsp;<img src="images/Zeitgeist2008/ds8.jpg">&nbsp;<img src="images/Zeitgeist2008/ds16.jpg"><br>
+<img src="images/Zeitgeist2008/ps27.jpg">&nbsp;<img src="images/Zeitgeist2008/ps28.jpg">&nbsp;<img src="images/Zeitgeist2008/ps8.jpg">&nbsp;<img src="images/Zeitgeist2008/ps16.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds9.jpg">&nbsp;<img src="images/Zeitgeist2008/ds13.jpg">&nbsp;<img src="images/Zeitgeist2008/ds30.jpg">&nbsp;<img src="images/Zeitgeist2008/ds29.jpg"><br>
+<img src="images/Zeitgeist2008/ps9.jpg">&nbsp;<img src="images/Zeitgeist2008/ps13.jpg">&nbsp;<img src="images/Zeitgeist2008/ps30.jpg">&nbsp;<img src="images/Zeitgeist2008/ps29.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds10.jpg">&nbsp;<img src="images/Zeitgeist2008/ds11.jpg">&nbsp;<img src="images/Zeitgeist2008/ds12.jpg">&nbsp;<img src="images/Zeitgeist2008/ds15.jpg"><br>
+<img src="images/Zeitgeist2008/ps10.jpg">&nbsp;<img src="images/Zeitgeist2008/ps11.jpg">&nbsp;<img src="images/Zeitgeist2008/ps12.jpg">&nbsp;<img src="images/Zeitgeist2008/ps15.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds34.jpg">&nbsp;<img src="images/Zeitgeist2008/ds35.jpg">&nbsp;<img src="images/Zeitgeist2008/ds36.jpg">&nbsp;<img src="images/Zeitgeist2008/ds14.jpg"><br>
+<img src="images/Zeitgeist2008/ps34.jpg">&nbsp;<img src="images/Zeitgeist2008/ps35.jpg">&nbsp;<img src="images/Zeitgeist2008/ps36.jpg">&nbsp;<img src="images/Zeitgeist2008/ps14.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds37.jpg">&nbsp;<img src="images/Zeitgeist2008/ds38.jpg">&nbsp;<img src="images/Zeitgeist2008/ds39.jpg">&nbsp;<img src="images/Zeitgeist2008/ds33.jpg"><br>
+<img src="images/Zeitgeist2008/ps37.jpg">&nbsp;<img src="images/Zeitgeist2008/ps38.jpg">&nbsp;<img src="images/Zeitgeist2008/ps39.jpg">&nbsp;<img src="images/Zeitgeist2008/ps33.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds1.jpg">&nbsp;<img src="images/Zeitgeist2008/ds2.jpg">&nbsp;<img src="images/Zeitgeist2008/ds3.jpg">&nbsp;<img src="images/Zeitgeist2008/ds31.jpg"><br>
+<img src="images/Zeitgeist2008/ps1.jpg">&nbsp;<img src="images/Zeitgeist2008/ps2.jpg">&nbsp;<img src="images/Zeitgeist2008/ps3.jpg">&nbsp;<img src="images/Zeitgeist2008/ps31.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds4.jpg">&nbsp;<img src="images/Zeitgeist2008/ds5.jpg">&nbsp;<img src="images/Zeitgeist2008/ds6.jpg">&nbsp;<img src="images/Zeitgeist2008/ds32.jpg"><br>
+<img src="images/Zeitgeist2008/ps4.jpg">&nbsp;<img src="images/Zeitgeist2008/ps5.jpg">&nbsp;<img src="images/Zeitgeist2008/ps6.jpg">&nbsp;<img src="images/Zeitgeist2008/ps32.jpg"><br>
+<br>
+<img src="images/Zeitgeist2008/ds7.jpg">&nbsp;<img src="images/Zeitgeist2008/ds25.jpg">&nbsp;<img src="images/Zeitgeist2008/ds26.jpg"><br>
+<img src="images/Zeitgeist2008/ps7.jpg">&nbsp;<img src="images/Zeitgeist2008/ps25.jpg">&nbsp;<img src="images/Zeitgeist2008/ps26.jpg"><br>
+</center>
+
+</div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

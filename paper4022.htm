@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/4022.jpg'></div>
+<div class='col-md-10'>
+<h5>Rozo, L., Silvério, J., Calinon, S. and Caldwell, D.G. (2016)</h5>
+<h5><strong>Learning Controllers for Reactive and Proactive Behaviors in Human-Robot Collaboration</strong></h5> 
+<h5>Frontiers in Robotics and AI, 3:30, 1-11.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Rozo-Frontiers2016.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://journal.frontiersin.org/article/10.3389/frobt.2016.00030/full' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Rozo-Frontiers2016.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>Designed to safely share the same workspace as humans and assist them in various tasks, the new collaborative robots are targeting manufacturing and service applications that once were considered unattainable. The large diversity of tasks to carry out, the unstructured environments, and the close interaction with humans call for collaborative robots to seamlessly adapt their behaviors, so as to cooperate with the users successfully under different and possibly new situations (characterized, for example, by positions of objects/landmarks in the environment or by the user pose). This paper investigates how controllers capable of reactive and proactive behaviors in collaborative tasks can be learned from demonstrations. The proposed approach exploits the temporal coherence and dynamic characteristics of the task observed during the training phase to build a probabilistic model that enables the robot to both react to the user actions and lead the task when needed. The method is an extension of the hidden semi-Markov model where the duration probability distribution is adapted according to the interaction with the user. This adaptive duration hidden semi-Markov model (ADHSMM) is used to retrieve a sequence of states governing a trajectory optimization that provides the reference and gain matrices to the robot controller. A proof-of-concept evaluation is first carried out in a pouring task. The proposed framework is then tested in a collaborative task using a 7-DOF backdrivable manipulator.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@article{Rozo16Frontiers,
+  author="Rozo, L. and Silv\'erio, J. and Calinon, S. and Caldwell, D. G.",
+  title="Learning Controllers for Reactive and Proactive Behaviors in Human-Robot Collaboration",
+  journal="Frontiers in Robotics and {AI}",
+  year="2016",
+  month="June",
+  volume="3",
+  number="30",
+  pages="1--11",
+  doi="10.3389/frobt.2016.00030",
+  note="Specialty Section Robotic Control Systems"
+}</pre>
+	
+<h3>Source codes</h3>
+<p>Source codes related to this publication are available as part of <a href='codes.htm'>PbDlib</a>.</p><br>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

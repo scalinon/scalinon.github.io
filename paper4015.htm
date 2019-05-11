@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/4015.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S., Bruno, D., Malekzadeh, M.S., Nanayakkara, T. and Caldwell, D.G. (2014)</h5>
+<h5><strong>Human-robot skills transfer interfaces for a flexible surgical robot</strong></h5> 
+<h5>Computer Methods and Programs in Biomedicine (Elsevier) 116:2, 81-96, Special issue on new methods of human-robot interaction in medical practice.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-BIOMED2014.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://dx.doi.org/10.1016/j.cmpb.2013.12.015' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-BIOMED2014.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>In minimally invasive surgery, tools go through narrow openings and manipulate soft organs to perform surgical tasks. There are limitations in current robot-assisted surgical systems due to the rigidity of robot tools. The aim of the STIFF-FLOP European project is to develop a soft robotic arm to perform surgical tasks. The flexibility of the robot allows the surgeon to move within organs to reach remote areas inside the body and perform challenging procedures in laparoscopy. This article addresses the problem of designing learning interfaces enabling the transfer of skills from human demonstration. Robot programming by demonstration encompasses a wide range of learning strategies, from simple mimicking of the demonstrator's actions to the higher level imitation of the underlying intent extracted from the demonstrations. By focusing on this last form, we study the problem of extracting an objective function explaining the demonstrations from an over-specified set of candidate reward functions, and using this information for self-refinement of the skill. In contrast to inverse reinforcement learning strategies that attempt to explain the observations with reward functions defined for the entire task (or a set of pre-defined reward profiles active for different parts of the task), the proposed approach is based on context-dependent reward-weighted learning, where the robot can learn the relevance of candidate objective functions with respect to the current phase of the task or encountered situation. The robot then exploits this information for skills refinement in the policy parameters space. The proposed approach is tested in simulation with a cutting task performed by the STIFF-FLOP flexible robot, using kinesthetic demonstrations from a Barrett WAM manipulator.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@article{Calinon14BIOMED,
+  author="Calinon, S. and Bruno, D. and Malekzadeh, M. S. and Nanayakkara, T. and Caldwell, D. G.",
+  title="Human-robot skills transfer interfaces for a flexible surgical robot",
+  journal="Computer Methods and Programs in Biomedicine",
+  publisher = "Elsevier",
+  year="2014",
+  volume="116",
+  number="2",
+  pages="81–-96",
+  month="September",
+  note="Special issue on new methods of human-robot interaction in medical practice"
+}</pre>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

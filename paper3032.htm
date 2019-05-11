@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/3032.jpg'></div>
+<div class='col-md-10'>
+<h5>Rozo, L., Jimenez, P. and Torras, C. (2013)</h5>
+<h5><strong>Force-based robot learning of pouring skills using parametric hidden Markov models</strong></h5> 
+<h5>In Proc. of the IEEE-RAS Intl Workshop on Robot Motion and Control (RoMoCo), Wasowo, Poland, pp. 227-232.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Rozo-RoMoCo2013.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://romoco.put.poznan.pl/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Rozo-RoMoCo2013.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>Robot learning from demonstration faces new
+challenges when applied to tasks in which forces play a key
+role. Pouring liquid from a bottle into a glass is one such task,
+where not just a motion with a certain force profile needs
+to be learned, but the motion is subtly conditioned by the
+amount of liquid in the bottle. In this paper, the pouring skill
+is taught to a robot as follows. In a training phase, the human
+teleoperates the robot using a haptic device, and data from the
+demonstrations are statistically encoded by a parametric hidden
+Markov model, which compactly encapsulates the relation
+between the task parameter (dependent on the bottle weight)
+and the force-torque traces. Gaussian mixture regression is
+then used at the reproduction stage for retrieving the suitable
+robot actions based on the force perceptions. Computational
+and experimental results show that the robot is able to learn
+to pour drinks using the proposed framework, outperforming
+other approaches such as the classical hidden Markov models
+in that it requires less training, yields more compact encodings
+and shows better generalization capabilities.
+ </p>
+	
+<h3>Bibtex reference</h3>
+<pre>@inproceedings{Rozo13ROMOCO,
+  author="Rozo, L. and Jimenez, P. and Torras, C.",
+  title="Force-based Robot Learning of Pouring Skills using Parametric Hidden Markov Models",
+  booktitle="{IEEE-RAS} Intl Workshop on Robot Motion and Control",
+  year="2013",
+  address="Wasowo, Poland",
+  pages="227--232"
+}</pre>
+	
+<h3>Video</h3>
+<p><b>Demonstration phase:</b> The human provides examples of the pouring task by teleoperating the robotic arm using a haptic device. The force perceptions sensed over the course of the task, along with their initial value (i.e., the task parameter), are used to train a parametric hidden Markov model.</p>
+
+<p><b>Robot execution stage:</b> The robot carries out the pouring skill using Gaussian mixture regression to retrieve joint-level commands given the force-torque inputs at each time step.</p>
+
+<p><b>NOTE:</b> The execution carried out by the robot is slow and sometime also shows "jerkiness", this occurs because two aspects, namely, (i) the provided demonstrations showed low velocity profiles which do not vary smoothly, and (ii) the robot controller only provides a position controller, thus velocity control is not possible here in order to get smoother and more realistic reproductions. </p>
+
+<center>
+<iframe src="https://player.vimeo.com/video/64030379?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+	
+<h3>Source codes</h3>
+<p><p>Training of a task-parameterized Gaussian mixture model (GMM) based on candidate frames of reference.
+The proposed task-parameterized GMM approach relies on the linear transformation and product properties of
+Gaussian distributions to derive an expectation-maximization (EM) algorithm to train the model.
+The proposed approach is contrasted with an implementation of the approach proposed by Wilson and Bobick in
+1999, with an implementation applied to GMM (that we will call PGMM) and following the model described in
+"Parametric Hidden Markov Models for Gesture Recognition", IEEE Trans. on Pattern Analysis and Machine
+Intelligence.<br>
+In contrast to the standard PGMM approach, the new approach that we propose allows the parameterization of
+both the centers and covariance matrices of the Gaussians. It has been designed for targeting problems in
+which the task parameters can be represented in the form of coordinate systems, which is for example the
+case in robot manipulation problems.</p>  
+
+<h4>Download</h4>
+<p><img class='miniicon' src='minipng/compress.png'>
+<a href="download/task-parameterized-GMM.zip">Download task-parameterized GMM <b>Matlab</b> sourcecode</a></p>
+<p><img class='miniicon' src='minipng/compress.png'>
+<a href="download/task-parameterized-GMM-cpp-cmdLine.zip">Download task-parameterized GMM <b>C++ (command line version)</b> sourcecode</a></p>
+<p>(see also <a href='sourcecodes.php#DMP learned by GMR'>DMP LEARNED BY GMR</a> sourcecode)</p>
+
+<h4>Usage</h4>
+<p>For the Matlab version, unzip the file and run 'demo1' or 'demo2' in Matlab.<br>
+For the C++ version, unzip the file and follow the instructions in the ReadMe.txt file.</p>
+
+<h4>Reference</h4>
+<ul><li>Calinon, S., Li, Z., Alizadeh, T., Tsagarakis, N.G. and Caldwell, D.G. (2012) <b>Statistical dynamical systems for skills acquisition in humanoids</b>. Proc. of the IEEE Intl Conf. on Humanoid Robots (Humanoids).</li></ul>
+<br>
+
+<h4>Demo 1 - Simple example of task-parameterized GMM learning and comparison with standard PGMM</h4>
+
+<a href="images/task-parameterized-GMM.png" rel="lightbox">
+<img class="widethumb" src='images/task-parameterized-GMM-thumbnail.png'>
+</a>
+
+<p>This example uses 3 trajectories demonstrated in a frame of reference that varies from one demonstration
+to the other. A model of 3 Gaussian components is used to encode the data in the different frames, by providing the
+parameters of the coordinate systems as inputs (transformation matrix A and offset vector b).</p>
+
+<br>
+
+<h4>Demo 2 - Example of task-parameterized movement learning with DS-GMR (statistical dynamical systems based on Gaussian mixture regression) </h4>
+
+<a href="images/task-parameterized-GMM2.png" rel="lightbox">
+<img class="widethumb" src='images/task-parameterized-GMM2-thumbnail.png'>
+</a>
+
+<p>This demo shows how the approach can be combined with the DS-GMR model to learn movements modulated
+with respect to different frames of reference. The DS-GMR model is a statistical dynamical system approach
+to learn and reproduce movements with a superposition of virtual spring-damper systems
+retrieved by Gaussian mixture regression (GMR). For more details, see the 'DMP-learned-by-GMR-v1.0' example
+code downloadable from the website below.</p></p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/4003.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S., Guenter, F. and Billard, A. (2007)</h5>
+<h5><strong>On Learning, Representing and Generalizing a Task in a Humanoid Robot</strong></h5> 
+<h5>IEEE Transactions on Systems, Man and Cybernetics, Part B, Special issue on robot learning by observation, demonstration and imitation, 37:2, 286-298.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-JSMC2007.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4126276' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-JSMC2007.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>We present a Programming by Demonstration (PbD) framework for generically extracting the relevant features of a given task and for addressing the problem of generalizing the acquired knowledge to different contexts. We validate the architecture through a series of experiments in which a human demonstrator teaches a humanoid robot some simple manipulatory tasks. A probability based estimation of the relevance is suggested, by first projecting the joint angles, hand paths, and object-hand trajectories onto a generic latent space using Principal Component Analysis (PCA). The resulting signals were then encoded using a mixture of Gaussian/Bernoulli distributions (GMM/BMM). This provides a measure of the spatio-temporal correlations across the different modalities collected from the robot which can be used to determine a metric of the imitation performance. The trajectories are then generalized using Gaussian Mixture Regression (GMR). Finally, we analytically compute the trajectory which optimizes the imitation metric and use this to generalize the skill to different contexts and to the robot's specific bodily constraints.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@article{Calinon07,
+  author="S. Calinon and F. Guenter and A. Billard",
+  title="On Learning, Representing and Generalizing a Task in a Humanoid Robot",
+  journal="{IEEE} Transactions on Systems, Man and Cybernetics, Part {B}. {S}pecial issue
+  on robot learning by observation, demonstration and imitation",
+  year="2007",
+  volume="37",
+  number="2",
+  pages="286--298"
+}</pre>
+	
+<h3>Video</h3>
+<p>Learning of a chess move by observing multiple demonstrations starting from different initial positions on the chessboard. The robot is then able to generalize and reproduce the task in new situations (new initial position) that has not been observed during the demonstrations.</p>
+<div align="center">
+<embed src="flvplayer.swf" width="320" height="240" allowfullscreen="true" allowscriptaccess="always" flashvars="&displayheight=240&file=videos/JSMC2007.flv&image=images/JSMC2007.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
+</div>
+	
+<h3>Source codes</h3>
+<p><h4>Download</h4>
+<p><img class='miniicon' src='minipng/compress.png'>  
+<a href="download/GMM-GMR.zip">Download GMM-GMR sourcecode</a></p>
+
+<h4>Usage</h4>
+<p>Unzip the file and run 'demo1', 'demo2' or 'demo3' in Matlab.</p>
+
+<h4>References</h4>
+<ul>
+<li>Calinon, S., Guenter, F. and Billard, A. (2007) 
+<b>On Learning, Representing and Generalizing a Task in a Humanoid Robot</b>. 
+IEEE Transactions on Systems, Man and Cybernetics, Part B. 37:2, 286-298.</li>
+</ul>
+<br>
+
+<h4>Demo 1 - Demonstration of the generalization process using Gaussian Mixture Regression
+(GMR)</h4>
+
+<a href="images/GMM-GMR-graph01.jpg" rel="lightbox">
+<img class="widethumb" src='images/GMM-GMR-graph01-thumbnail.jpg'>
+</a>
+
+<p>The program loads a 3D dataset, trains a Gaussian Mixture Model 
+(GMM), and retrieves a generalized version of the dataset with associated 
+constraints through Gaussian Mixture Regression (GMR). Each datapoint 
+has 3 dimensions, consisting of 1 temporal value and 2 spatial values 
+(e.g., drawing on a 2D Cartesian plane). A sequence of temporal values is 
+used as query points to retrieve a sequence of expected spatial 
+distribution through Gaussian Mixture Regression (GMR).</p>
+
+<h4>Demo 2 - Demonstration of Gaussian Mixture Regression (GMR) using spatial components as query points 
+of arbitrary dimensions</h4> 
+
+<a href="images/GMM-GMR-graph02.jpg" rel="lightbox">
+<img class="widethumb" src='images/GMM-GMR-graph02-thumbnail.jpg'>
+</a>
+
+<p>The programs loads a 4D dataset, trains a 
+Gaussian Mixture Model (GMM), and uses query points of 2 dimensions to 
+retrieve a generalized version of the data for the remaining 2 dimensions, 
+with associated constraints, through Gaussian Mixture Regression (GMR).
+Each datapoint has 4 dimensions, consisting of 2x2 spatial values 
+(e.g., drawing on a 2D Cartesian plane simultaneously with right and left 
+hand). A new sequence of 2D spatial values (data for left hand) is 
+loaded and used as query points to retrieve a sequence of expected 
+spatial distribution for the remaining dimensions (data for right 
+hand), through Gaussian Mixture Regression (GMR).</p>
+
+<h4>Demo 3 - Demonstration of the smooth transitions properties of data retrieved by 
+Gaussian Mixture Regression (GMR)</h4>
+
+<a href="images/GMM-GMR-graph03.jpg" rel="lightbox">
+<img class="widethumb" src='images/GMM-GMR-graph03-thumbnail.jpg'>
+</a>
+
+<p>This program loads two 3D datasets, 
+trains two separates Gaussian Mixture Model (GMM), and retrieves a 
+generalized version of the two datasets concatenated in time, with 
+associated constraints, through Gaussian Mixture Regression (GMR). 
+Each datapoint has 3 dimensions, consisting of 1 temporal value and 2 
+spatial values (e.g., drawing on a 2D Cartesian plane). A sequence of 
+temporal values is used as query points to retrieve a sequence of 
+expected spatial distribution through Gaussian Mixture Regression (GMR).
+The position of the last datapoint in the first dataset is not consistent
+with the first datapoint of the second dataset. However, by encoding 
+separately the two datasets in GMM and concatenating the components in 
+a single model, a smooth signal with smooth 
+transition between the two data is retrieved through regression.</p></p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

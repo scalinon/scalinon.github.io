@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item active'><a class='nav-link' href='research.htm'>Research <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+
+<p>This page presents the research on robot learning I conducted at the Department of Advanced Robotics, Italian Institute of Technology (IIT), and at the Learning Algorithms and Systems Laboratory (LASA), Ecole Polytechnique F&eacute;d&eacute;rale de Lausanne (EPFL).</p>
+
+<hr>
+<h3>Learning and Interaction Lab at ADVR-IIT</h3>
+<b>Last update: 07/11/2011, Sylvain Calinon</b>
+
+<br>
+
+<p>The Learning and Interaction Lab in the <a href='http://www.iit.it/en/advanced-robotics.html' target='_BLANK' title='website'>Department of Advanced Robotics</a> at the <a href='http://www.iit.it' target='_BLANK' title='website'>Italian Institute of Technology (IIT)</a> has been established by Sylvain Calinon in 2009.</p>
+
+<p>Research statement:</p>
+
+<p>While accuracy and speed have for a long time been top of the agenda for robot design and control, the development of new actuators and control architectures is now bringing a new focus on passive and active compliance, energy optimization, human-robot collaboration, easy-to-use interfaces and safety.</p>
+
+<p>The machine learning tools that have been developed for precise reproduction of reference trajectories need to be re-thought and adapted to these new challenges. For planning, storing, controlling, predicting or re-using motion data, the encoding of a robot skill goes beyond its representation as a single reference trajectory that needs to be tracked or set of points that needs to be reached. Instead, other sources of information need to be considered, such as the local variation and correlation in the movement. Also, most of the machine learning tools developed so far are decomposed into an offline model estimation phase and a retrieval/regression phase. Instead, learning in compliant robots should view demonstration and reproduction as an interlaced process that can combine both imitation and reinforcement learning strategies to incrementally refine the task.</p>
+
+<p>The development of compliant robots brings new challenges in machine learning and physical human-robot interaction, by extending the skill transfer problem towards tasks involving force information, and towards systems capable of learning how to cope with various sources of perturbation introduced by the user and the task. We take the perspective that both the redundancy of the robot architecture AND the task can be exploited to adapt a learned movement to new situations, while at the same time improving safety and energy consumption. Through these new physical guidance capabilities, the robot becomes a tangible interface that can exploit the natural teaching tendency of the user (scaffolding, kinesthetic teaching, exaggeration of movements to highlight the relevant features, etc.).</p>
+
+<p>Along with the learning aspects, such perspective also emphasizes the development of new interfaces capable of visualizing the learned skill in an interactive manner, in order for the user to assess the robot's progress, as well as estimating its current generalization capabilities and understanding of the task.</p>
+
+<p>Toward these goals, together with my students and collaborators, I explore the following issues:
+<ul>
+<li>Robust and compact representation of movements by the superposition of basis flow fields.</li>
+<li>Incremental learning of tasks by combining imitation and exploration strategies in a probabilistic framework.</li>
+<li>Safety embedded in the teaching mechanism by exploiting task redundancy and compliant control.</li>
+<li>Development of EM-based Reinforcement Learning strategies that can cope with real-world exploration trials, such as the use of multidimensional rewards and multi-resolution policies.</li>
+<li>User interfaces for the assessment of skills acquisition through active sensing and interactive data visualization.</li>
+</ul></p>
+
+<p>The long-term view is to develop flexible learning tools that will anticipate the ongoing raise of compliant actuators technologies. In particular, the target is to ensure a smooth transition to passive compliant actuators and manipulators that can be safely used in the proximity of users, by considering physical contact and collaborative interaction as key elements in the transfer of skills.</p>
+
+<p>The related publications are available in the <a href="./publications.php">publications section</a>.</p>
+
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/groupPic.jpg'>
+<figcaption class='figure-caption'>From left to right: Tohid Alizadeh, Leonel Rozo, Antonio Pistillo, Sylvain Calinon, Petar Kormushev and Davide De Tommaso.</figcaption>
+</figure>
+
+<br>
+<a name="PbD"></a>
+<hr>
+<h3>Robot programming by demonstration</h3>
+<b>(research conducted during my PhD and Postodc at LASA-EPFL)</b>
+
+<br>
+
+<a href="images/teachPendantNightmare01.jpg" rel="lightbox">
+<img class="widethumb" src='images/teachPendantNightmare-thumb01.jpg'>
+</a>
+
+<p><b>Robot Programming by Demonstration (PbD)</b> covers methods by which a
+robot learns new skills through human guidance. Also referred to
+as <b>learning by imitation</b> or <b>apprenticeship learning</b>, PbD takes
+inspiration from the way humans learn new skills by imitation to
+develop methods by which new skills can be transmitted to a robot.
+</p>
+
+<p>PbD covers a broad range of applications. In <b>industrial robotics</b>,
+the goal is to reduce the time and costs required to program the
+robot. The rationale is that PbD would allow to modify an existing
+product, create several versions of a similar product or assemble
+new products in a very rapid way <b>without using a teach pendant or a computer language</b>. 
+This could then be done by lay users <b>without help from an expert in robotics</b>.</p>
+
+<p>PbD is perceived as particularly useful to <b>service robots</b>, i.e.
+robots deemed to work in direct collaboration with humans. In this
+case, methods for PbD go beyond transferring skills and offer new ways for the
+robot to interact with the human, from being capable of
+recognizing people's motion to predicting their intention and
+seconding them in the accomplishment of complex tasks. As the
+technology improved to provide these robots with more and more
+complex hardware, including multiple sensor modalities and
+numerous degrees of freedom, robot control and especially robot
+learning became more and more complex too.</p>
+
+<p>Learning control strategies for numerous degrees of freedom platforms <b>deemed to
+interact in complex and variable environments</b>, such as households
+is faced with two key challenges: first, the complexity of the
+tasks to be learned is such that pure trial and error learning
+would be too slow. PbD appears thus a good approach <b>to speed up
+learning by reducing the search space</b>, while still allowing the
+robot to refine its model of the demonstration through trial and
+error. Second, there should be a <b>continuum
+between learning and control</b>, so that control strategies can <b>adapt
+on the fly to drastic changes in the environment</b>. The present work
+addresses both challenges in investigating methods by which PbD is
+used to learn the dynamics of robot's motion, and, by so doing,
+provide the robot with a <b>generic and adaptive model of control</b>.</p>
+
+<a name="Generalization"></a>
+<br><hr>
+<h3>Generalization of skills through observations</h3>
+
+<a href="images/stackingTask01.jpg" rel="lightbox">
+<img class="widethumb" src='images/stackingTask-thumbnail01.jpg'>
+</a>
+
+<p>An efficient way to transfer new skills to robots is
+to provide the robot with the ability to learn through imitation
+and to generalize the learned skills to different contexts. When
+observing a human demonstrator performing a gesture, the robot
+needs to identify which parts of the complete motion are essential
+for the reproduction of the skill, and which ones may be
+reproduced differently, e.g., by deviating from the original
+observed gesture or by using different means to fulfill the task
+requirements.</p>
+
+<a name="Framework"></a>
+<br><hr>
+<h3>Continuous encoding of the task constraints in a probabilistic
+framework</h3>
+
+<a href="images/PbDframework01.jpg" rel="lightbox">
+<img class="widethumb" src='images/PbDframework-thumbnail01.jpg'>
+</a>
+
+<p>While several approaches in <b>Robot Programming by Demonstration
+(PbD)</b> represented a skill as a sequence of discrete events
+that are a priori defined by the user, our work suggest to adopt a
+more general perspective where the skill is encoded in a
+continuous way (at a trajectory level) within a <b>probabilistic
+framework</b>. Representing the skill at such low level may indeed be
+advantageous when learning skills that are not specified in
+advance. It also avoids the need to segment the whole motion into
+only two types of behaviours (the actions that are relevant for
+the task and the ones that are not).</p>
+
+<p>In our research, we thus consider the most general stance where
+different levels of constraints are allowed, which can freely
+change during the skill. Indeed, representing the task
+constraints in a binary manner (relevant versus irrelevant
+features) is not appropriate for continuous movements. 
+Some goals require different precisions, that is, they can be
+described with different degrees of invariance. For example, the
+movement used to drop a piece of sugar in a tiny cup of coffee is
+more constrained than the movement to drop a bouillon cube in a
+large pan.</p>
+
+<p>We propose to use a probabilistic approach based on
+<b>Gaussian Mixture Regression (GMR)</b> to encode a skill at a
+trajectory level. We also propose generic <b>inverse kinematics
+solutions</b> that allow to take into consideration constraints
+<b>both in task space and in joint space</b>. This approach allows 
+to consider task that combine several constraints
+simultaneously, e.g. when considering manipulation of objects
+requiring specific gestures to be manipulated (learning of the
+objects affordances and associated effectivities).</p>
+
+<a name="Statistics"></a>
+<br><hr>
+<h3>Learning through multiple observations</h3>
+
+<a href="images/hoap2-xsens01.jpg" rel="lightbox">
+<img class="widethumb" src='images/hoap2-xsens-thumbnail01.jpg'>
+</a>
+
+<p>When demonstrating a skill several times, some aspects of the motion
+will differ and some aspects will remain similar. For example, when
+stacking an object on top of another object, the final position
+of the object is constrained by the size of these objects (if the
+first object is smaller than the second one, different positions
+are allowed that still keep the balance). Similarly, the
+trajectory to reach for the second object may allow more
+variability, but is still constrained by the obstacle or size of
+the working space.</p>
+
+<p>This variability can be discovered by the robot through <b>multiple
+observations of the skill</b>, benefitting from the <b>natural
+variability</b> involved by the human gestures to extract the task
+constraints.</p>
+
+<a name="Dynamics"></a>
+<br><hr>
+<h3>Learning robot controllers robust to perturbations</h3>
+
+<a href="images/dynamicalSystem01.jpg" rel="lightbox">
+<img class="widethumb" src='images/dynamicalSystem-thumbnail01.jpg'>
+</a>
+
+<p>Most approaches to trajectory modeling estimate a time-dependent
+model of the trajectories, by either exploiting variants along the
+concept of spline decomposition or through statistical encoding of the 
+time-space dependencies. Such modeling methods are very effective and precise in the
+description of the actual trajectory, and benefit from an explicit
+time-precedence across the motion segments to ensure precise
+reproduction of the task. However, the explicit time-dependency of
+these models require the use of other methods for realigning and
+scaling the trajectories to handle perturbation.</p>
+
+<p>As an alternative, more recent approaches have considered modeling the
+<b>intrinsic dynamics of motion</b>. Such
+approaches are advantageous in that the system is <b>time-independent</b>
+and <b>can be modulated</b> to produce trajectories with similar dynamics
+in areas of the workspace not covered during training. These
+approaches however either assumed a basic form for the dynamical
+system to be learned or explored the adaptivity of the system only
+locally around the stable points of the system.<p>
+
+<p>We propose an approach that exploits the strength of parametric
+statistical techniques <b>to learn a model of the dynamics of the
+motions</b>. Statistical modeling is based on <b>Gaussian Mixture
+Regression (GMR)</b>. In comparison to other
+regression methods, Gaussian Mixture Regression does not model the
+regression function directly, but models a joint probability
+density function of the data and then <b>derive the regression
+function from the density model</b>.</p>
+
+<a name="Role"></a>
+<br><hr>
+<h3>Relying on the user's pedagogical skills</h3>
+
+<p>It is nearly always possible to extract the task constraints with
+<b>only a few demonstrations</b> (around five for most of the tasks
+considered in our work) by providing demonstrations where the
+skill is executed in <b>slightly different situations</b>. For example,
+in the stacking task example, this can be done by changing the
+initial positions of the objects prior to each demonstration.</p>
+
+<p>This strategy shares similarities with the human way of teaching
+where a good teacher will provide several examples in different
+contexts to transfer the skill more easily. Similarly, a good
+teacher will also <b>extend the demonstrations progressively</b> so that
+the learner can more easily <b>infer the connections between the
+different examples</b>, i.e., the range of the possible situations
+where the skill may apply is progressively increased.</p>
+
+<p>Throughout our work, we suggest that one way of increasing the speed
+of the teaching process is <b>to rely on the user's natural
+propensity for teaching</b>.</p>
+
+<a name="Social"></a>
+<br><hr>
+<h3>Designing human-robot social interaction systems</h3>
+
+<a href="images/turnTaking01.jpg" rel="lightbox">
+<img class="widethumb" src='images/turnTaking-thumbnail01.jpg'>
+</a>
+
+<p>The robot's capacity to generalize over
+different situations depends on the number of demonstrations
+provided to the robot, but more importantly on the
+<i>pedagogical</i> quality of these demonstrations (gradual
+variability of the situations and <b>exaggerations of the key
+features to reproduce</b>). To succeed, it is therefore crucial to
+design <b>human-robot interaction systems where the teacher feels
+implicated in the teamwork</b> and where he/she understands his/her
+role in the interaction.</p>
+
+<p>Compared to traditional approaches in Robot Programming by
+Demonstration where the demonstration phase is separated from the
+reproduction phase, our research tends to break down these two
+processes by considering a more <b>continuous and bi-directional
+teaching interaction</b> where these two processes are
+intertwined.</p>
+
+<a name="Scaffolding"></a>
+<br><hr>
+<h3>Learning through the user's support (scaffolding process)</h3>
+
+<p>When designing a teaching system, interactive scenarios needs to be considered 
+where <b>the user can guide the teaching process</b> and where the <b>robot may request for
+clarifications</b>.</p>
+
+<p>It is then important to let the user evaluate the robot's current
+understanding of the skill. One solution is to let the robot try
+to reproduce the skill after each demonstration. By observing the
+reproduction attempts, the user can then evaluate which important
+aspects of the skill the robot currently misses and can adapt his
+or her further demonstration to highlight this particular aspect
+of the knowledge.</p>
+
+<a name="Kinesthetic"></a>
+<br><hr>
+<h3>Kinesthetic teaching</h3>
+
+<a href="images/kinesthetic-2robots01.jpg" rel="lightbox">
+<img class="widethumb" src='images/kinesthetic-2robots-thumbnail01.jpg'>
+</a>
+
+<p>Often, some parts of the motion will be correctly reproduced by
+the robot while some other parts will require refinement. It would
+be cumbersome to demonstrate the whole motion again each time
+the robot needs a particular refinement for a subset of joint
+angles (e.g., the right arm performs the motion correctly but the
+left arm motion needs refinement).</p>
+
+<p>To deal with this issue, we propose <b>to mix observational
+learning and kinesthetic teaching</b> as a way to support the robot while
+reproducing the skill. While moving the robot's arms manually, the
+robot record proprioceptive information on its own gesture. By
+moving a subset of the robot's motors during the reproduction
+attempt, it thus possible to provide <b>partial demonstration of the
+skill</b> for a particular situation.</p>
+
+<p>The advantage of this approach is that it allows to provide
+demonstrations using the robot's own kinematics and to demonstrate
+the task in the robot's own environment. This kinesthetic teaching
+process also allows the user <b>to feel the robot's body limitations</b>
+and provide examples that take these limitations into
+consideration.</p>
+
+<a name="Interconnecting"></a>
+<br><hr>
+<h3>Interconnecting imitation and exploration strategies with motor control</h3>
+
+<!--<a href="images/kinesthetic-2robots01.jpg" rel="lightbox">
+<img class="widethumb" src='images/kinesthetic-2robots-thumbnail01.jpg'>
+</a>-->
+
+<p>Humans are using efficient mechanisms to acquire new skills that involve various forms of learning. The efficiency of the process is
+tributary to the interconnections between imitation and self-improvement strategies. Similarly, a robot should be able to acquire new
+skills by using an elaborate combination of imitation learning, reinforcement learning (RL) and performance evaluation. Research in robot
+learning tends to isolate these different components in order to concentrate on a single learning aspect, by considering the others as
+external mechanisms. This simplification is unfortunately not appropriate in a large variety of tasks where learning would benefit from
+such human-like process for acquiring new skills.</p>
+
+<p>It is important to consider a modularized combination of imitation and RL strategies to be flexible to the large variety of tasks and
+situations that the robot can experience. In previous work, we mainly considered the imitation process as separated from the RL process,
+where imitation was used as an initialization phase to constrain the search space for further exploration of novel solutions. Both
+processes are however enlaced. Depending on his/her availability, the user can for example occasionally participate in the evaluation of
+new strategies explored by the robot. He/she can also provide new examples at opportune moment if the robot improvement is too slow, or if
+the robot is looking for inappropriate solutions.</p>
+
+<p>To study these different learning aspects, we follow a generic framework that keeps a link with conventional control theory. Motor control
+has a long research history turning out to the development of robust and indisputable methods to design and study the properties, behaviors
+and limitations of a system faced with perturbations. Making a link between machine learning and motor control allows on one side to
+benefit from the user-friendly learning interfaces proposed by imitation and reinforcement learning (e.g., to facilitate system
+identification). On the other side, it allows to benefit from the safe and predictable policy offered by control theory (e.g., analysis of
+stability, controllability and observability).</p>
+
+</div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

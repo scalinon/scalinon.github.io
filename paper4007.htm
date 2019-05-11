@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/4007.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S. and Billard, A. (2009)</h5>
+<h5><strong>Statistical Learning by Imitation of Competing Constraints in Joint Space
+and Task Space</strong></h5> 
+<h5>RSJ Advanced Robotics, 23, 2059-2076.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-AR2009.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://www.rsj.or.jp/AR/index_e.html' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-AR2009.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>We present a probabilistic architecture for solving generically the problem of extracting the task constraints through a Programming by
+Demonstration (PbD) framework and for generalizing the acquired knowledge to various situations. In previous work, we proposed an approach
+based on Gaussian Mixture Regression (GMR) to find a controller for the robot reproducing the statistical characteristics of a movement in
+joint space and in task space through Lagrange optimization. In this paper, we develop an alternative procedure to handle simultaneously
+constraints in joint space and in task space by combining directly the probabilistic representation of the task constraints with a solution
+to Jacobian-based inverse kinematics. The method is validated in manipulation tasks with two 5 DOFs Katana robotic arms displacing a set of
+objects.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@article{Calinon09AR,
+  author="S. Calinon and A. Billard",
+  title="Statistical Learning by Imitation of Competing Constraints in Joint Space and Task Space",
+  journal="Advanced Robotics",
+  year="2009",
+  publisher="The Robotics Society of Japan",
+  address="Tokyo, Japan",
+  volume="23",
+  number="",
+  pages="2059--2076",
+}</pre>
+	
+<h3>Video</h3>
+<p>Incremental learning of a motion with two Katana robotic arms
+from Neuronics.<br>Two demonstrations are provided to show to the
+robots how to pour some liquid from a bottle into a glass. Then,
+the user moves manually one of the robot while the other robot
+follows as best as possible the learned motion in a flexible
+manner.</p>
+<p>Video credit: Florent D'halluin.</p>
+<div align="center"> <embed src="flvplayer.swf"
+width="320" height="240" allowfullscreen="true"
+allowscriptaccess="always"
+flashvars="&displayheight=240&file=videos/katanas-spatialGMR.flv&image=images/katanas-GMR.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
+</div>
+	
+<h3>Source codes</h3>
+<p><h4>Download</h4>
+<p><img class='miniicon' src='minipng/compress.png'>  
+<a href="download/joint-task-constraints.zip">Download Joint/task constraints sourcecode</a></p>
+
+<h4>Usage</h4>
+<p>Unzip the file and run 'demo1' in Matlab.</p>
+
+<h4>Reference</h4>
+<ul>
+<li>Calinon, S. and Billard, A. (2008) 
+<b>A Probabilistic Programming by Demonstration Framework Handling Constraints in Joint Space and Task Space</b>. 
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 367-372.</li></ul>
+<br>
+
+<h4>Demo 1 - Demonstration of the use of Gaussian Mixture Regression (GMR) and 
+inverse kinematics to reproduce a task by considering constraints both 
+in joint space and in task space</h4>
+
+<a href="images/joint-task-constraints01.jpg" rel="lightbox">
+<img class="widethumb" src='images/joint-task-constraints01-thumbnail.jpg'>
+</a>
+
+<p>This program shows the simulation of a robotic arm composed of 2 links and moving in 2D space. 
+Several demonstrations of a skill are provided, by 
+starting from different initial positions. The skill consists of moving 
+each joint sequentially and then writing the alphabet letter 'N' at a 
+specific position in the 2D space.<br>
+Constraints in joint space and in task space are represented
+through Gaussian Mixture Models (GMMs) and Gaussian Mixture Regression 
+(GMR). By using an inverse kinematics process based on a pseudo-inverse 
+Jacobian, the constraints in task space are then projected in joint 
+space. By considering the projected constraints with the ones originally 
+encoded in joint space, an optimal controller is found for the 
+reproduction of the task. We see through this example that the system is
+able to generalize the learned skill to new robotic arms (different links
+lengths) and to new initial positions of the robot.</p></p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

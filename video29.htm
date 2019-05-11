@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item active'><a class='nav-link' href='videos.htm'>Videos <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<center><h5>Development of a portraitist software for the ITRI robot</h5></center>
+<p>This video shows the result of a project commissioned by ITRI, where it was proposed to develop a portraitist robot software that recognizes human faces in the robot's surroundings and extracts relevant characteristics from the captured images. The robot then draws the portraits of the participants from the captured images by first converting those into vector art and by controlling the robot's arm to sequentially reproduce the desired paths by using a pen and a canvas.</p>
+
+<p>The resulting application is used to showcase several capabilities of the ITRI's robot manipulator, such as fast planning computation, fast, smooth and accurate movement, the simultaneous consideration of position and orientation constraints, and the size of the workspace. It also emphasizes the integration of different motor and sensory components such as vision processing, clustering, human-robot interaction, inverse kinematics and redundant control.</p>
+
+<center><img src="images/ITRI-appScreenshot01.jpg"></center><br>
+
+<p>The developed application uses state-of-the-art image processing techniques. The behavior of the robot resembles that of an artist, who would, first, analyze the face of the model, and then, draw the portrait on a canvas.</p>
+
+<p>Contours of the faces are first extracted from the images captured through the robot's internal cameras. The contours are then converted to paths by organizing them with respect to their lengths. Then, the image is segmented into several shades of gray. The contours and extracted areas are simplified to keep only the important features of the face and make it look similar to a cartoon representation. The different shades of gray are reproduced by the robot by adding several layers of simple geometric patterns. The different areas are filled similarly as a human would do by iteratively starting from one point, filling the local area, and moving to the next area once finished.</p>
+
+<center><img src="images/ITRI-appProcess01.png"></center><br>
+
+<p>See also <a class="flvplayer" href="portraitist.php">Salvador DaBot the portraitist robot</a>.<br>
+Video credit: Yuan-Yung Huang, ITRI. Link to <a class="flvplayer" href="http://www.itri.org.tw/eng/" target="_BLANK">ITRI website</a>.</p>
+
+<center>
+<iframe src="https://player.vimeo.com/video/41987117?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+	<center><a class='btn btn-primary' href='videos.htm'>Go back to the list of videos</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

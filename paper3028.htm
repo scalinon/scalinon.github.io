@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/3028.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S., Li, Z., Alizadeh, T., Tsagarakis, N.G. and Caldwell, D.G. (2012)</h5>
+<h5><strong>Teaching of bimanual skills in a compliant humanoid robot</strong></h5> 
+<h5>Intl Workshop on Human-Friendly Robotics (HFR), Brussels, Belgium.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-HFR2012.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://hfr2012.wordpress.com/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-HFR2012.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p><p>In contrast to standard industrial robots designed to work in predefined factory settings, humanoids are designed to share our space without the need to modify our environment. These robots create new collaborative and social interaction opportunities, but these new environments also expose the robots to various sources of perturbation and unpredictable situations. Since the range of tasks that the humanoids can carry out is infinite, it is not possible to provide a predefined database of tasks. For widespread use in homes and offices, a key requirement will be to provide user-friendly ways of programming the robot to let it acquire new skills and adapt existing skills to new situations. Robot learning by imitation offers a promising route to transfer and refine skills from demonstrations by non-expert users.</p>
+
+<p>We believe that the frontier between planning and control algorithms should overlap in order to cope with unexpected situations in real-time. Our work emphasizes that skills should not only be represented in terms of the shape of the movement, but also (and maybe more importantly) in terms of the degree of variations allowed by the task and how the different movement variables are coordinated. Indeed, important information is contained in the local variation and correlation of the movement. Such variation can change over time (different phases of the movement) and can depend on situation (adaptation to changing positions of objects). This requirement is strong in the case of humanoids, where the robot is required to produce predictable human-like gestures and exploit the characteristics of the task to allow it to respond to perturbations in real-time without having to recompute the whole trajectory.</p>
+
+<p>We present a learning by imitation approach based on a superposition of virtual spring-damper systems to drive a humanoid robot's movement. The novelty of the method relies on a statistical description of the springs attractor points acting in different candidate frames of reference. The proposed approach combines the practical convenience of employing dynamical systems in the humanoid's continuously changing environment with the generality and rigor of statistical machine learning. The robot exploits local variability information extracted from multiple demonstrations to determine which frames are relevant for the task, and how the movement should be modulated with respect to these frames.</p>
+
+<p>In previous work, we explored these two categories of machine learning tools in parallel. On one side, we developed a representation of movements based on a sequential superposition of dynamical systems with varying full stiffness matrices. On the other side, we developed a representation based on Gaussian mixture regression (GMR) to provide a statistical representation of the movement that is able to compute and retrieve movement commands in real-time, independently of the number of datapoints in the training set. We present here a method to gather these two components. From the dynamical systems standpoint, it provides a simple approach to reframe the superposition of spring-damper systems in a probabilistic framework. While from the statistical regression perspective, it provides an elegant methodology to cope in real-time with perturbations without employing an external control mechanism on top of the generated movement.</p>
+
+<p>The proposed learning approach is achieved by predefining a set of candidate frames of reference, such as objects in the environment or relevant body parts such as the end-effectors of the robot. The role of the robot is to autonomously figure out which frames of reference matter along the task, and in which way the movement should be modulated with respect to these different frames. Bimanual coordination is achieved by considering the other hand as a candidate frame of reference for the reproduction of the skill. The movement of the two hands are thus naturally coupled for parts of the movement in which regular patterns have been observed between the two hands. The strength of the coupling constraint is automatically adapted with respect to the variations observed throughout the task.</p>
+
+<p>The approach is tested on the new full-body compliant humanoid COMAN with skills requiring bimanual coordination (time-based and time-invariant movements are considered). This robot platform has been designed to explore how compliance can be exploited for safer human robot interaction, reduced energy consumption, simplified control and aggressive learning. The first hardware developments of COMAN targeted the legs, with several prototypes developed for the lower-body part. This paper reports the first experiment conducted with the arms and upper-body. The results of the experiment show that the representation of bimanual gestures in humanoids can benefit from the joint use of dynamical systems and statistics, by employing a GMR approach to encode the path of virtual spring-damper systems in a set of candidate frames of reference. The proposed approach opens roads for various new developments combining the versatility of dynamical systems and the robustness of statistical methods.</p> </p>
+	
+<h3>Bibtex reference</h3>
+<pre>@inproceedings{Calinon12HFR,
+  author="Calinon, S. and Li, Z. and Alizadeh, T. and Tsagarakis, N. G. and Caldwell, D. G.",
+  title="Teaching of bimanual skills in a compliant humanoid robot",
+  booktitle="Intl Workshop on Human-Friendly Robotics ({HFR})",
+  address="Brussels, Belgium",
+  year="2012",
+}</pre>
+	
+<h3>Video</h3>
+<p>Imitation is not simply recording and replaying movements. The learned skills require to be generalized to new situations. For example, if someone grasps a bottle of orange juice, shakes it and pours its content into a glass, the robot should be able to reproduce the task even if the position of the bottle and the glass are different than during the demonstrations. The robot should be able to shake the bottle even if its body does not have the same exact shape and configuration of articulations (a.k.a. correspondence problem, retargeting problem, mapping problem).</p>
+
+<p>In contrast to robots in standard industrial settings, humanoids and compliant robots can work in unpredictable environment and in the proximity of users.
+Two sets of tools are relevant for learning and reproducing skills in unpredictable environment:<br>
+<ul>
+<li><strong>Probabilistic machine learning tools</strong>: they can extract and exploit the regularities and relevant characteristics of the task.</li>
+<li><strong>Dynamical systems</strong>: they are able to cope with perturbations in real-time without having to replan the whole trajectory.</li>
+</ul>
+</p>
+
+<p>We study how to make these two sets of tools work together. The problem can be illustrated as follows. We assume that the motion of the robot is driven by a set of virtual springs that are related (connected) to a set of candidate objects or body parts of the robot. The learning problem consists of estimating when and where to activate these springs. This can be learned from demonstrations by exploiting the invariant characteristics of the task (the parts of the movement that are the same between the multiple demonstrations). The consistent characteristics will result in strong springs, and the irrelevant will result in soft springs.</p>
+
+<p><strong>What does the video show?</strong></p>
+
+<p>By using the same software, we can teach different skills to the robot. Demonstrations were recorded by placing visual markers on an object and on the hands of the user, tracked by the Optitrack system.</p>
+
+<p>When the model is tested with hand clapping movements, the robot extracted that bimanual coordination was required. Namely, that the position of one hand is regulated with respect to the other hand. The clapping motion is not perturbed by moving the object around the robot, because the robot learned that the object was not relevant for this skill (i.e., the springs attached to the object frame are too weak to influence the movement).</p>
+
+<p>When the model is tested with reaching movements, the robot learned that it should use one or the other hand depending on the position of the object. If the object is in the center, the robot can try to grasp it with both hands, by following the behavior previously demonstrated by the user. The hand that is not used for tracking the object automatically comes back to a neutral pose.</p>
+
+<center>
+<iframe src="https://player.vimeo.com/video/52004228?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center>
+<br>
+
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

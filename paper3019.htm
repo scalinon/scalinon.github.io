@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
+<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
+<div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2017'>2017</a>
+<a class='dropdown-item' href='publications.htm?#2016'>2016</a>
+<a class='dropdown-item' href='publications.htm?#2015'>2015</a>
+<a class='dropdown-item' href='publications.htm?#2014'>2014</a>
+<a class='dropdown-item' href='publications.htm?#2013'>2013</a>
+<a class='dropdown-item' href='publications.htm?#2012'>2012</a>
+<a class='dropdown-item' href='publications.htm?#2011'>2011</a>
+<a class='dropdown-item' href='publications.htm?#2010'>2010 and older</a>
+</div>
+</li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<div class='row'>
+<div class='col-md-2 text-center'><img src='images/3019.jpg'></div>
+<div class='col-md-10'>
+<h5>Calinon, S., Sardellitti, I. and Caldwell, D.G. (2010)</h5>
+<h5><strong>Learning-based control strategy for safe human-robot interaction exploiting task and robot redundancies</strong></h5> 
+<h5>In Proc. of the IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS), Taipei, Taiwan, pp. 249-254.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Calinon-IROS2010.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='http://www.iros2010.org.tw' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Calinon-IROS2010.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>We propose a control strategy for a robotic manipulator operating in an unstructured environment while interacting with a human operator.
+The proposed system takes into account the important characteristics of the task and the redundancy of the robot to determine a controller
+that is safe for the user. The constraints of the task are first extracted using several examples of the skill demonstrated to the robot
+through kinesthetic teaching. An active control strategy based on task-space control with variable stiffness is proposed, and combined with
+a safety strategy for tasks requiring humans to move in the vicinity of robots. A risk indicator for human-robot collision is defined,
+which modulates a repulsive force distorting the spatial and temporal characteristics of the movement according to the task constraints. We
+illustrate the approach with two human-robot interaction experiments, where the user teaches the robot first how to move a tray, and then
+shows it how to iron a napkin.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@inproceedings{Calinon10IROS,
+  author="Calinon, S. and Sardellitti, I. and Caldwell, D. G.",
+  title="Learning-based control strategy for safe human-robot interaction exploiting task and robot redundancies",
+  booktitle="Proc. {IEEE/RSJ} Intl Conf. on Intelligent Robots and Systems ({IROS})",
+  year="2010",
+  month="October",
+  address="Taipei, Taiwan",
+  pages="249--254"
+}</pre>
+	
+<h3>Video</h3>
+<p>The video shows a Barrett WAM 7 DOFs manipulator learning an ironing task by imitation. The set of demonstrated movements are encoded in a mixture of basis force fields (Dynamic Movement Primitives (DMP) model extended to the use of variation and correlation information). The task redundancies are exploited during reproduction to regulate the robot’s stiffness and the dynamics of the movement. 
+The robot is thus compliant in parts of the task that do not require to track precisely a reference trajectory. 
+For the example of the ironing task, the system learns that it is more important to track the movement in the vertical direction than in the other two directions of the horizontal plane. The video then shows how to exploit this redundancy of the task to satisfy other constraints in parallel, such as moving away from the user to prevent collision.</p>
+<p>Video credits:<br>
+Dr Sylvain Calinon<br>
+Dr Irene Sardellitti<br>
+(Italian Institute of Technology)</p>
+<br>
+<object width="640" height="480"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=13360649&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=13360649&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="640" height="480"></embed></object>
+<br>
+
+	
+<h3>Source codes</h3>
+<p><h4>Download</h4>
+<p><img class='miniicon' src='minipng/compress.png'> 
+<a href="download/corrDMP.zip">Download corrDMP sourcecode</a></p>
+
+<h4>Usage</h4>
+<p>Unzip the file and run 'demo1' in Matlab.</p>
+
+<h4>Reference</h4>
+<ul><li>Calinon, S., Sardellitti, I. and Caldwell, D.G. (2010) <b>Learning-based control strategy for safe human-robot interaction exploiting task and robot redundancies</b>. Proc. of the IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS).</li></ul>
+<br>
+
+<h4>Demo 1 - Mixture of correlated mass-spring-damper systems</h4>
+
+<a href="images/corrDMP-graph01.png" rel="lightbox">
+<img class="widethumb" src='images/corrDMP-graph01-thumbnail.jpg'>
+</a>
+
+<p>Learning and reproduction of a movement through a mixture of dynamical
+systems (similar to Dynamic Movement Primitives), where variability and correlation information along the movement and among the different examples is encapsulated as a full stiffness matrix in a set of mass-spring-damper systems.<br> 
+For each primitive (or state), learning of the virtual attractor points 
+and associated stiffness matrices is done through least-squares regression.</p></p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+

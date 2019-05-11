@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon's personal website'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#292b2c'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+</head>
+<body>
+<nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 20px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item active'><a class='nav-link' href='codes.htm'>Codes <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<p>This page presents our source codes gathered as part of PbDlib. Older source codes are still available <a href='codes_prev.htm'>here</a>, but are now maintained as part of PbDlib.</p>
+
+<hr>
+<h3>PbDlib</h3>
+
+<p>PbDlib is a collection of source codes for robot programming by demonstration (learning from demonstration). It includes various functionalities at the crossroad of statistical learning, dynamical systems, optimal control and Riemannian geometry. It is available in the following languages:<br>
+<ul>
+<li><a href='#matlab'>Matlab / GNU Octave</a></li>
+<li><a href='#cpp'>C++</a></li>
+<li><a href='#python'>Python</a></li>
+</ul>
+</p>
+
+<p>PbDlib can be used in applications requiring task adaptation, human-robot skill transfer, safe controllers based on minimal intervention principle, as well as for probabilistic motion analysis and synthesis in multiple coordinate systems.</p>
+
+<p>Three distinct versions are maintained that can be used independently in Matlab, C++ or Python with independent git repositories. Currently, the Matlab version has the most functionalities. The C++ and Python versions are better suited for integration in robot applications. Each git page provides detailed instructions and list of examples.</p>
+
+<p>PbDlib is currently maintained by the <a href='http://www.idiap.ch' target='_BLANK'>Idiap Research Institute</a>. Contact: Sylvain Calinon (sylvain.calinon@idiap.ch).</p>
+
+
+<hr>
+<a name='matlab'></a>
+<table><tr><td><img src="images/pbdlib-logo01.png" width='90px' align="left">&nbsp;&nbsp;</td>
+<td><h3>Matlab version</h3></td></tr></table><br>
+
+<h4>Git repository:</h4> 
+<a href='https://gitlab.idiap.ch/rli/pbdlib-matlab/' target='_blank'>https://gitlab.idiap.ch/rli/pbdlib-matlab/</a><br><br>
+
+<!--<h4>Quick test:</h4> 
+<code>&nbsp;&nbsp;> git clone https://gitlab.idiap.ch:rli/pbdlib-matlab.git</code><br>
+<code>&nbsp;&nbsp;> sudo apt-get install octave</code> &nbsp;&nbsp;(optional)<br>
+<code>&nbsp;&nbsp;> octave</code> &nbsp;&nbsp;(or run matlab)<br>
+<code>&nbsp;&nbsp;> cd pbdlib-matlab</code><br>
+<code>&nbsp;&nbsp;> demo_GMM01</code> &nbsp;&nbsp;(GMM example)<br>
+<br>-->
+
+<p>Most examples of the Matlab version are compatible with the GNU Octave open source software.</p>
+
+
+
+
+<hr>
+<a name='cpp'></a>
+<table><tr><td><img src="images/pbdlib-logo01.png" width='90px' align="left">&nbsp;&nbsp;</td>
+<td><h3>C++ version</h3></td></tr></table><br>
+
+<h4>Git repository:</h4> 
+<a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>https://gitlab.idiap.ch/rli/pbdlib-cpp/</a><br><br>
+
+<!--<h4>Quick test:</h4> 
+(or see full installation instructions in the git repository)<br>
+<code>&nbsp;&nbsp;> git clone https://gitlab.idiap.ch:rli/pbdlib-cpp.git</code><br>
+<code>&nbsp;&nbsp;> sudo apt-get install g++-4.9 cmake liblapack3 liblapack-dev libarmadillo6 libarmadillo-dev libglfw3-dev</code><br> 
+<code>&nbsp;&nbsp;> cd pbdlib-cpp</code><br>
+<code>&nbsp;&nbsp;> mkdir build</code><br>
+<code>&nbsp;&nbsp;> cd build</code><br>
+<code>&nbsp;&nbsp;> cmake ..</code><br>
+<code>&nbsp;&nbsp;> make</code><br>
+<code>&nbsp;&nbsp;> ./demo_online_gmm</code> &nbsp;&nbsp;(GMM example)<br>
+<br>-->
+
+<p>The C++ version has a simple structure and is built with minimal dependency to external libraries, so that it can be included easily in other softwares.</p>
+
+<hr>
+<a name='python'></a>
+<table><tr><td><img src="images/pbdlib-logo01.png" width='90px' align="left">&nbsp;&nbsp;</td>
+<td><h3>Python version (task-parameterized models)</h3></td></tr></table><br>
+
+<h4>Git repository:</h4> 
+<a href='https://gitlab.idiap.ch/rli/pbdlib-python' target='_blank'>https://gitlab.idiap.ch/rli/pbdlib-python</a><br><br>
+
+<p>This Python version focuses on task-parameterized models for robot learning from demonstration applications.<br>
+Contact: Emmanuel Pignat (https://www.idiap.ch/~epignat/)</p>
+<br><br>
+
+
+<table><tr><td><img src="images/pbdlib-logo01.png" width='90px' align="left">&nbsp;&nbsp;</td>
+<td><h3>Python version (Riemannian manifolds)</h3></td></tr></table><br>
+
+<h4>Git repository:</h4> 
+<a href='https://gitlab.martijnzeestraten.nl/martijn/riepybdlib/' target='_blank'>https://gitlab.martijnzeestraten.nl/martijn/riepybdlib/</a><br><br>
+
+<h4>Tutorial:</h4> 
+<a href='http://ww.martijnzeestraten.nl/media/html/riepybdlib_tutorial.html' target='_blank'>http://ww.martijnzeestraten.nl/media/html/riepybdlib_tutorial.html</a><br><br>
+
+<!--
+<h4>Quick test:</h4>
+<code>&nbsp;&nbsp;> git clone https://gitlab.martijnzeestraten.nl/martijn/riepybdlib/</code><br>
+<code>&nbsp;&nbsp;> sudo apt-get install python3-numpy python3-scipy python3-matplotlib ipython3</code><br>
+<code>&nbsp;&nbsp;> cd riepybdlib</code><br>
+<code>&nbsp;&nbsp;> sudo python3 setup.py install</code><br>
+<br>-->
+
+<p>This Python version focuses on Riemannian manifold algorithms for robot learning from demonstration applications.<br>
+Contact: Martijn Zeestraten (https://www.martijnzeestraten.nl)</p>
+<br><br>
+
+</div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>

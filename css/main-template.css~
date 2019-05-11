@@ -1,0 +1,170 @@
+body {
+	padding-top: 4rem;
+	font-family: 'Raleway', sans-serif;
+	
+}
+
+.navbar {
+	padding: 0rem 1rem;
+}
+
+.navbar-toggler {
+	margin-top: .2rem;
+}
+
+.navbar h3 {
+  padding: 0rem 0rem;
+}
+
+.sidebar {
+	position: fixed;
+	padding: 0rem 0rem;
+	/* overflow-x: hidden;
+	overflow-y: auto; Scrollable contents if viewport is shorter than content. */
+}
+
+a.anchor {
+	display: block;
+	position: relative;
+	top: -70px;
+	visibility: hidden;
+}
+
+.bs-docs-sidebar {
+	position: fixed;
+	color: #999;
+}
+
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>li>a:hover, 
+.bs-docs-sidebar .nav>li>a:focus {
+  color: #990000;                 
+}
+
+.group {
+  background: yellow;
+  width: 200px;
+  height: 500px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+
+
+
+
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+	font-family: 'Lobster', cursive;
+	padding: 1rem 0rem;
+}
+
+h6, .h6 {
+	font-weight: bold;
+	padding: 1rem 0rem;
+}
+
+.main-template {
+	padding: 2rem 1rem;
+}
+
+.row {
+	padding-bottom: .6rem;
+}
+
+p, .p {
+	text-align: left;
+}
+
+pre {
+	font-size: .8rem;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.wrappedimg {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+img.borderthumb{
+	/*padding: 0rem 0.4rem;*/
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nodecor, .nodecor:hover {
+	color: #292b2c;
+  text-decoration: none;
+}
+
+iframe, embed, object, video {
+	max-width: 100%; 
+	max-height: 100%; 
+}
+
+/*
+body.bgimg {
+  background: url('../images/halftone03.jpg');
+	background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+*/
+    
+/*
+iframe, embed, object, video {
+	position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+*/
+
+/*
+iframe {
+	max-width: 100%; 
+	height: auto; 
+}
+*/
+
+/*
+.row {
+	padding: 0.2rem 2rem;
+}
+*/
+
+
+/*[class*="row-"]*/
+
+/*
+
+.d-flex {
+	padding: 0.2rem 0rem;
+}
+
+
+
+.display-table {
+   display: table;
+}
+
+.display-cell {
+   display: table-cell;
+   vertical-align: middle;
+}
+*/
+
+
