@@ -49,9 +49,8 @@ MathJax.Hub.Config({
 <div class='container'>
 <div class='main-template'>
 
-<p>This page presents our research on robot learning and interaction. The descriptions of past research themes are available <a href='research_prev.php'>here</a>.</p>
+<!--<p>This page presents our research on robot learning and interaction. The descriptions of past research themes are available <a href='research_prev.htm'>here</a>.</p>-->
 
-<hr>
 <h3>Robot Learning & Interaction</h3>
 
 <p>Our work focuses on human-centered robotic applications in which the robots can learn new skills by interacting with the end-users. From a machine learning perspective, the challenge is to acquire skills from only few demonstrations and interactions, with strong generalization demands. It requires the development of intuitive active learning interfaces to acquire meaningful demonstrations, the development of models that can exploit the structure and geometry of the acquired data in an efficient way, and the development of adaptive control techniques that can exploit the learned task variations and coordination patterns.</p>
@@ -60,7 +59,7 @@ MathJax.Hub.Config({
 <p>These models and algorithms can be applied to a wide range of robotic applications, with robots that are either close to us (assistive robots in <a href='https://www.i-dress-project.eu/' target='_blank'>I-DRESS</a>), parts of us (prosthetic hands in <a href='http://www.idiap.ch/project/tact-hand/' target='_blank'>TACT-HAND</a>), or far away from us (manipulation skills in deep water with <a href='http://www.dexrov.eu/' target='_blank'>DexROV</a>), which are projects supported by the <a href='https://ec.europa.eu/programmes/horizon2020/' target='_blank'>European Commission</a> and by the <a href='http://www.snf.ch/en/' target='_blank'>Swiss National Science Foundation</a>, and by the <a href='https://www.innosuisse.ch/inno/en/home.html' target='_blank'>Swiss Innovation Agency</a>.</p> 
 
 
-<b><i class='fa fa-flask fa-fw'></i> Techniques:</b>
+<b><i class='fa fa-flask fa-fw'></i> Research Topics:</b>
 <ul>
 <li><a href='#smalldata'>Learning in a handful of trials</a></li>
 <li><a href='#control'>A broader view of model predictive control</a></li>
@@ -81,7 +80,7 @@ MathJax.Hub.Config({
 <br>
 
 <hr>
-<h3><i class='fa fa-flask fa-fw'></i> Techniques</h3>
+<h3><i class='fa fa-flask fa-fw'></i> Research Topics</h3>
 <hr><br>
 
 
@@ -94,7 +93,7 @@ MathJax.Hub.Config({
 <div class='row'>
 
 <div class='col-md-7'>
-<p>The impressive results of deep learning in vision and speech processing have substantially influenced research in robotics. As several other researchers, our group questions this shift of attention. While some elements of deep learning can play key roles in robotics, we find it harmful that all research efforts are spent in this direction.</p> 
+<p>The impressive results of deep learning in vision and speech processing have substantially influenced research in robotics. As several other researchers, we question this shift of attention. While some elements of deep learning can play key roles in robotics, we find it harmful that all research efforts are spent in this direction.</p> 
 <p>In many robot applications, there is an interactive data generation/collection that goes beyond the standard training/testing data paradigm. In this respect, many problems in robotics are closer to small data problems than big data problems. Instead of focusing only on techniques working for big data, robotics would likely benefit from techniques working with wide-ranging data. This includes models that can start learning from small datasets, and that are rich enough to be able to exploit more data if such data are available during the robot's lifespan.</p>   
 </div>
 
@@ -110,10 +109,11 @@ MathJax.Hub.Config({
 <div class='row'>
 
 <div class='col-md-12'>
-<p>With the spread of deep learning, small data problems are unjustifiably set aside, wrongly characterized as unimportant problem, or as technique that would not be mature yet. Worse, some of the key challenges in robotics are sometimes artificially transformed into big data problems to fit with the mainstream instead of solving the real issues.</p>
+<p><b>A Wisdom Winter...</b></p>
+<p>With the spread of deep learning, small data problems are unjustifiably set aside, wrongly characterized as unimportant problem, or as techniques that would not be mature yet. Worse, some of the key challenges in robotics are sometimes artificially transformed into big data problems instead of solving the initial issues.</p>
 <p><b>Reference:</b></p>
 <p><a href='paper7002.htm' class='nodecor'>Chatzilygeroudis, K., Vassiliades, A., Stulp, F., Calinon, S. and Mouret, J.-B. (2018). <strong>A Survey on Policy Search Algorithms for Learning Robot Controllers in a Handful of Trials</strong>. arXiv:1807.02303.</a> <a href='paper7002.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Chatzilygeroudis-arXiv2018.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-<!--
+<!--to fit with the mainstream 
 <p>Many problems in robotics do not share the same problem setting. Modern robots have a lot of sensors, but there are in many applications no big databases available. This is due to the large variety of sensors, robots, problems, skills and data formats that can be considered. For example, most researchers working in vision will agree that an image is discretized in pixels organized in a rectangular array, and that the frequency spectrum is discretized into red, green and blue channels. Such common consensus on the data formats is much more difficult to achieve in robotics, since we have robots with different sensors, numbers of axes, number of limbs, arrangements of joints, mobility capabilities, etc. Moreover, there is also a wide range of problems that people want their robots to solve. This variety of challenges inherently reduces the size of these databases (which are even sometimes nonexistent).</p>
 <p>Because of the wide range of problems that need to be solved in robotics, the focus of attention in robotics research can be easily steered in one direction of another. This arbitrary steering can also be facilitated by the difficulty in evaluating and benchmarking results in robotics. As other researchers, we question whether the current excitement of deep learning in robotics genuinely comes from the results, or from the steering of attention led by a small number of big players in industry who exploit these different aspects of robotics research to confine it to large computing infrastructures.</p>
 <p>The other danger of extrapolating too quickly the success of deep learning to robotics is that most robot applications have a pipeline covering much broader research fields than the original successes of deep learning. In many applications, the pipeline from the low-level sensory representation to the low-level motor commands involves an overlap of strong research fields with a lot of robust structures and foundations, including perception, sensor fusion, planning, reasoning and control. The success of deep learning in the first stage (perception) of the pipeline does not mean that it will generalize to the full pipeline, and the limited results at the intermediary stages of such pipeline should warn us that we, as researchers, should not put all our eggs in one basket!</p>
