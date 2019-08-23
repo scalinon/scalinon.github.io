@@ -111,6 +111,9 @@ MathJax.Hub.Config({
 <div class='row'>
 
 <div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-robotPianist01.png'>
+</figure>
 <p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
 <p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
 <p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
