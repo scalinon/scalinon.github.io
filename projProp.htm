@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence'>
+<meta name='theme-color' content='#343a40'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type='text/javascript' async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+<body>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 10px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item active'><a class='nav-link' href='research.htm'>Research <span class='sr-only'>(current)</span></a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+<!--<p>This page presents our research on robot learning and interaction. The descriptions of past research themes are available <a href='research_prev.htm'>here</a>.</p>-->
+
+<h3>Student Project Proposals</h3>
+
+
+<h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/projProp-smartphone-interface01.png'>
+</figure>
+<p>We have developed an augmented reality interface running on Android smartphones to display a virtual robot (left image). The app relies on ARCore, Google's toolkit for building augmented reality applications on Android and iOS devices. This toolkit is used to estimate the location of the phone and to render 3D graphics on top of the camera's image displayed on the screen.</p>   
+<p>The aim of the project is to extend this interface to let the user move the virtual robot to a desired configuration (see right images as an illustration). Several options can be considered, such as clicking on the robot articulations and dragging them to their desired positions, or drawing a stick figure on top of the image, which is then interpreted to set the desired pose of the robot.</p>
+<p>The Android smartphone will be programmed in Java (knowledge of either Java or C++ is required for the project).</p>
+<p>The developed interface will be tested to change the pose of a real 7-axis Panda robot (Franka Emika), by first setting and visualizing the motion of the virtual robot on the smartphone, and then running the motion on the real robot. A basic interface between the mobile phone and the robot is already available for the project (by using the ROS middleware). The proposed approach will finally be evaluated with inexperienced user to determine if it is accurate and easy-to-use.</p>
+<p><b>Keywords:</b> augmented reality, smartphone interfaces, robotics, inverse kinematics, machine learning</p>
+</div>
+
+</div>
+
+
+
+
+
+<hr><br>
+<h4>DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined (see above figure with three typical examples of basis functions). The learning problem thus consists of estimating how to combine the set of basis functions to form a desired movement.</p>
+<p>In this project, it is proposed to learn the set of basis functions (dictionary of movement primitives) together with their combination. To do this, a sparse coding approach for dictionary learning will be investigated, as presented in the video and paper below. A dataset will first be collected by showing different manipulation skills to a robot through kinesthetic teaching (namely, by guiding the robot by the hand while the robot compensates for the effects of gravity). The approach in the references below will then be coded (in either Python, Matlab or C++), and evaluated on the collected robot motion data.</p>
+<p><b>Keywords:</b> robot learning, movement primitives, sparse coding</p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-basisFunctions01.png'>
+</figure>
+<p><b>References:</b></p>
+<p><a href='https://www.youtube.com/watch?v=7a0_iEruGoM&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH&index=61&t=0s' target='_blank'>Sparse coding video lectures from Hugo Larochelle (part 8.1-8.9)</a></p>
+<p><a href='https://www.di.ens.fr/willow/pdfs/icml09.pdf' target='_blank'>Julien Mairal, Francis Bach, Jean Ponce and Guillermo Sapiro, "Online Dictionary Learning for Sparse Coding", ICML'2019</a></p>
+</div>
+
+</div>
+
+
+
+
+
+
+<hr><br>
+<h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
+<p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
+<p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
+<p><b>Keywords:</b> dynamical systems, robot control, subspace learning, delay embedding, time series analysis</p>
+<p><b>References:</b></p>
+<p><a href='https://arxiv.org/pdf/1608.05306.pdf' target='_blank'>Steven L. Brunton, Bingni W. Brunton, Joshua L. Proctor, Eurika Kaiser, and J. Nathan Kutz, "Chaos as an Intermittently Forced Linear System", Nature Communications, 2017</a></p>
+<p><a href='https://www.youtube.com/watch?v=831Ell3QNck' target='_blank'>Hankel Alternative View of Koopman (HAVOK) Analysis (video)</a></p>
+</div>
+
+</div>
+
+
+
+
+<hr><br>
+<h4>LEARNING TO SEARCH: AN ERGODIC CONTROL APPROACH</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>In ergodic control, the aim is to find a sequence of control commands u(t) so that the retrieved trajectory x(t) covers a bounded space X in proportion of a given spatial distribution phi(x). The objective is formulated as a tracking problem in the frequency domain, in which the goal is to match the frequency patterns by putting more importance on low frequency components than high frequency components.</p>
+<p>The resulting controller produces a natural movement to explore the regions of interest. Interestingly, this search pattern does not rely on random moves, but is instead well defined mathematically as a tracking problem in the frequency domain (i.e., matching Fourier series coefficients).</p>
+<p>The aim of this project is to combine learning from demonstration with ergodic control, by extracting from the demonstration the regions that we need to explore, and then letting ergodic control explores these regions. The approach will be tested in an insertion task with a 7-axis Panda robot (Franka Emika). The implementation will be in C++ or Matlab (example codes for ergodic control in C++ and Matlab will be provided).</p>
+<p><b>Keywords:</b> robot control, learning from demonstration, Fourier series</p>
+<p><b>Reference:</b></p>
+<p><a href='http://calinon.ch/papers/Calinon_MMchapter2019.pdf' target='_blank'>Calinon, S., "Mixture Models for the Analysis, Edition, and Synthesis of Continuous Time Series", Bouguila, N. and Fan, W. (eds), Mixture Models and Applications, Springer, 2019</a></p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-ergodicControl01.png'>
+</figure>
+</div>
+
+</div>
+
+
+
+
+<hr><br>
+<h4>CONVOLUTIONAL NEURAL NETWORKS AND TENSOR METHODS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-TME01.png'>
+</figure>
+<p>Sensory data in robotics are typically organized as multidimensional arrays (arrays of sensors, multiple channels, time evolution of data, multiple coordinate systems, etc.). This led our group to investigate tensor methods (a field of research also referred to as multilinear algebra).</p>
+<p>Tensors are generalization of matrices to arrays of higher dimensions, where vectors and matrices correspond to 1st and 2nd-order tensors. When data are organized in matrices or arrays of higher dimensions (tensors), classical regression methods first transform these data into vectors, therefore ignoring the underlying structure of the data and increasing the dimensionality of the problem. This flattening operation typically leads to overfitting when only few training data are available.</p>
+<p>In the reference below, we investigated the use of a mixture of experts relying on tensorial representations. The aim is to take into account the underlying structure of the data, with an approach that remains efficient even when only few training data are available.</p>
+<p>The left figure illustrates how ridge regression and logistic regression can be extended to tensor-variate data. The right figure shows that a tensor-variate mixture of experts can be built by using tensor regression as experts, and tensor logistic regression as gating functions.</p>
+<p>The goal of this project is to compare this strategy against the use of a convolutional neural network (CNN), from both theoretical and practical perspectives. For this project, previous experience on deep learning (and in particular CNN) would be useful. The implementation can be either done with TensorFlow, PyTorch or Matlab.</p>
+<p><b>Keywords:</b> convolutional neural network, tensor methods</p>
+<p><b>Reference:</b></p>
+<p><a href='http://calinon.ch/papers/Jaquier-arXiv2019.pdf' target='_blank'>Jaquier, N., Haschke, R. and Calinon, S., "Tensor-variate Mixture of Experts", arXiv:1902.11104, 2019</a></p>
+</div>
+
+</div>
+
+
+
+<hr><br>
+<h4>ONLINE IMITATION WITH OBJECT-AWARE MAPPING</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>Online imitation consists of copying a motion in real-time (see above image). This problem is very challenging in robotics because the robot and the user have different kinematics (and dynamics) characteristics, requiring the mapping strategy to be carefully chosen. Imitating joint angle trajectories is usually not appropriate, because the joints of the robot are not necessary organized in the same way as the morphology of a person. For this reason, the most often considered mapping is to copy the position of the robot/user hands, described in the Cartesian space.</p>
+<p>In this project, it is proposed to explore a new strategy that consists of creating a mapping considering the objects in the robot/user workspace. This idea arises from the observation that most of the time, the robot hands will be used to manipulate objects, and the locations of these objects will typically differ in the two workspaces (the one of the user, and the one of the robot). In order to cope with this mapping problem, it is proposed to represent the movement from the perspective of these objects (e.g., in a relative distance space to the objects). Several strategies will be investigated and tested with a 7-axis Panda robot (Franka Emika). The implementation will be done either in Python, C++ or Matlab.</p>
+<p><b>Keywords:</b> imitation, learning from demonstration, motion retargeting, correspondence problems</p>
+<p><b>Reference:</b></p>
+<p><a href='http://calinon.ch/papers/Calinon-EncyclopediaRobotics2019.pdf' target='_blank'>Calinon, S., ``Learning from Demonstration (Programming by Demonstration)'', Ang, M.H., Khatib, O. and Siciliano, B. (eds), Encyclopedia of Robotics, Springer, 2019</a></p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-BaxterImitation01.png'>
+</figure>
+</div>
+
+</div>
+
+
+
+
+<hr><br>
+<h4>Cigar box juggling with robots</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-cigarBoxes01.png'>
+</figure>
+<p>"Cigar box juggling" consists of manipulating three boxes, by holding two boxes while one box is free. It involves the juggler to skillfully move two of the boxes to change their configurations (see above sequence). For beginners, the movement is typically executed by moving the boxes up-and-down when changing the configuration, so that there is more time to change the orientation of the box being held (since the other hand will ``accompany'' the falling box). If the up-and-down motion has high amplitude, the movement to change the configuration is relatively slow.</p>
+<p>This project proposes to explore whether such motion could be planned and executed on two 7-axis Panda robots (Franka Emika). The dynamical model will first be built to determine the motion to execute. Model predictive control will then be employed to control the robot with anticipation capability.</p>
+<p><b>Keywords:</b> robot control, robot planning, skills learning and adaptation, model predictive control</p>
+</div>
+
+</div>
+
+
+
+
+</div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
