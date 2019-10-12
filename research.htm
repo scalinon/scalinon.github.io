@@ -62,6 +62,7 @@ MathJax.Hub.Config({
 <b><i class='fa fa-flask fa-fw'></i> Research Topics:</b>
 <ul>
 <li><a href='#smalldata'>Learning in a handful of trials</a></li>
+<li><a href='#structures'>The role of structures and representations in learning</a></li>
 <li><a href='#control'>A broader view of model predictive control</a></li>
 <li><a href='#prob'>Probabilistic models of movements and skills</a></li>
 <li><a href='#GMR'>Gaussian mixture regression (GMR)</a></li>
@@ -118,6 +119,33 @@ MathJax.Hub.Config({
 <p>Because of the wide range of problems that need to be solved in robotics, the focus of attention in robotics research can be easily steered in one direction of another. This arbitrary steering can also be facilitated by the difficulty in evaluating and benchmarking results in robotics. As other researchers, we question whether the current excitement of deep learning in robotics genuinely comes from the results, or from the steering of attention led by a small number of big players in industry who exploit these different aspects of robotics research to confine it to large computing infrastructures.</p>
 <p>The other danger of extrapolating too quickly the success of deep learning to robotics is that most robot applications have a pipeline covering much broader research fields than the original successes of deep learning. In many applications, the pipeline from the low-level sensory representation to the low-level motor commands involves an overlap of strong research fields with a lot of robust structures and foundations, including perception, sensor fusion, planning, reasoning and control. The success of deep learning in the first stage (perception) of the pipeline does not mean that it will generalize to the full pipeline, and the limited results at the intermediary stages of such pipeline should warn us that we, as researchers, should not put all our eggs in one basket!</p>
 <p>Our group also emphasizes the role of the structures in the models we use. Many steps in the perception-planning-control pipeline have robust structures, in which model priors can be exploited to speed up learning, without narrowing the generalization capability, and with the substantial benefit of allowing the learned skills to be adapted to new situations. Deep learning also uses structures, which can be observed by the large choice of networks available and by the procedures employed to learn the models. However, the roles of these structures in the success tend to be hindered. In a similar vein, we question the trend in deep reinforcement learning of acquiring skills from scratch and without (claimed) structure, and instead prefer to get inspiration from skills humans and other animals can acquire during their lifespan, which is based on a combination of imitation and self-refinement mechanisms, including interaction, correction and guided learning, all sharing robust and adaptive representations of movements and behaviors.</p>-->
+</div>
+
+</div>
+
+
+
+
+
+<a class='anchor' id='structures'></a>
+<h4>THE ROLE OF STRUCTURES AND REPRESENTATIONS IN LEARNING</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<p><b>Nature vs nurture: Back to Plato and Aristotle, once again</b></p>
+
+<p>It is well acknowledged that animals rely on a combination of innate and learned mechanisms. We are born with highly structured brain connectivity which is transmitted through a genome, in the form of rules to wire up our brains. This combination is subtle: if our genome would encode all wirings explicitly, we would not be able to adapt to changing environments; if it wasn't pre-wiring our brains, it would take us too long to adapt and we would not survive. Such structure allows us to acquire skills fast, while still enabling us to adapt to new environments (see Zador's 2019 article in Nature Communications for an excellent perspective regarding this).</p>
+
+<p>When it comes to machine learning, current trends hinder this picture by attributing the successes and the spotlights to the learning algorithms instead of the underlying structures and representations. The field of deep learning (and in particular, deep reinforcement learning) tends to attribute the success of a skill acquisition problem to the learning of network parameters, most often overshadowing that this success also comes in a large part by the structure of the network and by a careful selection of the training procedure. Smart structures and representations exist, such as convolutional neural networks enabling patterns to be detected with shift-invariance properties, but they are often not brought forward. The preference is often to highlight the rather naive "learning from scratch" aspect, sometimes with erroneous claims (a famous example is AlphaGo Zero's publication in Nature).</p>
+
+<p>Existing structures remain quite small compared to the number of tasks we would like our learning systems to solve. This is particularly true in robotics, due to the high variety of problems  a robot has to face in the real world. These structures are either too low-level or difficult to apply to existing network-based structures. Our work put a big emphasis on model structures that would enable robots to learn skills from small datasets, for tasks demanding high generalization capability. We believe that such setting is currently the realm of a broad range of problems in robotics. Typically, we don't have the same formats and amount of available datasets as in an image classification problem, and the data stream not only covers perception, but instead often includes highly structured planning and control pathways with robustness and safety guarantees, which greatly limits the extension of existing successful deep learning techniques to robotics.</p>
+
+<p>Similarly to the joint role of innate and learned mechanisms, we believe that it is important to investigate which structures our robot needs, in order to learn from a small number of demonstrations and exploration trials, while being able to generalize within the range of variations required by the task to be useful in real world environments. It means finding structures allowing our robots to learn just what is needed for adaptation, but not more, because it would otherwise require too much data, which would be ineffective for real-world applications.</p> 
+
+<p>To devise these structures, we take inspiration from diverse research fields, including sensorimotor control, biomechanics, human motion science, Riemannian geometry or tensor methods. We adopt a biological perspective only at a very high level, by preferring structures that can specifically exploit current robot capability and associated computation capability. Such structures (and associated structural rules) include object-centered movement primitives, model predictive control and geometrical aspects. A few of those are detailed below.</p>
+
 </div>
 
 </div>
