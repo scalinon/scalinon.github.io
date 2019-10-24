@@ -62,9 +62,9 @@ MathJax.Hub.Config({
 <b><i class='fa fa-flask fa-fw'></i> Research Topics:</b>
 <ul>
 <li><a href='#smalldata'>Learning in a handful of trials</a></li>
-<li><a href='#structures'>The role of structures and representations in learning</a></li>
+<li><a href='#structures'>Learning with structures</a></li>
 <li><a href='#control'>A broader view of model predictive control</a></li>
-<li><a href='#prob'>Probabilistic models of movements and skills</a></li>
+<li><a href='#prob'>Objects-centered models of movements and skills</a></li>
 <li><a href='#GMR'>Gaussian mixture regression (GMR)</a></li>
 <li><a href='#tensor'>Tensor-variate regression</a></li>
 <li><a href='#geometry'>Geometry-aware learning and control</a></li>
@@ -128,13 +128,14 @@ MathJax.Hub.Config({
 
 <hr><br>
 <a class='anchor' id='structures'></a>
-<h4>THE ROLE OF STRUCTURES AND REPRESENTATIONS IN LEARNING</h4>
+<h4>LEARNING WITH STRUCTURES</h4>
 
 <br>
 <div class='row'>
 
 <div class='col-md-12'>
-<p><b>Nature vs Nurture: Back to Plato and Aristotle, once again...</b></p>
+<p><b>Nature vs Nurture: the shallowness of deep learning</b></p>
+<!--Back to Plato and Aristotle, once again...-->
 
 <p>It is well knwown that animals rely on a combination of innate and learned mechanisms. We are born with highly structured brain connectivity which is transmitted through a genome, in the form of rules to wire up our brains. This combination is subtle: if our genome would encode all wirings explicitly, we would not be able to adapt to changing environments; if it wasn't pre-wiring our brains, it would take us too long to adapt and we would not survive. Such structure allows us to acquire skills fast, while still enabling us to adapt to new environments (see Zador's 2019 article in Nature Communications for an excellent perspective regarding this).</p>
 
@@ -142,9 +143,15 @@ MathJax.Hub.Config({
 
 <p>Existing structures remain quite small compared to the number of tasks we would like our learning systems to solve. This is particularly true in robotics, due to the high variety of problems  a robot has to face in the real world. These structures are either too low-level or difficult to apply to existing network-based structures. Our work put a big emphasis on model structures that would enable robots to learn skills from small datasets, for tasks demanding high generalization capability. We believe that such setting is currently the realm of a broad range of problems in robotics. Typically, we don't have the same formats and amount of available datasets as in an image classification problem, and the data stream not only covers perception, but instead often includes highly structured planning and control pathways with robustness and safety guarantees, which greatly limits the extension of existing successful deep learning techniques to robotics.</p>
 
-<p>Similarly to the joint role of innate and learned mechanisms, we believe that it is important to investigate which structures our robot needs, in order to learn from a small number of demonstrations and exploration trials, while being able to generalize within the range of variations required by the task to be useful in real world environments. It means finding structures allowing our robots to learn just what is needed for adaptation, but not more, because it would otherwise require too much data, which would be ineffective for real-world applications.</p> 
+<p>Similarly to the joint role of innate and learned mechanisms, we believe that it is important to investigate which structures our robot needs, in order to learn from a small number of demonstrations and exploration trials, while being able to generalize within the range of variations required by the task to be useful in real world environments. It means finding model structures allowing our robots to learn just what is needed for adaptation, but not more, because it would otherwise require too much data, which would be ineffective for real-world applications. It also means finding bidirectional interaction structures that allow skills to be transfered efficiently (including iterative learning, feedbacks or scaffolding the environment).</p> 
 
 <p>To devise these structures, we take inspiration from diverse research fields, including sensorimotor control, biomechanics, human motion science, Riemannian geometry or tensor methods. We adopt a biological perspective only at a very high level, by preferring structures that can specifically exploit current robot capability and associated computation capability. Such structures (and associated structural rules) include object-centered movement primitives, model predictive control and geometrical aspects. A few of those are detailed below.</p>
+
+<!--
+Dear media,
+Deep learning will not create a sentient AI that will empower humanity, but it might have the power to debilitate our scientists! 
+You may like to say that deep learning will make AI smarter than humans, but you never mention that one of the way for AI to reach this sneaky agenda is to make humans dumb! Deep learning comes with new interesting results, but it also comes with a new wave of researchers spending their entire energy blindly tweaking hyperparameters of a black box, instead of considering the broader picture, thinking of the underlying problems and structures, or simply getting inspiration from other research fields. Deep learning might be one tool among others in our toolbox, but deep thinking will remain the motto to survive this AI uprising!
+-->
 
 </div>
 
@@ -204,7 +211,7 @@ from <a href='https://gitlab.idiap.ch/rli/pbdlib-cpp/' target='_blank'>pbdlib-cp
 
 <hr><br>
 <a class='anchor' id='prob'></a>
-<h4>PROBABILISTIC MODELS OF MOVEMENTS AND SKILLS</h4>
+<h4>OBJECTS-CENTERED MODELS OF MOVEMENTS AND SKILLS</h4>
 
 <br>
 <div class='row'>
