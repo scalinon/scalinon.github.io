@@ -105,18 +105,46 @@ The descriptions below are available for either semester projects or master proj
 
 
 
+<hr><br>
+<h4>TENSOR-VARIATE REGRESSION IN ROBOTICS APPLICATIONS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/tensor-factorization01.png'>
+<figcaption class='figure-caption'>Left: Standard matrix factorization (singular value decomposition). Right: Tensor factorization.</figcaption>
+</figure>
+<p>Many regression problems in robotics can be formulated as that of collecting data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. This project proposes to extend regression to the more general case in which x and y are multidimensional arrays (also called tensors).</p> 
+<p>Tensors are generalization of matrices to arrays of higher dimensions, where vectors and matrices correspond to 1st and 2nd-order tensors. When data are organized in matrices or arrays of higher dimensions (tensors), classical regression methods first transform these data into vectors, therefore ignoring the underlying structure of the data and increasing the dimensionality of the problem. This flattening operation typically leads to overfitting when only few training data are available.</p> 
+<p>Tensor methods are well established in several machine learning fields such as image/video processing and recommendation systems, but this area of research is still at its infancy in robotics.</p> 
+<p>The project proposes to test and evaluate different generalizations of the pseudoinverse for tensor-variate data (see references below), which will be exploited in the context of linear regression for robotics applications.</p>
+<p><b>Keywords:</b> tensor methods, regression</p>
+<p><b>References:</b></p>
+<p><a href='' target='_blank'>Lock, E.F. (2018). Tensor-on-Tensor Regression. Computational and Graphical Statistics 27:3, pp. 638-647</a>.</p>
+<p><a href='' target='_blank'>Yin, M., Gao, J., Xie, S. and Guo, Y. (2019). Multiview Subspace Clustering via Tensorial t-Product Representation. IEEE Trans. on Neural Networks and Learning Systems 30:3, pp. 851-864</a>.</p>
+</div>
+
+</div>
+
+
+
+
+
+
 
 
 <hr><br>
-<h4>DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
+<h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
 
 <br>
 <div class='row'>
 
 <div class='col-md-7'>
-<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined (see above figure with three typical examples of basis functions). The learning problem thus consists of estimating how to combine the set of basis functions to form a desired movement.</p>
-<p>In this project, it is proposed to learn the set of basis functions (dictionary of movement primitives) together with their combination. To do this, a sparse coding approach for dictionary learning will be investigated, as presented in the video and paper below. A dataset will first be collected by showing different manipulation skills to a robot through kinesthetic teaching (namely, by guiding the robot by the hand while the robot compensates for the effects of gravity). The approach in the references below will then be coded (in either Python, Matlab or C++), and evaluated on the collected robot motion data.</p>
-<p><b>Keywords:</b> robot learning, movement primitives, sparse coding</p>
+<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined. The corresponding learning problem consists of estimating how to combine the set of basis functions to form a desired movement. The set of basis functions (dictionary of movement primitives) can be learned together with their combination. To do this, a sparse coding approach for dictionary learning will be exploited, as presented in the video and paper below. The approach will be evaluated on robot motion data.</p>
+<p>The standard dictionary learning problem is formulated with data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. The project proposes to extend this approach to the more general case in which x and y are multidimensional arrays (also called tensors, see slides below). The approach will be evaluated on robot motion data.</p>
+<p><b>Keywords:</b> tensor methods, movement primitives, sparse coding</p>
 </div>
 
 <div class='col-md-5'>
@@ -124,6 +152,8 @@ The descriptions below are available for either semester projects or master proj
 <img class='figure-img img-fluid' src='images/projProp-basisFunctions01.png'>
 </figure>
 <p><b>References:</b></p>
+
+<p><a href='http://calinon.ch/misc/EE613/EE613-linearRegressionII.pdf' target='_blank'>Slides for course on tensor-variate regression (the slides contain also other topics)</a></p>
 <p><a href='https://www.youtube.com/watch?v=7a0_iEruGoM&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH&index=61&t=0s' target='_blank'>Sparse coding video lectures from Hugo Larochelle (part 8.1-8.9)</a></p>
 <p><a href='https://www.di.ens.fr/willow/pdfs/icml09.pdf' target='_blank'>Julien Mairal, Francis Bach, Jean Ponce and Guillermo Sapiro, "Online Dictionary Learning for Sparse Coding", ICML'2019</a></p>
 </div>
@@ -135,6 +165,8 @@ The descriptions below are available for either semester projects or master proj
 
 
 
+
+<!--
 <hr><br>
 <h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
 
@@ -151,7 +183,7 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
-
+-->
 
 
 
@@ -172,6 +204,10 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
+
+
+
+
 
 
 
@@ -204,7 +240,7 @@ The descriptions below are available for either semester projects or master proj
 
 
 
-
+<!--
 <hr><br>
 <h4>CONVOLUTIONAL NEURAL NETWORKS AND TENSOR METHODS</h4>
 
@@ -226,9 +262,10 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
+-->
 
 
-
+<!--
 <hr><br>
 <h4>ONLINE IMITATION WITH OBJECT-AWARE MAPPING</h4>
 
@@ -250,7 +287,7 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
-
+-->
 
 
 

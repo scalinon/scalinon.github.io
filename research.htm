@@ -58,6 +58,8 @@ MathJax.Hub.Config({
 
 <p>These models and algorithms can be applied to a wide range of robotic applications, with robots that are either close to us (assistive robots in <a href='https://www.i-dress-project.eu/' target='_blank'>I-DRESS</a>), parts of us (prosthetic hands in <a href='http://www.idiap.ch/project/tact-hand/' target='_blank'>TACT-HAND</a>), or far away from us (manipulation skills in deep water with <a href='http://www.dexrov.eu/' target='_blank'>DexROV</a>), which are projects supported by the <a href='https://ec.europa.eu/programmes/horizon2020/' target='_blank'>European Commission</a> and by the <a href='http://www.snf.ch/en/' target='_blank'>Swiss National Science Foundation</a>, and by the <a href='https://www.innosuisse.ch/inno/en/home.html' target='_blank'>Swiss Innovation Agency</a>.</p> 
 
+<p>For a general quick overview of our research activities, you can check out our <a href='http://roboclette.ch' target='_blank'>Roboclette project website</a>.</p>
+
 
 <b><i class='fa fa-flask fa-fw'></i> Research Topics:</b>
 <ul>
@@ -134,29 +136,26 @@ MathJax.Hub.Config({
 <div class='row'>
 
 <div class='col-md-12'>
-<p><b>Nature vs Nurture: the shallowness of deep learning</b></p>
-<!--Back to Plato and Aristotle, once again...-->
+<p><b>Nature vs Nurture: the misrepresented role of representations in machine learning</b></p>
 
-<p>It is well knwown that animals rely on a combination of innate and learned mechanisms. We are born with highly structured brain connectivity which is transmitted through a genome, in the form of rules to wire up our brains. This combination is subtle: if our genome would encode all wirings explicitly, we would not be able to adapt to changing environments; if it wasn't pre-wiring our brains, it would take us too long to adapt and we would not survive. Such structure allows us to acquire skills fast, while still enabling us to adapt to new environments (see Zador's 2019 article in Nature Communications for an excellent perspective regarding this).</p>
+<p>Animals rely on a combination of innate and learned mechanisms. This combination is subtle: if our genome would encode all wirings explicitly, we would not be able to adapt to changing environments; if it wasn't pre-wiring our brains, it would take us too long to adapt. Such structure allows us to acquire skills fast, while still enabling us to adapt to new environments.</p>
 
-<p>When it comes to machine learning, current trends hinder this picture by attributing the successes and the spotlights to the learning algorithms instead of the underlying structures and representations. The field of deep learning (and in particular, deep reinforcement learning) tends to attribute the success of a skill acquisition problem to the learning of network parameters, most often overshadowing that this success also comes in a large part by the structure of the network and by a careful selection of the training procedure. Smart structures and representations exist, such as convolutional neural networks enabling patterns to be detected with shift-invariance properties, but they are often not brought forward. The preference is often to highlight the rather naive "learning from scratch" aspect, sometimes with erroneous claims (a famous example is AlphaGo Zero's publication in Nature).</p>
+<p>When it comes to machine learning, current trends largely hinder this picture by attributing the successes (and the spotlights!) to the learning algorithms instead of the underlying structures and representations.</p>
 
 <p>Existing structures remain quite small compared to the number of tasks we would like our learning systems to solve. This is particularly true in robotics, due to the high variety of problems  a robot has to face in the real world. These structures are either too low-level or difficult to apply to existing network-based structures. Our work put a big emphasis on model structures that would enable robots to learn skills from small datasets, for tasks demanding high generalization capability. We believe that such setting is currently the realm of a broad range of problems in robotics. Typically, we don't have the same formats and amount of available datasets as in an image classification problem, and the data stream not only covers perception, but instead often includes highly structured planning and control pathways with robustness and safety guarantees, which greatly limits the extension of existing successful deep learning techniques to robotics.</p>
 
 <p>Similarly to the joint role of innate and learned mechanisms, we believe that it is important to investigate which structures our robot needs, in order to learn from a small number of demonstrations and exploration trials, while being able to generalize within the range of variations required by the task to be useful in real world environments. It means finding model structures allowing our robots to learn just what is needed for adaptation, but not more, because it would otherwise require too much data, which would be ineffective for real-world applications. It also means finding bidirectional interaction structures that allow skills to be transfered efficiently (including iterative learning, feedbacks or scaffolding the environment).</p> 
 
-<p>To devise these structures, we take inspiration from diverse research fields, including sensorimotor control, biomechanics, human motion science, Riemannian geometry or tensor methods. We adopt a biological perspective only at a very high level, by preferring structures that can specifically exploit current robot capability and associated computation capability. Such structures (and associated structural rules) include object-centered movement primitives, model predictive control and geometrical aspects. A few of those are detailed below.</p>
+<p>To devise these structures, we take inspiration from diverse research fields, including sensorimotor control, biomechanics, human motion science, differential geometry or tensor factorization methods. Examples of such structures (and associated structural rules) include object-centered movement primitives, model predictive control and Riemannian manifolds. A few of those are detailed below.</p>
+
+</div>
+
+</div>
 
 <!--
-Dear media,
-Deep learning will not create a sentient AI that will empower humanity, but it might have the power to debilitate our scientists! 
-You may like to say that deep learning will make AI smarter than humans, but you never mention that one of the way for AI to reach this sneaky agenda is to make humans dumb! Deep learning comes with new interesting results, but it also comes with a new wave of researchers spending their entire energy blindly tweaking hyperparameters of a black box, instead of considering the broader picture, thinking of the underlying problems and structures, or simply getting inspiration from other research fields. Deep learning might be one tool among others in our toolbox, but deep thinking will remain the motto to survive this AI uprising!
--->
-
-</div>
-
-</div>
-
+the shallowness of deep learning
+The field of deep learning (and in particular, deep reinforcement learning) tends to attribute the success of a skill acquisition problem to the learning of network parameters, most often overshadowing that this success also comes in a large part by the structure of the network and by a careful selection of the training procedure. Smart structures and representations exist, such as convolutional neural networks enabling patterns to be detected with shift-invariance properties, but they are often not brought forward. The preference is often to highlight the rather naive "learning from scratch" aspect, sometimes with erroneous claims (a famous example is AlphaGo Zero's publication in Nature).
+We adopt a biological perspective only at a very high level, by preferring structures that can specifically exploit current robot capability and associated computation capability.-->
 
 
 
