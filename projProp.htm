@@ -308,6 +308,14 @@ The descriptions below are available for either semester projects or master proj
 
 </div>
 
+<!--Adaptive robot control to pour liquids from a bottle 
+
+In manipulation, pouring skills are challenging because the generated movement and feedback depend on the quantity of liquid present in the container. We plan to study this skill in the context of a robot application in which a manipulator, holding a bottle filled with liquid, can pour the liquid into a glass. Such challenge requires the combination of several sources of perception, including proprioceptive information (estimating the remaining quantity of liquid in the bottle from its weight), and vision (as a way to correct the pouring behavior, as well as to determine when to stop pouring). 
+
+The project proposes to study this challenge by using a 7-axis Panda robot from the Franka Emika company (https://franka.de/). This robot is endowed with torque sensors, which will be exploited to estimate the quantity of liquid in the bottle form its weight. This estimate will be used in a planning step to define an open-loop movement (anticipated movement). This movement will then be corrected during its execution, with the help of a simple vision system that will be developed in the project to determine when colored liquid pours out of the bottle (the location of the top of the bottle is known by proprioception, using the joint angle encoders of the robot). The controller will be developed in C++, by using the libfranka library (https://frankaemika.github.io/docs/overview.html).
+-->
+
+
 
 
 
