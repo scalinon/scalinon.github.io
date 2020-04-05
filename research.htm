@@ -113,10 +113,14 @@ MathJax.Hub.Config({
 
 <div class='col-md-12'>
 <p><b>A Wisdom Winter...</b></p>
-<p>With the spread of deep learning, small data problems are unjustifiably set aside, wrongly characterized as unimportant problems, or as techniques that would not be mature yet. Worse, some of the key challenges in robotics are sometimes artificially transformed into big data problems instead of solving the initial issues.</p>
+<p>With the spread of deep learning, small data problems are unjustifiably set aside. Worse, some of the key challenges in robotics are sometimes artificially transformed into big data problems, instead of finding the right trade-off between learning and exploitation of structures (at model and algorithm levels).</p>
 <p><b>Reference:</b></p>
-<p><a href='paper7002.htm' class='nodecor'>Chatzilygeroudis, K., Vassiliades, A., Stulp, F., Calinon, S. and Mouret, J.-B. (2019). <strong>A Survey on Policy Search Algorithms for Learning Robot Controllers in a Handful of Trials</strong>. IEEE Trans. on Robotics.</a> <a href='paper7002.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Chatzilygeroudis-arXiv2018.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-<!--to fit with the mainstream 
+<p><a href='paper7002.htm' class='nodecor'>Chatzilygeroudis, K., Vassiliades, A., Stulp, F., Calinon, S. and Mouret, J.-B. (2020). <strong>A Survey on Policy Search Algorithms for Learning Robot Controllers in a Handful of Trials</strong>. IEEE Trans. on Robotics, 32:2, 328-347.</a> <a href='paper7002.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Chatzilygeroudis-TRO2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<!--, wrongly characterized as unimportant problems
+solving the initial issues
+, or as techniques that would not be mature yet
+facing the real challenges of 
+to fit with the mainstream 
 <p>Many problems in robotics do not share the same problem setting. Modern robots have a lot of sensors, but there are in many applications no big databases available. This is due to the large variety of sensors, robots, problems, skills and data formats that can be considered. For example, most researchers working in vision will agree that an image is discretized in pixels organized in a rectangular array, and that the frequency spectrum is discretized into red, green and blue channels. Such common consensus on the data formats is much more difficult to achieve in robotics, since we have robots with different sensors, numbers of axes, number of limbs, arrangements of joints, mobility capabilities, etc. Moreover, there is also a wide range of problems that people want their robots to solve. This variety of challenges inherently reduces the size of these databases (which are even sometimes nonexistent).</p>
 <p>Because of the wide range of problems that need to be solved in robotics, the focus of attention in robotics research can be easily steered in one direction of another. This arbitrary steering can also be facilitated by the difficulty in evaluating and benchmarking results in robotics. As other researchers, we question whether the current excitement of deep learning in robotics genuinely comes from the results, or from the steering of attention led by a small number of big players in industry who exploit these different aspects of robotics research to confine it to large computing infrastructures.</p>
 <p>The other danger of extrapolating too quickly the success of deep learning to robotics is that most robot applications have a pipeline covering much broader research fields than the original successes of deep learning. In many applications, the pipeline from the low-level sensory representation to the low-level motor commands involves an overlap of strong research fields with a lot of robust structures and foundations, including perception, sensor fusion, planning, reasoning and control. The success of deep learning in the first stage (perception) of the pipeline does not mean that it will generalize to the full pipeline, and the limited results at the intermediary stages of such pipeline should warn us that we, as researchers, should not put all our eggs in one basket!</p>
@@ -138,7 +142,7 @@ MathJax.Hub.Config({
 <div class='col-md-12'>
 <p><b>The misrepresented role of representations in machine learning</b></p>
 
-<p>Animals rely on a combination of innate and learned mechanisms. This combination is subtle: if all wirings would be explicitly encoded, we would not be able to adapt to changing environments; without pre-wiring, it would take us too long to adapt. Such structure allows us to acquire skills fast, while still enabling us to adapt to new environments.</p>
+<p>Humans and other animals rely on a combination of innate and learned mechanisms to acquire skills. This combination is subtle: if all wirings would be explicitly encoded, we would not be able to adapt to changing environments; without pre-wiring, it would take us too long to adapt. Such a structure allows us to acquire skills fast, while still enabling us to adapt to new environments.</p>
 
 <p>When it comes to machine learning, current trends largely hinder this picture by attributing the successes to the learning algorithms instead of the underlying structures and representations.</p>
 
