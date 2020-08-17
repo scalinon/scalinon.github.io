@@ -53,36 +53,30 @@ MathJax.Hub.Config({
 
 <h3>EPFL Student Project Proposals</h3>
 
-The descriptions below are available for either semester projects or master projects (the content will be adjusted accordingly). Suggestions of other projects (or variants of existing projects) are also welcome, as long as they fit within the group's research interests.
+The descriptions below are available for either semester projects or master thesis projects (the content will be adjusted accordingly). Suggestions of other projects (or variants of existing projects) are also welcome, as long as they fit within the group's research interests.
 
-<!--
+
+
+
+
 <hr><br>
-<h4>GROWBOTHUB ROBOTICS PROJECTS</h4>
+<h4>ROBOT ASSISTANCE FOR STANDING UP AND SITTING DOWN</h4>
 
 <br>
 <div class='row'>
 
 <div class='col-md-12'>
 <figure class='figure'>
-<img class='figure-img img-fluid' src='images/growbothub01.jpg'>
+<img class='figure-img img-fluid' src='images/'>
 </figure>
-<p>The <a href='https://growbothub.space/' target='_blank'>GrowbotHub project</a> was founded by a team of EPFL/UNIL students from the Légumes Perchés Association and took part in the first edition of Igluna, an international student project to build a habitat demonstrator for sustaining life in an extreme environment such as on the Moon. Igluna is coordinated by the Swiss Space Center at EPFL and GrowbotHub is one of its most successful projects.</p>
-<p>Three robotics projects using a <a href='https://www.kuka.com/en-ch/products/robotics-systems/industrial-robots/lbr-iiwa' target='_blank'>7-axis KUKA LBR iiwa</a> are described below. The full list of GrowbotHub projects is available <a href='http://growbothub.space/mesmerize/semester-projects/' target='_blank'>here</a>.</p>
-
-<strong>Project 1.7 - Control of the Kuka robot in coordination with the rest of the system</strong>
-
-<p>The goal of this project is to create a controller for the Kuka robot by replying on the sunrise environment provided by Kuka. Since the controller will need to communicate with the rest of the system, it is proposed to use <a href='https://www.ros.org/' target='_blank'>ROS</a> as a middleware to allow communication between the different parts of the system. In a first stage, the controller will rely on inverse kinematics to control the position and orientation of the tool. In a second stage, the torque control capability of the robot will be exploited to combine force tracking and position tracking.</p>
-
-<strong>Project 1.8 - Adaptive pick-and-place of vegetable pots with the Kuka robot</strong>
-
-<p>The goal of this project is to determine and evaluate solutions to pick-up vegetable pots (incl. how to modify the pots for better prehension), and drop them at a desired location. It requires to take into account motion planning, together with the limitations of the robot, including gripper and joint limits. Several gripper solutions and configurations will be investigated and tested.</p>
-
-<strong>Project 1.9 - Perception and control for a 3-finger gripper for harvesting vegetables</strong>
-
-<p>This project aims at harvesting vegetables (e.g., carrots) using a 3-finger gripper, by detecting the gripping point and applying appropriate forces to collect the vegetables without damaging them. There are two variants in this project, focusing on either the perception aspect or the control aspect. The first variant of the project will focus on determining a gripping point (position and orientation of the gripper) from computer vision processing. The second variant of the project will determine which gripper, gripper configuration and fingertips are required for the task, and will control the robot to reach the desired gripping point.</p>
+<p>The project will explore the problem of assisting a user to stand up and sit down. This problem will be modeled as two kinematic chains, where only planar movements will be considered. One kinematic chain will represent a humanoid robot and the other will represent the user to assist. It is assumed that both have fixed feet on the ground and are connected to a common endeffector point representing their hands, meaning that the resulting system is a closed kinematic chain in which only a few of the articulations can be controlled.</p> 
+<p>The assistance skill consists of moving the user from a static sitting pose to a static standing pose through the contact point. It involves challenging aspects of anticipation, shared control, initiation of movements, leader-follower behaviors and haptic communication. This project will concentrate on studying the dynamical motion aspects to achieve such assistance, which requires the consideration of inertia and center of mass movements with respect to the feet.</p>
 </div>
+
 </div>
--->
+
+
+
 
 <hr><br>
 <h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
@@ -102,9 +96,6 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
-
-
-
 
 
 
@@ -162,32 +153,6 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 
-
-
-
-
-
-<!--
-<hr><br>
-<h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure p-3'>
-<img class='figure-img img-fluid' src='images/projProp-robotPianist01.png'>
-</figure>
-<p>We are developing a human-robot collaboration experiment in which a person plays a melody on a piano while a robot plays the accompanying chords (see the robot setup in the above figure). For the synchronization to be effective, the robot has to anticipate its movements in accordance to the estimated tempo. </p>
-<p>This project proposes to rely on the score (midi format) to initialize a hidden Markov model (HMM), which is then refined by the recordings of a person playing the same score. The goal is to encode the natural variations to improve the encoding and synthesis of the music track. This HMM will then be used in the experiment to estimate the time when the accompanying notes in the partition should be played by the robot. The approach will be implemented in Python or C++, by exploiting existing example codes in Matlab or C++ as starting point.</p>
-<p><b>Keywords:</b> time series analysis, hidden Markov model (HMM), music synthesis, human-robot collaboration</p>
-</div>
-
-</div>
--->
-
-
-
 <hr><br>
 <h4>SUBSPACE LEARNING FOR ROBOT CONTROL APPLICATIONS</h4>
 
@@ -205,14 +170,6 @@ The descriptions below are available for either semester projects or master proj
 </div>
 
 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -239,6 +196,76 @@ The descriptions below are available for either semester projects or master proj
 
 </div>
 
+
+
+
+
+<hr><br>
+<h4>CIGAR BOX JUGGLING WITH ROBOTS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-cigarBoxes01.png'>
+</figure>
+<p>"Cigar box juggling" consists of manipulating three boxes, by holding two boxes while one box is free. It involves the juggler to skillfully move two of the boxes to change their configurations (see above sequence). For beginners, the movement is typically executed by moving the boxes up-and-down when changing the configuration, so that there is more time to change the orientation of the box being held (since the other hand will ``accompany'' the falling box). If the up-and-down motion has high amplitude, the movement to change the configuration is relatively slow.</p>
+<p>This project proposes to explore whether such motion could be planned and executed on two 7-axis Panda robots (Franka Emika). The dynamical model will first be built to determine the motion to execute. Model predictive control will then be employed to control the robot with anticipation capability.</p>
+<p><b>Keywords:</b> robot control, robot planning, skills learning and adaptation, model predictive control</p>
+</div>
+
+</div>
+
+
+<!--
+<hr><br>
+<h4>GROWBOTHUB ROBOTICS PROJECTS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/growbothub01.jpg'>
+</figure>
+<p>The <a href='https://growbothub.space/' target='_blank'>GrowbotHub project</a> was founded by a team of EPFL/UNIL students from the Légumes Perchés Association and took part in the first edition of Igluna, an international student project to build a habitat demonstrator for sustaining life in an extreme environment such as on the Moon. Igluna is coordinated by the Swiss Space Center at EPFL and GrowbotHub is one of its most successful projects.</p>
+<p>Three robotics projects using a <a href='https://www.kuka.com/en-ch/products/robotics-systems/industrial-robots/lbr-iiwa' target='_blank'>7-axis KUKA LBR iiwa</a> are described below. The full list of GrowbotHub projects is available <a href='http://growbothub.space/mesmerize/semester-projects/' target='_blank'>here</a>.</p>
+
+<strong>Project 1.7 - Control of the Kuka robot in coordination with the rest of the system</strong>
+
+<p>The goal of this project is to create a controller for the Kuka robot by replying on the sunrise environment provided by Kuka. Since the controller will need to communicate with the rest of the system, it is proposed to use <a href='https://www.ros.org/' target='_blank'>ROS</a> as a middleware to allow communication between the different parts of the system. In a first stage, the controller will rely on inverse kinematics to control the position and orientation of the tool. In a second stage, the torque control capability of the robot will be exploited to combine force tracking and position tracking.</p>
+
+<strong>Project 1.8 - Adaptive pick-and-place of vegetable pots with the Kuka robot</strong>
+
+<p>The goal of this project is to determine and evaluate solutions to pick-up vegetable pots (incl. how to modify the pots for better prehension), and drop them at a desired location. It requires to take into account motion planning, together with the limitations of the robot, including gripper and joint limits. Several gripper solutions and configurations will be investigated and tested.</p>
+
+<strong>Project 1.9 - Perception and control for a 3-finger gripper for harvesting vegetables</strong>
+
+<p>This project aims at harvesting vegetables (e.g., carrots) using a 3-finger gripper, by detecting the gripping point and applying appropriate forces to collect the vegetables without damaging them. There are two variants in this project, focusing on either the perception aspect or the control aspect. The first variant of the project will focus on determining a gripping point (position and orientation of the gripper) from computer vision processing. The second variant of the project will determine which gripper, gripper configuration and fingertips are required for the task, and will control the robot to reach the desired gripping point.</p>
+</div>
+</div>
+-->
+
+
+<!--
+<hr><br>
+<h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-robotPianist01.png'>
+</figure>
+<p>We are developing a human-robot collaboration experiment in which a person plays a melody on a piano while a robot plays the accompanying chords (see the robot setup in the above figure). For the synchronization to be effective, the robot has to anticipate its movements in accordance to the estimated tempo. </p>
+<p>This project proposes to rely on the score (midi format) to initialize a hidden Markov model (HMM), which is then refined by the recordings of a person playing the same score. The goal is to encode the natural variations to improve the encoding and synthesis of the music track. This HMM will then be used in the experiment to estimate the time when the accompanying notes in the partition should be played by the robot. The approach will be implemented in Python or C++, by exploiting existing example codes in Matlab or C++ as starting point.</p>
+<p><b>Keywords:</b> time series analysis, hidden Markov model (HMM), music synthesis, human-robot collaboration</p>
+</div>
+
+</div>
+-->
 
 
 <!--
@@ -290,33 +317,24 @@ The descriptions below are available for either semester projects or master proj
 </div>
 -->
 
-
-
-<hr><br>
-<h4>CIGAR BOX JUGGLING WITH ROBOTS</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure p-3'>
-<img class='figure-img img-fluid' src='images/projProp-cigarBoxes01.png'>
-</figure>
-<p>"Cigar box juggling" consists of manipulating three boxes, by holding two boxes while one box is free. It involves the juggler to skillfully move two of the boxes to change their configurations (see above sequence). For beginners, the movement is typically executed by moving the boxes up-and-down when changing the configuration, so that there is more time to change the orientation of the box being held (since the other hand will ``accompany'' the falling box). If the up-and-down motion has high amplitude, the movement to change the configuration is relatively slow.</p>
-<p>This project proposes to explore whether such motion could be planned and executed on two 7-axis Panda robots (Franka Emika). The dynamical model will first be built to determine the motion to execute. Model predictive control will then be employed to control the robot with anticipation capability.</p>
-<p><b>Keywords:</b> robot control, robot planning, skills learning and adaptation, model predictive control</p>
-</div>
-
-</div>
-
 <!--
+
+---
+Optimal control with keypoints learned from demonstration
+
+Kinesthetic teaching consists of grabbing the robot arm to demonstrate a task while the robot collects proprioceptive information through its joint encoders. Demonstrating a full movement with kinesthetic teaching is cumbersome and often loses the fluidity and dynamics in the movement. This project proposes to use kinesthetic teaching only for defining a set of viapoints that the robot should pass through, and to rely on optimization to let the robot compute control commands to pass through the desired viapoints. To do this, a spacetime formulation of iLQR will be tested, which consists of iteratively solving linear quadratic regulation problems, resulting in a planning strategy that takes into account both time and space aspects to fulfill the task. 
+
+The project will use a 7-axis Panda robot form the Franka Emika company. The approach will be tested in a set of manipulation tasks inspired by industrial applications.
+
+
+---
 Adaptive robot control to pour liquids from a bottle 
 
 In manipulation, pouring skills are challenging because the generated movement and feedback depend on the quantity of liquid present in the container. We plan to study this skill in the context of a robot application in which a manipulator, holding a bottle filled with liquid, can pour the liquid into a glass. Such challenge requires the combination of several sources of perception, including proprioceptive information (estimating the remaining quantity of liquid in the bottle from its weight), and vision (as a way to correct the pouring behavior, as well as to determine when to stop pouring). 
 
 The project proposes to study this challenge by using a 7-axis Panda robot from the Franka Emika company (https://franka.de/). This robot is endowed with torque sensors, which will be exploited to estimate the quantity of liquid in the bottle form its weight. This estimate will be used in a planning step to define an open-loop movement (anticipated movement). This movement will then be corrected during its execution, with the help of a simple vision system that will be developed in the project to determine when colored liquid pours out of the bottle (the location of the top of the bottle is known by proprioception, using the joint angle encoders of the robot). The controller will be developed in C++, by using the libfranka library (https://frankaemika.github.io/docs/overview.html).
 
-
+---
 Obstacle-aware inverse kinematics with implicit surface representation
 
 Gaussian Process Implicit Surfaces (GPIS) is a technique allowing shapes to be modeled in a probabilistic manner. It relies on a set of datapoints annotated with values 0, 1 and -1 to define if the datapoint is on the border, inside or outside the shape. We can then use this model to estimate the distance of a point to the border of the shape, as well as estimating the direction to move toward or away from this border. This direction can be weighted with respect to the distance to the border, in order to obtain a vector field that is strong when close to the border (or inside the shape), and weak elsewhere. The distance information takes the form of a Gaussian distribution, meaning that we also get uncertainty information about this estimate. Thus, such estimates will be more trustworthy in areas covered by labeled points than in areas that were not demonstrated. The probabilistic formulation can also be exploited to define prior information about the shape, which is useful when only a few points is available to model the shape, or when datapoints representing a portion of the shape are missing. 
@@ -336,9 +354,6 @@ GPIS paper: https://www.microsoft.com/en-us/research/publication/gaussian-proces
 GPR: slides 3-27 from http://calinon.ch/misc/EE613/EE613-nonlinearRegressionII.pdf 
 IK: slides 22-27 from http://calinon.ch/misc/EE613/EE613-linearRegressionI.pdf 
 -->
-
-
-
 
 
 </div><!-- /.main-template -->
