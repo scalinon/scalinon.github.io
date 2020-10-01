@@ -84,6 +84,65 @@ The descriptions below are available for either semester projects or master thes
 
 
 
+<hr><br>
+<h4>TENSOR FACTORIZATION FOR MULTI-TASK LEARNING</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/tensor-factorization01.jpg'>
+<figcaption class='figure-caption'>Left: Standard matrix factorization (singular value decomposition). Right: Tensor factorization.</figcaption>
+</figure>
+<p>Manipulation skills in robotics are encoded as a weighted superposition of movement primitives, where the problem consists of learning a dictionary of movement primitives together with the superposition weights. The current limitation is that each skill is learned individually, which limits the skills transfer capability. The project proposes to address this limitation by relying on tensor methods, which will be used by the robot to devise a common dictionary to learn multiple skills in an incremental manner. Tensor methods are extensions of standard linear algebra techniques to arrays of higher dimension (typically, extension of singular value decomposition to arrays of more than two dimensions, capturing correlations between different dimensions in a compact way). This project takes place within the LEARN-REAL project (learning physical manipulation skills with simulators using realistic variations).</p>
+</div>
+
+</div>
+
+
+
+<hr><br>
+<h4>GAUSSIAN PROCESS FOR IMPLICIT SURFACE REPRESENTATION</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-8'>
+<p>There are several ways of representing the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The latter have several advantages, such as providing gradients to let the robot knows how to avoid an obstacle, move along a surface, or establish contact with the closest surface. It also provides a measure of uncertainty that can be exploited within an optimal control strategy. Implicit surface representations are typically implemented as Gaussian processes, where standard kernel functions such as radial basis functions are used to measure distances. This project proposes to investigate the extension to other kernels that would better take into account the geometry of the problem. This project takes place within the MEMMO project (memory of motion).</p>
+</div>
+
+<div class='col-md-4'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/GPIS01.jpg'>
+<figcaption class='figure-caption'>Implicit contour representation with Gaussian process regression.</figcaption>
+</figure>
+</div>
+
+</div>
+
+
+
+<hr><br>
+<h4>MOTION OPTIMIZATION WITH A LEGIBILITY PERSPECTIVE</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-2'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/LQT_legibility01.png'>
+</figure>
+</div>
+
+<div class='col-md-10'>
+<p>Standard motion optimization problems in robotics focus on the use of cost functions that measure how well a task is executed (e.g., positions to reach, viapoints to pass through, orientations to maintain). In a manipulation task, the typical goal will be to generate movements that efficiently execute the task. We propose to extend the definition of these costs to include human-robot interaction aspects. The project will investigate the problem of generating movements for the robot that would allow an external observer to understand quickly the intention of the robot. This requires the investigation of legibility costs to be used to generate motions capable of reducing ambiguity (e.g., by exaggerating the movement to make it more legible to a user interacting with the robot). The side image shows how a legible movement can be generated to reduce ambiguity in the intended movement (here, to emphasize that the blue object will be grapsed instead of the orange object). This project takes place within the ROSALIS project (robot skills acquisition through active learning and social interaction strategies).</p>
+</div>
+
+</div>
+
+
+
 
 <hr><br>
 <h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
@@ -106,6 +165,51 @@ The descriptions below are available for either semester projects or master thes
 
 
 
+
+
+
+
+
+
+<hr><br>
+<h4>SUBSPACE LEARNING FOR ROBOT CONTROL APPLICATIONS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
+<p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
+<p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
+<p><b>Keywords:</b> dynamical systems, robot control, subspace learning, delay embedding, time series analysis</p>
+<p><b>References:</b></p>
+<p><a href='https://arxiv.org/pdf/1608.05306.pdf' target='_blank'>Steven L. Brunton, Bingni W. Brunton, Joshua L. Proctor, Eurika Kaiser, and J. Nathan Kutz, "Chaos as an Intermittently Forced Linear System", Nature Communications, 2017</a></p>
+<p><a href='https://www.youtube.com/watch?v=831Ell3QNck' target='_blank'>Hankel Alternative View of Koopman (HAVOK) Analysis (video)</a></p>
+</div>
+
+</div>
+
+
+
+<hr><br>
+<h4>CIGAR BOX JUGGLING WITH ROBOTS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-cigarBoxes01.png'>
+</figure>
+<p>"Cigar box juggling" consists of manipulating three boxes, by holding two boxes while one box is free. It involves the juggler to skillfully move two of the boxes to change their configurations (see above sequence). For beginners, the movement is typically executed by moving the boxes up-and-down when changing the configuration, so that there is more time to change the orientation of the box being held (since the other hand will ``accompany'' the falling box). If the up-and-down motion has high amplitude, the movement to change the configuration is relatively slow.</p>
+<p>This project proposes to explore whether such motion could be planned and executed on two 7-axis Panda robots (Franka Emika). The dynamical model will first be built to determine the motion to execute. Model predictive control will then be employed to control the robot with anticipation capability.</p>
+<p><b>Keywords:</b> robot control, robot planning, skills learning and adaptation, model predictive control</p>
+</div>
+
+</div>
+
+
+<!--
 <hr><br>
 <h4>TENSOR-VARIATE REGRESSION IN ROBOTICS APPLICATIONS</h4>
 
@@ -133,7 +237,6 @@ The descriptions below are available for either semester projects or master thes
 
 
 
-
 <hr><br>
 <h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
 
@@ -155,25 +258,6 @@ The descriptions below are available for either semester projects or master thes
 <p><a href='http://calinon.ch/misc/EE613/EE613-linearRegressionII.pdf' target='_blank'>Slides for course on tensor-variate regression (the slides contain also other topics)</a></p>
 <p><a href='https://www.youtube.com/watch?v=7a0_iEruGoM&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH&index=61&t=0s' target='_blank'>Sparse coding video lectures from Hugo Larochelle (part 8.1-8.9)</a></p>
 <p><a href='https://www.di.ens.fr/willow/pdfs/icml09.pdf' target='_blank'>Julien Mairal, Francis Bach, Jean Ponce and Guillermo Sapiro, "Online Dictionary Learning for Sparse Coding", ICML'2019</a></p>
-</div>
-
-</div>
-
-
-<hr><br>
-<h4>SUBSPACE LEARNING FOR ROBOT CONTROL APPLICATIONS</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
-<p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
-<p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
-<p><b>Keywords:</b> dynamical systems, robot control, subspace learning, delay embedding, time series analysis</p>
-<p><b>References:</b></p>
-<p><a href='https://arxiv.org/pdf/1608.05306.pdf' target='_blank'>Steven L. Brunton, Bingni W. Brunton, Joshua L. Proctor, Eurika Kaiser, and J. Nathan Kutz, "Chaos as an Intermittently Forced Linear System", Nature Communications, 2017</a></p>
-<p><a href='https://www.youtube.com/watch?v=831Ell3QNck' target='_blank'>Hankel Alternative View of Koopman (HAVOK) Analysis (video)</a></p>
 </div>
 
 </div>
@@ -206,26 +290,6 @@ The descriptions below are available for either semester projects or master thes
 
 
 
-
-<hr><br>
-<h4>CIGAR BOX JUGGLING WITH ROBOTS</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure p-3'>
-<img class='figure-img img-fluid' src='images/projProp-cigarBoxes01.png'>
-</figure>
-<p>"Cigar box juggling" consists of manipulating three boxes, by holding two boxes while one box is free. It involves the juggler to skillfully move two of the boxes to change their configurations (see above sequence). For beginners, the movement is typically executed by moving the boxes up-and-down when changing the configuration, so that there is more time to change the orientation of the box being held (since the other hand will ``accompany'' the falling box). If the up-and-down motion has high amplitude, the movement to change the configuration is relatively slow.</p>
-<p>This project proposes to explore whether such motion could be planned and executed on two 7-axis Panda robots (Franka Emika). The dynamical model will first be built to determine the motion to execute. Model predictive control will then be employed to control the robot with anticipation capability.</p>
-<p><b>Keywords:</b> robot control, robot planning, skills learning and adaptation, model predictive control</p>
-</div>
-
-</div>
-
-
-<!--
 <hr><br>
 <h4>GROWBOTHUB ROBOTICS PROJECTS</h4>
 
