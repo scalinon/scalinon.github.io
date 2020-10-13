@@ -38,6 +38,9 @@ MathJax.Hub.Config({
 <!--li class='nav-item active'><a class='nav-link' href='publications.htm'>Publications <span class='sr-only'>(current)</span></a></li>-->
 <li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='dropdown_pub' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Publications <span class='sr-only'>(current)</span></a>
 <div class='dropdown-menu' aria-labelledby='dropdown_pub'>
+<a class='dropdown-item' href='publications.htm?#2020'>2020</a>
+<a class='dropdown-item' href='publications.htm?#2019'>2019</a>
+<a class='dropdown-item' href='publications.htm?#2018'>2018</a>
 <a class='dropdown-item' href='publications.htm?#2017'>2017</a>
 <a class='dropdown-item' href='publications.htm?#2016'>2016</a>
 <a class='dropdown-item' href='publications.htm?#2015'>2015</a>
@@ -62,33 +65,35 @@ MathJax.Hub.Config({
 <div class='main-template'>
 
 <div class='row'>
-<div class='col-md-2 text-center'><img src='images/7005.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/7005.jpg'></div>
 <div class='col-md-10'>
-<h5>Calinon, S. and Jaquier, N. (2019)</h5>
-<h5><strong>Gaussians on Riemannian Manifolds for Robot Learning and Adaptive Control</strong></h5> 
-<h5>arXiv:1909.05946.</h5>
+<h5>Pignat, E., Silvério, J. and Calinon, S. (2020)</h5>
+<h5><strong>Learning from Demonstration using Products of Experts: Applications to Manipulation and Task Prioritization</strong></h5> 
+<h5>arXiv:2010.03505.</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Calinon-arXiv2019.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+<a href='papers/Pignat-arXiv2020.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Calinon-arXiv2019.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+<a href='https://arxiv.org/pdf/2010.03505.pdf' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Pignat-arXiv2020.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>This paper presents an overview of robot learning and adaptive control applications that can benefit from a joint use of Riemannian geometry and probabilistic representations. We first discuss the roles of Riemannian manifolds, geodesics and parallel transport in robotics. We then present several forms of manifolds that are already employed in robotics, by also listing manifolds that have been underexploited so far but that have potentials in future robot learning applications. A varied range of techniques employing Gaussian distributions on Riemannian manifolds are then introduced, including clustering, regression, information fusion, planning and control problems. Two examples of applications are presented, involving the control of a prosthetic hand from surface electromyography (sEMG) data, and the teleoperation of a bimanual underwater robot. Further perspectives are finally discussed with suggestions of promising research directions.</p>
+<p>Probability distributions are key components of many learning from demonstration (LfD) approaches. While the configuration of a manipulator is defined by its joint angles, poses are often best explained within several task spaces. In many approaches, distributions within relevant task spaces are learned independently and only combined at the control level. This simplification implies several problems that are addressed in this work. We show that the fusion of models in different task spaces can be expressed as a product of experts (PoE), where the probabilities of the models are multiplied and renormalized so that it becomes a proper distribution of joint angles. Multiple experiments are presented to show that learning the different models jointly in the PoE framework significantly improves the quality of the model. The proposed approach particularly stands out when the robot has to learn competitive or hierarchical objectives. Training the model jointly usually relies on contrastive divergence, which requires costly approximations that can affect performance. We propose an alternative strategy using variational inference and mixture model approximations. In particular, we show that the proposed approach can be extended to PoE with a nullspace structure (PoENS), where the model is able to recover tasks that are masked by the resolution of higher-level objectives.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Calinon19,
-	author="Calinon, S. and Jaquier, N.",
-	title="Gaussians on {R}iemannian Manifolds for Robot Learning and Adaptive Control",
-	journal="arXiv:1909.05946",
-	year="2019",
-	pages="1--10"
-}
-</pre>
+<pre>@article{Pignat20,
+	author="Pignat, E. and Silv\'erio, J. and Calinon, S.",
+	title="Learning from Demonstration using Products of Experts: Applications to Manipulation and Task Prioritization",
+	journal="arXiv:2010.03505",
+	year="2020",
+	pages=""
+}</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 
