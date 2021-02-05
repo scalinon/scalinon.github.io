@@ -97,74 +97,7 @@ MathJax.Hub.Config({
 }</pre>
 	
 <h3>Source codes</h3>
-<p><h4>Download</h4>
-<p><img class='miniicon' src='minipng/compress.png'>  
-<a href="download/GMM-GMR.zip">Download GMM-GMR sourcecode</a></p>
-
-<h4>Usage</h4>
-<p>Unzip the file and run 'demo1', 'demo2' or 'demo3' in Matlab.</p>
-
-<h4>References</h4>
-<ul>
-<li>Calinon, S., Guenter, F. and Billard, A. (2007) 
-<b>On Learning, Representing and Generalizing a Task in a Humanoid Robot</b>. 
-IEEE Transactions on Systems, Man and Cybernetics, Part B. 37:2, 286-298.</li>
-</ul>
-<br>
-
-<h4>Demo 1 - Demonstration of the generalization process using Gaussian Mixture Regression
-(GMR)</h4>
-
-<a href="images/GMM-GMR-graph01.jpg" rel="lightbox">
-<img class="widethumb" src='images/GMM-GMR-graph01-thumbnail.jpg'>
-</a>
-
-<p>The program loads a 3D dataset, trains a Gaussian Mixture Model 
-(GMM), and retrieves a generalized version of the dataset with associated 
-constraints through Gaussian Mixture Regression (GMR). Each datapoint 
-has 3 dimensions, consisting of 1 temporal value and 2 spatial values 
-(e.g., drawing on a 2D Cartesian plane). A sequence of temporal values is 
-used as query points to retrieve a sequence of expected spatial 
-distribution through Gaussian Mixture Regression (GMR).</p>
-
-<h4>Demo 2 - Demonstration of Gaussian Mixture Regression (GMR) using spatial components as query points 
-of arbitrary dimensions</h4> 
-
-<a href="images/GMM-GMR-graph02.jpg" rel="lightbox">
-<img class="widethumb" src='images/GMM-GMR-graph02-thumbnail.jpg'>
-</a>
-
-<p>The programs loads a 4D dataset, trains a 
-Gaussian Mixture Model (GMM), and uses query points of 2 dimensions to 
-retrieve a generalized version of the data for the remaining 2 dimensions, 
-with associated constraints, through Gaussian Mixture Regression (GMR).
-Each datapoint has 4 dimensions, consisting of 2x2 spatial values 
-(e.g., drawing on a 2D Cartesian plane simultaneously with right and left 
-hand). A new sequence of 2D spatial values (data for left hand) is 
-loaded and used as query points to retrieve a sequence of expected 
-spatial distribution for the remaining dimensions (data for right 
-hand), through Gaussian Mixture Regression (GMR).</p>
-
-<h4>Demo 3 - Demonstration of the smooth transitions properties of data retrieved by 
-Gaussian Mixture Regression (GMR)</h4>
-
-<a href="images/GMM-GMR-graph03.jpg" rel="lightbox">
-<img class="widethumb" src='images/GMM-GMR-graph03-thumbnail.jpg'>
-</a>
-
-<p>This program loads two 3D datasets, 
-trains two separates Gaussian Mixture Model (GMM), and retrieves a 
-generalized version of the two datasets concatenated in time, with 
-associated constraints, through Gaussian Mixture Regression (GMR). 
-Each datapoint has 3 dimensions, consisting of 1 temporal value and 2 
-spatial values (e.g., drawing on a 2D Cartesian plane). A sequence of 
-temporal values is used as query points to retrieve a sequence of 
-expected spatial distribution through Gaussian Mixture Regression (GMR).
-The position of the last datapoint in the first dataset is not consistent
-with the first datapoint of the second dataset. However, by encoding 
-separately the two datasets in GMM and concatenating the components in 
-a single model, a smooth signal with smooth 
-transition between the two data is retrieved through regression.</p></p>
+<p>Source codes related to this publication are available as part of <a href='codes.htm'>PbDlib</a>.</p><br>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 
