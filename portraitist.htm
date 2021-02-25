@@ -51,39 +51,32 @@ MathJax.Hub.Config({
 
 <h3>Salvador DaBot, the portraitist robot</h3>
 
-<img class='quoteimg' src='images/quote01.png'><blockquote>Your printer is only botching its job and does not know anything about pop-art! It even can't dance!</blockquote>
+<!--<img class='quoteimg' src='images/quote01.png'><blockquote>Your printer is only botching its job and does not know anything about pop-art! It even can't dance!</blockquote>
 <div align="right"><i>Salvador DaBot, 2008</i></div>
+<br>-->
+<p>The Portraitist Robot recognizes human faces in its surroundings, takes a snaphot, and extracts relevant characteristics from the recorded image. It then draws portraits of the participants from the captured images by converting them into vector art, and by using inverse kinematics to control the robot's arm.</p>
+<p>You can find previous videos of the <b>Portraitist Robot v1.0</b> <a href="showVideo.php?video=5">here</a>. The <b>Portraitist Robot v2.0</b> now has a moustache and a beret!</p> 
 <br>
-<p>The Portraitist Robot recognizes human faces in its surroundings and extracts relevant characteristics from them. By using its uncanny artistic talent, it then draws portraits of the participants from the captured images by converting them into vector art and by using inverse kinematics to control the robot's arm.</p>
-<p>You can find previous videos of the <b>Portraitist Robot v1.0</b> <a href="showVideo.php?video=5">here</a>. Among the new features, the <b>Portraitist Robot v2.0</b> has been patched with moustache and beret add-ons.</p> 
-<br>
-<div align="center"> <embed
-src="flvplayer.swf" width="320" height="240"
-allowfullscreen="true" allowscriptaccess="always"
-flashvars="&displayheight=240&file=videos/portraitist.flv&image=images/portraitist.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
-</div>
-<br>
-<div align='center'>Click on &nbsp;<img src='images/play.png'>&nbsp; to play the video and on &nbsp;<img src='images/fullscreen.png'>&nbsp; to view the video in fullscreen mode</div>
-<br>
+<center>
+<video width="720" controls>
+  <source src="videos/portraitist.mp4" type="video/mp4">
+</video>
+</center>
 <p>Contours of the faces are first extracted from the images captured through the robot's internal cameras. The contours are then converted to paths by organizing them with respect to their lengths.<p>
 <p>Then, the image is segmented into several shades of gray. The contours and extracted areas are simplified to keep only the important features of the face and make it look similar to a cartoon representation. The different shades of gray will be reproduced by the robot by adding several layers of drawing patterns that are painted by the robot. These patterns are designed to make the painting look more artistic. The different areas are filled similarly as a human would do by recursively starting from one point, filling the current area, and jumping to another area when it is finished.</p>
 <p>Finally, a robust inverse kinematics controller is used to convert the 2D drawing into a set of joint angles that are run on the robot.<p>
 <br>
 <p>To look more human-like, motions of the left arm and head have been recorded through the use of motion sensors attached to the body of a person demonstrating the gesture to the robot. This process is indeed highly relevant as even when standing in a fixed posture, humans are producing small oscillations which are important to reproduce gestures that look natural and which can be reproduced on the robot to make it look more lively.</p>
 <br>
-<div align="center"> <embed
-src="flvplayer.swf" width="320" height="240"
-allowfullscreen="true" allowscriptaccess="always"
-flashvars="&displayheight=240&file=videos/xsens.flv&image=images/avatar-task01.jpg&width=320&height=240&backcolor=0xFFFFFF&lightcolor=0xFFFFFF">
-</div>
-<br>
-<div align='center'>Click on &nbsp;<img src='images/play.png'>&nbsp; to play the video and on &nbsp;<img src='images/fullscreen.png'>&nbsp; to view the video in fullscreen mode</div>
-<br>
+<video width="720" controls>
+  <source src="videos/xsens.mp4" type="video/mp4">
+</video>
+</center>
 
 <p>Apart from promoting Robotics as being a fun and interesting research area, this work also aims at showcasing the capabilities of the HOAP-3 robot as well as the integration of different motor and sensory components such as vision processing, clustering, human-robot interaction, speech synthesis, inverse kinematics and redundant control of humanoid robots.</p>
 <br>
 
-<p>Here are the first masterpieces of our mustachioed artist created during the <a href="http://www.sparksonline.com/products-services/google.htm" target="_BLANK">Google Zeitgeist'08</a> event!</p><br> 
+<p>Here are the first masterpieces of our mustachioed artist created during the Google Zeitgeist 2008 event.</p><br> 
 <center>
 <img src="images/Zeitgeist2008/ds19.jpg">&nbsp;<img src="images/Zeitgeist2008/ds20.jpg">&nbsp;<img src="images/Zeitgeist2008/ds21.jpg">&nbsp;<img src="images/Zeitgeist2008/ds18.jpg"><br>
 <img src="images/Zeitgeist2008/ps19.jpg">&nbsp;<img src="images/Zeitgeist2008/ps20.jpg">&nbsp;<img src="images/Zeitgeist2008/ps21.jpg">&nbsp;<img src="images/Zeitgeist2008/ps18.jpg"><br>
