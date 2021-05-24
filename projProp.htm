@@ -156,31 +156,6 @@ The descriptions below are available for either semester projects or master thes
 
 
 
-<hr><br>
-<h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/projProp-smartphone-interface01.png'>
-</figure>
-<p>We have developed an augmented reality interface running on Android smartphones to display a virtual robot (left image). The app relies on ARCore, Google's toolkit for building augmented reality applications on Android and iOS devices. This toolkit is used to estimate the location of the phone and to render 3D graphics on top of the camera's image displayed on the screen.</p>   
-<p>The aim of the project is to extend this interface to let the user move the virtual robot to a desired configuration (see right images as an illustration). Several options can be considered, such as clicking on the robot articulations and dragging them to their desired positions, or drawing a stick figure on top of the image, which is then interpreted to set the desired pose of the robot.</p>
-<p>The Android smartphone will be programmed in Java (knowledge of either Java or C++ is required for the project).</p>
-<p>The developed interface will be tested to change the pose of a real 7-axis Panda robot (Franka Emika), by first setting and visualizing the motion of the virtual robot on the smartphone, and then running the motion on the real robot. A basic interface between the mobile phone and the robot is already available for the project (by using the ROS middleware). The proposed approach will finally be evaluated with inexperienced user to determine if it is accurate and easy-to-use.</p>
-<p><b>Keywords:</b> augmented reality, smartphone interfaces, robotics, inverse kinematics, machine learning</p>
-</div>
-
-</div>
-
-
-
-
-
-
-
 
 
 <hr><br>
@@ -206,7 +181,49 @@ The descriptions below are available for either semester projects or master thes
 
 
 
+
+<hr><br>
+<h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/projProp-smartphone-interface01.png'>
+</figure>
+<p>We have developed an augmented reality interface running on Android smartphones to display a virtual robot (left image). The app relies on ARCore, Google's toolkit for building augmented reality applications on Android and iOS devices. This toolkit is used to estimate the location of the phone and to render 3D graphics on top of the camera's image displayed on the screen.</p>   
+<p>The aim of the project is to extend this interface to let the user move the virtual robot to a desired configuration (see right images as an illustration). Several options can be considered, such as clicking on the robot articulations and dragging them to their desired positions, or drawing a stick figure on top of the image, which is then interpreted to set the desired pose of the robot.</p>
+<p>The Android smartphone will be programmed in Java (knowledge of either Java or C++ is required for the project).</p>
+<p>The developed interface will be tested to change the pose of a real 7-axis Panda robot (Franka Emika), by first setting and visualizing the motion of the virtual robot on the smartphone, and then running the motion on the real robot. A basic interface between the mobile phone and the robot is already available for the project (by using the ROS middleware). The proposed approach will finally be evaluated with inexperienced user to determine if it is accurate and easy-to-use.</p>
+<p><b>Keywords:</b> augmented reality, smartphone interfaces, robotics, inverse kinematics, machine learning</p>
+</div>
+
+</div>
+
+
+
+
+
+
 <!--
+
+Open Dynamic Robot Initiative
+
+An Open Torque-Controlled Modular Robot Architecture for Legged Locomotion Research
+
+https://open-dynamic-robot-initiative.github.io/
+
+Grimminger et al. (2020). An Open Torque-Controlled Modular Robot Architecture for Legged Locomotion Research. IEEE Robotics and Automation Letters, 5:2, 3650-3657.
+https://arxiv.org/pdf/1910.00093.pdf
+
+Pybullet
+https://github.com/open-dynamic-robot-initiative/robot_properties_solo
+https://github.com/open-dynamic-robot-initiative/robot_properties_solo/blob/master/demos/demo_simulate_solo8.py
+
+LQT/iLQR with least-squares controller formulation, with a control primitives representation separating feedforward and feedback terms, for a quadruped robot application
+
+
 <hr><br>
 <h4>Interactive GUI for intuitive programming of robot manipulation tasks</h4>
 
@@ -368,6 +385,8 @@ The descriptions below are available for either semester projects or master thes
 -->
 
 
+
+
 <!--
 <hr><br>
 <h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
@@ -386,6 +405,7 @@ The descriptions below are available for either semester projects or master thes
 
 </div>
 -->
+
 
 
 <!--
@@ -413,6 +433,7 @@ The descriptions below are available for either semester projects or master thes
 -->
 
 
+
 <!--
 <hr><br>
 <h4>ONLINE IMITATION WITH OBJECT-AWARE MAPPING</h4>
@@ -437,9 +458,9 @@ The descriptions below are available for either semester projects or master thes
 </div>
 -->
 
-<!--
 
----
+
+<!--
 Optimal control with keypoints learned from demonstration
 
 Kinesthetic teaching consists of grabbing the robot arm to demonstrate a task while the robot collects proprioceptive information through its joint encoders. Demonstrating a full movement with kinesthetic teaching is cumbersome and often loses the fluidity and dynamics in the movement. This project proposes to use kinesthetic teaching only for defining a set of viapoints that the robot should pass through, and to rely on optimization to let the robot compute control commands to pass through the desired viapoints. To do this, a spacetime formulation of iLQR will be tested, which consists of iteratively solving linear quadratic regulation problems, resulting in a planning strategy that takes into account both time and space aspects to fulfill the task. 
