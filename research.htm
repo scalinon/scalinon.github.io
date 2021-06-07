@@ -57,6 +57,7 @@ MathJax.Hub.Config({
 
 
 
+
 <br>
 <a class='anchor' id='smalldata'></a>
 <h4 class='p-2 text-white bg-dark'>LEARNING IN A HANDFUL OF TRIALS</h4>
@@ -65,13 +66,23 @@ MathJax.Hub.Config({
 <img src='images/datafeed-small03.png' class='wrappedimg'>
 <p class='text-justify'>The field of machine learning has evolved toward approaches relying on huge amounts of data. In several application domains, these big datasets are already available, or are inexpensive to collect/produce. In contrast, robotics is characterized by a different problem setting. It can be viewed a <b>wide-ranging data problem</b>, with models that can start learning from small datasets, and that can still exploit more data if such data become available during the robot's lifespan.</p> 
 <p class='text-justify'>The current trend of machine learning relying on big datasets can be harmful to robotics. First, in contrast to other fields, the data formats in robotics vary significantly across tasks, environments, users and platforms (different sensors and actuators, not only in formats but also in modalities and organizations). Then, the learned models often need to be interpretable to provide guarantees and to be linked to other techniques. For these reasons, my work focuses on <b>robot learning approaches that can rely on only few demonstrations or trials</b>.</p>
-<p class='text-justify'>The main challenge boils down to <b>finding structures that can be used in a wide range of tasks</b>, which include (from high level to low level):
-<ul>
+<p class='text-justify'>The main challenge boils down to <b>finding structures that can be used in a wide range of tasks</b>, which include (from high level to low level):</p>
+<!--<ul>
 <li><a href='#learning'>Learning structures</a></li>
 <li><a href='#combination'>Combination structures</a></li>
 <li><a href='#geometric'>Geometric structures</a></li>
 <li><a href='#data'>Data structures</a></li>
-</ul>
+</ul>-->
+</div>
+</div>
+<div class='row'>
+<div class='col-md-3 text-center'><a href='#learning'><img class='figure-img img-fluid' src='images/structure-learning-small01.jpg'><br>Learning structures</a></div>
+<div class='col-md-3 text-center'><a href='#combination'><img class='figure-img img-fluid' src='images/structure-combination-small01.jpg'><br>Combination structures</a></div>
+<div class='col-md-3 text-center'><a href='#geometric'><img class='figure-img img-fluid' src='images/structure-geometric-small01.jpg'><br>Geometric structures</a></div>
+<div class='col-md-3 text-center'><a href='#data'><img class='figure-img img-fluid' src='images/structure-data-small01.jpg'><br>Data structures</a></div>
+</div>
+<div class='row'>
+<div class='col-md-12'>
 <p class='text-justify'>Efficient robot skills acquisition requires the right trade-off between learning and exploitation of these different form of structures (at model and algorithm levels).</p>
 <div class='p-3 bg-light text-dark border'>
 <p><b>Reference:</b></p>
@@ -79,6 +90,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 
 
 <br>
@@ -102,6 +114,7 @@ MathJax.Hub.Config({
 
 
 
+
 <br>
 <a class='anchor' id='combination'></a>
 <h4 class='p-2 text-white bg-dark'>COMBINATION STRUCTURES</h4>
@@ -115,12 +128,41 @@ MathJax.Hub.Config({
 <p class='text-justify'>State estimation is also classically solved as an information fusion problem, resulting in a product of Gaussians that takes into account uncertainty in motion and sensor(s) models (a well-known example is the Kalman filter), see (b) in the figure above. We propose to treat the combination of behavior primitives within a similar mathematical framework, by relying on products of experts, where each expert takes care of a specific aspect of the task to achieve.</p>
 <p class='text-justify'>This approach allows the <b>orchestration of different controllers</b>, which can be learned separately or altogether (by variational inference). With this formulation, the robot can counteract perturbations that have an impact on the fulfillment of the task, while ignoring other perturbations. It also allows us to create bridges with research in biomechanics and motor control, with formulations including minimal intervention principles, uncontrolled manifolds or optimal feedback control.</p>
 <!--This approach allows us to combine control, planning and perception features in an efficient manner, by allowing multiple behavior primitives to be orchestrated in parallel (including prioritization with null-space projection structures). In this framework, each behavior primitive contributes to the task by taking into account the (co)variations allowed in a task and the uncertainty of the expertise.-->
+
+<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#taskparameterized'>Task-parameterized movements <b>[open]</b></button><br><br> 
+<div id='taskparameterized' class='collapse'>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/TPmodels01.jpg'></figure>
+<p class='text-justify'>To facilitate the acquisition of manipulation skills, <b>task-parameterized models</b> can be exploited to take into account that <b>motions typically relates to objects, tools or landmarks</b> in the robot's workspace. The approach consists of <b>encoding a movement in multiple coordinate systems</b> (e.g., from the perspectives of different objects), in the form of trajectory distributions. In a new situation (e.g., for new object locations), the reproduction problem corresponds to a fusion problem, where the variations in the different coordinate systems are exploited to generate a movement reference tracked with variable gains, providing the robot with a <b>variable impedance behavior</b> that automatically adapts to the precision required in the different phases of the task. For example, in a pick-and-place task, the robot will be stiff if the object needs to be reached/dropped in a precise way, and will remain compliant in the other parts of the task.</p> 
+<p class='text-justify'>Our ongoing work explores the extension of the task-parameterized principle to a richer set of behaviors, including <b>coordinate systems that take into account symmetries</b> (e.g., cylindrical and spherical coordinate systems) and <b>nullspace projection structures</b>.</p>
+<div class='p-3 bg-light text-dark border'>
+<p><b>References:</b></p>
+<p><a href='paper4018.htm' class='nodecor'>Calinon, S. (2016). <strong>A Tutorial on Task-Parameterized Movement Learning and Retrieval</strong>. Intelligent Service Robotics (Springer), 9:1, 1-29.</a> <a href='paper4018.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-JIST2015.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper4033.htm' class='nodecor'>Silvério, J., Calinon, S., Rozo, L. and Caldwell, D.G. (2019). <strong>Learning Task Priorities from Demonstrations</strong>. IEEE Transactions on Robotics, 35:1, 78-94.</a> <a href='paper4033.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Silverio-TRO2019.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>
+</div>
+
+<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br> 
+<div id='optimalcontrol' class='collapse'>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/LQT-small02.png'></figure>
+<p class='text-justify'><b>Linear quadratic tracking (LQT)</b> is a simple form of optimal control that trades off tracking and control costs expressed as quadratic terms over a time horizon, with the evolution of the state described in a linear form. This constrained problem can be solved by expressing the state and the control commands as trajectories, corresponding to a least squares solution. A <b>probabilistic interpretation of the LQT solution</b> can be built by using the residuals of this estimate.</p>
+<p class='text-justify'>This approach allows the <b>creation of bridges between learning and control</b>. For example, in learning from demonstration, the observed (co)variations in a task can be formulated as an LQT objective function, which then provides a trajectory distribution in control space that can be converted to a trajectory distribution in state space. All the operations are analytic and only exploit basic linear algebra.</p>
+<p class='text-justify'>The proposed approach can also be extended to <b>model predictive control (MPC), iterative LQR (iLQR) and differential dynamic programming (DDP)</b>, whose solution needs this time to be interpreted locally at each iteration step of the algorithm.</p>
+<div class='p-3 bg-light text-dark border'>
+<p><b>References:</b></p>
+<p><a href='paper5004.htm' class='nodecor'>Calinon, S. and Lee, D.  (2019). <strong>Learning Control</strong>. Vadakkepat, P. and Goswami, A. (eds.). Humanoid Robotics: a Reference, pp. 1261-1312. Springer.</a> <a href='paper5004.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-Lee-learningControl.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3054.htm' class='nodecor'>Calinon, S. (2016). <strong>Stochastic learning and control in multiple coordinate systems</strong>. Intl Workshop on Human-Friendly Robotics (HFR).</a> <a href='paper3054.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-HFR2016.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>
+</div>
+
 <div class='p-3 bg-light text-dark border'>
 <p><b>Reference:</b></p>
 <p><a href='paper7005.htm' class='nodecor'>Pignat, E., Silvério, J. and Calinon, S. (2020). <strong>Learning from Demonstration using Products of Experts: Applications to Manipulation and Task Prioritization</strong>. arXiv:2010.03505.</a> <a href='paper7005.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Pignat-arXiv2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
 </div>
 </div>
 </div>
+
+
+
 
 
 <br>
@@ -130,6 +172,17 @@ MathJax.Hub.Config({
 <div class='col-md-12'>
 <p class='text-justify'><b>Data are not only vectors!</b> This is especially true in robotics, where the encountered data are characterized by simple but varied geometries. These structures are often underexploited in learning, planning, control and perception. In our work, we exploit <b>Riemannian geometry</b> to extend algorithms initially developed for standard Euclidean data, by taking into account the structures of these manifolds. In robotics, these manifolds include orientations, ellipsoids, graphs and subspaces (see figure below).</p>
 <figure class='figure p-3'><img class='figure-img img-fluid' src='images/Riemannian-small03.png'></figure>
+
+<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#manipulability'>Learning, tracking and transfer of manipulability ellipsoids <b>[open]</b></button><br><br> 
+<div id='manipulability' class='collapse'>
+<p class='text-justify'>Skills transfer can exploit <b>stiffness and manipulability ellipsoids</b>, in the form of <b>geometric descriptors</b> representing the skills to be transferred to the robot. As these ellipsoids lie on <b>symmetric positive definite (SPD) manifolds</b>, Riemannian geometry can be used to learn and reproduce these descriptors in a probabilistic manner.</p>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/manipulability-small02.png'></figure>
+<div class='p-3 bg-light text-dark border'>
+<p><b>Reference:</b></p>
+<p><a href='paper3079.htm' class='nodecor'>Jaquier, N., Rozo, L. and Calinon, S. (2020). <strong>Analysis and Transfer of Human Movement Manipulability in Industry-like Activities</strong>. In Proc. of IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS), pp. 11131-11138.</a> <a href='paper3079.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-IROS2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>
+</div>
+
 <div class='p-3 bg-light text-dark border'>
 <p><b>References:</b></p>
 <p><a href='paper4039.htm' class='nodecor'>Calinon, S. (2020). <strong>Gaussians on Riemannian Manifolds: Applications for Robot Learning and Adaptive Control</strong>. IEEE Robotics and Automation Magazine (RAM), 27:2, 33-45.</a> <a href='paper4039.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-RAM2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
@@ -140,13 +193,22 @@ MathJax.Hub.Config({
 
 
 
+
+
 <br>
 <a class='anchor' id='data'></a>
 <h4 class='p-2 text-white bg-dark'>DATA STRUCTURES</h4>
 <div class='row'>
 <div class='col-md-12'>
-<p class='text-justify'>Another type of structure that we exploit relates to the organization of data as <b>multidimensional arrays</b> (also called tensors). These data appear in various robotic tasks, either as the natural organization of sensory/motor data (tactile arrays, images, kinematic chains), or as the result of standardized preprocessing steps (moving time windows, covariance features). Developed in the fields of <b>multilinear algebra</b> and <b>tensor methods</b>, these approaches extend linear factorization techniques such as singular value decomposition to <b>multilinear decomposition</b>, without requiring the transformation of the tensors to vectors or matrices. We exploit these techniques to provide robots with the capability <b>to learn tasks from only few tensor datapoints</b>, by relying on the multidimensional nature of the data.</p> 
+<p class='text-justify'>Another type of structure that we exploit relates to the organization of data as <b>multidimensional arrays</b> (also called tensors). These data appear in various robotic tasks, either as the natural organization of sensory/motor data (tactile arrays, images, kinematic chains), as the result of standardized preprocessing steps (moving time windows, covariance features), data in multiple coordinate systems, or in the form of basis functions decompositions. Developed in the fields of <b>multilinear algebra</b> and <b>tensor methods</b>, these approaches extend linear factorization techniques such as singular value decomposition to <b>multilinear decomposition</b>, without requiring the transformation of the tensors to vectors or matrices. We exploit these techniques to provide robots with the capability <b>to learn tasks from only few tensor datapoints</b>, by relying on the multidimensional nature of the data.</p> 
 <figure class='figure p-3'><img class='figure-img img-fluid' src='images/tensor-small02.png'></figure>
+
+<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#ergodic'>Ergodic control applied to insertion tasks <b>[open]</b></button><br><br> 
+<div id='ergodic' class='collapse'>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/ergodic-small02.png'></figure>
+<p class='text-justify'>In robotics, <b>ergodic control</b> extends the tracking principle by specifying a probability distribution over an area to cover instead of a trajectory to track. The original problem is formulated as a spectral multiscale coverage problem, typically requiring the <b>spatial distribution to be decomposed as Fourier series</b>. This approach does not scale well to control problems requiring exploration in search space of more than 2 dimensions. To address this issue, we propose the use of <b>tensor trains</b>, a recent <b>low-rank tensor decomposition</b> technique from the field of multilinear algebra. The proposed solution is efficient, both computationally and storage-wise, hence making it suitable for its online implementation in robotic systems. The approach is applied to a peg-in-hole insertion task requiring full 6D end-effector poses.</p>
+</div>
+
 <div class='p-3 bg-light text-dark border'>
 <p><b>References:</b></p>
 <p><a href='paper4048.htm' class='nodecor'>Shetty, S., Silvério, J. and Calinon, S. (2021). <strong>Ergodic Exploration using Tensor Train: Applications in Insertion Tasks</strong>. IEEE Trans. on Robotics (T-RO).</a> <a href='paper4048.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Shetty-TRO2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
