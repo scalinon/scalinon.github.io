@@ -1,0 +1,37 @@
+<html>
+<body>
+<script src="js/leon.js"></script>
+<script src="js/FileSaver.js"></script>
+<script>
+
+leon = new LeonSans({
+	text: 'Hello',
+	size: 100,
+	weight: 400,
+	isPath: true,
+	pathGap: 0.2,
+	align: 'center',
+	tracking: 0,
+	leading: 0
+});
+
+let str = "";
+for (j = 0; j < leon.data.length; j++) {
+	data = leon.data[j];
+	for (k = 0; k < data.paths.length; k++) {
+		p = data.paths[k];
+		str += p.x + " " + p.y + "\n";
+		if (p.type == 'a')
+			str += "\n"; //Add extra linebreak for isolated points in characters
+	}
+	if (data.paths.length>0)
+		str += "\n";
+}
+
+//var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
+//saveAs(blob, "data.txt");
+document.write(str);
+
+</script>
+</body>
+</html>
