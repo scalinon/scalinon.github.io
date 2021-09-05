@@ -132,6 +132,25 @@ The descriptions below are available for either semester projects or master thes
 </div>
 
 
+<!--
+Sensorimotor skills with a Gaussian process implicit surface representation of the environment
+
+In sensorimotor control problems, a robot exploits its sensory information to react to perturbations while achieving an overall plan. In this project, we will consider a robot manipulation problem, where the sensors are embedded within the end-effector of the robot. These sensors can typically take the form of cameras, proximity sensors, force/torque sensors, or tactile sensors. By using embedded sensors, the robot can build a model of its surrounding environment by active perception, with a trade-off between exploration and exploitation that depend on the required accuracy and locality to achieve the task while reacting appropriately to encountered perturbations. 
+
+Several approaches can be used to represent the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The project proposes to study the use of implicit surface representations in robotics, which are typically implemented as Gaussian processes (GPs), where kernel functions such as radial basis functions (RBFs) are used to measure distances. GPs provide gradients to let the robot know how to avoid an obstacle, move along a surface, or establish contact with the closest surface. GPs also provide a measure of uncertainty that can be exploited within a minimal intervention control strategy (i.e., exploiting redundancy and coordination by rejecting only the perturbations that would have an effect on the achievement of the task). 
+
+Three improvements are currently investigated in our group to render this technique applicable in robotics: 1) the uncertainty information can be exploited to move the robot towards areas that are yet unknown, in order to improve the model of the environment through active sensing; 2) the use of a sparse GP approach can be exploited to reduce the computation time when large numbers of datapoints have been collected; 3) the extension to other kernels that would better take into account the geometry of the problem. In this project, it is proposed to investigate these aspects within a robot manipulations skill experiment.  
+
+References:
+Original GPIS approach: http://gpss.cc/gpip/abstract/owilliams.pdf
+Use of GPIS in robotics: https://arxiv.org/abs/2010.11487
+Sparse GPs: https://arxiv.org/abs/2008.09848
+
+GPIS example code:
+https://gitlab.idiap.ch/rli/pbdlib-sandbox-matlab/-/blob/master/demos/demo_GPIS_minimal01.m
+-->
+
+
 
 <hr><br>
 <h4>MOTION OPTIMIZATION WITH A LEGIBILITY PERSPECTIVE</h4>
@@ -207,6 +226,14 @@ The descriptions below are available for either semester projects or master thes
 
 
 <!--
+
+Learning of non-photorealistic renderings for a caricaturist robot
+
+This project aims to review, categorize and test existing approaches in deep learning to map an image to a set of trajectories that a robot can then draw on a canvas, by taking the example of portrait caricatures as an example of generative non-photorealistic rendering (NPR) problem (see CariGAN or WarpGAN as starting examples). Several data processing pipelines can be considered, with parts that can be specified manually, and others that can be learned from examples. It also includes the potential consideration of intermediary steps, such as detecting the location of facial features (e.g., by using Google's MediaPipe Face Mesh), image-to-image processing applying pencil/brush sketch rendering effects, or applying a distortion mask for a warping transformation defined explicitly. The project also aims at studying metrics or methods to compare these different approaches. The selected approach(es) will take into account the amount of data that these methods require, the availability of these data and of pretrained models, and the possibility of employing the selected method(s) on smartphones or CPUs (instead of GPUs).
+
+
+
+
 
 Test and simulation of a torque-controlled quadruped robot
 
