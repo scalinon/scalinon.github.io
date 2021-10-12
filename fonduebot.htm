@@ -54,18 +54,20 @@ MathJax.Hub.Config({
 <div class='row'><div class='col-sm-12'>
 <img class='figure-img img-fluid' src='images/fonduebot01.jpg'><br><br>
 
-<h4>Learning keypoints from physical guidance of the robot</h4>
+<p class='text-justify'>FondueBot can prepare Swiss fondues by pouring cheese and wine in a caquelon, and stirring the preparation by monitoring the heat of a liquid fuel stove. This skill has been reached by combining kinethetic teaching (learning from demonstration) and motion optimization (optimal control).</p><br><br> 
+
+<h4>Learning keypoints from physical guidance of the robot</h4><br>
 
 <img src='images/kinestheticteaching01.jpg' class='wrappedimg'>
 <p class='text-justify'>Learning from demonstration is a field of research that aims at developing learning algorithms and intuitive interfaces to democratize the use of robots, by allowing people to teach robots new tasks without requiring an expertise in robotics or in computer programming.</p>
-
 <p class='text-justify'>Kinesthetic teaching consists of physically guiding the robot to demonstrate the task to achieve. This learning technique is a form of human-robot collaboration, in which the robot compensates for the effect of gravity, so that the user can freely move the robot, without feeling its weight. It also gives the impression that there are no motors in the articulations of the robot.</p> 
-
-<p class='text-justify'>With the position and force sensors located at the articulations, the robot can record the movement and behavior taught by the user to achieve the task. Kinesthetic teaching is intuitive to record a set of robot poses, but it remains hard for the user to demonstrate a continuous movement or a dynamic task that would fully exploit the robot capability. For this reason, the demonstration of keypoints is combined with optimization techniques to let the robot exploit its 7 articulations in an optimal manner.</p>
-
-<h4>Self-refinement of the demonstrated task by optimization</h4>
+<p class='text-justify'>With the position and force sensors located at the articulations, the robot can record the movement and behavior taught by the user to achieve the task. Kinesthetic teaching can be used to record a set of robot poses, but it remains hard for the user to demonstrate a continuous movement or a dynamic task that would fully exploit the robot capability. For this reason, the demonstration of the keypoints (key postures) is combined with optimization techniques, in order to let the robot exploit its 7 articulations in an optimal manner.</p><br><br>
 
 
+<h4>Self-refinement of the demonstrated task by optimization</h4><br>
+
+<img src='images/ilqr_optimization01.jpg' class='wrappedimg'>
+<p class='text-justify'>The robot refines the demonstrated task by finding gestures to connect the different keypoints shown by the user. Instead of moving in straight line from one keypoint to the next, the robot generates a fluid and efficient motion that takes into account smoothness and timing aspects. This optimal control approach allows the robot to anticipate the full of keypoints requested by the user, while reducing the control effort required to achieve the task.</p> 
 
 </div></div>
 
