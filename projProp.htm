@@ -57,69 +57,49 @@ The descriptions below are available for either semester projects or master thes
 
 
 
-
-
 <hr><br>
-<h4>ROBOT ASSISTANCE FOR STANDING UP AND SITTING DOWN</h4>
+<h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
 
 <br>
 <div class='row'>
 
-<div class='col-md-6'>
-<figure class='text-center'>
-<img class='figure-img img-fluid' src='images/SWITCHproj_3D01.jpg'>
+<div class='col-md-7'>
+<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined. The corresponding learning problem consists of estimating how to combine the set of basis functions to form a desired movement. The set of basis functions (dictionary of movement primitives) can be learned together with their combination. To do this, a sparse coding approach for dictionary learning will be exploited, as presented in the video and paper below. The approach will be evaluated on robot motion data.</p>
+<p>The standard dictionary learning problem is formulated with data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. The project proposes to extend this approach to the more general case in which x and y are multidimensional arrays (also called tensors, see slides below). The approach will be evaluated on robot motion data.</p>
+<p><b>Keywords:</b> tensor methods, movement primitives, sparse coding</p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/projProp-basisFunctions01.png'>
 </figure>
-</div>
-<div class='col-md-6'>
-<figure class='text-center'>
-<img class='figure-img img-fluid' src='images/SWITCHproj_2D01.png'>
-</figure>
-</div>
-<div class='col-md-12'>
-<p>The project will explore the problem of assisting a user to stand up and sit down. This problem will be modeled as two kinematic chains, where only planar movements will be considered. One kinematic chain will represent a humanoid robot and the other will represent the user to assist. It is assumed that both have fixed feet on the ground and are connected to a common endeffector point representing their hands, meaning that the resulting system is a closed kinematic chain in which only a few of the articulations can be controlled.</p> 
-<p>The assistance skill consists of moving the user from a static sitting pose to a static standing pose through the contact point. It involves challenging aspects of anticipation, shared control, initiation of movements, leader-follower behaviors and haptic communication. This project will concentrate on studying the dynamical motion aspects to achieve such assistance, which requires the consideration of inertia and center of mass movements with respect to the feet.</p>
-</div>
-
-</div>
-
-
-
-<hr><br>
-<h4>TENSOR FACTORIZATION FOR MULTI-TASK LEARNING</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/tensor-factorization01.jpg'>
-<figcaption class='figure-caption'>Left: Standard matrix factorization (singular value decomposition). Right: Tensor factorization.</figcaption>
-</figure>
-<p>Manipulation skills in robotics are encoded as a weighted superposition of movement primitives, where the problem consists of learning a dictionary of movement primitives together with the superposition weights. The current limitation is that each skill is learned individually, which limits the skills transfer capability.</p>
-<p>The project proposes to address this limitation by relying on tensor methods, which will be used by the robot to devise a common dictionary to learn multiple skills in an incremental manner. Tensor methods are extensions of standard linear algebra techniques to arrays of higher dimension (typically, extension of singular value decomposition to arrays of more than two dimensions, capturing correlations between different dimensions in a compact way).</p> 
-<p>This project takes place within the LEARN-REAL project (learning physical manipulation skills with simulators using realistic variations).</p>
-
 <p><b>References:</b></p>
-<p><a href='misc/EE613/EE613-linearRegressionII.pdf' target='_blank'>Slides for course on tensor-variate regression (the slides contain also other topics)</a></p>
+<p><a href='misc/EE613/EE613-tensorRegression.pdf' target='_blank'>Slides from a lecture on tensor-variate regression</a></p>
 <p><a href='https://arxiv.org/pdf/1711.10781.pdf' target='_blank'>Rabanser, S., Shchur, O. and Günnemann, S., Introduction to Tensor Decompositions and their Applications in Machine Learning</a></p>
-<p><a href='https://www.ijcai.org/Proceedings/2017/0484.pdf' target='_blank'>Zhao, C., Hospedales, T.M., Stulp, F. and Sigaud, O., Tensor Based Knowledge Transfer across Skill Categories for Robot Control</a></p>
+</div>
 
 </div>
-</div>
+
+
+
 
 
 
 <hr><br>
-<h4>GAUSSIAN PROCESS FOR IMPLICIT SURFACE REPRESENTATION</h4>
+<h4>CONTROL AND PLANNING WITH A GAUSSIAN PROCESS IMPLICIT SURFACE REPRESENTATION OF THE ENVIRONMENT</h4>
 
 <br>
 <div class='row'>
 
 <div class='col-md-8'>
-<p>There are several ways of representing the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The latter have several advantages, such as providing gradients to let the robot knows how to avoid an obstacle, move along a surface, or establish contact with the closest surface. It also provides a measure of uncertainty that can be exploited within an optimal control strategy. Implicit surface representations are typically implemented as Gaussian processes, where standard kernel functions such as radial basis functions are used to measure distances. This project proposes to investigate the extension to other kernels that would better take into account the geometry of the problem.</p>
+<p>In this project, we will consider a robot manipulation problem with sensors mounted at the end-effector of the robot. These sensors can typically take the form of cameras, proximity sensors, or tactile sensors. With these sensors, the robot can build a model of its surrounding environment by active perception, with a trade-off between exploration and exploitation that depend on the required accuracy and locality to achieve the task while reacting appropriately to encountered perturbations.</p> 
+<p>Several approaches can be used to represent the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The project proposes to study the use of implicit surface representations, which are typically implemented as Gaussian processes (GPs), where kernel functions such as radial basis functions (RBFs) are used to measure distances. GPs provide gradients to let the robot know how to avoid an obstacle, move along a surface, or establish contact with the closest surface. GPs also provide a measure of uncertainty that can be exploited within a minimal intervention control strategy (i.e., exploiting redundancy and coordination by rejecting only the perturbations that would have an effect on the achievement of the task).</p> 
+<p>This semester project proposes to investigate two improvements of GPIS based on RBFs: 1) the use of a sparse GP approach to reduce the computation time when large numbers of datapoints have been collected; 2) the extension to other kernels that would better take into account the geometry of the problem.</p>
 <p>This project takes place within the MEMMO project (memory of motion).</p>
-<p><b>Reference:</b></p>
-<p><a href='https://www.microsoft.com/en-us/research/wp-content/uploads/2007/04/gpc1.pdf' target='_blank'>Williams, O. and Fitzgibbon, A., Gaussian Process Implicit Surfaces</a></p>
+<p><b>References:</b></p>
+<p><a href='http://gpss.cc/gpip/abstract/owilliams.pdf' target='_blank'>Original GPIS approach</a></p>
+<p><a href='https://arxiv.org/abs/2010.11487' target='_blank'>Use of GPIS in robotics</a></p>
+<p><a href='https://arxiv.org/abs/2008.09848' target='_blank'>Sparse GPs</a></p>
 </div>
 
 <div class='col-md-4'>
@@ -131,24 +111,6 @@ The descriptions below are available for either semester projects or master thes
 
 </div>
 
-
-<!--
-Sensorimotor skills with a Gaussian process implicit surface representation of the environment
-
-In sensorimotor control problems, a robot exploits its sensory information to react to perturbations while achieving an overall plan. In this project, we will consider a robot manipulation problem, where the sensors are embedded within the end-effector of the robot. These sensors can typically take the form of cameras, proximity sensors, force/torque sensors, or tactile sensors. By using embedded sensors, the robot can build a model of its surrounding environment by active perception, with a trade-off between exploration and exploitation that depend on the required accuracy and locality to achieve the task while reacting appropriately to encountered perturbations. 
-
-Several approaches can be used to represent the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The project proposes to study the use of implicit surface representations in robotics, which are typically implemented as Gaussian processes (GPs), where kernel functions such as radial basis functions (RBFs) are used to measure distances. GPs provide gradients to let the robot know how to avoid an obstacle, move along a surface, or establish contact with the closest surface. GPs also provide a measure of uncertainty that can be exploited within a minimal intervention control strategy (i.e., exploiting redundancy and coordination by rejecting only the perturbations that would have an effect on the achievement of the task). 
-
-Three improvements are currently investigated in our group to render this technique applicable in robotics: 1) the uncertainty information can be exploited to move the robot towards areas that are yet unknown, in order to improve the model of the environment through active sensing; 2) the use of a sparse GP approach can be exploited to reduce the computation time when large numbers of datapoints have been collected; 3) the extension to other kernels that would better take into account the geometry of the problem. In this project, it is proposed to investigate these aspects within a robot manipulations skill experiment.  
-
-References:
-Original GPIS approach: http://gpss.cc/gpip/abstract/owilliams.pdf
-Use of GPIS in robotics: https://arxiv.org/abs/2010.11487
-Sparse GPs: https://arxiv.org/abs/2008.09848
-
-GPIS example code:
-https://gitlab.idiap.ch/rli/pbdlib-sandbox-matlab/-/blob/master/demos/demo_GPIS_minimal01.m
--->
 
 
 
@@ -168,29 +130,6 @@ https://gitlab.idiap.ch/rli/pbdlib-sandbox-matlab/-/blob/master/demos/demo_GPIS_
 <p>Standard motion optimization problems in robotics focus on the use of cost functions that measure how well a task is executed (e.g., positions to reach, viapoints to pass through, orientations to maintain). In a manipulation task, the typical goal will be to generate movements that efficiently execute the task. We propose to extend the definition of these costs to include human-robot interaction aspects.</p>
 <p>The project will investigate the problem of generating movements for the robot that would allow an external observer to understand quickly the intention of the robot. This requires the investigation of legibility costs to be used to generate motions capable of reducing ambiguity (e.g., by exaggerating the movement to make it more legible to a user interacting with the robot). The side image shows how a legible movement can be generated to reduce ambiguity in the intended movement (here, to emphasize that the blue object will be grapsed instead of the orange object).</p>
 <p>This project takes place within the ROSALIS project (robot skills acquisition through active learning and social interaction strategies).</p>
-</div>
-
-</div>
-
-
-
-
-
-
-<hr><br>
-<h4>SUBSPACE LEARNING FOR ROBOT CONTROL APPLICATIONS</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
-<p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
-<p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
-<p><b>Keywords:</b> dynamical systems, robot control, subspace learning, delay embedding, time series analysis</p>
-<p><b>References:</b></p>
-<p><a href='https://arxiv.org/pdf/1608.05306.pdf' target='_blank'>Steven L. Brunton, Bingni W. Brunton, Joshua L. Proctor, Eurika Kaiser, and J. Nathan Kutz, "Chaos as an Intermittently Forced Linear System", Nature Communications, 2017</a></p>
-<p><a href='https://www.youtube.com/watch?v=831Ell3QNck' target='_blank'>Hankel Alternative View of Koopman (HAVOK) Analysis (video)</a></p>
 </div>
 
 </div>
@@ -222,27 +161,157 @@ https://gitlab.idiap.ch/rli/pbdlib-sandbox-matlab/-/blob/master/demos/demo_GPIS_
 
 
 
+<hr><br>
+<h4>SMARTPHONE INTERFACE FOR A CARICATURIST ROBOT</h4>
 
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
+</figure>
+<p>This semester project takes places within a larger project that aims at creating a portraitist robot for a museum exhibition: https://calinon.ch/drozbot.htm. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
+<p>The goal of this semester project is to replace the camera held by the robot with a smartphone interface that would allow the users to select or edit a caricature interactively. Mediapipe Face Mesh (https://google.github.io/mediapipe/solutions/face_mesh.html) will be used as a CNN-based approach to extract a set of facial landmarks from the phone's camera. From the facial landmarks, a new image will be generated by removing automatically the background and by deforming the original image based on a subset of the facial landmarks, where the distortions can be either predefined or edited by the user. The developed interface will be evaluated to determine if it is intuitive for first-time users.</p>
+<p><b>Keywords:</b> smartphone interface for robotics applications, image processing, deep learning, nonphotorealistic rendering</p>
+</div>
+
+
+
+
+
+<hr><br>
+<h4>ORIENTATION AND FORCE CONTROL OF A ROBOT HOLDING A PAINT BRUSH</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
+</figure>
+<p>This semester project takes places within a larger project that aims at creating a portraitist robot for a museum exhibition: https://calinon.ch/drozbot.htm. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
+<p>The goal of this semester project is to study the extension of the approach to brush strokes, which requires to take into account the orientation of the brush when generating the paths to draw the portrait, as well as when controlling the robot holding the brush. To do so, the ergodic control formulation used to generate the paths from an image will be employed, as it allows patterns of different shapes to be considered for the drawing of an image. Additionally, the project will investigate if force information should be taken into account when moving the brush on the paper, by exploiting the torque sensing capability of the robot. The proposed approach will be evaluated both in simulation and on the real robot.</p>
+<p><b>Keywords:</b> painting robot, nonphotorealistic rendering, ergodic control</p>
+</div>
+
+
+
+
+<hr><br>
+<h4>KOOPMAN MODEL LEARNING WITH EQUATION LEARNER NETWORKS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/EquationLearnerNetwork01.png'>
+</figure>
+<p>In robotics, optimal control is a popular and robust approach to generate trajectories and the corresponding controller required to achieve a task. Optimal control consists of optimizing over the states and the controls such that they minimize a cost function which describe a task given a dynamics model of the robot. However, in some cases, this model is either not available, or imperfect because of the unmodeled forces in the joints or the tools used by the robot.</p> 
+<p>Recently, Koopman operators have become increasingly popular in the identification of the dynamics model. The framework consists of augmenting the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space. The lifting functions used for this have been investigated in several works using non-parametric basis functions such as monomials, polynomials, radial basis functions or Fourier series basis which require no or little tuning of their parameters in general. However, such basis functions are difficult to design, and one needs to come up with a huge dictionary of variables to alleviate this problem.  Other works proposed to use parametric basis function such as neural networks for the lifting functions extending the capability of such basis functions significantly. However, they are hard to learn, easy to overfit and not interpretable.</p>
+<p>A promising approach which is shown to contain advantages of both non-parametric and parametric liftings is equation learner networks (EQL). The project proposes to investigate the use of EQL networks in Koopman operator framework to learn a robust and interpretable dynamics model from small amount of data. The approach will be implemented on a 7-axis Franka Emika robot to learn the residual dynamics model of the robot which is caused by frictions and other unmodeled imperfections.</p>
+<p><b>Keywords:</b> optimal control, neural networks, Koopman operators</p>
+<p><b>Reference:</b></p>
+<p><a href='http://proceedings.mlr.press/v80/sahoo18a/sahoo18a.pdf' target='_blank'>Sahoo, S.S., Lampert, C.H., Martius, G. (2018). Learning equations for extrapolation and control. Intl Conf. on Machine Learning (ICML).</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
 
 
 <!--
 
+<hr><br>
+<h4>TENSOR FACTORIZATION FOR MULTI-TASK LEARNING</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/tensor-factorization01.jpg'>
+<figcaption class='figure-caption'>Left: Standard matrix factorization (singular value decomposition). Right: Tensor factorization.</figcaption>
+</figure>
+<p>Manipulation skills in robotics are encoded as a weighted superposition of movement primitives, where the problem consists of learning a dictionary of movement primitives together with the superposition weights. The current limitation is that each skill is learned individually, which limits the skills transfer capability.</p>
+<p>The project proposes to address this limitation by relying on tensor methods, which will be used by the robot to devise a common dictionary to learn multiple skills in an incremental manner. Tensor methods are extensions of standard linear algebra techniques to arrays of higher dimension (typically, extension of singular value decomposition to arrays of more than two dimensions, capturing correlations between different dimensions in a compact way).</p> 
+<p>This project takes place within the LEARN-REAL project (learning physical manipulation skills with simulators using realistic variations).</p>
+
+<p><b>References:</b></p>
+<p><a href='misc/EE613/EE613-tensorRegression.pdf' target='_blank'>Slides for course on tensor-variate regression (the slides contain also other topics)</a></p>
+<p><a href='https://arxiv.org/pdf/1711.10781.pdf' target='_blank'>Rabanser, S., Shchur, O. and Günnemann, S., Introduction to Tensor Decompositions and their Applications in Machine Learning</a></p>
+<p><a href='https://www.ijcai.org/Proceedings/2017/0484.pdf' target='_blank'>Zhao, C., Hospedales, T.M., Stulp, F. and Sigaud, O., Tensor Based Knowledge Transfer across Skill Categories for Robot Control</a></p>
+
+</div>
+</div>
+
+<p><a href='https://www.youtube.com/watch?v=7a0_iEruGoM&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH&index=61&t=0s' target='_blank'>Sparse coding video lectures from Hugo Larochelle (part 8.1-8.9)</a></p>
+<p><a href='https://www.di.ens.fr/willow/pdfs/icml09.pdf' target='_blank'>Julien Mairal, Francis Bach, Jean Ponce and Guillermo Sapiro, "Online Dictionary Learning for Sparse Coding", ICML'2019</a></p>
+
+
+
+----
+Decoupling background and foreground information for a drawing robot
+
+This semester project takes places within a larger project that aims at creating a portraitist robot for a museum exhibition: https://calinon.ch/drozbot.htm. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).  
+
+The goal of this semester project is to exploit the facial landmarks extracted from the CNN to draw a foreground portrait on top of a background generated by texts used as repetitive patterns to fill the background part of the image. The proposed approach will be evaluated both in simulation and on the real robot.
+
+
+
+----
+Obstacle-aware inverse kinematics with implicit surface representation
+
+Gaussian Process Implicit Surfaces (GPIS) is a technique allowing shapes to be modeled in a probabilistic manner. It relies on a set of datapoints annotated with values 0, 1 and -1 to define if the datapoint is on the border, inside or outside the shape. We can then use this model to estimate the distance of a point to the border of the shape, as well as estimating the direction to move toward or away from this border. This direction can be weighted with respect to the distance to the border, in order to obtain a vector field that is strong when close to the border (or inside the shape), and weak elsewhere. The distance information takes the form of a Gaussian distribution, meaning that we also get uncertainty information about this estimate. Thus, such estimates will be more trustworthy in areas covered by labeled points than in areas that were not demonstrated. The probabilistic formulation can also be exploited to define prior information about the shape, which is useful when only a few points is available to model the shape, or when datapoints representing a portion of the shape are missing. 
+
+The GPIS approach is typically used in computer graphics to represent 3D shapes or 2D contour, but the approach can be used in any dimension, including the configuration space (joint angle space) of a robot. In this project, it is proposed to rely on this representation to let a robot move from any two points while avoiding fixed obstacles in the robot workspace, where GPIS is used to model the contours of the obstacles. To do this, the robot is first moved in the free regions of its workspace to collect datapoints with labels -1. It is then moved on the boundary of the admissible regions (labels 0). The points of the forbidden regions are then either demonstrated (when possible), or computed as centroids of the contour points (or groups of contour points). Two variants are then proposed for the controller:
+
+GPIS in configuration space (variant 1):
+In this variant, GPIS is modeled in a 7D space (corresponding to the 7 axes of the robot manipulator). A standard inverse kinematics (IK) solver is used at each time step to compute a velocity command in joint angle space. This command is then combined with the repulsive command provided by GPIS, either computed as a product of Gaussians (fusion of the two commands), or as a hierarchical control problem (by exploiting the nullspace matrix as an operator to prioritize obstacle avoidance).
+
+GPIS in operational space (variant 2):
+In this variant, GPIS is modeled in a 3D space (Cartesian coordinate system describing the task space of the robot). Instead of using a standard IK solver that takes into account only the end-effector of the robot, we extend the forward kinematics function to take into account several points on the kinematic chain of the robot (for example, each articulation). The gradient of this function is a Jacobian matrix, whose pseudoinverse defines a mapping between the desired velocities of these points in task space and the velocity commands in joint space. The desired velocities are determined by GPIS (collision avoidance for all points) and by the task to achieve (endeffector tracking a target). This inverse kinematics formulation can be extended to a weighted least-squares approach in which the weights are set with respect to the estimated distance of the points to the contour, so that the points on the kinematic chain that are far from obstacles will not have an impact on the resulting joint angle commands.
+
+Both variants will first be tested with a 2-axis planar robot using the Matlab robotics toolbox (https://github.com/petercorke/robotics-toolbox-matlab or http://www.petercorke.com/RTB/). For inverse kinematics, the project will rely on demo_IK01.m, a simple IK example (incl. nullspace control), available in https://gitlab.idiap.ch/rli/pbdlib-matlab/. For GPIS, the project will rely on demo_GPR_closedShape02.m, also available in https://gitlab.idiap.ch/rli/pbdlib-matlab/.
+
+References:
+GPIS paper: https://www.microsoft.com/en-us/research/publication/gaussian-process-implicit-surfaces-2/ 
+GPR: slides 3-27 from http://calinon.ch/misc/EE613/EE613-nonlinearRegressionII.pdf 
+IK: slides 22-27 from http://calinon.ch/misc/EE613/EE613-linearRegressionI.pdf 
+
+----
+Koopman model learning with Equation Learner Networks
+In robotics, optimal control is a popular and robust approach to generate trajectories and the corresponding controller required to achieve a task. Optimal control consists of optimizing over the states and the controls such that they minimize a cost function which describe a task given a dynamics model of the robot. However, in some cases, this model is either not available, or imperfect because of the unmodeled forces in the joints or the tools used by the robot. 
+
+Recently, Koopman operators have become increasingly popular in the identification of the dynamics model. The framework consists of augmenting the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space. The lifting functions used for this have been investigated in several works using non-parametric basis functions such as monomials, polynomials, radial basis functions or Fourier series basis which require no or little tuning of their parameters in general. However, such basis functions are difficult to design, and one needs to come up with a huge dictionary of variables to alleviate this problem.  Other works proposed to use parametric basis function such as neural networks for the lifting functions extending the capability of such basis functions significantly. However, they are hard to learn, easy to overfit and not interpretable. 
+
+A promising approach which is shown to contain advantages of both non-parametric and parametric liftings is equation learner networks (EQL). The project proposes to investigate the use of EQL networks in Koopman operator framework to learn a robust and interpretable dynamics model from small amount of data. The approach will be implemented on Panda robot to learn the residual dynamics model of the robot which is caused by frictions and other unmodeled imperfections. 
+
+Sahoo, S. S., Lampert, C. H., Martius, G. Learning equations for extrapolation and control In Proc. \35th International Conference on Machine Learning, ICML 2018, Stockholm
+
+http://proceedings.mlr.press/v80/sahoo18a/sahoo18a.pdf
+
+
+
+--------------------------
 Learning of non-photorealistic renderings for a caricaturist robot
 
 This project aims to review, categorize and test existing approaches in deep learning to map an image to a set of trajectories that a robot can then draw on a canvas, by taking the example of portrait caricatures as an example of generative non-photorealistic rendering (NPR) problem (see CariGAN or WarpGAN as starting examples). Several data processing pipelines can be considered, with parts that can be specified manually, and others that can be learned from examples. It also includes the potential consideration of intermediary steps, such as detecting the location of facial features (e.g., by using Google's MediaPipe Face Mesh), image-to-image processing applying pencil/brush sketch rendering effects, or applying a distortion mask for a warping transformation defined explicitly. The project also aims at studying metrics or methods to compare these different approaches. The selected approach(es) will take into account the amount of data that these methods require, the availability of these data and of pretrained models, and the possibility of employing the selected method(s) on smartphones or CPUs (instead of GPUs).
 
-
-
-
-
+----
 Test and simulation of a torque-controlled quadruped robot
 
 The Idiap Research Institute recently acquired a SOLO-12 robot, which is part of the open dynamic robot initiative (https://open-dynamic-robot-initiative.github.io/). It consists of an open torque-controlled modular robot architecture for legged locomotion research. The robot has been developed in the context of the MEMMO project in which Idiap participates (https://www.memmo-project.eu/). The assembly of the robot will be achieved by the PAL Robotics company (https://pal-robotics.com/), so that the platform will be ready to be used when the project starts.
 
 The internship will consist of two parts. In a first phase, the robot will be simulated with PyBullet (https://pybullet.org/wordpress/), by following the instructions available on https://github.com/open-dynamic-robot-initiative and https://arxiv.org/pdf/1910.00093.pdf. In a second phase, the robot will be tested by installing the required software components to control the real robot. A set of movements will first be tested in simulation, and then executed on the robot.
  
-
-
 Grimminger et al. (2020). An Open Torque-Controlled Modular Robot Architecture for Legged Locomotion Research. IEEE Robotics and Automation Letters, 5:2, 3650-3657.
 https://arxiv.org/pdf/1910.00093.pdf
 
@@ -252,7 +321,7 @@ https://github.com/open-dynamic-robot-initiative/robot_properties_solo/blob/mast
 
 LQT/iLQR with least-squares controller formulation, with a control primitives representation separating feedforward and feedback terms, for a quadruped robot application
 
-
+----
 <hr><br>
 <h4>Interactive GUI for intuitive programming of robot manipulation tasks</h4>
 
@@ -278,14 +347,7 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 
 
 
-
-
-
-
-
-
-
-
+----
 <hr><br>
 <h4>CIGAR BOX JUGGLING WITH ROBOTS</h4>
 
@@ -304,7 +366,7 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 
-
+----
 <hr><br>
 <h4>TENSOR-VARIATE REGRESSION IN ROBOTICS APPLICATIONS</h4>
 
@@ -329,36 +391,7 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 
-
-
-
-<hr><br>
-<h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-7'>
-<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined. The corresponding learning problem consists of estimating how to combine the set of basis functions to form a desired movement. The set of basis functions (dictionary of movement primitives) can be learned together with their combination. To do this, a sparse coding approach for dictionary learning will be exploited, as presented in the video and paper below. The approach will be evaluated on robot motion data.</p>
-<p>The standard dictionary learning problem is formulated with data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. The project proposes to extend this approach to the more general case in which x and y are multidimensional arrays (also called tensors, see slides below). The approach will be evaluated on robot motion data.</p>
-<p><b>Keywords:</b> tensor methods, movement primitives, sparse coding</p>
-</div>
-
-<div class='col-md-5'>
-<figure class='figure p-3'>
-<img class='figure-img img-fluid' src='images/projProp-basisFunctions01.png'>
-</figure>
-<p><b>References:</b></p>
-
-<p><a href='http://calinon.ch/misc/EE613/EE613-linearRegressionII.pdf' target='_blank'>Slides for course on tensor-variate regression (the slides contain also other topics)</a></p>
-<p><a href='https://www.youtube.com/watch?v=7a0_iEruGoM&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH&index=61&t=0s' target='_blank'>Sparse coding video lectures from Hugo Larochelle (part 8.1-8.9)</a></p>
-<p><a href='https://www.di.ens.fr/willow/pdfs/icml09.pdf' target='_blank'>Julien Mairal, Francis Bach, Jean Ponce and Guillermo Sapiro, "Online Dictionary Learning for Sparse Coding", ICML'2019</a></p>
-</div>
-
-</div>
-
-
-
+----
 <hr><br>
 <h4>LEARNING TO SEARCH: AN ERGODIC CONTROL APPROACH</h4>
 
@@ -383,8 +416,7 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 
-
-
+----
 <hr><br>
 <h4>GROWBOTHUB ROBOTICS PROJECTS</h4>
 
@@ -411,12 +443,9 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 <p>This project aims at harvesting vegetables (e.g., carrots) using a 3-finger gripper, by detecting the gripping point and applying appropriate forces to collect the vegetables without damaging them. There are two variants in this project, focusing on either the perception aspect or the control aspect. The first variant of the project will focus on determining a gripping point (position and orientation of the gripper) from computer vision processing. The second variant of the project will determine which gripper, gripper configuration and fingertips are required for the task, and will control the robot to reach the desired gripping point.</p>
 </div>
 </div>
--->
 
 
-
-
-<!--
+----
 <hr><br>
 <h4>HIDDEN MARKOV MODEL FOR MUSIC SCORE SYNCHRONIZATION IN A HUMAN-ROBOT COLLABORATION</h4>
 
@@ -433,11 +462,9 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 </div>
--->
 
 
-
-<!--
+----
 <hr><br>
 <h4>CONVOLUTIONAL NEURAL NETWORKS AND TENSOR METHODS</h4>
 
@@ -459,11 +486,9 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 </div>
--->
 
 
-
-<!--
+----
 <hr><br>
 <h4>ONLINE IMITATION WITH OBJECT-AWARE MAPPING</h4>
 
@@ -485,11 +510,9 @@ LQT/iLQR with least-squares controller formulation, with a control primitives re
 </div>
 
 </div>
--->
 
 
-
-<!--
+----
 Optimal control with keypoints learned from demonstration
 
 Kinesthetic teaching consists of grabbing the robot arm to demonstrate a task while the robot collects proprioceptive information through its joint encoders. Demonstrating a full movement with kinesthetic teaching is cumbersome and often loses the fluidity and dynamics in the movement. This project proposes to use kinesthetic teaching only for defining a set of viapoints that the robot should pass through, and to rely on optimization to let the robot compute control commands to pass through the desired viapoints. To do this, a spacetime formulation of iLQR will be tested, which consists of iteratively solving linear quadratic regulation problems, resulting in a planning strategy that takes into account both time and space aspects to fulfill the task. 
@@ -497,32 +520,58 @@ Kinesthetic teaching consists of grabbing the robot arm to demonstrate a task wh
 The project will use a 7-axis Panda robot form the Franka Emika company. The approach will be tested in a set of manipulation tasks inspired by industrial applications.
 
 
----
+----
 Adaptive robot control to pour liquids from a bottle 
 
 In manipulation, pouring skills are challenging because the generated movement and feedback depend on the quantity of liquid present in the container. We plan to study this skill in the context of a robot application in which a manipulator, holding a bottle filled with liquid, can pour the liquid into a glass. Such challenge requires the combination of several sources of perception, including proprioceptive information (estimating the remaining quantity of liquid in the bottle from its weight), and vision (as a way to correct the pouring behavior, as well as to determine when to stop pouring). 
 
 The project proposes to study this challenge by using a 7-axis Panda robot from the Franka Emika company (https://franka.de/). This robot is endowed with torque sensors, which will be exploited to estimate the quantity of liquid in the bottle form its weight. This estimate will be used in a planning step to define an open-loop movement (anticipated movement). This movement will then be corrected during its execution, with the help of a simple vision system that will be developed in the project to determine when colored liquid pours out of the bottle (the location of the top of the bottle is known by proprioception, using the joint angle encoders of the robot). The controller will be developed in C++, by using the libfranka library (https://frankaemika.github.io/docs/overview.html).
 
----
-Obstacle-aware inverse kinematics with implicit surface representation
 
-Gaussian Process Implicit Surfaces (GPIS) is a technique allowing shapes to be modeled in a probabilistic manner. It relies on a set of datapoints annotated with values 0, 1 and -1 to define if the datapoint is on the border, inside or outside the shape. We can then use this model to estimate the distance of a point to the border of the shape, as well as estimating the direction to move toward or away from this border. This direction can be weighted with respect to the distance to the border, in order to obtain a vector field that is strong when close to the border (or inside the shape), and weak elsewhere. The distance information takes the form of a Gaussian distribution, meaning that we also get uncertainty information about this estimate. Thus, such estimates will be more trustworthy in areas covered by labeled points than in areas that were not demonstrated. The probabilistic formulation can also be exploited to define prior information about the shape, which is useful when only a few points is available to model the shape, or when datapoints representing a portion of the shape are missing. 
+----
+<hr><br>
+<h4>ROBOT ASSISTANCE FOR STANDING UP AND SITTING DOWN</h4>
 
-The GPIS approach is typically used in computer graphics to represent 3D shapes or 2D contour, but the approach can be used in any dimension, including the configuration space (joint angle space) of a robot. In this project, it is proposed to rely on this representation to let a robot move from any two points while avoiding fixed obstacles in the robot workspace, where GPIS is used to model the contours of the obstacles. To do this, the robot is first moved in the free regions of its workspace to collect datapoints with labels -1. It is then moved on the boundary of the admissible regions (labels 0). The points of the forbidden regions are then either demonstrated (when possible), or computed as centroids of the contour points (or groups of contour points). Two variants are then proposed for the controller:
+<br>
+<div class='row'>
 
-GPIS in configuration space (variant 1):
-In this variant, GPIS is modeled in a 7D space (corresponding to the 7 axes of the robot manipulator). A standard inverse kinematics (IK) solver is used at each time step to compute a velocity command in joint angle space. This command is then combined with the repulsive command provided by GPIS, either computed as a product of Gaussians (fusion of the two commands), or as a hierarchical control problem (by exploiting the nullspace matrix as an operator to prioritize obstacle avoidance).
+<div class='col-md-6'>
+<figure class='text-center'>
+<img class='figure-img img-fluid' src='images/SWITCHproj_3D01.jpg'>
+</figure>
+</div>
+<div class='col-md-6'>
+<figure class='text-center'>
+<img class='figure-img img-fluid' src='images/SWITCHproj_2D01.png'>
+</figure>
+</div>
+<div class='col-md-12'>
+<p>The project will explore the problem of assisting a user to stand up and sit down. This problem will be modeled as two kinematic chains, where only planar movements will be considered. One kinematic chain will represent a humanoid robot and the other will represent the user to assist. It is assumed that both have fixed feet on the ground and are connected to a common endeffector point representing their hands, meaning that the resulting system is a closed kinematic chain in which only a few of the articulations can be controlled.</p> 
+<p>The assistance skill consists of moving the user from a static sitting pose to a static standing pose through the contact point. It involves challenging aspects of anticipation, shared control, initiation of movements, leader-follower behaviors and haptic communication. This project will concentrate on studying the dynamical motion aspects to achieve such assistance, which requires the consideration of inertia and center of mass movements with respect to the feet.</p>
+</div>
 
-GPIS in operational space (variant 2):
-In this variant, GPIS is modeled in a 3D space (Cartesian coordinate system describing the task space of the robot). Instead of using a standard IK solver that takes into account only the end-effector of the robot, we extend the forward kinematics function to take into account several points on the kinematic chain of the robot (for example, each articulation). The gradient of this function is a Jacobian matrix, whose pseudoinverse defines a mapping between the desired velocities of these points in task space and the velocity commands in joint space. The desired velocities are determined by GPIS (collision avoidance for all points) and by the task to achieve (endeffector tracking a target). This inverse kinematics formulation can be extended to a weighted least-squares approach in which the weights are set with respect to the estimated distance of the points to the contour, so that the points on the kinematic chain that are far from obstacles will not have an impact on the resulting joint angle commands.
+</div>
 
-Both variants will first be tested with a 2-axis planar robot using the Matlab robotics toolbox (https://github.com/petercorke/robotics-toolbox-matlab or http://www.petercorke.com/RTB/). For inverse kinematics, the project will rely on demo_IK01.m, a simple IK example (incl. nullspace control), available in https://gitlab.idiap.ch/rli/pbdlib-matlab/. For GPIS, the project will rely on demo_GPR_closedShape02.m, also available in https://gitlab.idiap.ch/rli/pbdlib-matlab/.
 
-References:
-GPIS paper: https://www.microsoft.com/en-us/research/publication/gaussian-process-implicit-surfaces-2/ 
-GPR: slides 3-27 from http://calinon.ch/misc/EE613/EE613-nonlinearRegressionII.pdf 
-IK: slides 22-27 from http://calinon.ch/misc/EE613/EE613-linearRegressionI.pdf 
+----
+<hr><br>
+<h4>SUBSPACE LEARNING FOR ROBOT CONTROL APPLICATIONS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<p>In robotics, movements can be represented as a dynamical system describing the evolution in time of the robot. Most often, the system is nonlinear, and the standard approach is to linearize the system so that locally, a linear system can be considered. Another approach, originally proposed by Koopman, is to augment the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space.</p>
+<p>To do this, several approaches have been proposed, such as forming this augmented state space with polynomial or Fourier expansions of the original signal, or learning this augmented state space with autoencoders. Often, these approaches consider systems that estimate the next state based on the current state.</p>
+<p>A promising approach recently proposed in the reference below is to consider a history of the previous states. This approach suggests to go beyond standard polynomial basis functions or Fourier basis functions by exploiting delay coordinates as basis functions, in the form of a factorization of a Hankel matrix. The resulting algorithm is surprisingly short and simple to implement. This project proposes to explore this approach in a robot control task with the 7-axis Panda robot (Franka Emika).</p>
+<p><b>Keywords:</b> dynamical systems, robot control, subspace learning, delay embedding, time series analysis</p>
+<p><b>References:</b></p>
+<p><a href='https://arxiv.org/pdf/1608.05306.pdf' target='_blank'>Steven L. Brunton, Bingni W. Brunton, Joshua L. Proctor, Eurika Kaiser, and J. Nathan Kutz, "Chaos as an Intermittently Forced Linear System", Nature Communications, 2017</a></p>
+<p><a href='https://www.youtube.com/watch?v=831Ell3QNck' target='_blank'>Hankel Alternative View of Koopman (HAVOK) Analysis (video)</a></p>
+</div>
+
+</div>
+
 -->
 
 
