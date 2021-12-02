@@ -234,6 +234,33 @@ The descriptions below are available for either semester projects or master thes
 
 
 
+
+
+<hr><br>
+<h4>INERTIAL PARAMETERS IDENTIFICATION FOR A FORCE/TORQUE SENSOR</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-8'>
+<p>In contact-rich robotics tasks, it is crucial to have an accurate measurement of forces and torques exchanged between the robot and its environment to feed those measurements back in a control loop. However, force/torque sensors placed between the tip of the robot and the end-effector measure not only those interaction forces, but also static (e.g. due to gravity) and dynamic (e.g. inertial, Coriolis and centrifugal) effects of the end-effector due to its non-negligible mass. In order to compensate for those measurement errors, the dynamic parameters of the end-effector such as mass, inertia and center-of-mass offset have to be known to be able to predict the resulting forces/torques corrupting the sensor measurement. Typically, those parameters are unknown or inaccurate, such that a model identification procedure is required. For the identification procedure, data has to be collected by moving the robot such that trajectories of motion and reaction forces can be recorded.</p>
+<p>In this project, a load inertial parameter estimation algorithm will be implemented that (1) autonomously excites the robot sufficiently to collect dynamic motion/force data, (2) applies derivation filters (offline) to compute high-quality robot joint acceleration signals, and (3) solves an optimization problem to obtain an estimate of the inertial parameters of the robots end-effector.</p>
+<p>The algorithm will be implemented (Python or C++) and tested on a 7-axis Franka Emika robot equipped with 6-axis force/torque sensor from Bota systems. Potentially, the work can be extended by using IMU measurements online to have a better estimate of the current acceleration of the robot, which will improve the prediction quality when using the learned dynamics model.</p>
+<p><b>Keywords:</b> parameters identification, force-torque sensing, robot manipulation</p>
+</div>
+
+<div class='col-md-4'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/load_parameter_identification.png'>
+</figure>
+<p><b>Reference:</b></p>
+<p><a href='https://doi.org/10.1007/978-3-540-30301-5_15' target='_blank'>Hollerbach, J., Khalil, W. and Gautier, M. (2008) Model Identification. Springer Handbook of Robotics, pp. 321-344.</a></p>
+</div>
+
+</div>
+
+
+
 <!--
 
 <hr><br>
