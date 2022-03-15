@@ -56,157 +56,6 @@ MathJax.Hub.Config({
 The descriptions below are available for either semester projects or master thesis projects (the content will be adjusted accordingly). Suggestions of other projects (or variants of existing projects) are also welcome, as long as they fit within the group's research interests.
 
 
-
-<hr><br>
-<h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-7'>
-<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined. The corresponding learning problem consists of estimating how to combine the set of basis functions to form a desired movement. The set of basis functions (dictionary of movement primitives) can be learned together with their combination. To do this, a sparse coding approach for dictionary learning will be exploited, as presented in the video and paper below. The approach will be evaluated on robot motion data.</p>
-<p>The standard dictionary learning problem is formulated with data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. The project proposes to extend this approach to the more general case in which x and y are multidimensional arrays (also called tensors, see slides below). The approach will be evaluated on robot motion data.</p>
-<p><b>Keywords:</b> tensor methods, movement primitives, sparse coding</p>
-</div>
-
-<div class='col-md-5'>
-<figure class='figure p-3'>
-<img class='figure-img img-fluid' src='images/tensor-factorization01.jpg'>
-</figure>
-<p><b>References:</b></p>
-<p><a href='misc/EE613/EE613-tensorRegression.pdf' target='_blank'>Slides from a lecture on tensor-variate regression</a></p>
-<p><a href='https://arxiv.org/pdf/1711.10781.pdf' target='_blank'>Rabanser, S., Shchur, O. and Günnemann, S. (2017). Introduction to Tensor Decompositions and their Applications in Machine Learning. arXiv:1711.10781.</a></p>
-</div>
-
-</div>
-
-
-
-
-
-
-<hr><br>
-<h4>CONTROL AND PLANNING WITH A GAUSSIAN PROCESS IMPLICIT SURFACE REPRESENTATION OF THE ENVIRONMENT</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-8'>
-<p>In this project, we will consider a robot manipulation problem with sensors mounted at the end-effector of the robot. These sensors can typically take the form of cameras, proximity sensors, or tactile sensors. With these sensors, the robot can build a model of its surrounding environment by active perception, with a trade-off between exploration and exploitation that depend on the required accuracy and locality to achieve the task while reacting appropriately to encountered perturbations.</p> 
-<p>Several approaches can be used to represent the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The project proposes to study the use of implicit surface representations, which are typically implemented as Gaussian processes (GPs), where kernel functions such as radial basis functions (RBFs) are used to measure distances. GPs provide gradients to let the robot know how to avoid an obstacle, move along a surface, or establish contact with the closest surface. GPs also provide a measure of uncertainty that can be exploited within a minimal intervention control strategy (i.e., exploiting redundancy and coordination by rejecting only the perturbations that would have an effect on the achievement of the task).</p> 
-<p>This semester project proposes to investigate two improvements of GPIS based on RBFs: 1) the use of a sparse GP approach to reduce the computation time when large numbers of datapoints have been collected; 2) the extension to other kernels that would better take into account the geometry of the problem.</p>
-<p>This project takes place within the MEMMO project (memory of motion).</p>
-</div>
-
-<div class='col-md-4'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/GPIS01.jpg'>
-<figcaption class='figure-caption'>Implicit contour representation with Gaussian process regression.</figcaption>
-</figure>
-<p><b>References:</b></p>
-<p><a href='http://gpss.cc/gpip/abstract/owilliams.pdf' target='_blank'>Original GPIS approach</a></p>
-<p><a href='https://arxiv.org/abs/2010.11487' target='_blank'>Use of GPIS in robotics</a></p>
-<p><a href='https://arxiv.org/abs/2008.09848' target='_blank'>Sparse GPs</a></p>
-</div>
-
-</div>
-
-
-
-
-<hr><br>
-<h4>MOTION OPTIMIZATION WITH A LEGIBILITY PERSPECTIVE</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-2'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/LQT_legibility01.png'>
-</figure>
-</div>
-
-<div class='col-md-10'>
-<p>Standard motion optimization problems in robotics focus on the use of cost functions that measure how well a task is executed (e.g., positions to reach, viapoints to pass through, orientations to maintain). In a manipulation task, the typical goal will be to generate movements that efficiently execute the task. We propose to extend the definition of these costs to include human-robot interaction aspects.</p>
-<p>The project will investigate the problem of generating movements for the robot that would allow an external observer to understand quickly the intention of the robot. This requires the investigation of legibility costs to be used to generate motions capable of reducing ambiguity (e.g., by exaggerating the movement to make it more legible to a user interacting with the robot). The side image shows how a legible movement can be generated to reduce ambiguity in the intended movement (here, to emphasize that the blue object will be grapsed instead of the orange object).</p>
-<p>This project takes place within the ROSALIS project (robot skills acquisition through active learning and social interaction strategies).</p>
-</div>
-
-</div>
-
-
-
-
-
-
-
-<hr><br>
-<h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/projProp-smartphone-interface01.png'>
-</figure>
-<p>We have developed an augmented reality interface running on Android smartphones to display a virtual robot (left image). The app relies on ARCore, Google's toolkit for building augmented reality applications on Android and iOS devices. This toolkit is used to estimate the location of the phone and to render 3D graphics on top of the camera's image displayed on the screen.</p>   
-<p>The aim of the project is to extend this interface to let the user move the virtual robot to a desired configuration (see right images as an illustration). Several options can be considered, such as clicking on the robot articulations and dragging them to their desired positions, or drawing a stick figure on top of the image, which is then interpreted to set the desired pose of the robot.</p>
-<p>The Android smartphone will be programmed in Java (knowledge of either Java or C++ is required for the project).</p>
-<p>The developed interface will be tested to change the pose of a real 7-axis Panda robot (Franka Emika), by first setting and visualizing the motion of the virtual robot on the smartphone, and then running the motion on the real robot. A basic interface between the mobile phone and the robot is already available for the project (by using the ROS middleware). The proposed approach will finally be evaluated with inexperienced user to determine if it is accurate and easy-to-use.</p>
-<p><b>Keywords:</b> augmented reality, smartphone interfaces, robotics, inverse kinematics, machine learning</p>
-<p><b>Link and reference:</b></p>
-<p><a href='https://developers.google.com/ar' target='_blank'>ARCore (Google)</a></p>
-<p><a href='paper7006.htm' target='_blank'>Thoo, Y.J., Maceiras, J., Abbet, P., Racca, M., Girgin, H. and Calinon, S. (2021). Online and Offline Robot Programming via Augmented Reality Workspaces. arXiv:2107.01884.</a></p>
-</div>
-
-</div>
-
-
-
-<hr><br>
-<h4>SMARTPHONE INTERFACE FOR A CARICATURIST ROBOT</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
-</figure>
-<p>This semester project takes places within a larger project that aims at creating <a href='drozbot.htm' target='_blank'>a portraitist robot for a museum exhibition</a>. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
-<p>The goal of this semester project is to replace the camera held by the robot with a smartphone interface that would allow the users to select or edit a caricature interactively. Mediapipe Face Mesh (https://google.github.io/mediapipe/solutions/face_mesh.html) will be used as a CNN-based approach to extract a set of facial landmarks from the phone's camera. From the facial landmarks, a new image will be generated by removing automatically the background and by deforming the original image based on a subset of the facial landmarks, where the distortions can be either predefined or edited by the user. The developed interface will be evaluated to determine if it is intuitive for first-time users.</p>
-<p><b>Keywords:</b> smartphone interface for robotics applications, image processing, deep learning, nonphotorealistic rendering</p>
-<p><b>Link:</b></p>
-<p><a href='https://google.github.io/mediapipe/' target='_blank'>MediaPipe (Google)</a></p>
-</div>
-
-</div>
-
-
-
-
-
-<hr><br>
-<h4>ORIENTATION AND FORCE CONTROL OF A ROBOT HOLDING A PAINT BRUSH</h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
-</figure>
-<p>This semester project takes places within a larger project that aims at creating <a href='drozbot.htm' target='_blank'>a portraitist robot for a museum exhibition</a>. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
-<p>The goal of this semester project is to study the extension of the approach to brush strokes, which requires to take into account the orientation of the brush when generating the paths to draw the portrait, as well as when controlling the robot holding the brush. To do so, the ergodic control formulation used to generate the paths from an image will be employed, as it allows patterns of different shapes to be considered for the drawing of an image. Additionally, the project will investigate if force information should be taken into account when moving the brush on the paper, by exploiting the torque sensing capability of the robot. The proposed approach will be evaluated both in simulation and on the real robot.</p>
-<p><b>Keywords:</b> painting robot, nonphotorealistic rendering, ergodic control</p>
-</div>
-
-</div>
-
-
-
-
 <hr><br>
 <h4>KOOPMAN MODEL LEARNING WITH EQUATION LEARNER NETWORKS</h4>
 
@@ -229,10 +78,6 @@ The descriptions below are available for either semester projects or master thes
 </div>
 
 </div>
-
-
-
-
 
 
 
@@ -259,6 +104,158 @@ The descriptions below are available for either semester projects or master thes
 
 </div>
 
+
+
+
+<!--
+<hr><br>
+<h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-7'>
+<p>In robotics, it is useful to represent movements as a superposition of basis functions. Often, the set of basis functions is predefined. The corresponding learning problem consists of estimating how to combine the set of basis functions to form a desired movement. The set of basis functions (dictionary of movement primitives) can be learned together with their combination. To do this, a sparse coding approach for dictionary learning will be exploited, as presented in the video and paper below. The approach will be evaluated on robot motion data.</p>
+<p>The standard dictionary learning problem is formulated with data in the form of input x and output y, which are then used to estimate a new output y_new, given a new input x_new. The project proposes to extend this approach to the more general case in which x and y are multidimensional arrays (also called tensors, see slides below). The approach will be evaluated on robot motion data.</p>
+<p><b>Keywords:</b> tensor methods, movement primitives, sparse coding</p>
+</div>
+
+<div class='col-md-5'>
+<figure class='figure p-3'>
+<img class='figure-img img-fluid' src='images/tensor-factorization01.jpg'>
+</figure>
+<p><b>References:</b></p>
+<p><a href='misc/EE613/EE613-tensorRegression.pdf' target='_blank'>Slides from a lecture on tensor-variate regression</a></p>
+<p><a href='https://arxiv.org/pdf/1711.10781.pdf' target='_blank'>Rabanser, S., Shchur, O. and Günnemann, S. (2017). Introduction to Tensor Decompositions and their Applications in Machine Learning. arXiv:1711.10781.</a></p>
+</div>
+
+</div>
+-->
+
+
+
+
+<!--
+<hr><br>
+<h4>CONTROL AND PLANNING WITH A GAUSSIAN PROCESS IMPLICIT SURFACE REPRESENTATION OF THE ENVIRONMENT</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-8'>
+<p>In this project, we will consider a robot manipulation problem with sensors mounted at the end-effector of the robot. These sensors can typically take the form of cameras, proximity sensors, or tactile sensors. With these sensors, the robot can build a model of its surrounding environment by active perception, with a trade-off between exploration and exploitation that depend on the required accuracy and locality to achieve the task while reacting appropriately to encountered perturbations.</p> 
+<p>Several approaches can be used to represent the environment and obstacles surrounding a robot, including geometric shapes, occupancy voxel grids, or implicit surface representations. The project proposes to study the use of implicit surface representations, which are typically implemented as Gaussian processes (GPs), where kernel functions such as radial basis functions (RBFs) are used to measure distances. GPs provide gradients to let the robot know how to avoid an obstacle, move along a surface, or establish contact with the closest surface. GPs also provide a measure of uncertainty that can be exploited within a minimal intervention control strategy (i.e., exploiting redundancy and coordination by rejecting only the perturbations that would have an effect on the achievement of the task).</p> 
+<p>This semester project proposes to investigate two improvements of GPIS based on RBFs: 1) the use of a sparse GP approach to reduce the computation time when large numbers of datapoints have been collected; 2) the extension to other kernels that would better take into account the geometry of the problem.</p>
+<p>This project takes place within the MEMMO project (memory of motion).</p>
+</div>
+
+<div class='col-md-4'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/GPIS01.jpg'>
+<figcaption class='figure-caption'>Implicit contour representation with Gaussian process regression.</figcaption>
+</figure>
+<p><b>References:</b></p>
+<p><a href='http://gpss.cc/gpip/abstract/owilliams.pdf' target='_blank'>Original GPIS approach</a></p>
+<p><a href='https://arxiv.org/abs/2010.11487' target='_blank'>Use of GPIS in robotics</a></p>
+<p><a href='https://arxiv.org/abs/2008.09848' target='_blank'>Sparse GPs</a></p>
+</div>
+
+</div>
+-->
+
+
+<!--
+<hr><br>
+<h4>MOTION OPTIMIZATION WITH A LEGIBILITY PERSPECTIVE</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-2'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/LQT_legibility01.png'>
+</figure>
+</div>
+
+<div class='col-md-10'>
+<p>Standard motion optimization problems in robotics focus on the use of cost functions that measure how well a task is executed (e.g., positions to reach, viapoints to pass through, orientations to maintain). In a manipulation task, the typical goal will be to generate movements that efficiently execute the task. We propose to extend the definition of these costs to include human-robot interaction aspects.</p>
+<p>The project will investigate the problem of generating movements for the robot that would allow an external observer to understand quickly the intention of the robot. This requires the investigation of legibility costs to be used to generate motions capable of reducing ambiguity (e.g., by exaggerating the movement to make it more legible to a user interacting with the robot). The side image shows how a legible movement can be generated to reduce ambiguity in the intended movement (here, to emphasize that the blue object will be grapsed instead of the orange object).</p>
+<p>This project takes place within the ROSALIS project (robot skills acquisition through active learning and social interaction strategies).</p>
+</div>
+
+</div>
+-->
+
+
+
+
+
+<!--
+<hr><br>
+<h4>SMARTPHONE INTERFACE USING AUGMENTED REALITY</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/projProp-smartphone-interface01.png'>
+</figure>
+<p>We have developed an augmented reality interface running on Android smartphones to display a virtual robot (left image). The app relies on ARCore, Google's toolkit for building augmented reality applications on Android and iOS devices. This toolkit is used to estimate the location of the phone and to render 3D graphics on top of the camera's image displayed on the screen.</p>   
+<p>The aim of the project is to extend this interface to let the user move the virtual robot to a desired configuration (see right images as an illustration). Several options can be considered, such as clicking on the robot articulations and dragging them to their desired positions, or drawing a stick figure on top of the image, which is then interpreted to set the desired pose of the robot.</p>
+<p>The Android smartphone will be programmed in Java (knowledge of either Java or C++ is required for the project).</p>
+<p>The developed interface will be tested to change the pose of a real 7-axis Panda robot (Franka Emika), by first setting and visualizing the motion of the virtual robot on the smartphone, and then running the motion on the real robot. A basic interface between the mobile phone and the robot is already available for the project (by using the ROS middleware). The proposed approach will finally be evaluated with inexperienced user to determine if it is accurate and easy-to-use.</p>
+<p><b>Keywords:</b> augmented reality, smartphone interfaces, robotics, inverse kinematics, machine learning</p>
+<p><b>Link and reference:</b></p>
+<p><a href='https://developers.google.com/ar' target='_blank'>ARCore (Google)</a></p>
+<p><a href='paper7006.htm' target='_blank'>Thoo, Y.J., Maceiras, J., Abbet, P., Racca, M., Girgin, H. and Calinon, S. (2021). Online and Offline Robot Programming via Augmented Reality Workspaces. arXiv:2107.01884.</a></p>
+</div>
+
+</div>
+-->
+
+
+<!--
+<hr><br>
+<h4>SMARTPHONE INTERFACE FOR A CARICATURIST ROBOT</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
+</figure>
+<p>This semester project takes places within a larger project that aims at creating <a href='drozbot.htm' target='_blank'>a portraitist robot for a museum exhibition</a>. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
+<p>The goal of this semester project is to replace the camera held by the robot with a smartphone interface that would allow the users to select or edit a caricature interactively. Mediapipe Face Mesh (https://google.github.io/mediapipe/solutions/face_mesh.html) will be used as a CNN-based approach to extract a set of facial landmarks from the phone's camera. From the facial landmarks, a new image will be generated by removing automatically the background and by deforming the original image based on a subset of the facial landmarks, where the distortions can be either predefined or edited by the user. The developed interface will be evaluated to determine if it is intuitive for first-time users.</p>
+<p><b>Keywords:</b> smartphone interface for robotics applications, image processing, deep learning, nonphotorealistic rendering</p>
+<p><b>Link:</b></p>
+<p><a href='https://google.github.io/mediapipe/' target='_blank'>MediaPipe (Google)</a></p>
+</div>
+
+</div>
+-->
+
+
+
+<!--
+<hr><br>
+<h4>ORIENTATION AND FORCE CONTROL OF A ROBOT HOLDING A PAINT BRUSH</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/drozBot-web01.jpg'>
+</figure>
+<p>This semester project takes places within a larger project that aims at creating <a href='drozbot.htm' target='_blank'>a portraitist robot for a museum exhibition</a>. In this project, a CNN is used to extract a set of facial landmarks from a camera mounted at the tip of a 7-axis robot. After centering the face on the photo taken by the robot, the image is converted to a series of 2D paths (pen strokes) through an ergodic control formulation that mimics natural drawing patterns. These 2D paths are then reproduced on a canvas in front of the robot, using a pen held by its gripper, through an iLQR planning technique (iterative linear quadratic regulator).</p> 
+<p>The goal of this semester project is to study the extension of the approach to brush strokes, which requires to take into account the orientation of the brush when generating the paths to draw the portrait, as well as when controlling the robot holding the brush. To do so, the ergodic control formulation used to generate the paths from an image will be employed, as it allows patterns of different shapes to be considered for the drawing of an image. Additionally, the project will investigate if force information should be taken into account when moving the brush on the paper, by exploiting the torque sensing capability of the robot. The proposed approach will be evaluated both in simulation and on the real robot.</p>
+<p><b>Keywords:</b> painting robot, nonphotorealistic rendering, ergodic control</p>
+</div>
+
+</div>
+-->
 
 
 <!--
