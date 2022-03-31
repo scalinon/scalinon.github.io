@@ -49,21 +49,21 @@ MathJax.Hub.Config({
 <div class='container'>
 <div class='main-template'>
 
-<p class='float-right'><b>English</b> / <a href='drozbot.htm'>Français</a></p>
+<p class='float-right'><a href='drozbot.htm'>English</a> / <b>Français</b></p>
 
-<h1>drozBot, the portraitist robot</h1>
+<h1>drozBot, le robot portraitiste</h1>
 
 <div class='p-3 bg-light text-dark border border-secondary text-justify'>
-drozBot is currently dispalyed at the exhibition <a href='https://www.museedelamain.ch/download/yhcu57xu.pdf/De%CC%81pliant_IA_museedelamain.pdf' target='_blank'>Intelligence Artificielle: Nos Reflets Dans La Machine</a>, CHUV Museum in Lausanne, from April 2022 to April 2023.
+drozBot fait actuellement partie de l'exposition <a href='https://www.museedelamain.ch/download/yhcu57xu.pdf/De%CC%81pliant_IA_museedelamain.pdf' target='_blank'>Intelligence Artificielle: Nos Reflets Dans La Machine</a>, au Musée de la Main au CHUV à Lausanne, du 1er avril 2022 au 30 avril 2023.
 </div><br>
 
-<p class='text-justify'>drozBot draws portraits with a conventional pen and paper. He first takes a snaphot of the person by framing the face through recognition of the principal facial features (eyes, nose, mouth). The portrait in a digital format is then converted to a <b>fluid movement mimicking the gestures of an artist</b>.</p>
+<p class='text-justify'>drozBot tire le portrait d'une personne en utilisant un stylo et une feuille de papier conventionnels. Il prend d'abord en photo la personne en cadrant son visage par reconnaissance de ses traits principaux (yeux, nez, bouche). Le portrait en format numérique est alors converti en un <b>mouvement fluide mimiquant les gestes d'un artiste</b>.</p>
 
-<p class='text-justify'>This installation aspires <b>to explore the frontiers between optimality and randomness</b> in Artifical Intelligence (AI) applications. Indeed, the learning mechanisms behind AI often use random processes to search for solutions (stochastic sampling during optimization). This randomization component behind these learning algorithms for example allow a robot to find solutions quickly without having to test each possible option.</p> 
+<p class='text-justify'>Cette installation aspire à <b>explorer les frontières entre l'optimalité et l'aléatoire</b> dans les applications d'intelligence artificielle (IA). En effet, les mécanismes d'apprentissage derrière l'IA font souvent appel à des processus aléatoires pour la recherche de solutions (échantillonnage stochastique lors de l'optimisation). Cette composante aléatoire derrière ces algorithmes d'apprentissage permet par exemple à un robot de trouver des solutions rapidement sans avoir à tester chaque option possible.</p> 
 
-<p class='text-justify'>drozBot relies on a different perspective, by instead solving an <b>optimal control problem</b> aiming at determining the pen strokes to generate to best cover the canvas for each portrait to draw. Interestingly, this generative process does not rely on randomness while the result appears to be composed of aleatory strokes, with <b>doodles revealing the global objective only when the drawing is finished</b>. These doodles appear to be random when they are observed from close distance, but they are in reality optimal, with a unique result with respect to the gloabl objective given to the robot.</p>
+<p class='text-justify'>drozBot part d'un autre principe, en résolvant à la place un <b>problème de contrôle optimal</b> visant à déterminer les tracés à effectuer pour couvrir au mieux le canvas selon chaque portrait à dessiner. Ce procédé de génération de traits ne fait pas appel à une génération aléatoire. Pourtant, le résultat apparaît comme telle, avec <b>des tracés sous forme de gribouillis qui ne révèlent l'objectif global que lorsque le dessin est terminé</b>. Ces gribouillis paraissent aléatoires en les regardant de près, mais sont en réalité optimaux, avec un résultat unique quant à l'objectif global donné au robot.</p>
 
-<p class='text-justify'>To reach this drawing capability, the objectives of the robot are multiple. First, it has to generate smooth gestures while controlling the orientation and pressure of the pen on the paper. Then, it has to define a series of strokes reproducing the different contrasts in the image, by forecasting a greater number of overlapping paths in darker regions of the image, while reducing the overall length of the movement.</p>
+<p class='text-justify'>Pour atteindre cette capacité à dessiner, les objectifs du robot sont multiples. Il doit d'abord générer des gestes fluides, tout en contrôlant l'orientation et la pression du stylo sur le papier. Il doit ensuite définir une série de traits qui reproduisent les différents contrastes de l'image, en prévoyant des passages de traits plus nombreux dans les régions plus sombres de l'image, tout en réduisant le chemin total parcouru.</p>
 
 <p class='text-justify'>En observant le robot à l'oeuvre, les gribouillis semblent au départ dénués de sens. L'objectif global ne se révèle que lors de la progression du dessin, et <b>la vue d'ensmble du portrait final fait disparaître l'apparence chaotique des permiers traits</b>.</p> 
 
