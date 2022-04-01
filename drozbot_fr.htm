@@ -66,21 +66,24 @@ drozBot fait actuellement partie de l'exposition <a href='https://www.museedelam
 
 <p class='text-justify'>Cette installation aspire à <b>explorer les frontières entre l'optimalité et l'aléatoire</b> dans les applications d'intelligence artificielle (IA). En effet, les mécanismes d'apprentissage derrière l'IA font souvent appel à des processus aléatoires pour la recherche de solutions (échantillonnage stochastique lors de l'optimisation). Cette composante aléatoire derrière ces algorithmes d'apprentissage permet par exemple à un robot de trouver des solutions rapidement sans avoir à tester chaque option possible.</p> 
 
-<p class='text-justify'>drozBot part d'un autre principe, en résolvant à la place un <b>problème de contrôle optimal</b> visant à déterminer les tracés à effectuer pour couvrir au mieux le canvas selon chaque portrait à dessiner. Ce procédé de génération de traits ne fait pas appel à une génération aléatoire. Pourtant, le résultat apparaît comme telle, avec <b>des tracés sous forme de gribouillis qui ne révèlent l'objectif global que lorsque le dessin est terminé</b>. Ces gribouillis paraissent aléatoires en les regardant de près, mais sont en réalité optimaux, avec un résultat unique quant à l'objectif global donné au robot.</p>
+<p class='text-justify'>drozBot part d'un autre principe, en résolvant à la place un <b>problème de contrôle optimal</b> visant à déterminer les tracés à effectuer pour couvrir au mieux la feuille de papier selon chaque portrait à dessiner. Ce procédé de génération de traits ne fait pas appel à une génération aléatoire. Pourtant, le résultat apparaît comme telle, avec <b>des tracés sous forme de gribouillis qui ne révèlent l'objectif global que lorsque le dessin est terminé</b>. Ces gribouillis paraissent aléatoires en les regardant de près, mais sont en réalité optimaux, avec un résultat unique quant à l'objectif global donné au robot.</p>
 
 <p class='text-justify'>Pour atteindre cette capacité à dessiner, les objectifs du robot sont multiples. Il doit d'abord générer des gestes fluides, tout en contrôlant l'orientation et la pression du stylo sur le papier. Il doit ensuite définir une série de traits qui reproduisent les différents contrastes de l'image, en prévoyant des passages de traits plus nombreux dans les régions plus sombres de l'image, tout en réduisant le chemin total parcouru.</p>
 
-<p class='text-justify'>En observant le robot à l'oeuvre, les gribouillis semblent au départ dénués de sens. L'objectif global ne se révèle que lors de la progression du dessin, et <b>la vue d'ensemble du portrait final fait disparaître l'apparence chaotique des permiers traits</b>.</p> 
+<p class='text-justify'>En observant le robot à l'oeuvre, les gribouillis semblent, au départ, dénués de sens. L'objectif global ne se révèle que lors de la progression du dessin, et <b>la vue d'ensemble du portrait final fait disparaître l'apparence chaotique des premiers traits</b>.</p> 
 
 <img class='figure-img img-fluid' src='images/drozBot-portraits02-web.jpg'><br><br>
+<img class='figure-img img-fluid' src='images/drozbot_setup_fr01.jpg'><br><br>
+
+<!--
 <img class='figure-img img-fluid' src='images/drozBot-part1.jpg'><br><br>
-<!--avec un bras articulé produisant une série de gribouillis révélant progressivement l'identité de la personne
+avec un bras articulé produisant une série de gribouillis révélant progressivement l'identité de la personne
 <img class='figure-img img-fluid' src='images/drozBot-part2.jpg'><br><br>
 <img class='figure-img img-fluid' src='images/drozBot-part3.jpg'><br><br>-->
 
 
 <div class='p-3 bg-light text-dark border border-secondary text-justify'>
-En robotique, cette technique s'appelle <b>contrôle ergodique</b>. Elle se démarque des approches standards de contrôle qui définissent la tâche à effectuer sous forme d'un point (ou une série de points) à atteindre précisément. Dans une approche de contrôle ergodique, à la place d'un point, <b>une région à explorer est donnée comme consigne au robot</b>. Le but du robot est alors de se déplacer pour <b>parcourir cette région de manière optimale</b>. Nous utilisons ces même algorithmes dans nos travaux de recherche pour des tâches d'insertion dans des applications industrielles, ce qui permet au robot de compenser automatiquement les imprécisions de ses capteurs par un mouvement de recherche autour des points d'insertion.
+En robotique, cette technique s'appelle <b>contrôle ergodique</b>. Elle se démarque des approches standards de contrôle qui définissent la tâche à effectuer sous forme d'un point (ou une série de points) à atteindre précisément. Dans une approche de contrôle ergodique, à la place d'un point, <b>une région à explorer est donnée comme consigne au robot</b>. Le but du robot est alors de se déplacer pour <b>parcourir cette région de manière optimale</b>. Nous utilisons ces mêmes algorithmes dans nos travaux de recherche pour des tâches d'insertion dans des applications industrielles, ce qui permet au robot de compenser automatiquement les imprécisions de ses capteurs par un mouvement de recherche autour des points d'insertion.
 </div>
 
 </div><!-- /.main-template -->
