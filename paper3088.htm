@@ -65,36 +65,34 @@ MathJax.Hub.Config({
 <div class='main-template'>
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/4049.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/3088.jpg'></div>
 <div class='col-md-10'>
-<h5>Tanwani, A.K., Yan, A., Lee, J., Calinon, S. and Goldberg, K. (2021)</h5>
-<h5><strong>Sequential Robot Imitation Learning from Observations</strong></h5> 
-<h5>International Journal of Robotics Research (IJRR), 40:10-11, 1306-1325.</h5>
+<h5>Wang, J., Lembono, T.S., Kim, S., Calinon, S., Vijayakumar, S. and Tonneau, S. (2022)</h5>
+<h5><strong>Learning to Guide Online Multi-Contact Receding Horizon Planning</strong></h5> 
+<h5>In Proc. IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Tanwani-IJRR2021.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
+<a href='papers/Wang-IROS2022.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> Download as PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://journals.sagepub.com/doi/abs/10.1177/02783649211032721' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
+<a href='https://iros2022.org/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Go to the publisher's website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Tanwani-IJRR2021.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
+<a href='papers/Wang-IROS2022.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Save the reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>This paper presents a framework to learn the sequential structure in the demonstrations for robot imitation learning. We first present a simple generative model that extracts duration segments (also called sub-goals or options) from observations, and optimally follows the sampled sequence of states from the model with a linear quadratic tracking controller. In our earlier work, we presented a task parameterized formulation of the model to adapt the model to changing environmental situations during manipulation. In this work, we present an end-to-end model for extracting sub-goals from videos that are sequenced together for performing a manipulation task. We learn a deep embedding feature space from videos by minimizing a triplet loss that pulls together different images of the same segment, while pushing away images randomly sampled from other segments. The videos are iteratively segmented for a given parametrization of the embedding space with an Expectation-Gradient algorithm. Decoding the image sequences gives a set of high-level sequence of segments to execute the task in a given situation. We first show its application for a pick-and-place task with the Baxter robot while avoiding a moving obstacle from kinesthetic demonstrations, followed by a vision-based suturing task from surgical JIGSAWS dataset.</p>
+<p>In Receding Horizon Planning (RHP), it is critical that the motion being executed facilitates the completion of the task, e.g. build momentum to traverse large slopes. This requires a value function that can inform the desirability of robot states. However, given the complex dynamics, value functions are often approximated by expensive computation of trajectories in an extended planning horizon. In this work, to achieve online RHP of multi-contact motions, we propose to learn an oracle that can predict local objectives as intermediate goals for a given task, based on the current robot state and the environment. These local objectives are used to construct local value functions to guide a short-horizon RHP. To enable generalization across environments, we use a novel robot-centric representation of oracle variables. We also present an incremental training scheme, that can improve the prediction accuracy by adding demonstrations on how to recover from failures. We compare our approach against the baseline (long-horizon RHP) for planning centroidal trajectories of humanoid walking on moderate slopes, as well as large slopes where static stability cannot be achieved. We validate these trajectories by tracking them via a whole-body inverse dynamics controller in simulation. We show that our approach can achieve online RHP for 95%-98.6% cycles, outperforming the baseline (8%-51.2%).</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Tanwani21,
-	author="Tanwani, A. K. and Yan, A. and Lee, J. and Calinon, S. and Goldberg, K.",
-	title="Sequential Robot Imitation Learning from Observations",
-	journal="International Journal of Robotics Research ({IJRR})",
-	year="2021",
-	volume="40", 
-	number="10--11", 
-	pages="1306--1325"
+<pre>@inproceedings{Wang22IROS,
+	author="Wang, J. and Lembono, T. S. and Kim, S. and Calinon, S. and Vijayakumar, S. and Tonneau, S.",
+	title="Learning to Guide Online Multi-Contact Receding Horizon Planning",
+	booktitle="Proc.\ {IEEE/RSJ} Intl Conf.\ on Intelligent Robots and Systems ({IROS})",
+	year="2022",
+	pages=""
 }</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
