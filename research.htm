@@ -80,10 +80,10 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class='row'>
-<div class='col-md-3 text-center'><a href='#learning'><img class='figure-img img-fluid' src='images/structure-learning-small01.jpg'><br>Learning structures</a></div>
-<div class='col-md-3 text-center'><a href='#combination'><img class='figure-img img-fluid' src='images/structure-combination-small01.jpg'><br>Combination structures</a></div>
 <div class='col-md-3 text-center'><a href='#geometric'><img class='figure-img img-fluid' src='images/structure-geometric-small01.jpg'><br>Geometric structures</a></div>
 <div class='col-md-3 text-center'><a href='#data'><img class='figure-img img-fluid' src='images/structure-data-small01.jpg'><br>Data structures</a></div>
+<div class='col-md-3 text-center'><a href='#combination'><img class='figure-img img-fluid' src='images/structure-combination-small01.jpg'><br>Combination structures</a></div>
+<div class='col-md-3 text-center'><a href='#learning'><img class='figure-img img-fluid' src='images/structure-learning-small01.jpg'><br>Learning structures</a></div>
 </div>
 <div class='row'>
 <div class='col-md-12'>
@@ -95,75 +95,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 
-
-
-<br>
-<a class='anchor' id='learning'></a>
-<h4 class='p-2 text-white bg-dark'>LEARNING STRUCTURES</h4>
-<div class='row'>
-<div class='col-md-12'>
-<img src='images/ML_robotics-small03.jpg' class='wrappedimg'>
-<p class='text-justify'>To reduce the amount of required data, a first opportunity to seize is that <b>machine learning in robotics goes beyond the standard training-set and testing-set paradigm</b>.</p>
-<p class='text-justify'>Indeed, we can exploit a number of <b>interactive learning mechanisms</b> to acquire/generate better data on-the-spot, including active learning, machine teaching (by generating data to train our robots), curriculum learning (by providing data of increased complexity that adapt to the learner), and bilateral interactions that rely on several <b>social mechanisms to transfer skills more efficiently</b>. Thus, skills acquisition in robotics is <b>a scaffolding process rather than a standard learning process</b>. In this scaffolding metaphor, the robot first needs a lot of structures, and the structures can be progressively dismantled when the robot progresses. There is thus a continuous evolution from full assistance to full autonomy.</p>
-<img src='images/learningStrategies-small01.jpg' class='wrappedimg'>
-<p class='text-justify'>We can also greatly benefit from the <b>orchestration of several learning modalities</b> that can jointly be used to transfer skills, and evaluate the current capability of the robot to execute the task. This can improve the robustness of skill acquisition by allowing diverse forms of environment and user constraints to be considered, and an improved assessment of the robot knowledge (by testing the acquired knowledge in diverse situations).<p> 
-<p class='text-justify'>The other important advantage is that <b>this orchestration allows each individual learning modality to be simplified</b>, as skills acquisition with a single learning strategy can be unnecessarily complex. Indeed, we could not learn to play a sport efficiently without practice, by only observing others play. We could also not acquire efficiently a fabrication skill with only the desired end-goal. We instead need to observe an expert or to to be guided throughout the process to acquire the underlying fabrication strategies. Similarly to us, <b>robots cannot acquire skills efficiently by using a single learning modality</b>.</p>
-<p class='text-justify'>Thus, instead of focusing on the improvement of algorithms and models for a specific learning strategy, I believe that robotics could highly benefit from the <b>meta-learning problem of combining learning modalities</b>, without defining the sequence and organization in advance.</p>
-<div class='p-3 bg-light text-dark border'>
-<p><b>Reference:</b></p>
-<p><a href='paper4046.htm' class='nodecor'>Kulak, T. and Calinon, S. (2021). <strong>Combining Social and Intrinsically-Motivated Learning for Multi-Task Robot Skill Acquisition</strong>. IEEE Trans. on Cognitive and Developmental Systems.</a> <a href='paper4046.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Kulak-TCDS2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-</div>
-</div>
-</div>
-
-
-
-
-<br>
-<a class='anchor' id='combination'></a>
-<h4 class='p-2 text-white bg-dark'>COMBINATION STRUCTURES</h4>
-<div class='row'>
-<div class='col-md-12'>
-<p class='text-justify'>Movement primitives are often used in robot learning as high-level "bricks" of motion from a dictionary that can be re-organized in series and in parallel. Our work extends this notion to <b>behavior primitives</b>, which form a richer set of behaviors (see (a) in the figure below). These behavior primitives correspond to controllers that are either myopic or anticipative, with either time-independent or time-dependent formulations.</p>
-<!-- We advocate the importance of superposing controllers with full weight matrices instead of scalar weights.-->
-<p class='text-justify'>We propose to formalize the combination of behavior primitives as an information fusion problem in which several sources of information can be modeled as probability distributions. The <b>product of experts (PoE)</b> is a machine learning technique modeling a probability distribution by combining the output from several simpler distributions. The core idea is to combine several distributions (called experts) by multiplying their density functions. This allows each expert to make decisions on the basis of a few dimensions, without having to cover the full dimensionality of a problem. A PoE corresponds to an "and" operation, which contrasts with a mixture model that corresponds to an "or" operation (by combining several probability distributions as a weighted sum of their density functions). Thus, each component in a PoE represents a soft constraint. For an event to be likely under a product model, all constraints must be (approximately) satisfied. In contrast, in a mixture model, an event is likely if it matches (approximately) with any single expert.</p>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/PoE-small01.png'></figure>
-<p class='text-justify'>With Gaussian distributions, the fusion problem simplifies to a <b>product of Gaussians (PoG)</b>, which can be solved analytically, where the distributions can either represent robot commands at the current time step (myopic control system), or trajectory distributions in the control space (anticipative planning system).</p>
-<p class='text-justify'>State estimation is also classically solved as an information fusion problem, resulting in a product of Gaussians that takes into account uncertainty in motion and sensor(s) models (a well-known example is the Kalman filter), see (b) in the figure above. We propose to treat the combination of behavior primitives within a similar mathematical framework, by relying on products of experts, where each expert takes care of a specific aspect of the task to achieve.</p>
-<p class='text-justify'>This approach allows the <b>orchestration of different controllers</b>, which can be learned separately or altogether (by variational inference). With this formulation, the robot can counteract perturbations that have an impact on the fulfillment of the task, while ignoring other perturbations. It also allows us to create bridges with research in biomechanics and motor control, with formulations including minimal intervention principles, uncontrolled manifolds or optimal feedback control.</p>
-<!--This approach allows us to combine control, planning and perception features in an efficient manner, by allowing multiple behavior primitives to be orchestrated in parallel (including prioritization with null-space projection structures). In this framework, each behavior primitive contributes to the task by taking into account the (co)variations allowed in a task and the uncertainty of the expertise.-->
-
-<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#taskparameterized'>Task-parameterized movements <b>[open]</b></button><br><br> 
-<div id='taskparameterized' class='collapse'>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/TPmodels01.jpg'></figure>
-<p class='text-justify'>To facilitate the acquisition of manipulation skills, <b>task-parameterized models</b> can be exploited to take into account that <b>motions typically relates to objects, tools or landmarks</b> in the robot's workspace. The approach consists of <b>encoding a movement in multiple coordinate systems</b> (e.g., from the perspectives of different objects), in the form of trajectory distributions. In a new situation (e.g., for new object locations), the reproduction problem corresponds to a fusion problem, where the variations in the different coordinate systems are exploited to generate a movement reference tracked with variable gains, providing the robot with a <b>variable impedance behavior</b> that automatically adapts to the precision required in the different phases of the task. For example, in a pick-and-place task, the robot will be stiff if the object needs to be reached/dropped in a precise way, and will remain compliant in the other parts of the task.</p> 
-<p class='text-justify'>Our ongoing work explores the extension of the task-parameterized principle to a richer set of behaviors, including <b>coordinate systems that take into account symmetries</b> (e.g., cylindrical and spherical coordinate systems) and <b>nullspace projection structures</b>.</p>
-<div class='p-3 bg-light text-dark border'>
-<p><b>References:</b></p>
-<p><a href='paper4018.htm' class='nodecor'>Calinon, S. (2016). <strong>A Tutorial on Task-Parameterized Movement Learning and Retrieval</strong>. Intelligent Service Robotics (Springer), 9:1, 1-29.</a> <a href='paper4018.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-JIST2015.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-<p><a href='paper4033.htm' class='nodecor'>Silvério, J., Calinon, S., Rozo, L. and Caldwell, D.G. (2019). <strong>Learning Task Priorities from Demonstrations</strong>. IEEE Transactions on Robotics, 35:1, 78-94.</a> <a href='paper4033.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Silverio-TRO2019.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-</div><br>
-</div>
-
-<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br> 
-<div id='optimalcontrol' class='collapse'>
-<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/LQT-small02.png'></center></figure>
-<p class='text-justify'><b>Linear quadratic tracking (LQT)</b> is a simple form of optimal control that trades off tracking and control costs expressed as quadratic terms over a time horizon, with the evolution of the state described in a linear form. This constrained problem can be solved by expressing the state and the control commands as trajectories, corresponding to a least squares solution. A <b>probabilistic interpretation of the LQT solution</b> can be built by using the residuals of this estimate.</p>
-<p class='text-justify'>This approach allows the <b>creation of bridges between learning and control</b>. For example, in learning from demonstration, the observed (co)variations in a task can be formulated as an LQT objective function, which then provides a trajectory distribution in control space that can be converted to a trajectory distribution in state space. All the operations are analytic and only exploit basic linear algebra.</p>
-<p class='text-justify'>The proposed approach can also be extended to <b>model predictive control (MPC), iterative LQR (iLQR) and differential dynamic programming (DDP)</b>, whose solution needs this time to be interpreted locally at each iteration step of the algorithm.</p>
-<div class='p-3 bg-light text-dark border'>
-<p><b>References:</b></p>
-<p><a href='paper5004.htm' class='nodecor'>Calinon, S. and Lee, D.  (2019). <strong>Learning Control</strong>. Vadakkepat, P. and Goswami, A. (eds.). Humanoid Robotics: a Reference, pp. 1261-1312. Springer.</a> <a href='paper5004.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-Lee-learningControl.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-<p><a href='paper3054.htm' class='nodecor'>Calinon, S. (2016). <strong>Stochastic learning and control in multiple coordinate systems</strong>. Intl Workshop on Human-Friendly Robotics (HFR).</a> <a href='paper3054.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-HFR2016.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-</div><br>
-</div>
-
-<div class='p-3 bg-light text-dark border'>
-<p><b>Reference:</b></p>
-<p><a href='paper4050.htm' class='nodecor'>Pignat, E., Silvério, J. and Calinon, S. (2021). <strong>Learning from Demonstration using Products of Experts: Applications to Manipulation and Task Prioritization</strong>. International Journal of Robotics Research.</a> <a href='paper4050.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Pignat-IJRR2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
-</div>
-</div>
-</div>
 
 
 
@@ -238,6 +169,77 @@ MathJax.Hub.Config({
 <p><a href='paper7008.htm' class='nodecor'>Shetty, S., Lembono, T., Löw, T. and Calinon, S. (2022). <strong>Tensor Train for Global Optimization Problems in Robotics</strong>. arXiv:2206.05077.</a> <a href='paper7008.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Shetty-arXiv2022.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
 <p><a href='paper4048.htm' class='nodecor'>Shetty, S., Silvério, J. and Calinon, S. (2022). <strong>Ergodic Exploration using Tensor Train: Applications in Insertion Tasks</strong>. IEEE Trans. on Robotics (T-RO), 38:2, 906-921.</a> <a href='paper4048.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Shetty-TRO2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
 <!--<p><a href='paper4047.htm' class='nodecor'>Jaquier, N., Haschke, R. and Calinon, S. (2021). <strong>Tensor-variate mixture of experts for proportional myographic control of a robotic hand</strong>. Robotics and Autonomous Systems, 142:103812.</a> <a href='paper4047.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-RAS2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>-->
+</div>
+</div>
+</div>
+
+
+
+
+<br>
+<a class='anchor' id='combination'></a>
+<h4 class='p-2 text-white bg-dark'>COMBINATION STRUCTURES</h4>
+<div class='row'>
+<div class='col-md-12'>
+<p class='text-justify'>Movement primitives are often used in robot learning as high-level "bricks" of motion from a dictionary that can be re-organized in series and in parallel. Our work extends this notion to <b>behavior primitives</b>, which form a richer set of behaviors (see (a) in the figure below). These behavior primitives correspond to controllers that are either myopic or anticipative, with either time-independent or time-dependent formulations.</p>
+<!-- We advocate the importance of superposing controllers with full weight matrices instead of scalar weights.-->
+<p class='text-justify'>We propose to formalize the combination of behavior primitives as an information fusion problem in which several sources of information can be modeled as probability distributions. The <b>product of experts (PoE)</b> is a machine learning technique modeling a probability distribution by combining the output from several simpler distributions. The core idea is to combine several distributions (called experts) by multiplying their density functions. This allows each expert to make decisions on the basis of a few dimensions, without having to cover the full dimensionality of a problem. A PoE corresponds to an "and" operation, which contrasts with a mixture model that corresponds to an "or" operation (by combining several probability distributions as a weighted sum of their density functions). Thus, each component in a PoE represents a soft constraint. For an event to be likely under a product model, all constraints must be (approximately) satisfied. In contrast, in a mixture model, an event is likely if it matches (approximately) with any single expert.</p>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/PoE-small01.png'></figure>
+<p class='text-justify'>With Gaussian distributions, the fusion problem simplifies to a <b>product of Gaussians (PoG)</b>, which can be solved analytically, where the distributions can either represent robot commands at the current time step (myopic control system), or trajectory distributions in the control space (anticipative planning system).</p>
+<p class='text-justify'>State estimation is also classically solved as an information fusion problem, resulting in a product of Gaussians that takes into account uncertainty in motion and sensor(s) models (a well-known example is the Kalman filter), see (b) in the figure above. We propose to treat the combination of behavior primitives within a similar mathematical framework, by relying on products of experts, where each expert takes care of a specific aspect of the task to achieve.</p>
+<p class='text-justify'>This approach allows the <b>orchestration of different controllers</b>, which can be learned separately or altogether (by variational inference). With this formulation, the robot can counteract perturbations that have an impact on the fulfillment of the task, while ignoring other perturbations. It also allows us to create bridges with research in biomechanics and motor control, with formulations including minimal intervention principles, uncontrolled manifolds or optimal feedback control.</p>
+<!--This approach allows us to combine control, planning and perception features in an efficient manner, by allowing multiple behavior primitives to be orchestrated in parallel (including prioritization with null-space projection structures). In this framework, each behavior primitive contributes to the task by taking into account the (co)variations allowed in a task and the uncertainty of the expertise.-->
+
+<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#taskparameterized'>Task-parameterized movements <b>[open]</b></button><br><br> 
+<div id='taskparameterized' class='collapse'>
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/TPmodels01.jpg'></figure>
+<p class='text-justify'>To facilitate the acquisition of manipulation skills, <b>task-parameterized models</b> can be exploited to take into account that <b>motions typically relates to objects, tools or landmarks</b> in the robot's workspace. The approach consists of <b>encoding a movement in multiple coordinate systems</b> (e.g., from the perspectives of different objects), in the form of trajectory distributions. In a new situation (e.g., for new object locations), the reproduction problem corresponds to a fusion problem, where the variations in the different coordinate systems are exploited to generate a movement reference tracked with variable gains, providing the robot with a <b>variable impedance behavior</b> that automatically adapts to the precision required in the different phases of the task. For example, in a pick-and-place task, the robot will be stiff if the object needs to be reached/dropped in a precise way, and will remain compliant in the other parts of the task.</p> 
+<p class='text-justify'>Our ongoing work explores the extension of the task-parameterized principle to a richer set of behaviors, including <b>coordinate systems that take into account symmetries</b> (e.g., cylindrical and spherical coordinate systems) and <b>nullspace projection structures</b>.</p>
+<div class='p-3 bg-light text-dark border'>
+<p><b>References:</b></p>
+<p><a href='paper4018.htm' class='nodecor'>Calinon, S. (2016). <strong>A Tutorial on Task-Parameterized Movement Learning and Retrieval</strong>. Intelligent Service Robotics (Springer), 9:1, 1-29.</a> <a href='paper4018.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-JIST2015.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper4033.htm' class='nodecor'>Silvério, J., Calinon, S., Rozo, L. and Caldwell, D.G. (2019). <strong>Learning Task Priorities from Demonstrations</strong>. IEEE Transactions on Robotics, 35:1, 78-94.</a> <a href='paper4033.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Silverio-TRO2019.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>
+</div>
+
+<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br> 
+<div id='optimalcontrol' class='collapse'>
+<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/LQT-small02.png'></center></figure>
+<p class='text-justify'><b>Linear quadratic tracking (LQT)</b> is a simple form of optimal control that trades off tracking and control costs expressed as quadratic terms over a time horizon, with the evolution of the state described in a linear form. This constrained problem can be solved by expressing the state and the control commands as trajectories, corresponding to a least squares solution. A <b>probabilistic interpretation of the LQT solution</b> can be built by using the residuals of this estimate.</p>
+<p class='text-justify'>This approach allows the <b>creation of bridges between learning and control</b>. For example, in learning from demonstration, the observed (co)variations in a task can be formulated as an LQT objective function, which then provides a trajectory distribution in control space that can be converted to a trajectory distribution in state space. All the operations are analytic and only exploit basic linear algebra.</p>
+<p class='text-justify'>The proposed approach can also be extended to <b>model predictive control (MPC), iterative LQR (iLQR) and differential dynamic programming (DDP)</b>, whose solution needs this time to be interpreted locally at each iteration step of the algorithm.</p>
+<div class='p-3 bg-light text-dark border'>
+<p><b>References:</b></p>
+<p><a href='paper5004.htm' class='nodecor'>Calinon, S. and Lee, D.  (2019). <strong>Learning Control</strong>. Vadakkepat, P. and Goswami, A. (eds.). Humanoid Robotics: a Reference, pp. 1261-1312. Springer.</a> <a href='paper5004.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-Lee-learningControl.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper3054.htm' class='nodecor'>Calinon, S. (2016). <strong>Stochastic learning and control in multiple coordinate systems</strong>. Intl Workshop on Human-Friendly Robotics (HFR).</a> <a href='paper3054.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-HFR2016.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>
+</div>
+
+<div class='p-3 bg-light text-dark border'>
+<p><b>Reference:</b></p>
+<p><a href='paper4050.htm' class='nodecor'>Pignat, E., Silvério, J. and Calinon, S. (2021). <strong>Learning from Demonstration using Products of Experts: Applications to Manipulation and Task Prioritization</strong>. International Journal of Robotics Research.</a> <a href='paper4050.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Pignat-IJRR2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div>
+</div>
+</div>
+
+
+
+
+<br>
+<a class='anchor' id='learning'></a>
+<h4 class='p-2 text-white bg-dark'>LEARNING STRUCTURES</h4>
+<div class='row'>
+<div class='col-md-12'>
+<img src='images/ML_robotics-small03.jpg' class='wrappedimg'>
+<p class='text-justify'>To reduce the amount of required data, a first opportunity to seize is that <b>machine learning in robotics goes beyond the standard training-set and testing-set paradigm</b>.</p>
+<p class='text-justify'>Indeed, we can exploit a number of <b>interactive learning mechanisms</b> to acquire/generate better data on-the-spot, including active learning, machine teaching (by generating data to train our robots), curriculum learning (by providing data of increased complexity that adapt to the learner), and bilateral interactions that rely on several <b>social mechanisms to transfer skills more efficiently</b>. Thus, skills acquisition in robotics is <b>a scaffolding process rather than a standard learning process</b>. In this scaffolding metaphor, the robot first needs a lot of structures, and the structures can be progressively dismantled when the robot progresses. There is thus a continuous evolution from full assistance to full autonomy.</p>
+<img src='images/learningStrategies-small01.jpg' class='wrappedimg'>
+<p class='text-justify'>We can also greatly benefit from the <b>orchestration of several learning modalities</b> that can jointly be used to transfer skills, and evaluate the current capability of the robot to execute the task. This can improve the robustness of skill acquisition by allowing diverse forms of environment and user constraints to be considered, and an improved assessment of the robot knowledge (by testing the acquired knowledge in diverse situations).<p> 
+<p class='text-justify'>The other important advantage is that <b>this orchestration allows each individual learning modality to be simplified</b>, as skills acquisition with a single learning strategy can be unnecessarily complex. Indeed, we could not learn to play a sport efficiently without practice, by only observing others play. We could also not acquire efficiently a fabrication skill with only the desired end-goal. We instead need to observe an expert or to to be guided throughout the process to acquire the underlying fabrication strategies. Similarly to us, <b>robots cannot acquire skills efficiently by using a single learning modality</b>.</p>
+<p class='text-justify'>Thus, instead of focusing on the improvement of algorithms and models for a specific learning strategy, I believe that robotics could highly benefit from the <b>meta-learning problem of combining learning modalities</b>, without defining the sequence and organization in advance.</p>
+<div class='p-3 bg-light text-dark border'>
+<p><b>Reference:</b></p>
+<p><a href='paper4046.htm' class='nodecor'>Kulak, T. and Calinon, S. (2021). <strong>Combining Social and Intrinsically-Motivated Learning for Multi-Task Robot Skill Acquisition</strong>. IEEE Trans. on Cognitive and Developmental Systems.</a> <a href='paper4046.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Kulak-TCDS2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
 </div>
 </div>
 </div>
