@@ -147,7 +147,7 @@ MathJax.Hub.Config({
 
 <button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br> 
 <div id='optimalcontrol' class='collapse'>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/LQT-small02.png'></figure>
+<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/LQT-small02.png'></center></figure>
 <p class='text-justify'><b>Linear quadratic tracking (LQT)</b> is a simple form of optimal control that trades off tracking and control costs expressed as quadratic terms over a time horizon, with the evolution of the state described in a linear form. This constrained problem can be solved by expressing the state and the control commands as trajectories, corresponding to a least squares solution. A <b>probabilistic interpretation of the LQT solution</b> can be built by using the residuals of this estimate.</p>
 <p class='text-justify'>This approach allows the <b>creation of bridges between learning and control</b>. For example, in learning from demonstration, the observed (co)variations in a task can be formulated as an LQT objective function, which then provides a trajectory distribution in control space that can be converted to a trajectory distribution in state space. All the operations are analytic and only exploit basic linear algebra.</p>
 <p class='text-justify'>The proposed approach can also be extended to <b>model predictive control (MPC), iterative LQR (iLQR) and differential dynamic programming (DDP)</b>, whose solution needs this time to be interpreted locally at each iteration step of the algorithm.</p>
@@ -180,7 +180,7 @@ MathJax.Hub.Config({
 <br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#manipulability'>Learning, tracking and transfer of manipulability ellipsoids <b>[open]</b></button><br><br> 
 <div id='manipulability' class='collapse'>
 <p class='text-justify'>Skills transfer can exploit <b>stiffness and manipulability ellipsoids</b>, in the form of <b>geometric descriptors</b> representing the skills to be transferred to the robot. As these ellipsoids lie on <b>symmetric positive definite (SPD) manifolds</b>, Riemannian geometry can be used to learn and reproduce these descriptors in a probabilistic manner.</p>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/manipulability-small02.png'></figure>
+<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/manipulability-small02.png'></center></figure>
 <div class='p-3 bg-light text-dark border'>
 <p><b>Reference:</b></p>
 <p><a href='paper3079.htm' class='nodecor'>Jaquier, N., Rozo, L. and Calinon, S. (2020). <strong>Analysis and Transfer of Human Movement Manipulability in Industry-like Activities</strong>. In Proc. of IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS), pp. 11131-11138.</a> <a href='paper3079.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-IROS2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
@@ -209,9 +209,8 @@ MathJax.Hub.Config({
 
 <br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#TTGO'>Global optimization with tensor train decomposition <b>[open]</b></button><br><br> 
 <div id='TTGO' class='collapse'>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/TT-pipeline-small01.jpg'>
-<figcaption class="figure-caption">
-Combination of global and local optimization for fast adaptation to new situations, by leveraging offline and online computation. 
+<center><figure class='figure p-3'><img class='figure-img img-fluid' style='width:70%;' src='images/TT-pipeline-small01.jpg'></center>
+<figcaption class="figure-caption">Combination of global and local optimization for fast adaptation to new situations, by leveraging offline and online computation. 
 <b>(a)</b> Local optimization algorithms such as iLQR requires good initial estimates to speed up convergence, to reach better local minima and to find diverse solutions. The figure shows an illustration with two decision variables and four local minima of a cost function.
 <b>(b)</b> The decision variables space can be discretized to search for initial guesses near the local minima of the cost functions, which can be used to warm-start local optimizers, for example iterative linear quadratic regulators (iLQR).
 <b>(c)</b> The na\"ive solution consists of evaluating the cost for each set of decision variables, which typically does not scale well when more than 2 or 3 decision variables are used, which is the case in robot control problems. For 2D decision variables, a cross approximation algorithm can be used to approximate the cost function (treated as a probability distribution). The algorithm iteratively searches for row and column indices to reconstruct the full distribution from a sparse subset of rows and columns (depiced in colors). It also simultaneously estimates the number of rows and columns required, corresponding to the rank of the matrix.
@@ -220,15 +219,17 @@ Combination of global and local optimization for fast adaptation to new situatio
 <b>(f)</b> This low-rank representation can be used for fast conditional sampling, allowing the robot to generate diverse controllers given a set of task parameters describing the situations and environment.
 </figcaption>
 </figure>
+<br>
 <p class='text-justify'>Learning and optimization problems in robotics are characterized by two types of variables: 1) <b>task parameters</b> representing the situation that the robot encounters, typically related to environment variables such as locations of objects, users or obstacles; and 2) <b>decision variables</b> related to actions that the robot takes, typically related to a controller acting within a given time window, or the use of basis functions to describe trajectories in control or state spaces. For each change of task parameters, decision variables need to be recomputed as fast as possible, so that the robot can fluently collaborate with users and can swiftly react to changes in its environment.</p>
 <p class='text-justify'>Within the <a href='https://www.memmo-project.eu/' target='_blank'>MEMMO</a> and <a href='https://learn-real.eu/' target='_blank'>LEARN-REAL</a> projects, we investigate the roles of offline and online learning optimization to attain such objective. The problem is formalized as an <b>optimal control problem</b> with a cost function to minimize, parameterized by task parameters and decision variables. We investigate the use of <b>tensor train (TT) decomposition</b> as a model to learn the structure between the task parameters, the decision variables and the resulting cost expressed in the form of a probability distribution, which then allows solutions to be sampled from a conditional distribution by TT-cross approximation. The approach does not require gradients to be computed and can be used for both discrete and continuous decision variables. We exploit this structure to gather prior knowledge in an offline phase, which is further used for fast online decision making, with local Gauss-Newton optimization, see the above figure for an overview.</p>
 <!--with local Gauss-Newton optimization in the form of <b>iterative linear quadratic regulators (iLQR)-->
 <p class='text-justify'>In the second reference below, we demonstrated the capability of the approach for trajectory optimization within a varied set of control and planning problems with robot manipulators.</p>
+<br>
 </div>
 
 <button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#ergodic'>Ergodic control applied to insertion tasks <b>[open]</b></button><br><br> 
 <div id='ergodic' class='collapse'>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/ergodic-small02.png'></figure>
+<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/ergodic-small02.png'></center></figure>
 <p class='text-justify'>In robotics, <b>ergodic control</b> extends the tracking principle by specifying a probability distribution over an area to cover instead of a trajectory to track. The original problem is formulated as a spectral multiscale coverage problem, typically requiring the <b>spatial distribution to be decomposed as Fourier series</b>. This approach does not scale well to control problems requiring exploration in search space of more than 2 dimensions. To address this issue, we propose the use of <b>tensor trains</b>, a recent <b>low-rank tensor decomposition</b> technique from the field of multilinear algebra. The proposed solution is efficient, both computationally and storage-wise, hence making it suitable for its online implementation in robotic systems. The approach is applied to a peg-in-hole insertion task requiring full 6D end-effector poses.</p>
 </div>
 
