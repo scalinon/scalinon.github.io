@@ -4,15 +4,26 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js'></script>
 <script defer src='https://pyscript.net/latest/pyscript.js'></script>
 </head>
+
 <py-env>
   - numpy
 </py-env>
-<body>		
+
+<body>
+
+Links lengths:
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='200' id='slider0' class='w-72'></div>
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='200' id='slider1' class='w-72'></div>
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='100' id='slider2' class='w-72'></div>
+
 <py-script>
 from pyodide import create_proxy, to_js
 from js import THREE, window, Object, performance
 import js, pyodide
 import numpy as np
+
+# GUI
+sliders = [document.getElementById('slider0'), document.getElementById('slider1'), document.getElementById('slider2')];
 
 # Mouse events
 mouse = THREE.Vector2.new()
@@ -20,8 +31,10 @@ mousedown = 0
 
 def onMouseMove(event):
 	#event.preventDefault()
-	mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+#	mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+#	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+	mouse.x = (event.offsetX / window.innerWidth) * 2 - 1
+	mouse.y = -(event.offsetY / window.innerHeight) * 2 + 1
 	
 def onMouseDown(event):
 	global mousedown
@@ -41,6 +54,7 @@ js.document.addEventListener('mousemove', pyodide.create_proxy(onMouseMove))
 js.document.addEventListener('mousedown', pyodide.create_proxy(onMouseDown))
 js.document.addEventListener('mouseup', pyodide.create_proxy(onMouseUp))
 #js.document.addEventListener('click', pyodide.create_proxy(onMouseClick))
+
 
 
 # Forward kinematics for end-effector (in robot coordinate system)
@@ -76,6 +90,8 @@ param.nbVarX = 3 # State space dimension (x1,x2,x3)
 param.nbVarF = 3 # Objective function dimension (f1,f2,f3, with f3 as orientation)
 param.l = [200, 200, 100] # Robot links lengths
 
+#param.l[0] = l0_slider.value
+
 x = np.array([3*np.pi/4, -np.pi/2, -np.pi/4]) # Initial state
 #x = np.zeros([3,1]); 
 #print(x)
@@ -89,14 +105,13 @@ camera.lookAt(0, 0, 0);
 scene = THREE.Scene.new()
 scene.background = THREE.Color.new("#FFFFFF")
 
-#perms = {"antialias":1, "depth":1}
-#perms = Object.fromEntries(to_js(perms))
-#renderer = THREE.WebGLRenderer.new(perms)
-renderer = THREE.WebGLRenderer.new({"antialias":True})
-renderer.shadowMap.enabled = False
-renderer.shadowMap.type = THREE.PCFSoftShadowMap
-renderer.shadowMap.needsUpdate = True
-
+perms = {"antialias":1, "depth":1}
+perms = Object.fromEntries(to_js(perms))
+renderer = THREE.WebGLRenderer.new(perms)
+#renderer = THREE.WebGLRenderer.new({"antialias":True})
+#renderer.shadowMap.enabled = False
+#renderer.shadowMap.type = THREE.PCFSoftShadowMap
+#renderer.shadowMap.needsUpdate = True
 #renderer.depth = 1
 #renderer.antialias = 1
 renderer.setSize(window.innerWidth, window.innerHeight)
@@ -197,14 +212,12 @@ while True:
 #	dx = mouse.x * 2;
 #	x[2] = (np.random.rand(1)-0.5) * np.pi*2;
 
-#	# FK test
-#	x[0] = mouse.x * 4;
-#	x[1] = mouse.y * 4;	
-#	f = fkin0(x, param);
+	# Robot parameters
+	param.l[0] = (float)(sliders[0].value)
+	param.l[1] = (float)(sliders[1].value)
+	param.l[2] = (float)(sliders[2].value)
 	
-	# IK test
-#	fh[0] = 500.0 * mouse.x
-#	fh[1] = 500.0 * mouse.y
+	# IK
 	J = Jkin(x, param)
 	f = fkin0(x, param)
 	dx = np.linalg.pinv(J) @ (fh - f[:,-1])	
