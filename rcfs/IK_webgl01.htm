@@ -1,0 +1,220 @@
+<html>
+<head>
+<title>Robotics codes from scratch (RCFS)</title>
+<link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js'></script>
+<script defer src='https://pyscript.net/latest/pyscript.js'></script>
+</head>
+
+<py-env>
+  - numpy
+</py-env>
+
+<body>
+
+Links lengths:
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='200' id='slider0' class='w-72'></div>
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='200' id='slider1' class='w-72'></div>
+<div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='100' id='slider2' class='w-72'></div>
+
+<py-script>
+from pyodide import create_proxy, to_js
+from js import THREE, window, Object, performance
+import js, pyodide
+import numpy as np
+
+# GUI
+sliders = [document.getElementById('slider0'), document.getElementById('slider1'), document.getElementById('slider2')];
+
+# Mouse events
+mouse = THREE.Vector2.new()
+mousedown = 0
+
+def onMouseMove(event):
+	#event.preventDefault()
+	mouse.x = (event.offsetX / window.innerWidth) * 2 - 1
+	mouse.y = -(event.offsetY / window.innerHeight) * 2 + 1
+
+#def onTouchMove(event):
+#	#event.preventDefault()
+#	mouse.x = (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1
+#	mouse.y = -(event.changedTouches[0].clientY / window.innerHeight) * 2 + 1
+	
+def onMouseDown(event):
+	global mousedown
+	mousedown = 1
+#	console.log('Mouse down')
+
+def onMouseUp(event):
+	global mousedown
+	mousedown = 0
+#	console.log('Mouse up')
+
+#def onMouseClick(event):
+#	event.preventDefault()
+#	console.log(event.mousedown)
+
+js.document.addEventListener('mousemove', pyodide.create_proxy(onMouseMove))
+js.document.addEventListener('touchmove', pyodide.create_proxy(onMouseMove)) #for mobile interfaces
+
+js.document.addEventListener('mousedown', pyodide.create_proxy(onMouseDown))
+js.document.addEventListener('pointerdown', pyodide.create_proxy(onMouseDown)) #for mobile interfaces
+
+js.document.addEventListener('mouseup', pyodide.create_proxy(onMouseUp))
+js.document.addEventListener('pointerup', pyodide.create_proxy(onMouseUp))  #for mobile interfaces
+
+#js.document.addEventListener('click', pyodide.create_proxy(onMouseClick))
+
+
+# Webgl scene
+
+#camera = THREE.PerspectiveCamera.new(75, window.innerWidth / window.innerHeight, 0.1, 300);
+camera = THREE.OrthographicCamera.new(-window.innerWidth/2, window.innerWidth/2, window.innerHeight/2, -window.innerHeight/2, -500, 500)
+camera.position.set(0, 0, 300)
+camera.lookAt(0, 0, 0);
+
+scene = THREE.Scene.new()
+scene.background = THREE.Color.new("#FFFFFF")
+
+perms = {"antialias":1, "depth":1}
+perms = Object.fromEntries(to_js(perms))
+renderer = THREE.WebGLRenderer.new(perms)
+#renderer = THREE.WebGLRenderer.new({"antialias":True})
+#renderer.depth = 1
+#renderer.antialias = 1
+renderer.setSize(window.innerWidth, window.innerHeight)
+document.body.appendChild(renderer.domElement)
+
+
+#f = fkin0(x, param) #This does not work: be careful!!!!
+f = np.zeros([2,4])
+fh = np.zeros([2,])
+#fh=np.array([200.0, 0])
+
+# Object to reach
+perms = {"color":"#FF3399", "size":20}
+perms = Object.fromEntries(to_js(perms))
+obj_material = THREE.PointsMaterial.new(perms)
+#obj_material.color.setRGB(1.0, 0.3, 0.7)
+obj_geom = THREE.Geometry.new()
+obj_geom.vertices.push(THREE.Vector3.new(fh[0], fh[1], 0))
+obj = THREE.Points.new(obj_geom, obj_material)
+scene.add(obj)
+
+
+# Robot
+rob_geom = THREE.Geometry.new()
+rob_geom.vertices.push(THREE.Vector3.new(f[0,0], f[1,0], 2))
+rob_geom.vertices.push(THREE.Vector3.new(f[0,1], f[1,1], 2))
+rob_geom.vertices.push(THREE.Vector3.new(f[0,2], f[1,2], 2))
+rob_geom.vertices.push(THREE.Vector3.new(f[0,3], f[1,3], 2))
+
+perms = {"color":"#777777", "linewidth":10}
+perms = Object.fromEntries(to_js(perms))
+rob_material = THREE.LineBasicMaterial.new(perms)
+rob = THREE.Line.new(rob_geom, rob_material)
+scene.add(rob)
+#rob.matrixAutoUpdate = 1
+#rob.updateMatrix()
+
+# Articulations
+perms = {"color":"#555555"}
+perms = Object.fromEntries(to_js(perms))
+circ_material = THREE.MeshBasicMaterial.new(perms)
+circ_geom = THREE.CircleGeometry.new(10, 14)
+jnt = [THREE.Mesh.new(circ_geom, circ_material), \
+       THREE.Mesh.new(circ_geom, circ_material), \
+       THREE.Mesh.new(circ_geom, circ_material), \
+       THREE.Mesh.new(circ_geom, circ_material)] 
+for i in range(4): 
+	scene.add(jnt[i])
+
+raycaster = THREE.Raycaster.new();
+raycaster.params.Points.threshold = 100.0;
+
+
+#########################################################################################
+
+# Forward kinematics for end-effector (in robot coordinate system)
+def fkin(x, param):
+	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+	f = np.vstack([
+		param.l @ np.cos(L @ x),
+		param.l @ np.sin(L @ x)
+	]) 
+	return f
+
+# Forward kinematics for all joints (in robot coordinate system)
+def fkin0(x, param): 
+	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+	f = np.vstack([
+		L @ np.diag(param.l) @ np.cos(L @ x),
+		L @ np.diag(param.l) @ np.sin(L @ x)
+	])
+	f = np.hstack([np.zeros([2,1]), f])
+	return f
+
+# Jacobian with analytical computation (for single time step)
+def Jkin(x, param):
+	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+	J = np.vstack([
+		-np.sin(L @ x).T @ np.diag(param.l) @ L,
+		 np.cos(L @ x).T @ np.diag(param.l) @ L
+	])
+	return J
+
+param = lambda: None # Lazy way to define an empty class in python
+param.nbVarX = 3 # State space dimension (x1,x2,x3)
+param.nbVarF = 3 # Objective function dimension (f1,f2,f3, with f3 as orientation)
+param.l = [200, 200, 100] # Robot links lengths
+
+x = np.array([3*np.pi/4, -np.pi/2, -np.pi/4]) # Initial state
+fh = [200.0, 0]
+
+while True:
+#	time = performance.now() * 0.0005;
+
+	# Robot parameters
+	for i in range(param.nbVarX):
+		param.l[i] = (float)(sliders[i].value)
+	
+	# IK
+	J = Jkin(x, param)
+	f = fkin0(x, param)
+	dx = np.linalg.pinv(J) @ (fh - f[:,-1])	
+	x += dx * 5E-1
+
+	# Update webgl rendering
+#	obj.position.set(fh[0], fh[1], 0)
+	obj_geom.vertices[0].set(fh[0], fh[1], 0)
+
+	for i in range(param.nbVarX+1):
+		rob_geom.vertices[i].set(f[0,i], f[1,i], 2)
+		jnt[i].position.set(f[0,i], f[1,i], 3)
+
+	rob.updateMatrixWorld()
+	rob.updateMatrix()
+	rob.geometry.applyMatrix(rob.matrix)
+	rob.matrix.identity()
+	
+	obj.updateMatrixWorld()
+	obj.updateMatrix()
+	obj.geometry.applyMatrix(obj.matrix)
+	obj.matrix.identity()
+	
+	raycaster.setFromCamera(mouse, camera);
+#	intersections = raycaster.intersectObjects(scene.children)
+#	intersections = raycaster.intersectObject(bg) 
+	intersections = raycaster.intersectObject(obj) 
+	if mousedown==1 and intersections.length > 0:
+		fh[0] = intersections[0].point.x
+		fh[1] = intersections[0].point.y
+#		console.log(intersections[0].point)		
+#		intersections[0].object.material.color.set(0xff0000);
+	
+	renderer.render(scene, camera)
+	await asyncio.sleep(0.002)
+
+</py-script>
+</body>
+</html>
