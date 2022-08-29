@@ -35,10 +35,11 @@ def onMouseMove(event):
 	mouse.x = (event.offsetX / window.innerWidth) * 2 - 1
 	mouse.y = -(event.offsetY / window.innerHeight) * 2 + 1
 
-#def onTouchMove(event):
-#	#event.preventDefault()
-#	mouse.x = (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1
-#	mouse.y = -(event.changedTouches[0].clientY / window.innerHeight) * 2 + 1
+def onTouchMove(event):
+	mouse.x = (event.changedTouches[0].offsetX / window.innerWidth) * 2 - 1
+	mouse.y = -(event.changedTouches[0].offsetY / window.innerHeight) * 2 + 1
+	console.log(event.changedTouches[0].offsetX)
+	console.log(event.offsetX)
 	
 def onMouseDown(event):
 	global mousedown
@@ -55,7 +56,8 @@ def onMouseUp(event):
 #	console.log(event.mousedown)
 
 js.document.addEventListener('mousemove', pyodide.create_proxy(onMouseMove))
-js.document.addEventListener('touchmove', pyodide.create_proxy(onMouseMove)) #for mobile interfaces
+#js.document.addEventListener('touchmove', pyodide.create_proxy(onMouseMove)) #for mobile interfaces
+js.document.addEventListener('touchmove', pyodide.create_proxy(onTouchMove)) #for mobile interfaces
 
 js.document.addEventListener('mousedown', pyodide.create_proxy(onMouseDown))
 js.document.addEventListener('pointerdown', pyodide.create_proxy(onMouseDown)) #for mobile interfaces
