@@ -16,14 +16,10 @@ Links lengths:
 <div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='150' id='slider0' class='w-72'></div>
 <div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='150' id='slider1' class='w-72'></div>
 <div class='w-full m-auto'><input type='range' min='0' max='300' step='1' value='150' id='slider2' class='w-72'></div>
-Object orientation:
-<div class='w-full m-auto'><input type='range' min='-3.14159' max='3.14159' step='.1' value='0.7854' id='slider_angle' class='w-72'></div>
 
 <center>
 <div id="robot-canvas" width="600" height="400"></div>
 </center>
-
-<!--<canvas id="robot-canvas" width="1000" height="800" class="m-auto border-2" ></canvas>-->
 
 <py-script>
 from pyodide import create_proxy, to_js
@@ -32,24 +28,7 @@ import js, pyodide
 import numpy as np
 
 #########################################################################################
-
-# Logarithmic map for R^2 x S^1 manifold
-def logmap(f, f0):
-	position_error = f[:2,:] - f0[:2,:]
-	orientation_error = np.imag(np.log(np.exp(f0[-1,:]*1j).conj().T * np.exp(f[-1,:]*1j).T)).conj()
-	diff = np.vstack([position_error, orientation_error])
-	return diff
 	
-# Forward kinematics for end-effector (in robot coordinate system)
-def fkin(x, param):
-	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
-	f = np.vstack([
-		param.l @ np.cos(L @ x),
-		param.l @ np.sin(L @ x),
-		np.mod(np.sum(x,0)+np.pi, 2*np.pi) - np.pi
-	]) # f1,f2,f3, where f3 is the orientation (single Euler angle for planar robot)
-	return f
-
 # Forward kinematics for all joints (in robot coordinate system)
 def fkin0(x, param): 
 	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
@@ -60,20 +39,23 @@ def fkin0(x, param):
 	f = np.hstack([np.zeros([2,1]), f])
 	return f
 
-# Jacobian with analytical computation (for single time step)
-def Jkin(x, param):
-	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
-	J = np.vstack([
-		-np.sin(L @ x).T @ np.diag(param.l) @ L,
-		 np.cos(L @ x).T @ np.diag(param.l) @ L,
-		 np.ones([1,param.nbVarX])
-	])
-	return J
-
+# General param parameters
+# ===============================
 param = lambda: None # Lazy way to define an empty class in python
+param.dt = 2E-2 # Time step length
 param.nbVarX = 3 # State space dimension (x1,x2,x3)
-param.l = np.ones(param.nbVarX) * 150 #np.array([param.nbVarX,]) * 100 # Robot links lengths
+param.nbVarU = 3 # Control space dimension (dx1,dx2,dx3)
+param.nbVarF = 3 # Objective function dimension (f1,f2,f3, with f3 as orientation)
+param.l = [1, 1, 1] # Robot links lengths
+param.l_m = [1, 1, 1] # Link masses
+param.damping = 3 # Damping
+param.gravity = 9.81 # Gravity
 
+# Auxiliary matrices
+param.aux_l = np.reshape(param.l, [1,param.nbVarX])
+param.aux_m = np.reshape(param.l_m, [1,param.nbVarX])
+param.aux_L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+param.aux_Lm = np.multiply(np.triu(np.ones([param.aux_m.shape[1], param.aux_m.shape[1]])), np.repeat(param.aux_m, param.aux_m.shape[1],0)) 
 
 #########################################################################################
 
@@ -105,10 +87,6 @@ def onMouseUp(event):
 	global mousedown
 	mousedown = 0
 #	console.log('Mouse up')
-
-#def onMouseClick(event):
-#	event.preventDefault()
-#	console.log(event.mousedown)
 
 js.document.addEventListener('mousemove', pyodide.create_proxy(onMouseMove))
 #js.document.addEventListener('touchmove', pyodide.create_proxy(onMouseMove)) #for mobile interfaces
@@ -154,26 +132,6 @@ f = np.zeros([2, param.nbVarX+1])
 fh = np.zeros([3,])
 #fh=np.array([200.0, 0])
 
-
-## Object (as point)
-#perms = {"color":"#FF3399", "size":20}
-#perms = Object.fromEntries(to_js(perms))
-#obj_material = THREE.PointsMaterial.new(perms)
-##obj_material.color.setRGB(1.0, 0.3, 0.7)
-#obj_geom = THREE.Geometry.new()
-#obj_geom.vertices.push(THREE.Vector3.new(fh[0], fh[1], 0))
-#obj = THREE.Points.new(obj_geom, obj_material)
-#scene.add(obj)
-
-# Object (as shape)
-perms = {"color":"#FF3399"}
-perms = Object.fromEntries(to_js(perms))
-obj_material = THREE.MeshBasicMaterial.new(perms)
-obj_geom = THREE.PlaneGeometry.new(120, 60);
-obj = THREE.Mesh.new(obj_geom, obj_material)
-scene.add(obj)
-
-
 # Robot
 perms = {"color":"#777777", "linewidth":10}
 perms = Object.fromEntries(to_js(perms))
@@ -198,43 +156,58 @@ for i in range(param.nbVarX+1):
 	jnt.add(jntTmp)
 scene.add(jnt)
 
-
 #Object selection
 raycaster = THREE.Raycaster.new();
 raycaster.params.Points.threshold = 50.0; #Selection precision for points
-	
+
+
 #########################################################################################
 
-#x = np.array([3*np.pi/4, -np.pi/2, -np.pi/4]) # Initial state
-x = np.ones(param.nbVarX) * np.pi / param.nbVarX
-fh = [200, 200, np.pi/4]
+def FD_step(x, u, param):
+	l = param.aux_l
+	m = param.aux_m
+	L = param.aux_L
+	Lm = param.aux_Lm
+	# Computation in matrix form of G,M, and C
+	G = -np.reshape(np.sum(Lm, 1), [param.nbVarX, 1]) * l.T * np.cos(L @ np.reshape(x[0:param.nbVarX], [param.nbVarX, 1])) * param.gravity
+	G = L.T @ G
+	M = (l.T * l) * np.cos(np.reshape(L @ x[:param.nbVarX], [param.nbVarX, 1]) - L @ x[:param.nbVarX]) * (Lm**.5 @ ((Lm**.5).T))
+	M = L.T @ M @ L 
+	C = -(l.T * l) * np.sin(np.reshape(L @ x[:param.nbVarX], [param.nbVarX, 1]) - L @ x[:param.nbVarX]) * (Lm**.5 @ ((Lm**.5).T))
+
+	# Compute acceleration
+	inv_M = np.linalg.inv(M)
+	ddq = inv_M @ (u + G + L.T @ C @ (L @ np.reshape(x[param.nbVarX:],[param.nbVarX, 1]))**2) - \
+          L @ np.reshape(x[param.nbVarX:],[param.nbVarX, 1])*param.damping
+	xt = x.reshape(2 * param.nbVarX, 1) + np.vstack([x[param.nbVarX:].reshape(param.nbVarX, 1), ddq]) * param.dt
+	return xt
+	
+# Initialization
+# ===============================
+x = np.zeros([2*param.nbVarX, 1]) #initial states
+u = np.zeros([param.nbVarU, 1]) #Input commands for the whole task.  
+
+## Forward Dynamics
+#for t in range(param.nbData-1):
+#	xt = FD_step(x, param)
+#	x = np.hstack([x, xt])
+
+#########################################################################################
+#t = 0
 
 while True:
 #	time = performance.now() * 0.0005;
+#	t +=1
+#	if t > param.nbData-2:
+#		t = 0
+	
+	x = FD_step(x, u, param)
+	f = fkin0(x[0:param.nbVarX].flatten(), param)	
 
 	# Robot parameters
 	for i in range(3):
 		param.l[i] = (float)(sliders[i].value)
-		
-	# Object angle
-	fh[2] = (float)(slider_angle.value)
-
-	# IK
-	J = Jkin(x, param)
-	f = fkin0(x, param)
-	#dx = np.linalg.pinv(J) @ (fh - f[:,-1])
-	f_ee = fkin(x, param)
-	dx = np.linalg.pinv(J) @ (fh - f_ee.flatten())
-	x += dx * 5E-1
 	
-#	draw_robot()
-
-	# Update webgl rendering
-	obj.position.set(fh[0], fh[1], 0)
-#	obj_geom.vertices[0].set(fh[0], fh[1], 0)
-	obj.rotation.set(0, 0, fh[2])
-
-
 	for i in range(param.nbVarX+1):
 		rob_geom.vertices[i].set(f[0,i], f[1,i], 2)
 		jnt.children[i].position.set(f[0,i], f[1,i], 3)
@@ -244,25 +217,19 @@ while True:
 	rob.geometry.applyMatrix(rob.matrix)
 	rob.matrix.identity()
 	
-#	obj.updateMatrixWorld()
-#	obj.updateMatrix()
-#	obj.geometry.applyMatrix(obj.matrix)
-#	obj.matrix.identity()
-	
-	raycaster.setFromCamera(mouse, camera)
-#	intersections = raycaster.intersectObjects(scene.children)
-#	intersections = raycaster.intersectObject(bg) 
-	intersections = raycaster.intersectObject(obj) 
-	if mousedown==1 and intersections.length > 0:
-		fh[0] = intersections[0].point.x
-		fh[1] = intersections[0].point.y
-#		console.log(intersections[0].uv)
-#		console.log(intersections[0].uv2)
-#		intersections[0].object.material.color.set(0xff0000);
-
+#	raycaster.setFromCamera(mouse, camera)
+##	intersections = raycaster.intersectObjects(scene.children)
+##	intersections = raycaster.intersectObject(bg) 
+#	intersections = raycaster.intersectObject(obj) 
+#	if mousedown==1 and intersections.length > 0:
+#		fh[0] = intersections[0].point.x
+#		fh[1] = intersections[0].point.y
+##		console.log(intersections[0].uv)
+##		console.log(intersections[0].uv2)
+##		intersections[0].object.material.color.set(0xff0000);
 	
 	renderer.render(scene, camera)
-	await asyncio.sleep(0.001)
+	await asyncio.sleep(0.0001)
 
 </py-script>
 </body>
