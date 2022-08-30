@@ -158,10 +158,12 @@ def onMouseMove(event):
 	mouse[0] = (event.offsetX - canvas.width * 0.5) / scaling_factor #(event.offsetX / (window.innerWidth*.5)) * 2 - 1
 	mouse[1] = (event.offsetY - canvas.height * 0.5) / scaling_factor #-(event.offsetY / (window.innerHeight*.5)) * 2 + 1
 
-#def onTouchMove(event):
-#	global mouse
-#	mouse[0] = (event.changedTouches[0].offsetX / window.innerWidth) * 2 - 1
-#	mouse[1] = -(event.changedTouches[0].offsetY / window.innerHeight) * 2 + 1
+def onTouchMove(event):
+	global mouse, mouse0
+	mouse0[0] = event.changedTouches[0].offsetX
+	mouse0[1] = event.changedTouches[0].offsetY
+	mouse[0] = (event.changedTouches[0].offsetX - canvas.width * 0.5) / scaling_factor
+	mouse[1] = (event.changedTouches[0].offsetY - canvas.height * 0.5) / scaling_factor
 #	console.log(event.changedTouches[0].offsetX)
 #	console.log(event.offsetX)
 	
@@ -178,14 +180,16 @@ def onMouseUp(event):
 debug_element = document.getElementById('debug')
 
 document.addEventListener('mousemove', create_proxy(onMouseMove))
-document.addEventListener('touchmove', create_proxy(onMouseMove)) #for mobile interfaces
-#document.addEventListener('touchmove', create_proxy(onTouchMove)) #for mobile interfaces
+#document.addEventListener('touchmove', create_proxy(onMouseMove)) #for mobile interfaces
+document.addEventListener('touchmove', create_proxy(onTouchMove)) #for mobile interfaces
 
 document.addEventListener('mousedown', create_proxy(onMouseDown))
-document.addEventListener('pointerdown', create_proxy(onMouseDown)) #for mobile interfaces
+#document.addEventListener('pointerdown', create_proxy(onMouseDown)) #for mobile interfaces 
+document.addEventListener('touchstart', create_proxy(onMouseDown)) #for mobile interfaces 
 
 document.addEventListener('mouseup', create_proxy(onMouseUp))
-document.addEventListener('pointerup', create_proxy(onMouseUp))  #for mobile interfaces
+#document.addEventListener('pointerup', create_proxy(onMouseUp)) #for mobile interfaces 
+document.addEventListener('touchend', create_proxy(onMouseUp)) #for mobile interfaces 
 
 #########################################################################################
 
