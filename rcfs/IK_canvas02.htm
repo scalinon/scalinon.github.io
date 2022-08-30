@@ -14,8 +14,49 @@
 Object orientation:
 <div class='w-full m-auto'><input type='range' min='-3.14159' max='3.14159' step='0.0001' value='1.5708' id='slider_angle' class='w-72'></div>
 
-<canvas id='robot-canvas' width='1000' height='800' class='m-auto border-2'></canvas>
+<!--
 
+<script>
+function resize(){    
+$("#canvas").outerHeight($(window).height()-$("#canvas").offset().top- Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
+}
+$(document).ready(function(){
+resize();
+$(window).on("resize", function(){                      
+    resize();
+});
+});
+</script>
+
+ <script>
+   $(document).ready(function(){
+    $("#canvas").outerHeight($(window).height()-$("#canvas").offset().top-Math.abs( $("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
+    $("#h-input").val($("#canvas").outerHeight());
+    $("#w-input").val($("#canvas").outerWidth());
+    $("#set-size").click(function(){
+        $("#canvas").outerHeight($("#h-input").val());
+      $("#main-content").width($("#w-input").val());
+      $("#canvas").outerWidth($("#main-content").width());
+    });
+   });
+  </script>
+  
+class='m-auto border-2'
+<div class='outer' style='position: relative; width: 100%; padding-bottom: 100%;'>
+<div class='outer' style='display: block; margin: auto; height: auto;'>  
+</div>
+
+style='width: 100%;'
+
+<label id='debug'>Some Placeholder Text</label>
+-->
+
+<div><p id='debug'>debug</p></div>
+<br>
+
+<canvas id='canvas' width='1000px' height='800px'></canvas>
+
+  
 <py-script>
 from pyodide import create_proxy
 from js import document, console, window, Path2D
@@ -105,12 +146,15 @@ slider_angle = document.getElementById('slider_angle')
 scaling_factor = 2
 
 # Mouse events
+mouse0 = np.zeros(2)
 mouse = np.zeros(2)
 mousedown = 0
 
 def onMouseMove(event):
-	global mouse
+	global mouse, mouse0
 	#event.preventDefault()
+	mouse0[0] = event.offsetX
+	mouse0[1] = event.offsetY
 	mouse[0] = (event.offsetX - canvas.width * 0.5) / scaling_factor #(event.offsetX / (window.innerWidth*.5)) * 2 - 1
 	mouse[1] = (event.offsetY - canvas.height * 0.5) / scaling_factor #-(event.offsetY / (window.innerHeight*.5)) * 2 + 1
 
@@ -131,6 +175,8 @@ def onMouseUp(event):
 	mousedown = 0
 #	console.log('Mouse up')
 
+debug_element = document.getElementById('debug')
+
 document.addEventListener('mousemove', create_proxy(onMouseMove))
 document.addEventListener('touchmove', create_proxy(onMouseMove)) #for mobile interfaces
 #document.addEventListener('touchmove', create_proxy(onTouchMove)) #for mobile interfaces
@@ -143,7 +189,7 @@ document.addEventListener('pointerup', create_proxy(onMouseUp))  #for mobile int
 
 #########################################################################################
 
-canvas = document.getElementById('robot-canvas')
+canvas = document.getElementById('canvas')
 ctx = canvas.getContext('2d')
 
 def clear_screen():
@@ -165,26 +211,35 @@ def draw_robot():
 	ctx.stroke()
 	
 	# Draw base
+	ctx.translate(0, 81)
 	ctx.lineWidth = '1'
 	ctx.strokeStyle = '#222222'
 	ctx.fillStyle = '#999999'
-	ctx.translate(0, 81)
+	if ctx.isPointInPath(base1_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#33FF99'
 	ctx.fill(base1_svg)
 	ctx.stroke(base1_svg) # Outline
 	ctx.stroke(base2_svg) 
 
 	# Draw seg1
 	ctx.rotate(x[0])
+	ctx.fillStyle = '#999999'
+	if ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#3399FF'
 	ctx.fill(seg11_svg)
 	ctx.stroke(seg11_svg) # Outline
 	ctx.stroke(seg12_svg)
 	ctx.stroke(seg13_svg)
 	ctx.stroke(seg14_svg)
 	ctx.stroke(seg15_svg)
+	
 
 	# Draw seg2
 	ctx.translate(0, -79)
 	ctx.rotate(x[1])
+	ctx.fillStyle = '#999999'
+	if ctx.isPointInPath(seg21_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#FF9933'
 	ctx.fill(seg21_svg) 
 	ctx.stroke(seg21_svg) # Outline
 	ctx.stroke(seg22_svg)
@@ -194,6 +249,9 @@ def draw_robot():
 	# Draw seg3
 	ctx.translate(0, -96)
 	ctx.rotate(x[2])
+	ctx.fillStyle = '#999999'
+	if ctx.isPointInPath(seg31_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#99FF33'
 	ctx.fill(seg31_svg)
 	ctx.stroke(seg31_svg) # Outline
 	ctx.fill(seg32_svg)
@@ -205,7 +263,7 @@ def draw_robot():
 	ctx.stroke(seg36_svg)
 	ctx.stroke(seg37_svg)
 
-	# Draw end-effector
+	# Draw end-effector point
 	ctx.translate(-20.5, -51)
 	ctx.beginPath()
 	ctx.arc(0, 0, 2, 0, 2 * np.pi)
@@ -274,6 +332,8 @@ while True:
 	clear_screen()
 	draw_obj()
 	draw_robot()
+	
+	# debug_element.innerText = str(ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1])) + ' ' + str(mouse[0]) + ' ' + str(mouse[1])
 	
 	# Object selection
 	if mousedown==1 and np.linalg.norm(fh[:2]-mouse)<50:
