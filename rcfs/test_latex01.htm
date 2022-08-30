@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Robotics codes from scratch (RCFS)</title>
+<link rel='stylesheet' href='css/main-template.css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster|Raleway'> 
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/papercolor-light.min.css'>
+<!-- default atom-one-light monokai-sublime base16/tomorrow -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/python.min.js'></script>
+<script>hljs.highlightAll();</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\\(','\\\)']]}
+});
+</script>
+<script type='text/javascript' async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+</head>
+<body>
+
+<div class='container'>
+
+<h1>Code:</h1>
+
+<pre><code class='language-python'>
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Forward kinematics for end-effector
+def fkin(x, param):
+	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+	f = np.vstack([
+		param.l @ np.cos(L @ xt),
+		param.l @ np.sin(L @ xt),
+		np.mod(np.sum(x,0)+np.pi, 2*np.pi) - np.pi
+	]) 
+	return f
+
+# Jacobian with analytical computation 
+def Jkin(xt, param):
+	L = np.tril(np.ones([param.nbVarX, param.nbVarX]))
+	J = np.vstack([
+		-np.sin(L @ xt).T @ np.diag(param.l) @ L,
+		 np.cos(L @ xt).T @ np.diag(param.l) @ L,
+		 np.ones([1,param.nbVarX])
+	])
+	return J
+
+param = lambda: None # Lazy way to define an empty class in python
+param.dt = 1e-2 # Time step length
+param.nbData = 50 # Number of datapoints
+param.nbVarX = 3 # State space dimension (x1,x2,x3)
+param.nbVarF = 3 # Objective function dimension (position and orientation of the end-effector)
+param.l = [2, 2, 1] # Robot links lengths
+
+for t in range(param.nbData):
+	f = fkin0(x, param) #Forward kinematics (for all articulations, including end-effector)
+	J = Jkin(x, param) #Jacobian (for end-effector)
+	x += np.linalg.pinv(J) @ (fh - f[:,-1]) * 10 * param.dt #Update state 
+	fig.plot(f[0,:], f[1,:], color='k', linewidth=1) #Plot robot
+	
+</code></pre>
+
+<h1>Math:</h1>
+
+<p>Newton's method attempts to solve $\min_x f(x)$ or $\max_x f(x)$ from an initial guess $x_1$ by using a sequence of second-order Taylor approximations of $f$ around the iterates. The second-order Taylor expansion of $f$ around $x_k$ is
+\begin{equation*}
+	f(x_k+t) \approx f(x_k) + f'(x_k) \, t + \frac{1}{2} f''(x_k) \, t^2.
+\end{equation*}
+
+The next iterate $x_{k+1}=x_k+t$ is defined so as to minimize this quadratic approximation in $t$. If the second derivative is positive, the quadratic approximation is a convex function of $t$, and its minimum can be found by setting the derivative to zero. Since
+\begin{equation*}
+	\frac{\rm{d}}{\rm{d}t} \left( f(x_k) + f'(x_k) \, t + \frac{1}{2} f''(x_k) \, t^2 \right) = f'(x_k) + f''(x_k) \, t,
+\end{equation*}
+the minimum is achieved for
+\begin{equation*}
+	t = -\frac{f'(x_k)}{f''(x_k)}.
+\end{equation*}
+
+Newton's method thus performs the iteration
+\begin{equation*}
+	x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}.
+\end{equation*}</p>
+
+</div>
+</body>
+</html>

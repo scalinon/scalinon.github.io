@@ -14,49 +14,10 @@
 Object orientation:
 <div class='w-full m-auto'><input type='range' min='-3.14159' max='3.14159' step='0.0001' value='1.5708' id='slider_angle' class='w-72'></div>
 
-<!--
-
-<script>
-function resize(){    
-$("#canvas").outerHeight($(window).height()-$("#canvas").offset().top- Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
-}
-$(document).ready(function(){
-resize();
-$(window).on("resize", function(){                      
-    resize();
-});
-});
-</script>
-
- <script>
-   $(document).ready(function(){
-    $("#canvas").outerHeight($(window).height()-$("#canvas").offset().top-Math.abs( $("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
-    $("#h-input").val($("#canvas").outerHeight());
-    $("#w-input").val($("#canvas").outerWidth());
-    $("#set-size").click(function(){
-        $("#canvas").outerHeight($("#h-input").val());
-      $("#main-content").width($("#w-input").val());
-      $("#canvas").outerWidth($("#main-content").width());
-    });
-   });
-  </script>
-  
-class='m-auto border-2'
-<div class='outer' style='position: relative; width: 100%; padding-bottom: 100%;'>
-<div class='outer' style='display: block; margin: auto; height: auto;'>  
-</div>
-
-style='width: 100%;'
-
-<label id='debug'>Some Placeholder Text</label>
--->
-
 <div><p id='debug'>debug</p></div>
 <br>
-
 <canvas id='canvas' width='1000px' height='800px'></canvas>
 
-  
 <py-script>
 from pyodide import create_proxy
 from js import document, console, window, Path2D
@@ -160,12 +121,13 @@ def onMouseMove(event):
 
 def onTouchMove(event):
 	global mouse, mouse0
-	mouse0[0] = event.changedTouches[0].offsetX
-	mouse0[1] = event.changedTouches[0].offsetY
-	mouse[0] = (event.changedTouches[0].offsetX - canvas.width * 0.5) / scaling_factor
-	mouse[1] = (event.changedTouches[0].offsetY - canvas.height * 0.5) / scaling_factor
-#	console.log(event.changedTouches[0].offsetX)
-#	console.log(event.offsetX)
+	bcr = event.target.getBoundingClientRect()
+	x = event.touches.item(0).clientX - bcr.x
+	y = event.touches.item(0).clientY - bcr.y
+	mouse0[0] = x 
+	mouse0[1] = y
+	mouse[0] = (x - canvas.width * 0.5) / scaling_factor 
+	mouse[1] = (y - canvas.height * 0.5) / scaling_factor
 	
 def onMouseDown(event):
 	global mousedown
@@ -177,19 +139,24 @@ def onMouseUp(event):
 	mousedown = 0
 #	console.log('Mouse up')
 
+def onWheel(event):
+	#if mousedown==1:
+	document.getElementById('slider_angle').value = str(fh[2] + 0.2 * (event.deltaY/106))
+
 debug_element = document.getElementById('debug')
 
-document.addEventListener('mousemove', create_proxy(onMouseMove))
-#document.addEventListener('touchmove', create_proxy(onMouseMove)) #for mobile interfaces
+document.addEventListener('mousemove', create_proxy(onMouseMove)) #for standard mouse
 document.addEventListener('touchmove', create_proxy(onTouchMove)) #for mobile interfaces
 
-document.addEventListener('mousedown', create_proxy(onMouseDown))
+document.addEventListener('mousedown', create_proxy(onMouseDown)) #for standard mouse
 #document.addEventListener('pointerdown', create_proxy(onMouseDown)) #for mobile interfaces 
 document.addEventListener('touchstart', create_proxy(onMouseDown)) #for mobile interfaces 
 
-document.addEventListener('mouseup', create_proxy(onMouseUp))
+document.addEventListener('mouseup', create_proxy(onMouseUp)) #for standard mouse
 #document.addEventListener('pointerup', create_proxy(onMouseUp)) #for mobile interfaces 
 document.addEventListener('touchend', create_proxy(onMouseUp)) #for mobile interfaces 
+
+document.addEventListener('wheel', create_proxy(onWheel)) #for standard mouse
 
 #########################################################################################
 
