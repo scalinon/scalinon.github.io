@@ -1,6 +1,8 @@
 <html>
 <head>
 <title>Robotics codes from scratch (RCFS)</title>
+<link rel='stylesheet' href='css/main-template.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster|Raleway'> 
 <link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
 <script defer src='https://pyscript.net/latest/pyscript.js'></script>
 </head>
@@ -12,7 +14,12 @@
 <body>
 
 <div class='w-full m-auto'>
-Object orientation  <input type='range' min='-3.14159' max='3.14159' step='0.0001' value='1.5708' id='slider_angle' class='w-72' oninput='this.nextElementSibling.value = this.value'><output>24</output>
+<form>
+<p><label>Object1 orientation</label><input id='object0_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></p>
+<p><label>Object2 orientation</label><input id='object1_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></p>
+<p><label>Simulation speed</label><input id='simulation_speed' type='range' min='0' max='20' step='0.01' value='10' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>10.0</output></p>
+<p><label>Track orientation</label><input id='track_orientation' type='checkbox' checked></p>
+</form>
 </div>
 
 <div><p id='debug'></p></div>
@@ -24,6 +31,10 @@ Object orientation  <input type='range' min='-3.14159' max='3.14159' step='0.000
 from pyodide import create_proxy
 from js import document, console, window, Path2D
 import numpy as np
+
+objects_angle = [document.getElementById('object0_angle'), document.getElementById('object1_angle')]  # Object angle
+simulation_speed = document.getElementById('simulation_speed') # Simulation speed
+track_orientation = document.getElementById('track_orientation')
 
 #########################################################################################
 base1_svg = Path2D.new('m -40.741975,77.319831 c -0.47247,-4.03869 7.32825,-20.1653 10.1171,-22.57617 4.71807,-4.07862 14.00201,-4.3722 15.87822,-6.89366 1.16821,-1.06725 1.19306,-2.45846 1.19136,-4.984461 -0.005,-6.836939 0.0375,-38.9164375 -0.0588,-42.62054746 C -13.757555,-5.2728275 -9.8130348,-13.34661 -0.02248483,-13.67734 7.5903552,-13.93451 13.741895,-7.1292375 13.608255,-0.84839739 13.474625,5.4324325 13.073715,50.200081 13.741895,54.075491 c 0.66817,3.8754 3.0736,26.72695 3.0736,26.72695 l -53.47684,-0.23624 c -3.68777,-0.0163 -4.0806,-3.24637 -4.0806,-3.24637 z')
@@ -50,9 +61,9 @@ seg37_svg = Path2D.new('m -23.186087,-46.845579 h 5.542233 v 0')
 
 # Logarithmic map for R^2 x S^1 manifold
 def logmap(f, f0):
-	diff = np.zeros(3)
-	diff[:2] = f[:2] - f0[:2]
-	diff[2] = np.imag(np.log(np.exp(f0[-1]*1j).conj().T * np.exp(f[-1]*1j).T)).conj()
+	position_error = f[:2,:] - f0[:2,:]
+	orientation_error = np.imag(np.log(np.exp(f0[-1,:]*1j).conj().T * np.exp(f[-1,:]*1j).T)).conj()
+	diff = np.vstack([position_error, orientation_error])
 	return diff
 
 # Apply angle offsets to match robot kinematic chain
@@ -98,20 +109,107 @@ def Jkin(xt, param):
 	])
 	return J
 
+# Residual and Jacobian for a viapoints reaching task (in object coordinate system)
+def f_reach(x, param):
+	f = logmap(fkin(x, param), param.Mu)
+	J = np.zeros([param.nbPoints * param.nbVarF, param.nbPoints * param.nbVarX])
+	for t in range(param.nbPoints):
+		f[:2,t] = param.A[:,:,t].T @ f[:2,t] # Object oriented residual
+		Jtmp = Jkin(x[:,t], param)
+		Jtmp[:2] = param.A[:,:,t].T @ Jtmp[:2] # Object centered Jacobian
+		
+		if param.useBoundingBox:
+			for i in range(2):
+				if abs(f[i,t]) < param.sz[i]:
+					f[i,t] = 0
+					Jtmp[i] = 0
+				else:
+					f[i,t] -= np.sign(f[i,t]) * param.sz[i]
+		
+		J[t*param.nbVarF:(t+1)*param.nbVarF, t*param.nbVarX:(t+1)*param.nbVarX] = Jtmp
+	return f, J
+
+# iLQR in batch form
+def iLQR(x0, u, param):
+	global Su, Sx0
+	for i in range(param.nbIter):
+		x = Su0 @ u + Sx0 @ x0 # System evolution
+		x = x.reshape([param.nbVarX, param.nbData], order='F')
+		f, J = f_reach(x[:,tl], param) # Residuals and Jacobians
+		du = np.linalg.inv(Su.T @ J.T @ Q @ J @ Su + R) @ (-Su.T @ J.T @ Q @ f.flatten('F') - u * param.r) # Gauss-Newton update
+		# Estimate step size with backtracking line search method
+		alpha = 1
+		cost0 = f.flatten('F').T @ Q @ f.flatten('F') + np.linalg.norm(u)**2 * param.r # Cost
+		while True:
+			utmp = u + du * alpha
+			xtmp = Su0 @ utmp + Sx0 @ x0 # System evolution
+			xtmp = xtmp.reshape([param.nbVarX, param.nbData], order='F')
+			ftmp, _ = f_reach(xtmp[:,tl], param) # Residuals 
+			cost = ftmp.flatten('F').T @ Q @ ftmp.flatten('F') + np.linalg.norm(utmp)**2 * param.r # Cost
+			if cost < cost0 or alpha < 1e-3:
+				u = utmp
+				#console.log("Iteration {}, cost: {}".format(i,cost))
+				break
+			alpha /= 2
+		if np.linalg.norm(du * alpha) < 1E-2:
+			break # Stop iLQR iterations when solution is reached
+	return x
+	
+## Parameters
+# ===============================
+
 param = lambda: None # Lazy way to define an empty class in python
+param.dt = 1e-2 # Time step length
+param.nbData = 50 # Number of datapoints
+param.nbIter = 100 # Maximum number of iterations for iLQR
+param.nbPoints = 2 # Number of viapoints
 param.nbVarX = 3 # State space dimension (x1,x2,x3)
-param.l = np.array([79, 96, 55]) # Robot links lengths
+param.nbVarU = 3 # Control space dimension (dx1,dx2,dx3)
+param.nbVarF = 3 # Objective function dimension (f1,f2,f3, with f3 as orientation)
+param.l = [79, 96, 55] # Robot links lengths
+param.sz = [20, 30] # Size of objects
+param.r = 1e-6 # Control weight term
+param.Mu = np.asarray([[100, 0, (float)(objects_angle[0].value)], [100, 100, (float)(objects_angle[1].value)]]).T # Viapoints 
+param.A = np.zeros([2, 2, param.nbPoints]) # Object orientation matrices
+param.useBoundingBox = False # Consider bounding boxes for reaching cost
+
+# Object rotation matrices
+for t in range(param.nbPoints):
+	orn_t = param.Mu[-1,t]
+	param.A[:,:,t] = np.asarray([
+		[np.cos(orn_t), -np.sin(orn_t)],
+		[np.sin(orn_t), np.cos(orn_t)]
+	])
+
+# Precision matrix
+Q = np.identity(param.nbVarF * param.nbPoints)
+
+# Control weight matrix
+R = np.identity((param.nbData-1) * param.nbVarU) * param.r
+
+# Time occurrence of viapoints
+tl = np.linspace(0, param.nbData, param.nbPoints+1)
+tl = np.rint(tl[1:]).astype(np.int64) - 1
+idx = np.array([i + np.arange(0,param.nbVarX,1) for i in (tl*param.nbVarX)]) 
+
+# Transfer matrices (for linear system as single integrator)
+Su0 = np.vstack([
+	np.zeros([param.nbVarX, param.nbVarX*(param.nbData-1)]), 
+	np.tril(np.kron(np.ones([param.nbData-1, param.nbData-1]), np.eye(param.nbVarX) * param.dt))
+]) 
+Sx0 = np.kron(np.ones(param.nbData), np.identity(param.nbVarX)).T
+Su = Su0[idx.flatten()] # We remove the lines that are out of interest
 
 #########################################################################################
 
 # GUI
-slider_angle = document.getElementById('slider_angle') # Object angle
 scaling_factor = 2 # General scaling factor for rendering 
 
 # Mouse events
 mouse0 = np.zeros(2)
 mouse = np.zeros(2)
 mousedown = 0
+needsUpdate = 0
 
 def onMouseMove(event):
 	global mouse, mouse0
@@ -136,13 +234,16 @@ def onMouseDown(event):
 #	console.log('Mouse down')
 
 def onMouseUp(event):
-	global mousedown
+	global mousedown, needsUpdate
 	mousedown = 0
+	needsUpdate = 1
 #	console.log('Mouse up')
 
 def onWheel(event):
+	global needsUpdate
 	#if mousedown==1:
-	document.getElementById('slider_angle').value = str(fh[2] + 0.2 * (event.deltaY/106))
+	document.getElementById('object0_angle').value = str(param.Mu[2,0] + 0.2 * (event.deltaY/106))
+	needsUpdate = 1
 
 debug_element = document.getElementById('debug')
 
@@ -177,7 +278,7 @@ def draw_ground():
 	ctx.lineCap = 'round'
 	ctx.lineJoin = 'round'
 	ctx.lineWidth = '5'
-	ctx.strokeStyle = '#AAAAAA'
+	ctx.strokeStyle = '#CCCCCC'
 	ctx.moveTo(-200, 164)
 	ctx.lineTo(200, 164)
 	ctx.stroke()
@@ -185,15 +286,15 @@ def draw_ground():
 	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 	
 	
-def draw_robot():
+def draw_robot(xt, color1, color2, color3, color4):
 	ctx.translate(canvas.width*0.5, canvas.height*0.5)
 	ctx.scale(scaling_factor, scaling_factor)
 	
 	# Draw base
 	ctx.translate(0, 81)
 	ctx.lineWidth = '1'
-	ctx.strokeStyle = '#222222'
-	ctx.fillStyle = '#999999'
+	ctx.strokeStyle = color3
+	ctx.fillStyle = color1
 	if ctx.isPointInPath(base1_svg, mouse0[0], mouse0[1]):
 		ctx.fillStyle = '#33FF99'
 	ctx.fill(base1_svg)
@@ -201,12 +302,14 @@ def draw_robot():
 	ctx.stroke(base2_svg) 
 
 	# Draw seg1
-	ctx.rotate(x[0])
-	ctx.fillStyle = '#999999'
+	ctx.rotate(xt[0])
+	ctx.fillStyle = color1
 	if ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1]):
 		ctx.fillStyle = '#3399FF'
 	ctx.fill(seg11_svg)
 	ctx.stroke(seg11_svg) # Outline
+	ctx.fillStyle = color2
+	ctx.fill(seg12_svg)
 	ctx.stroke(seg12_svg)
 	ctx.stroke(seg13_svg)
 	ctx.stroke(seg14_svg)
@@ -214,20 +317,22 @@ def draw_robot():
 	
 	# Draw seg2
 	ctx.translate(0, -79)
-	ctx.rotate(x[1])
-	ctx.fillStyle = '#999999'
+	ctx.rotate(xt[1])
+	ctx.fillStyle = color1
 	if ctx.isPointInPath(seg21_svg, mouse0[0], mouse0[1]):
 		ctx.fillStyle = '#FF9933'
 	ctx.fill(seg21_svg) 
 	ctx.stroke(seg21_svg) # Outline
+	ctx.fillStyle = color2
+	ctx.fill(seg22_svg)
 	ctx.stroke(seg22_svg)
 	ctx.stroke(seg23_svg)
 	ctx.stroke(seg24_svg)
 
 	# Draw seg3
 	ctx.translate(0, -96)
-	ctx.rotate(x[2])
-	ctx.fillStyle = '#999999'
+	ctx.rotate(xt[2])
+	ctx.fillStyle = color1
 	if ctx.isPointInPath(seg31_svg, mouse0[0], mouse0[1]):
 		ctx.fillStyle = '#99FF33'
 	ctx.fill(seg31_svg)
@@ -236,6 +341,8 @@ def draw_robot():
 	ctx.stroke(seg32_svg) # Outline
 	ctx.fill(seg33_svg)
 	ctx.stroke(seg33_svg) # Outline
+	ctx.fillStyle = color2
+	ctx.fill(seg34_svg)
 	ctx.stroke(seg34_svg)
 	ctx.stroke(seg35_svg)
 	ctx.stroke(seg36_svg)
@@ -245,7 +352,7 @@ def draw_robot():
 	ctx.translate(-20.5, -51)
 	ctx.beginPath()
 	ctx.arc(0, 0, 2, 0, 2 * np.pi)
-	ctx.fillStyle = '#000000'
+	ctx.fillStyle = color4
 	ctx.fill()
 #	ctx.linewidth = '1'
 #	ctx.stroke()
@@ -267,19 +374,19 @@ def draw_robot():
 #	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 	
 
-def draw_obj():
+def draw_obj(id, color, colortxt):
 	ctx.translate(canvas.width*0.5, canvas.height*0.5)
 	ctx.scale(scaling_factor, scaling_factor)
 	
-	ctx.translate(fh[0], fh[1])
-	ctx.rotate(fh[2])
+	ctx.translate(param.Mu[0,id], param.Mu[1,id])
+	ctx.rotate(param.Mu[2,id])
 	# Draw object
-	ctx.fillStyle = '#FF3399'
-	ctx.fillRect(-40, -20, 80, 40)
+	ctx.fillStyle = color
+	ctx.fillRect(-20, -10, 40, 20)
 	ctx.textAlign = 'center'
 	ctx.textBaseline = 'middle'
-	ctx.font = '22px Roboto Black'
-	ctx.fillStyle = '#DD1177'
+	ctx.font = '12px Lobster'
+	ctx.fillStyle = colortxt
 	ctx.fillText('Object', 0, 0)
 	
 	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
@@ -287,33 +394,60 @@ def draw_obj():
 
 #########################################################################################
 
-x = np.array([-np.pi/4, np.pi/2, np.pi/4]) # Initial robot state
-fh = [100, 122, 0] # Initial object state
+x0 = np.array([-np.pi/4, np.pi/2, np.pi/4]) # Initial robot state
+u = np.zeros(param.nbVarU * (param.nbData-1)) # Initial control commands
+x = iLQR(x0, u, param)
 
+t0 = 0
+t = 0
+tf = 0
 while True:
 #	time = performance.now() * 0.0005;
+	t0 += (float)(simulation_speed.value)
+	if t0 > 19:
+		t0 = 0
+		if t > param.nbData-2:
+			tf += 1
+			if tf > 10: #Stay some iterations at the final point before starting again
+				t = 0
+				tf = 0
+		else:
+			t += 1
+		
 
-	# Object angle
-	fh[2] = (float)(slider_angle.value)
+	# Objects angle
+	for i in range(param.nbPoints): 
+		param.Mu[2,i] = (float)(objects_angle[i].value)
 
-	# IK
-	J = Jkin(x, param)
-	f = fkin0(x, param)
-	f_ee = fkin(x, param)
-	dx = np.linalg.pinv(J) @ logmap(fh, f_ee.flatten())
-	x += dx * 5E-1
+	# FK
+	f = fkin0(x[:,t], param)
 	
 	# Rendering
 	clear_screen()
 	draw_ground()
-	draw_obj()
-	draw_robot()
+	draw_robot(x[:,0], '#EEEEEE', '#DDDDDD', '#CCCCCC', '#BBBBBB')
+	draw_obj(0, '#FF3399', '#DD1177')
+	draw_obj(1, '#33FF99', '#11DD77')
+	draw_robot(x[:,t], '#CCCCCC', '#AAAAAA', '#222222', '#000000')
+	# draw_obj(0, 'rgba(255,51,153,0.5)', 'rgba(221,17,119,0.5)')
+	# draw_obj(1, 'rgba(51,255,153,0.5)', 'rgba(17,221,119,0.5)')
 	
 	# debug_element.innerText = str(ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1])) + ' ' + str(mouse[0]) + ' ' + str(mouse[1])
 	
 	# Object selection
-	if mousedown==1 and np.linalg.norm(fh[:2]-mouse)<50:
-		fh[:2] = mouse
+	if mousedown==1:
+		for i in range(param.nbPoints): 
+			if np.linalg.norm(param.Mu[:2,i]-mouse)<50:
+				param.Mu[:2,i] = mouse
+
+	if needsUpdate==1:
+		# console.log("iLQR required")
+		if track_orientation.checked:
+			Q = np.identity(param.nbVarF * param.nbPoints)
+		else:
+			Q = np.kron(np.identity(param.nbPoints), np.diag([1, 1, 0]))
+		x = iLQR(x0, u, param)
+		needsUpdate = 0
 
 	await asyncio.sleep(0.0001)
 
