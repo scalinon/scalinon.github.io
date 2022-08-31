@@ -2,8 +2,14 @@
 <head>
 <title>Robotics codes from scratch (RCFS)</title>
 <link rel='stylesheet' href='css/main-template.css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster|Raleway'> 
 <link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 <script defer src='https://pyscript.net/latest/pyscript.js'></script>
 </head>
 
@@ -13,30 +19,50 @@
 
 <body>
 
-<div class='w-full m-auto'>
+<div class='container'>
+
 <form>
-<p><label>Object1 orientation</label><input id='object0_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></p>
-<p><label>Object2 orientation</label><input id='object1_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></p>
-<p><label>Simulation speed</label><input id='simulation_speed' type='range' min='0' max='20' step='0.01' value='10' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>10.0</output></p>
-<p><label>Track orientation</label><input id='track_orientation' type='checkbox' checked></p>
-<p><label>Cost</label><span id='cost'></span></p>
-</form>
+
+<div class='row'>
+<div class='col-md'><label>Object1 orientation</label><input id='object0_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></div>
+<div class='col-md'><label>Object2 orientation</label><input id='object1_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></div>
 </div>
 
+<div class='row'>
+<div class='col-md'><label>Objects width</label><input id='objects_width' type='range' min='0' max='200' step='0.1' value='40' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>40.0</output></div>
+<div class='col-md'><label>Objects height</label><input id='objects_height' type='range' min='0' max='200' step='0.1' value='20' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>20.0</output></div>
+</div>
+
+<div class='row'>
+<div class='col-md'><label>Simulation speed</label><input id='simulation_speed' type='range' min='0' max='20' step='0.01' value='10' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>10.0</output></div>
+<div class='col-md'><label>Track orientation</label><input id='track_orientation' type='checkbox' checked></div>
+</div>
+
+<div class='row'>
+<div class='col-md'><label>Cost</label><span id='cost'></span></div>
+<div class='col-md'><label>Bounding box</label><input id='use_boundingbox' type='checkbox'></div>
+</div>
+
+</form>
+
 <div><p id='debug'></p></div>
-<br>
 
 <canvas id='canvas' width='1000px' height='750px'></canvas>
+
+</div>
 
 <py-script>
 from pyodide import create_proxy
 from js import document, console, window, Path2D
 import numpy as np
 
-objects_angle = [document.getElementById('object0_angle'), document.getElementById('object1_angle')]  # Object angle
+objects_angle = [document.getElementById('object0_angle'), document.getElementById('object1_angle')]  # Objects angle
+objects_size = [document.getElementById('objects_width'), document.getElementById('objects_height')]  # Objects size
 simulation_speed = document.getElementById('simulation_speed') # Simulation speed
 track_orientation = document.getElementById('track_orientation')
+bounding_box = document.getElementById('use_boundingbox')
 selected_joint = -1
+selected_obj = -1
 
 #########################################################################################
 base1_svg = Path2D.new('m -40.741975,77.319831 c -0.47247,-4.03869 7.32825,-20.1653 10.1171,-22.57617 4.71807,-4.07862 14.00201,-4.3722 15.87822,-6.89366 1.16821,-1.06725 1.19306,-2.45846 1.19136,-4.984461 -0.005,-6.836939 0.0375,-38.9164375 -0.0588,-42.62054746 C -13.757555,-5.2728275 -9.8130348,-13.34661 -0.02248483,-13.67734 7.5903552,-13.93451 13.741895,-7.1292375 13.608255,-0.84839739 13.474625,5.4324325 13.073715,50.200081 13.741895,54.075491 c 0.66817,3.8754 3.0736,26.72695 3.0736,26.72695 l -53.47684,-0.23624 c -3.68777,-0.0163 -4.0806,-3.24637 -4.0806,-3.24637 z')
@@ -60,7 +86,7 @@ seg34_svg = Path2D.new('M -10.345869,0.79321884 C -9.8879044,6.4881727 -4.887349
 seg35_svg = Path2D.new('m -10.926083,-10.640947 c -12.932836,-0.04585 -19.378158,-0.0931 -19.378158,-0.0931')
 seg36_svg = Path2D.new('M -9.9187154,15.300602 C -29.124234,15.272545 -30.475824,15.251842 -30.475824,15.251842')
 seg37_svg = Path2D.new('m -23.186087,-46.845579 h 5.542233 v 0')
-
+    
 # Logarithmic map for R^2 x S^1 manifold
 def logmap(f, f0):
 	position_error = f[:2,:] - f0[:2,:]
@@ -122,11 +148,11 @@ def f_reach(x, param):
 		
 		if param.useBoundingBox:
 			for i in range(2):
-				if abs(f[i,t]) < param.sz[i]:
+				if abs(f[i,t]) < param.sz[i]/2:
 					f[i,t] = 0
 					Jtmp[i] = 0
 				else:
-					f[i,t] -= np.sign(f[i,t]) * param.sz[i]
+					f[i,t] -= np.sign(f[i,t]) * param.sz[i]/2
 		
 		J[t*param.nbVarF:(t+1)*param.nbVarF, t*param.nbVarX:(t+1)*param.nbVarX] = Jtmp
 	return f, J
@@ -169,14 +195,16 @@ param.nbVarX = 3 # State space dimension (x1,x2,x3)
 param.nbVarU = 3 # Control space dimension (dx1,dx2,dx3)
 param.nbVarF = 3 # Objective function dimension (f1,f2,f3, with f3 as orientation)
 param.l = [79, 96, 55] # Robot links lengths
-param.sz = [20, 30] # Size of objects
+param.sz = [(float)(objects_size[0].value), (float)(objects_size[1].value)] # Size of objects
 param.r = 1e-6 # Control weight term
 param.Mu = np.asarray([[100, 0, (float)(objects_angle[0].value)], [100, 100, (float)(objects_angle[1].value)]]).T # Viapoints 
 param.A = np.zeros([2, 2, param.nbPoints]) # Object orientation matrices
 param.useBoundingBox = False # Consider bounding boxes for reaching cost
 
 # Object rotation matrices
+#obj = [Path2D.new(), Path2D.new()]
 for t in range(param.nbPoints):
+#	obj[t].rect(-param.sz[0]/2, -param.sz[1]/2, param.sz[0], param.sz[1])
 	orn_t = param.Mu[-1,t]
 	param.A[:,:,t] = np.asarray([
 		[np.cos(orn_t), -np.sin(orn_t)],
@@ -236,8 +264,9 @@ def onMouseDown(event):
 #	console.log('Mouse down')
 
 def onMouseUp(event):
-	global mousedown, needsUpdate
+	global mousedown, selected_obj, needsUpdate
 	mousedown = 0
+	selected_obj = -1
 	needsUpdate = 1
 #	console.log('Mouse up')
 
@@ -249,7 +278,6 @@ def onWheel(event):
 		x0[selected_joint] += 0.2 * (event.deltaY/106)
 		selected_joint = -1
 		needsUpdate = 1
-		
 
 cost_el = document.getElementById('cost')
 debug_el = document.getElementById('debug')
@@ -386,7 +414,12 @@ def draw_robot(xt, color1, color2, color3, color4, selectable):
 #	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 	
 
-def draw_obj(id, color, colortxt):
+def draw_obj(id, param, color, colortxt):
+	global selected_obj
+	
+	obj = Path2D.new()
+	obj.rect(-param.sz[0]/2, -param.sz[1]/2, param.sz[0], param.sz[1])
+	
 	ctx.translate(canvas.width*0.5, canvas.height*0.5)
 	ctx.scale(scaling_factor, scaling_factor)
 	
@@ -394,12 +427,17 @@ def draw_obj(id, color, colortxt):
 	ctx.rotate(param.Mu[2,id])
 	# Draw object
 	ctx.fillStyle = color
-	ctx.fillRect(-20, -10, 40, 20)
-	ctx.textAlign = 'center'
-	ctx.textBaseline = 'middle'
-	ctx.font = '10px Lobster'
-	ctx.fillStyle = colortxt
-	ctx.fillText('Move me!', 0, 0)
+	if ctx.isPointInPath(obj, mouse0[0], mouse0[1]):
+		selected_obj = id
+	#debug_el.innerText = str(selected_obj)
+	ctx.fill(obj)
+	#ctx.fillRect(-param.sz[0]/2, -param.sz[1]/2, param.sz[0], param.sz[1])
+	if param.sz[0] > 39 and param.sz[1] > 19:
+		ctx.textAlign = 'center'
+		ctx.textBaseline = 'middle'
+		ctx.font = '10px Lobster'
+		ctx.fillStyle = colortxt
+		ctx.fillText('Move me!', 0, 0)
 	
 	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 
@@ -426,12 +464,7 @@ while True:
 				tf = 0
 		else:
 			t += 1
-		
-
-	# Objects angle
-	for i in range(param.nbPoints): 
-		param.Mu[2,i] = (float)(objects_angle[i].value)
-
+	
 	# FK
 	f = fkin0(x[:,t], param)
 	
@@ -439,8 +472,9 @@ while True:
 	clear_screen()
 	draw_ground()
 	draw_robot(x[:,0], '#EEEEEE', '#DDDDDD', '#CCCCCC', '#BBBBBB', True)
-	draw_obj(0, '#FF3399', '#DD1177')
-	draw_obj(1, '#33FF99', '#11DD77')
+	selected_obj = -1
+	draw_obj(0, param, '#FF3399', '#DD1177')
+	draw_obj(1, param, '#33FF99', '#11DD77')
 	draw_robot(x[:,t], '#CCCCCC', '#AAAAAA', '#222222', '#000000', False)
 	# draw_obj(0, 'rgba(255,51,153,0.5)', 'rgba(221,17,119,0.5)')
 	# draw_obj(1, 'rgba(51,255,153,0.5)', 'rgba(17,221,119,0.5)')
@@ -448,13 +482,20 @@ while True:
 	# debug_el.innerText = str(ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1])) + ' ' + str(mouse[0]) + ' ' + str(mouse[1])
 	
 	# Object selection
-	if mousedown==1:
-		for i in range(param.nbPoints): 
-			if np.linalg.norm(param.Mu[:2,i]-mouse)<50:
-				param.Mu[:2,i] = mouse
+	if mousedown==1 and selected_obj>= 0:
+		param.Mu[:2,selected_obj] = mouse
 
 	if needsUpdate==1:
 		# console.log("iLQR required")
+		param.useBoundingBox = bounding_box.checked
+		param.sz = [(float)(objects_size[0].value),(float)(objects_size[1].value)]
+		for i in range(param.nbPoints): 
+			#obj[i].rect(-param.sz[0]/2, -param.sz[1]/2, param.sz[0], param.sz[1])
+			param.Mu[2,i] = (float)(objects_angle[i].value)
+			param.A[:,:,i] = np.asarray([
+				[np.cos(param.Mu[2,i]), -np.sin(param.Mu[2,i])],
+				[np.sin(param.Mu[2,i]), np.cos(param.Mu[2,i])]
+			])
 		if track_orientation.checked:
 			Q = np.identity(param.nbVarF * param.nbPoints)
 		else:
