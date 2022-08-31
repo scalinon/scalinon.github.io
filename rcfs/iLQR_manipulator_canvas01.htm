@@ -19,13 +19,14 @@
 <p><label>Object2 orientation</label><input id='object1_angle' type='range' min='-3.14159' max='3.14159' step='0.0001' value='0' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>0.0</output></p>
 <p><label>Simulation speed</label><input id='simulation_speed' type='range' min='0' max='20' step='0.01' value='10' class='w-72' oninput='this.nextElementSibling.value = this.value'>&nbsp;<output>10.0</output></p>
 <p><label>Track orientation</label><input id='track_orientation' type='checkbox' checked></p>
+<p><label>Cost</label><span id='cost'></span></p>
 </form>
 </div>
 
 <div><p id='debug'></p></div>
 <br>
 
-<canvas id='canvas' width='1000px' height='800px'></canvas>
+<canvas id='canvas' width='1000px' height='750px'></canvas>
 
 <py-script>
 from pyodide import create_proxy
@@ -35,6 +36,7 @@ import numpy as np
 objects_angle = [document.getElementById('object0_angle'), document.getElementById('object1_angle')]  # Object angle
 simulation_speed = document.getElementById('simulation_speed') # Simulation speed
 track_orientation = document.getElementById('track_orientation')
+selected_joint = -1
 
 #########################################################################################
 base1_svg = Path2D.new('m -40.741975,77.319831 c -0.47247,-4.03869 7.32825,-20.1653 10.1171,-22.57617 4.71807,-4.07862 14.00201,-4.3722 15.87822,-6.89366 1.16821,-1.06725 1.19306,-2.45846 1.19136,-4.984461 -0.005,-6.836939 0.0375,-38.9164375 -0.0588,-42.62054746 C -13.757555,-5.2728275 -9.8130348,-13.34661 -0.02248483,-13.67734 7.5903552,-13.93451 13.741895,-7.1292375 13.608255,-0.84839739 13.474625,5.4324325 13.073715,50.200081 13.741895,54.075491 c 0.66817,3.8754 3.0736,26.72695 3.0736,26.72695 l -53.47684,-0.23624 c -3.68777,-0.0163 -4.0806,-3.24637 -4.0806,-3.24637 z')
@@ -153,7 +155,7 @@ def iLQR(x0, u, param):
 			alpha /= 2
 		if np.linalg.norm(du * alpha) < 1E-2:
 			break # Stop iLQR iterations when solution is reached
-	return x
+	return x, cost
 	
 ## Parameters
 # ===============================
@@ -161,7 +163,7 @@ def iLQR(x0, u, param):
 param = lambda: None # Lazy way to define an empty class in python
 param.dt = 1e-2 # Time step length
 param.nbData = 50 # Number of datapoints
-param.nbIter = 100 # Maximum number of iterations for iLQR
+param.nbIter = 20 # Maximum number of iterations for iLQR
 param.nbPoints = 2 # Number of viapoints
 param.nbVarX = 3 # State space dimension (x1,x2,x3)
 param.nbVarU = 3 # Control space dimension (dx1,dx2,dx3)
@@ -240,12 +242,17 @@ def onMouseUp(event):
 #	console.log('Mouse up')
 
 def onWheel(event):
-	global needsUpdate
+	global needsUpdate, selected_joint, x0
 	#if mousedown==1:
-	document.getElementById('object0_angle').value = str(param.Mu[2,0] + 0.2 * (event.deltaY/106))
-	needsUpdate = 1
+	#document.getElementById('object0_angle').value = str(param.Mu[2,0] + 0.2 * (event.deltaY/106))
+	if selected_joint >= 0:
+		x0[selected_joint] += 0.2 * (event.deltaY/106)
+		selected_joint = -1
+		needsUpdate = 1
+		
 
-debug_element = document.getElementById('debug')
+cost_el = document.getElementById('cost')
+debug_el = document.getElementById('debug')
 
 document.addEventListener('mousemove', create_proxy(onMouseMove)) #for standard mouse
 document.addEventListener('touchmove', create_proxy(onTouchMove)) #for mobile interfaces
@@ -286,7 +293,9 @@ def draw_ground():
 	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 	
 	
-def draw_robot(xt, color1, color2, color3, color4):
+def draw_robot(xt, color1, color2, color3, color4, selectable):
+	global selected_joint
+	
 	ctx.translate(canvas.width*0.5, canvas.height*0.5)
 	ctx.scale(scaling_factor, scaling_factor)
 	
@@ -295,7 +304,7 @@ def draw_robot(xt, color1, color2, color3, color4):
 	ctx.lineWidth = '1'
 	ctx.strokeStyle = color3
 	ctx.fillStyle = color1
-	if ctx.isPointInPath(base1_svg, mouse0[0], mouse0[1]):
+	if selectable and ctx.isPointInPath(base1_svg, mouse0[0], mouse0[1]):
 		ctx.fillStyle = '#33FF99'
 	ctx.fill(base1_svg)
 	ctx.stroke(base1_svg) # Outline
@@ -304,11 +313,12 @@ def draw_robot(xt, color1, color2, color3, color4):
 	# Draw seg1
 	ctx.rotate(xt[0])
 	ctx.fillStyle = color1
-	if ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1]):
-		ctx.fillStyle = '#3399FF'
 	ctx.fill(seg11_svg)
 	ctx.stroke(seg11_svg) # Outline
 	ctx.fillStyle = color2
+	if selectable and ctx.isPointInPath(seg12_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#3399FF'
+		selected_joint = 0
 	ctx.fill(seg12_svg)
 	ctx.stroke(seg12_svg)
 	ctx.stroke(seg13_svg)
@@ -319,11 +329,12 @@ def draw_robot(xt, color1, color2, color3, color4):
 	ctx.translate(0, -79)
 	ctx.rotate(xt[1])
 	ctx.fillStyle = color1
-	if ctx.isPointInPath(seg21_svg, mouse0[0], mouse0[1]):
-		ctx.fillStyle = '#FF9933'
 	ctx.fill(seg21_svg) 
 	ctx.stroke(seg21_svg) # Outline
 	ctx.fillStyle = color2
+	if selectable and ctx.isPointInPath(seg22_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#FF9933'
+		selected_joint = 1
 	ctx.fill(seg22_svg)
 	ctx.stroke(seg22_svg)
 	ctx.stroke(seg23_svg)
@@ -333,8 +344,6 @@ def draw_robot(xt, color1, color2, color3, color4):
 	ctx.translate(0, -96)
 	ctx.rotate(xt[2])
 	ctx.fillStyle = color1
-	if ctx.isPointInPath(seg31_svg, mouse0[0], mouse0[1]):
-		ctx.fillStyle = '#99FF33'
 	ctx.fill(seg31_svg)
 	ctx.stroke(seg31_svg) # Outline
 	ctx.fill(seg32_svg)
@@ -342,6 +351,9 @@ def draw_robot(xt, color1, color2, color3, color4):
 	ctx.fill(seg33_svg)
 	ctx.stroke(seg33_svg) # Outline
 	ctx.fillStyle = color2
+	if selectable and ctx.isPointInPath(seg34_svg, mouse0[0], mouse0[1]):
+		ctx.fillStyle = '#99FF33'
+		selected_joint = 2
 	ctx.fill(seg34_svg)
 	ctx.stroke(seg34_svg)
 	ctx.stroke(seg35_svg)
@@ -385,9 +397,9 @@ def draw_obj(id, color, colortxt):
 	ctx.fillRect(-20, -10, 40, 20)
 	ctx.textAlign = 'center'
 	ctx.textBaseline = 'middle'
-	ctx.font = '12px Lobster'
+	ctx.font = '10px Lobster'
 	ctx.fillStyle = colortxt
-	ctx.fillText('Object', 0, 0)
+	ctx.fillText('Move me!', 0, 0)
 	
 	ctx.setTransform(1, 0, 0, 1, 0, 0) # Reset transformation to identity 
 
@@ -396,7 +408,8 @@ def draw_obj(id, color, colortxt):
 
 x0 = np.array([-np.pi/4, np.pi/2, np.pi/4]) # Initial robot state
 u = np.zeros(param.nbVarU * (param.nbData-1)) # Initial control commands
-x = iLQR(x0, u, param)
+x, cost = iLQR(x0, u, param)
+cost_el.textContent = '%.3f' % cost
 
 t0 = 0
 t = 0
@@ -425,14 +438,14 @@ while True:
 	# Rendering
 	clear_screen()
 	draw_ground()
-	draw_robot(x[:,0], '#EEEEEE', '#DDDDDD', '#CCCCCC', '#BBBBBB')
+	draw_robot(x[:,0], '#EEEEEE', '#DDDDDD', '#CCCCCC', '#BBBBBB', True)
 	draw_obj(0, '#FF3399', '#DD1177')
 	draw_obj(1, '#33FF99', '#11DD77')
-	draw_robot(x[:,t], '#CCCCCC', '#AAAAAA', '#222222', '#000000')
+	draw_robot(x[:,t], '#CCCCCC', '#AAAAAA', '#222222', '#000000', False)
 	# draw_obj(0, 'rgba(255,51,153,0.5)', 'rgba(221,17,119,0.5)')
 	# draw_obj(1, 'rgba(51,255,153,0.5)', 'rgba(17,221,119,0.5)')
 	
-	# debug_element.innerText = str(ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1])) + ' ' + str(mouse[0]) + ' ' + str(mouse[1])
+	# debug_el.innerText = str(ctx.isPointInPath(seg11_svg, mouse0[0], mouse0[1])) + ' ' + str(mouse[0]) + ' ' + str(mouse[1])
 	
 	# Object selection
 	if mousedown==1:
@@ -446,7 +459,8 @@ while True:
 			Q = np.identity(param.nbVarF * param.nbPoints)
 		else:
 			Q = np.kron(np.identity(param.nbPoints), np.diag([1, 1, 0]))
-		x = iLQR(x0, u, param)
+		x, cost = iLQR(x0, u, param)
+		cost_el.textContent = '%.3f' % cost
 		needsUpdate = 0
 
 	await asyncio.sleep(0.0001)
