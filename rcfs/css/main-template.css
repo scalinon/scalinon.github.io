@@ -10,12 +10,22 @@ h3, .h3 {
 	padding: 1rem 0rem;
 }
 
-p, .p {
-	text-align: left;
-}
-
 form label {
   display: inline-block; /* this is important */
   width: 200px;
 }
 
+/*
+.py-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 1);
+}
+*/
