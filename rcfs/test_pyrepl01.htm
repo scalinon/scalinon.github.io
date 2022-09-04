@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PyScript REPL</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <py-env>
+    - matplotlib
+    - numpy
+  </py-env>
+</head>
+<body>
+  <py-repl>
+import matplotlib.pyplot as plt
+import numpy as np
+  </py-repl>
+  <py-repl>
+def wave(frequency, amplitude=1, phase=0):
+    def _wave(time):
+        return amplitude * np.sin(2 * np.pi * frequency * time + phase)
+
+    return _wave
+  </py-repl>
+  <py-repl></py-repl>
+</body>
+</html>
