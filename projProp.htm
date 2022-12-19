@@ -57,28 +57,21 @@ The descriptions below are available for either semester projects or master thes
 
 
 <hr><br>
-<h4>KOOPMAN MODEL LEARNING WITH EQUATION LEARNER NETWORKS</h4>
+<h4>GEOMETRIC ALGEBRA FOR DISTANCE SENSORS CALIBRATION IN ROBOT MANIPULATION APPLICATIONS</h4>
 
 <br>
 <div class='row'>
 
-<div class='col-md-8'>
-<p>In robotics, optimal control is a popular and robust approach to generate trajectories and the corresponding controller required to achieve a task. Optimal control consists of optimizing over the states and the controls such that they minimize a cost function which describe a task given a dynamics model of the robot. However, in some cases, this model is either not available, or imperfect because of the unmodeled forces in the joints or the tools used by the robot.</p> 
-<p>Recently, Koopman operators have become increasingly popular in the identification of the dynamics model. The framework consists of augmenting the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space. The lifting functions used for this have been investigated in several works using non-parametric basis functions such as monomials, polynomials, radial basis functions or Fourier series basis which require no or little tuning of their parameters in general. However, such basis functions are difficult to design, and one needs to come up with a huge dictionary of variables to alleviate this problem.  Other works proposed to use parametric basis function such as neural networks for the lifting functions extending the capability of such basis functions significantly. However, they are hard to learn, easy to overfit and not interpretable.</p>
-<p>A promising approach which is shown to contain advantages of both non-parametric and parametric liftings is equation learner networks (EQL). The project proposes to investigate the use of EQL networks in Koopman operator framework to learn a robust and interpretable dynamics model from small amount of data. The approach will be implemented on a 7-axis Franka Emika robot to learn the residual dynamics model of the robot which is caused by frictions and other unmodeled imperfections.</p>
-<p><b>Keywords:</b> optimal control, neural networks, Koopman operators</p>
-</div>
-
-<div class='col-md-4'>
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/EquationLearnerNetwork01.png'>
-</figure>
-<p><b>Reference:</b></p>
-<p><a href='http://proceedings.mlr.press/v80/sahoo18a/sahoo18a.pdf' target='_blank'>Sahoo, S.S., Lampert, C.H., Martius, G. (2018). Learning equations for extrapolation and control. Intl Conf. on Machine Learning (ICML).</a></p>
+<div class='col-md-12'>
+<p>Sensors play an important role in robotics, since they are needed by robots in order for them to perceive the environment and interact with it. It is therefore essential that the sensor readings are as accurate as possible. Achieving a high accuracy makes it necessary to perform a good calibration of the sensors.</p> 
+<p>Calibration usually means determining either the intrinsic or extrinsic parameters of the sensor. In this particular case we are interested in finding the extrinsic parameters of an array of time of flight sensors that is attached to a Franka Emika serial manipulator. While it is possible to roughly determine the position of the array by taking measurements, the position and orientation of the sensors on the array cannot be measured
+accurately due to possible deformations during attaching or manufacturing the array. The challenge therefore lies in finding the exact positions and orientations of all sensors by refining a rough initial estimate.</p> 
+<p>There are various ways to tackle this problem, however in its essence it always is a geometric problem. Hence, the idea to solve this problem is to use an algebra that is made for geometry, namely geometric algebra. It is formalism that is currently resurfacing and gaining popularity in robotics. Its strength lies among other things in the possiblity to represent geometric primitives such as lines, planes and circles and their intersections in a parameterization
+and exception free way. This property makes it the ideal tool for the calibration of sensors that take distance measurements along a line or more generally a cone.</p> 
+<p>Thus, the goal of this project is the derivation of an algorithm for the fast and reliable extrinsic calibration of an array of time of flight sensors on a kinematic chain, as well as investigating the usage of geometric algebra as a tool for solving this problem. The expected outcome will include an implementation of the algorithm that has been tested thoroughly on the hardware that is provided in our lab, i.e. the sensor array and the robot.</p>
 </div>
 
 </div>
-
 
 
 <hr><br>
@@ -108,6 +101,31 @@ The descriptions below are available for either semester projects or master thes
 
 
 <!--
+
+<hr><br>
+<h4>KOOPMAN MODEL LEARNING WITH EQUATION LEARNER NETWORKS</h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-8'>
+<p>In robotics, optimal control is a popular and robust approach to generate trajectories and the corresponding controller required to achieve a task. Optimal control consists of optimizing over the states and the controls such that they minimize a cost function which describe a task given a dynamics model of the robot. However, in some cases, this model is either not available, or imperfect because of the unmodeled forces in the joints or the tools used by the robot.</p> 
+<p>Recently, Koopman operators have become increasingly popular in the identification of the dynamics model. The framework consists of augmenting the original set of variables composing the state space so that the nonlinear system can be expressed as a linear system in this augmented state space. The lifting functions used for this have been investigated in several works using non-parametric basis functions such as monomials, polynomials, radial basis functions or Fourier series basis which require no or little tuning of their parameters in general. However, such basis functions are difficult to design, and one needs to come up with a huge dictionary of variables to alleviate this problem.  Other works proposed to use parametric basis function such as neural networks for the lifting functions extending the capability of such basis functions significantly. However, they are hard to learn, easy to overfit and not interpretable.</p>
+<p>A promising approach which is shown to contain advantages of both non-parametric and parametric liftings is equation learner networks (EQL). The project proposes to investigate the use of EQL networks in Koopman operator framework to learn a robust and interpretable dynamics model from small amount of data. The approach will be implemented on a 7-axis Franka Emika robot to learn the residual dynamics model of the robot which is caused by frictions and other unmodeled imperfections.</p>
+<p><b>Keywords:</b> optimal control, neural networks, Koopman operators</p>
+</div>
+
+<div class='col-md-4'>
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/EquationLearnerNetwork01.png'>
+</figure>
+<p><b>Reference:</b></p>
+<p><a href='http://proceedings.mlr.press/v80/sahoo18a/sahoo18a.pdf' target='_blank'>Sahoo, S.S., Lampert, C.H., Martius, G. (2018). Learning equations for extrapolation and control. Intl Conf. on Machine Learning (ICML).</a></p>
+</div>
+
+</div>
+
+
 <hr><br>
 <h4>TENSOR-VARIATE DICTIONARY LEARNING OF MOVEMENT PRIMITIVES</h4>
 
