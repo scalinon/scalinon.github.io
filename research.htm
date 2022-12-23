@@ -13,13 +13,46 @@
 <link href='css/main-template.css' rel='stylesheet'>
 <link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
-<script type='text/x-mathjax-config'>
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css' integrity='sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X' crossorigin='anonymous'>
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js' integrity='sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz' crossorigin='anonymous'></script>
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js' integrity='sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05' crossorigin='anonymous'></script>
+<script>
+let macros = {
+	'\\tp': '\\text{\\tiny{#1}}',
+	'\\trsp' : '\\top',
+	'\\psin' : '\\dagger',
+	'\\eqref': '\\href{###1}{(\\text{#1})}',
+	'\\ref': '\\href{###1}{\\text{#1}}',
+	'\\label': '\\htmlId{#1}{}'
+};
+document.addEventListener('DOMContentLoaded', function() {
+	renderMathInElement(document.body, {
+		// customised options
+		trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+		macros: macros,
+		// • auto-render specific keys, e.g.:
+		delimiters: [
+			{left: '$$', right: '$$', display: true},
+			{left: '$', right: '$', display: false},
+			{left: '\\(', right: '\\)', display: false},
+			{left: '\\begin{equation}', right: '\\end{equation}', display: true},
+			{left: '\\begin{equation*}', right: '\\end{equation*}', display: true},
+			{left: '\\begin{align}', right: '\\end{align}', display: true},
+			{left: '\\begin{align*}', right: '\\end{align*}', display: true},
+			{left: '\\begin{alignat}', right: '\\end{alignat}', display: true},
+			{left: '\\begin{gather}', right: '\\end{gather}', display: true},
+			{left: '\\begin{CD}', right: '\\end{CD}', display: true},
+			{left: '\\[', right: '\\]', display: true}
+		],
+		// • rendering keys, e.g.:
+		throwOnError : false
+	});
 });
 </script>
-<script type='text/javascript' async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
 </head>
+
 <body>
 <nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
 <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
@@ -48,6 +81,8 @@ MathJax.Hub.Config({
 
 <div class='container'>
 <div class='main-template'>
+
+
 
 <h3>Robot Learning & Interaction</h3>
 
@@ -107,8 +142,15 @@ MathJax.Hub.Config({
 <br>
 <div class='row'>
 <div class='col-md-12'>
-<p class='text-justify'><b>Data are not only vectors!</b> This is especially true in robotics, where the encountered data are characterized by simple but varied geometries. These structures are often underexploited in learning, planning, control and perception. In our work, we exploit <b>Riemannian geometry</b> to extend algorithms initially developed for standard Euclidean data, by taking into account the structures of these manifolds. In robotics, these manifolds include orientations, ellipsoids, graphs and subspaces (see figure below).</p>
-<figure class='figure p-3'><img class='figure-img img-fluid' src='images/Riemannian-small03.png'></figure>
+<p class='text-justify'>Because robots act in a physical world, <b>many fundamental problems in robotics involve geometry</b>, leading to an increased research effort in geometric methods for robotics in the recent years. To speed up skills acquisition, the prior knowledge about the physical world can be embedded within the representations of skills and associated learning algorithms. Our work focuses on <b>Riemannian geometry</b> and <b>geometric algebra</b> to provide such structures.</p>
+<!--Data are not only vectors!-->
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/Riemannian-small03.png'>
+<figcaption class='figure-caption'>Data in robotics are characterized by simple but varied geometries. These structures are often underexploited in learning, planning, control and perception. In our work, we exploit <b>Riemannian geometry</b> to extend algorithms initially developed for standard Euclidean data, by taking into account the structures of these manifolds. In robotics, these manifolds include orientations, ellipsoids, graphs and subspaces.</figcaption>
+</figure>
+
+<figure class='figure p-3'><img class='figure-img img-fluid' src='images/GA-small01.jpg'>
+<figcaption class='figure-caption'><b>Geometric algebra</b> can also be used to encode geometric primitives in a uniform manner, such as points, lines, planes, spheres, ellipsoids or quadric surfaces  (depicted in red), as well as the associated transformations $M$ to move from an initial state $X$ to a desired state $X_d$, which are called motors (depicted in green). In practice, it means that $M=f(X,X_d)$ can be described uniquely for different geometric objects, which is useful in various skillful manipulation contexts such as bimanual coordination, whole-body motion and human-robot collaboration.</figcaption>
+</figure>
 
 <br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#manipulability'>Learning, tracking and transfer of manipulability ellipsoids <b>[open]</b></button><br><br> 
 <div id='manipulability' class='collapse'>
@@ -120,10 +162,24 @@ MathJax.Hub.Config({
 </div><br>
 </div>
 
+<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#GA'>Geometric algebra <b>[open]</b></button><br><br> 
+<div id='GA' class='collapse'>
+<p class='text-justify'>Another promising candidate for handling geometric structures in robotics is the framework of <b>geometric algebra</b>, whose roots can be found in Clifford algebra, a unification of quaternions and Grassmann algebra. Geometric algebra can be seen as a unification of various frameworks popular in robotics, such as screw theory, Lie algebra or dual quaternions, while offering great generalization and extension perspectives.</p>
+<p class='text-justify'>In standard linear algebra, a point in a 3D space can be reached by taking different linear combinations of three basis vectors $\bm{e}_1$, $\bm{e}_2$, and $\bm{e}_3$, where all linear combinations of the basis vectors form individual subspaces of the 3D space. In geometric algebra, more elaborated subspaces are considered, including higher order elements such as bivectors, which are subspaces spanned by the outer product of two one-dimensional subspaces (e.g., $\bm{e}_1 \wedge \bm{e}_2$). The cross product in linear algebra is a special case of the outer product, which is valid only for 3D vectors, and whose result is given in the form of a vector. In contrast, the outer product can be applied to any dimensions, whose result represents an oriented space (e.g., area, volume) swept by the vectors. Geometric algebra relies on the notion of a geometric product, which is the sum of an inner and outer product $\bm{e}_1 \bm{e}_2 = \bm{e}_1 \cdot \bm{e}_2 + \bm{e}_1 \wedge \bm{e}_2$. The resulting elements are called multivectors. This representation allows geometric primitives to be encoded in a uniform manner, by representing 3D geometric objects in a higher dimension space. <b>Both geometric objects and transformations use the same algebra</b> and can then also be represented in a homogeneous manner as elements of this higher dimension space.
+<p class='text-justify'>This representation is thus an interesting candidate to provide <b>a single algebra for geometric reasoning</b>, alleviating the need of utilizing multiple algebras to express geometric relations. While previous solutions typically needed to mix different formalisms, our work explores how the unification of concepts provided by geometric algebra can be used to solve diverse manipulation problems without leaving the proposed algebra. In robotics, geometric algebra operations typically allow translations and rotations to be treated in the same way, without requiring us to switch between different algebras, as is classically done when handling position data in a Cartesian space and orientation data as quaternions. <b>Practically, geometric algebra allows geometric operations to be computed in a very fast way, with compact codes.</b></p>
+<p class='text-justify'>Our work leverages the capabilities of geometric algebra in robot manipulation tasks. We show in [Löw and Calinon, 2022] below that the modeling of cost functions for optimal control can be done uniformly across different geometric primitives, leading to a low symbolic complexity of the resulting expressions and a geometric intuitiveness. Our benchmarks also show that such an approach provides faster resolution of robot kinematics problems than state-of-the-art software libraries used in robotics.</p>
+<!--<div class='p-3 bg-light text-dark border'>
+<p><b>Reference:</b></p>
+<p><a href='paper7009.htm' class='nodecor'>Löw, T. and Calinon, S. (2022). <strong>Geometric Algebra for Optimal Control with Applications in Manipulation Tasks</strong>. arXiv:2212.07237.</a> <a href='paper7009.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Loew-arXiv2022.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+</div><br>-->
+</div>
+
+
 <div class='p-3 bg-light text-dark border'>
 <p><b>References:</b></p>
 <p><a href='paper4039.htm' class='nodecor'>Calinon, S. (2020). <strong>Gaussians on Riemannian Manifolds: Applications for Robot Learning and Adaptive Control</strong>. IEEE Robotics and Automation Magazine (RAM), 27:2, 33-45.</a> <a href='paper4039.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Calinon-RAM2020.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
 <p><a href='paper4040.htm' class='nodecor'>Jaquier, N., Rozo, L., Caldwell, D.G. and Calinon, S. (2021). <strong>Geometry-aware Manipulability Learning, Tracking and Transfer</strong>. International Journal of Robotics Research (IJRR), 40:2-3, 624-650.</a> <a href='paper4040.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Jaquier-IJRR2021.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p>
+<p><a href='paper7009.htm' class='nodecor'>Löw, T. and Calinon, S. (2022). <strong>Geometric Algebra for Optimal Control with Applications in Manipulation Tasks</strong>. arXiv:2212.07237.</a> <a href='paper7009.htm'><i class='fa fa-link fa-fw'></i>info</a> <a href='papers/Loew-arXiv2022.pdf' target='_blank'><i class='fa fa-file-pdf-o fa-fw'></i>pdf</a></p> 
 </div>
 </div>
 </div>
@@ -143,8 +199,8 @@ MathJax.Hub.Config({
 
 <br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#TTGO'>Global optimization with tensor train decomposition <b>[open]</b></button><br><br> 
 <div id='TTGO' class='collapse'>
-<center><figure class='figure p-3'><img class='figure-img img-fluid' style='width:70%;' src='images/TT-pipeline-small01.jpg'></center>
-<figcaption class="figure-caption">Combination of global and local optimization for fast adaptation to new situations, by leveraging offline and online computation. 
+<figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/TT-pipeline-small01.jpg'></center>
+<figcaption class='figure-caption'>Combination of global and local optimization for fast adaptation to new situations, by leveraging offline and online computation. 
 <b>(a)</b> Local optimization algorithms such as iLQR requires good initial estimates to speed up convergence, to reach better local minima and to find diverse solutions. The figure shows an illustration with two decision variables and four local minima of a cost function.
 <b>(b)</b> The decision variables space can be discretized to search for initial guesses near the local minima of the cost functions, which can be used to warm-start local optimizers, for example iterative linear quadratic regulators (iLQR).
 <b>(c)</b> The na\"ive solution consists of evaluating the cost for each set of decision variables, which typically does not scale well when more than 2 or 3 decision variables are used, which is the case in robot control problems. For 2D decision variables, a cross approximation algorithm can be used to approximate the cost function (treated as a probability distribution). The algorithm iteratively searches for row and column indices to reconstruct the full distribution from a sparse subset of rows and columns (depiced in colors). It also simultaneously estimates the number of rows and columns required, corresponding to the rank of the matrix.
