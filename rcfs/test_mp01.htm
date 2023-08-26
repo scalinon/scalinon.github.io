@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Micropython test</title>
+<link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
+<script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/index.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/mode/python/python.js"></script>
+<script src="pyscript.js"></script>
+<py-config type='toml'>
+	runtime = ['micropython']
+</py-config>
+</head>
+
+<body>
+
+<wc-codemirror id="editor" src="hello.py" class="w-full mb-2" mode="python"></wc-codemirror>
+<button id="run">Run</button>
+<iframe id="output" width="100%" height="100%" frameBorder="0" srcdoc="<html>Press Run</html>"></iframe>
+
+</body>
+</html>
+
+<script>
+function run(event) {
+    const editor = document.getElementById('editor');
+    const output = document.getElementById('output');
+    output.srcdoc = `<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+	<script src="pyscript.js"><\/script>
+	<py-config type='toml'>
+		runtime = ['micropython']
+	</py-config>
+</head>
+<body>
+<py-script>
+${editor.value}
+</py-script>
+</body>
+</html>`
+}
+document.getElementById('run').addEventListener("click", run);
+</script>
+
+
