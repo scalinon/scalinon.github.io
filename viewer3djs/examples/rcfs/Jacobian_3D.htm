@@ -1,0 +1,299 @@
+<!--
+SPDX-FileCopyrightText: 2023 Idiap Research Institute <contact@idiap.ch>
+
+SPDX-FileContributor: Philip Abbet <philip.abbet@idiap.ch>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang='en'>
+<head>
+    <title>Robotics codes from scratch</title>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <script defer src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3' crossorigin='anonymous'></script>
+
+    <link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
+
+    <py-config type='toml'>
+        packages = ['numpy']
+        [[fetch]]
+            from = '../../dist/'
+            files = ['viewer3d.py']
+    </py-config>
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <nav class='navbar fixed-top' aria-label='Light offcanvas navbar' style='width: 50px;'>
+        <div class='container-fluid'>
+            <button class='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbarLight' aria-controls='offcanvasNavbarLight'>
+                <span class='navbar-toggler-icon' style='cursor: pointer;'></span>
+            </button>
+
+            <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasNavbarLight' aria-labelledby='offcanvasNavbarLightLabel' style='width: 500px;'>
+                <div class='offcanvas-header'>
+                    <h4 class='offcanvas-title' id='offcanvasNavbarLightLabel'>
+                        <i class='bi bi-robot'></i>
+                        <i class='bi bi-code-slash'></i>
+                        RCFS
+                    </h4>
+                    <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+                </div>
+
+                <div class='offcanvas-body'>
+                    <ul class='list-unstyled ps-0'>
+                        <li class='border-top my-1'></li>
+
+                        <li class='mb-1'>
+                            <button class='btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed' data-bs-toggle='collapse' data-bs-target='#general-collapse' aria-expanded='true'>General information</button>
+                            <div class='collapse show' id='general-collapse'>
+                                <ul class='btn-toggle-nav list-unstyled fw-normal pb-1 small'>
+                                    <li>
+                                        <div class='p-1 mb-0'>Placeholder menu, for test purposes only</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div> <!--offcanvas-body-->
+            </div> <!--offcanvas-->
+        </div> <!--container-fluid-->
+    </nav>
+
+
+    <!-- The content of the page -->
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-11' style="position: relative;">
+                <div id="viewer3d" style="width: 100%; height: 700px"></div>
+                <div id='formula' style="position: absolute; top: 0; padding-top: 20px; font-size: 150%;">
+            </div> <!--sm-11-->
+        </div> <!--row-->
+    </div> <!--container-->
+
+
+    <!-- Import all the necessary JavaScript dependency modules
+    Sadly, can't be imported from an external file for the moment, this is not supported by Chrome
+    -->
+    <script src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/",
+                "mujoco": "../../dist/jsm/mujoco_wasm.js",
+                "katex": "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.mjs"
+            }
+        }
+    </script>
+
+
+    <!-- We need to import our 'Viewer3D' JavaScript module, otherwise it is not
+    accessible from Python -->
+    <script type="module">
+        import { downloadScene, downloadPandaRobot, initPyScript } from '../../dist/viewer3d.js';
+
+        // Download the assets
+        await downloadPandaRobot();
+        await downloadScene('../scenes/panda.xml');
+
+        // Now PyScript can be initialised
+        initPyScript();
+    </script>
+
+
+    <py-script>
+        from viewer3d import Viewer3D, configs, logmap_S3, logmap
+        from js import document, katex
+        import numpy as np
+
+        joint_colors = ['#FF0000', '#FFC700', '#C71585', '#00FF00', '#0000FF', '#1E90FF', '#66CDAA']
+        f_colors = ['#AA0000', '#00AA00', '#0000AA']
+
+
+        # The function that will be called once per frame
+        x = None
+        duration = 0.0
+        currentJoint = 0
+        startPosition = 0
+
+        def update(delta, time):
+            global x
+            global duration
+            global currentJoint
+            global startPosition
+
+            duration += delta
+            if duration >= 2.0:
+                duration = 0.0
+                x[currentJoint] = startPosition
+                currentJoint = (currentJoint + 1) % 7
+                startPosition = x[currentJoint]
+                generateLatex(currentJoint)
+                generatePaths(currentJoint, x)
+
+            x[currentJoint] = startPosition + np.sin(np.pi * duration) * .2
+
+            robot.jointPositions = x
+
+            ee_pos = robot.fkin(x)
+
+            point_f1.position = [ee_pos[0], 0, 0]
+            point_f2.position = [0, ee_pos[1], 0]
+            point_f3.position = [0, 0, ee_pos[2]]
+            point_ee.position = ee_pos[:3]
+
+
+        # Function that update the Jacobian formula
+        def generateLatex(joint):
+            text = '\\bm{J}(\\bm{x})=\\begin{bmatrix}\n'
+
+            for i in range(1, 4):
+                for j in range(1, 8):
+                    if j > 1:
+                        text += ' & '
+
+                    if j == joint + 1:
+                        text += '\\frac{\\color{' + f_colors[i-1] + '}\\partial f_' + str(i) + '}{\\color{' + joint_colors[j-1] + '}\\partial x_' + str(j) + '}\n'
+                    else:
+                        text += '{\\color{#CCCCCC}\\frac{\\partial f_' + str(i) + '}{\\partial x_' + str(j) + '}}\n'
+
+                if i < 3:
+                    text += '\\\\[2mm]\n'
+
+            text += '\\end{bmatrix}'
+
+            katex.render(text, document.getElementById('formula'), {
+                'throwOnError': False
+            })
+
+
+        # Function that update the paths
+        def generatePaths(joint, positions):
+            N = 60
+
+            positions = np.repeat(positions.reshape(-1, 1), N, axis=1)
+            positions[joint,:] += [ np.sin(np.pi * (0.5 + i / N)) * .2 for i in range(N) ]
+
+            ee_pos = robot.fkin(positions)
+
+            viewer3D.removePath('ee')
+            viewer3D.removePath('f1')
+            viewer3D.removePath('f2')
+            viewer3D.removePath('f3')
+
+            f1 = np.zeros((N, 3))
+            f1[:,0] = ee_pos[0,:]
+
+            f2 = np.zeros((N, 3))
+            f2[:,1] = ee_pos[1,:]
+
+            f3 = np.zeros((N, 3))
+            f3[:,2] = ee_pos[2,:]
+
+            viewer3D.activateLayer(3)
+            viewer3D.addPath('ee', ee_pos[:3,:].T, radius=0.007, color='#000000', shading=True)
+            viewer3D.addPath('f1', f1, radius=0.007, color=f_colors[0], shading=True)
+            viewer3D.addPath('f2', f2, radius=0.007, color=f_colors[1], shading=True)
+            viewer3D.addPath('f3', f3, radius=0.007, color=f_colors[2], shading=True)
+
+
+        # Create the Viewer3D
+        viewer3D = Viewer3D(
+            document.getElementById('viewer3d'),
+            parameters=dict(
+                show_joint_positions=True,
+                joint_position_colors=joint_colors,
+                joint_position_layer=2,
+                robot_use_light_toon_shader=True,
+            ),
+            composition=[
+                dict(
+                    layer=1,
+                    effect='outline',
+                    effect_parameters=dict(
+                        thickness=0.001,
+                        color=[0.5, 0.5, 0.5, 0.0]
+                    ),
+                ),
+                dict(
+                    layer=3,
+                    clear_depth=True,
+                )
+            ],
+        )
+
+        viewer3D.setRenderingCallback(update)
+
+        # Load the scene and retrieve the robot
+        viewer3D.loadScene('/scenes/panda.xml')
+        viewer3D.translateCamera([0, 0.3, 0])
+
+        viewer3D.activateLayer(1)
+        robot = viewer3D.createRobot('panda', configs.Panda.new())
+
+        # Disable the manipulation of the robot by the user
+        viewer3D.controlsEnabled = False
+        viewer3D.robotToolsEnabled = False
+
+
+        # Setup the scene (points, lines, ...)
+        x = robot.jointPositions
+        x[0] = -0.5
+        startPosition = x[currentJoint]
+
+        generateLatex(currentJoint)
+        generatePaths(currentJoint, x)
+
+        ee_pos = robot.fkin(x)
+
+        point_f1 = viewer3D.addPoint(
+            'f1',
+            [ee_pos[0], 0, 0],
+            radius=0.02,
+            color=f_colors[0],
+            label='f_1',
+            shading=True
+        )
+
+        point_f2 = viewer3D.addPoint(
+            'f2',
+            [0, ee_pos[1], 0],
+            radius=0.02,
+            color=f_colors[1],
+            label='f_2',
+            shading=True
+        )
+
+        point_f3 = viewer3D.addPoint(
+            'f3',
+            [0, 0, ee_pos[0]],
+            radius=0.02,
+            color=f_colors[2],
+            label='f_3',
+            shading=True
+        )
+
+        point_ee = viewer3D.addPoint(
+            'ee',
+            ee_pos[:3],
+            radius=0.02,
+            color='#000000',
+            shading=True
+        )
+
+        viewer3D.addPath('xaxis', [[0, 0, 0], [1, 0, 0]], radius=0.002, color='#333333')
+        viewer3D.addPath('yaxis', [[0, 0, 0], [0, 1, 0]], radius=0.002, color='#333333')
+        viewer3D.addPath('zaxis', [[0, 0, 0], [0, 0, 1]], radius=0.002, color='#333333')
+    </py-script>
+
+</body>
+</html>

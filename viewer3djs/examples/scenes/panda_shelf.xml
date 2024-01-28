@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<mujoco model="panda scene">
+    <include file="franka_emika_panda/panda.xml"/>
+
+    <statistic center="0.3 0 0.4" extent="1.5"/>
+
+    <option impratio="5" cone="elliptic" noslip_iterations="10"/>
+
+    <visual>
+        <headlight diffuse="0.2 0.2 0.2" ambient="0.2 0.2 0.2"/>
+        <rgba fog="1.0 1.0 1.0 1.0"/>
+        <global azimuth="120" elevation="-20"/>
+    </visual>
+
+    <default>
+        <default class="cube">
+            <geom size="0.02 0.02 0.02" type="box"/>
+        </default>
+        <default class="wall">
+            <geom type="box" material="wall"/>
+        </default>
+    </default>
+
+    <asset>
+        <material name="groundplane" rgba="1 1 1 1"/>
+        <material name="shelf" rgba="0.34 0.21 0.05 1"/>
+        <material name="wall" rgba="0.8 0.6 0.2 0.6"/>
+    </asset>
+
+    <worldbody>
+        <light pos="0 0 3" mode="fixed" diffuse="0.2 0.2 0.2" castshadow="false"/>
+        <light pos="3 -4 3" dir="-3 4 -3" diffuse="0.6 0.6 0.6" directional="false"/>
+        <geom name="floor" size="5 5 0.1" type="plane" material="groundplane"/>
+
+        <!-- The shelf -->
+        <body name="shelf" pos="0.0 0.5 0.0">
+            <body pos="0 0.0 0.15">
+                <geom size="0.2 0.2 0.15" type="box" material="shelf"/>
+            </body>
+            <body pos="0 0.1 0.35">
+                <geom size="0.2 0.1 0.05" type="box" material="shelf"/>
+            </body>
+        </body>
+
+        <!-- A box to put the cubes in -->
+        <body name="box" pos="0.0 -0.5 0.0">
+            <body pos="0.1 0.0 0.05">
+                <geom size="0.001 0.1 0.05" class="wall"/>
+            </body>
+            <body pos="-0.1 0.0 0.05">
+                <geom size="0.001 0.1 0.05" class="wall"/>
+            </body>
+            <body pos="0.0 0.1 0.05">
+                <geom size="0.1 0.001 0.05" class="wall"/>
+            </body>
+            <body pos="0.0 -0.1 0.05">
+                <geom size="0.1 0.001 0.05" class="wall"/>
+            </body>
+        </body>
+
+        <!-- The cubes that can be picked, placed on the shelf -->
+        <body name="redcube" pos="0.15 0.6 0.42">
+            <freejoint/>
+            <geom class="cube" rgba="1 0 0 1"/>
+        </body>
+
+        <body name="greencube" pos="0 0.6 0.42">
+            <freejoint/>
+            <geom class="cube" rgba="0 1 0 1"/>
+        </body>
+
+        <body name="bluecube" pos="-0.15 0.6 0.42">
+            <freejoint/>
+            <geom class="cube" rgba="0 0 1 1"/>
+        </body>
+
+        <body name="yellowcube" pos="0.15 0.4 0.32">
+            <freejoint/>
+            <geom class="cube" rgba="1 1 0 1"/>
+        </body>
+
+        <body name="cyancube" pos="0 0.4 0.32">
+            <freejoint/>
+            <geom class="cube" rgba="0 1 1 1"/>
+        </body>
+
+        <body name="pinkcube" pos="-0.15 0.4 0.32">
+            <freejoint/>
+            <geom class="cube" rgba="1 0 1 1"/>
+        </body>
+
+    </worldbody>
+</mujoco>

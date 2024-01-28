@@ -1,0 +1,158 @@
+<!--
+SPDX-FileCopyrightText: 2023 Idiap Research Institute <contact@idiap.ch>
+
+SPDX-FileContributor: Philip Abbet <philip.abbet@idiap.ch>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang='en'>
+<head>
+    <title>Robotics codes from scratch</title>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <script defer src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3' crossorigin='anonymous'></script>
+
+    <link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'>
+
+    <py-config type='toml'>
+        packages = ['numpy']
+        [[fetch]]
+            from = '../../dist/'
+            files = ['viewer3d.py']
+    </py-config>
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <nav class='navbar fixed-top' aria-label='Light offcanvas navbar' style='width: 50px;'>
+        <div class='container-fluid'>
+            <button class='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbarLight' aria-controls='offcanvasNavbarLight'>
+                <span class='navbar-toggler-icon' style='cursor: pointer;'></span>
+            </button>
+
+            <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasNavbarLight' aria-labelledby='offcanvasNavbarLightLabel' style='width: 500px;'>
+                <div class='offcanvas-header'>
+                    <h4 class='offcanvas-title' id='offcanvasNavbarLightLabel'>
+                        <i class='bi bi-robot'></i>
+                        <i class='bi bi-code-slash'></i>
+                        RCFS
+                    </h4>
+                    <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+                </div>
+
+                <div class='offcanvas-body'>
+                    <ul class='list-unstyled ps-0'>
+                        <li class='border-top my-1'></li>
+
+                        <li class='mb-1'>
+                            <button class='btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed' data-bs-toggle='collapse' data-bs-target='#general-collapse' aria-expanded='true'>General information</button>
+                            <div class='collapse show' id='general-collapse'>
+                                <ul class='btn-toggle-nav list-unstyled fw-normal pb-1 small'>
+                                    <li>
+                                        <div class='p-1 mb-0'>Placeholder menu, for test purposes only</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div> <!--offcanvas-body-->
+            </div> <!--offcanvas-->
+        </div> <!--container-fluid-->
+    </nav>
+
+
+    <!-- The content of the page -->
+    <div class='container-fluid'>
+        <style>
+            .py-repl-box {
+                background-color: #ffffff;
+            }
+        </style>
+
+        <div class='row'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-11' style="position: relative">
+
+                <!-- The 3D view -->
+                <div id="viewer3d" style="width: 100%;; height: 700px"></div>
+
+                <!-- The script editors displayed on top of the 3D view -->
+                <div style="position: absolute; top: 20px; max-width: calc(100% - 40px); z-index: 100">
+                    <py-repl>
+                        robot.jointPositions = [0.5, -0.3, 0.0, -1.8, 0.0, 1.5, 1.0]
+                    </py-repl>
+
+                    <p></p>
+
+                    <py-repl>
+                        robot.jointPositions = [-0.5, -0.1, -1.1, -1.7, 0.0, 1.7, 1.1]
+                    </py-repl>
+
+                    <p style='font-size: 70%; color: #777777;'>(click on the green run button to run the code)</p>
+                </div>
+            </div> <!--sm-11-->
+        </div> <!--row-->
+    </div> <!--container-->
+
+
+    <!-- Import all the necessary JavaScript dependency modules
+    Sadly, can't be imported from an external file for the moment, this is not supported by Chrome
+    -->
+    <script src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/",
+                "mujoco": "../../dist/jsm/mujoco_wasm.js",
+                "katex": "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.mjs"
+            }
+        }
+    </script>
+
+
+    <!-- We need to import our 'Viewer3D' JavaScript module, otherwise it is not
+    accessible from Python -->
+    <script type="module">
+        import { downloadScene, downloadPandaRobot, initPyScript } from '../../dist/viewer3d.js';
+
+        // Download the assets
+        await downloadPandaRobot();
+        await downloadScene('../scenes/panda.xml');
+
+        // Now PyScript can be initialised
+        initPyScript();
+    </script>
+
+
+    <py-script>
+        from viewer3d import Viewer3D, configs
+        from js import document
+
+        # Create the Viewer3D
+        viewer3D = Viewer3D(
+            document.getElementById('viewer3d'),
+            parameters=dict(
+                show_joint_positions=True,
+            )
+        )
+
+        # Load the scene and retrieve the robot
+        viewer3D.loadScene('/scenes/panda.xml')
+        viewer3D.translateCamera([0, 0.4, 0])
+
+        robot = viewer3D.createRobot('panda', configs.Panda.new())
+
+        # Start the physics simulation
+        viewer3D.physicsSimulatorPaused = False
+    </py-script>
+
+</body>
+</html>
