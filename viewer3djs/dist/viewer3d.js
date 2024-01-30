@@ -1209,10 +1209,11 @@ async function downloadFiles(dstFolder, srcFolderUrl, filenames) {
         const filename = filenames[i];
         const data = await fetch(srcFolderUrl + filename);
 
-        if (filename.endsWith(".png") || filename.endsWith(".stl") || filename.endsWith(".skn")) {
-            mujoco.FS.writeFile(dstFolder + '/' + filename, new Uint8Array(await data.arrayBuffer()));
-        } else {
+        const contentType = data.headers.get("content-type");
+        if ((contentType == 'application/xml') || (contentType == 'text/plain')) {
             mujoco.FS.writeFile(dstFolder + '/' + filename, await data.text());
+        } else {
+            mujoco.FS.writeFile(dstFolder + '/' + filename, new Uint8Array(await data.arrayBuffer()));
         }
     }
 }
@@ -1321,6 +1322,26 @@ async function downloadPandaRobot() {
             'finger_1.obj',
         ]
     );
+}
+
+
+
+function readFile(filename, binary=false) {
+    try {
+        const stat = mujoco.FS.stat(filename);
+    } catch (ex) {
+        return null;
+    }
+
+    const content = mujoco.FS.readFile(filename);
+
+    if (!binary)
+    {
+        const textDecoder = new TextDecoder("utf-8");
+        return textDecoder.decode(content);
+    }
+
+    return content;
 }
 
 
@@ -4716,7 +4737,7 @@ class Viewer3D {
             this.domElement.classList.add('viewer3d');
 
         this.camera = null;
-        this.scene = [];
+        this.scene = null;
         this.activeLayer = 0;
 
         this.backgroundColor = new THREE.Color(0.0, 0.0, 0.0);
@@ -6065,4 +6086,4 @@ cssFiles.forEach(css => {
     document.getElementsByTagName('HEAD')[0].appendChild(link);
 });
 
-export { PandaConfiguration, PandaNoHandConfiguration, RobotConfiguration, Shapes, Viewer3D, downloadFiles, downloadPandaRobot, downloadScene, initPyScript, matrixFromSigma, sigmaFromMatrix3, sigmaFromMatrix4, sigmaFromQuaternionAndScale };
+export { PandaConfiguration, PandaNoHandConfiguration, RobotConfiguration, Shapes, Viewer3D, downloadFiles, downloadPandaRobot, downloadScene, getURL, initPyScript, matrixFromSigma, readFile, sigmaFromMatrix3, sigmaFromMatrix4, sigmaFromQuaternionAndScale };
