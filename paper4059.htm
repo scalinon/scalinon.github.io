@@ -87,18 +87,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='row'>
 <div class='col-md-2 text-center'><img class='borderthumb' src='images/4059.jpg'></div>
 <div class='col-md-10'>
-<h5>Shetty, S., Lembono, T., Löw, T. and Calinon, S. (2023)</h5>
+<h5>Shetty, S., Lembono, T., Löw, T. and Calinon, S. (2024)</h5>
 <h5><strong>Tensor Train for Global Optimization Problems in Robotics</strong></h5> 
-<h5>International Journal of Robotics Research (IJRR).</h5>
+<h5>International Journal of Robotics Research (IJRR), 43:6, 811-839.</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Shetty-IJRR2023.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Shetty-IJRR2024.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
 <a href='https://sites.google.com/view/ttgo' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Shetty-IJRR2023.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Shetty-IJRR2024.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
@@ -107,12 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>We propose an approach based on low-rank tensor approximation techniques to initialize the existing optimization solvers close to global optima. The approach uses only the definition of the cost function and does not need access to any database of good solutions. We first transform the cost function, which is a function of task parameters and optimization variables, into an unnormalized probability density function. Unlike existing approaches that set the task parameters as constant, we consider them as another set of random variables and approximate the joint probability distribution of the task parameters and the optimization variables using a surrogate probability model. For a given task, we then generate samples from the conditional distribution with respect to the given task parameter and use them as initialization for the optimization solver. As conditioning and sampling from an arbitrary density function are challenging, we use Tensor Train decomposition to obtain a surrogate probability model from which we can efficiently obtain the conditional model and the samples. The proposed method can produce multiple solutions coming from different modes (when they exist) for a given task. We first evaluate the approach by applying it to various challenging benchmark functions for numerical optimization that are difficult to solve using gradient-based optimization solvers with a naive initialization, showing that the proposed method can produce samples close to the global optima and coming from multiple modes. We then demonstrate the generality of the framework and its relevance to robotics by applying the proposed method to inverse kinematics and motion planning problems with a 7-DoF manipulator, as commonly encountered in robot manipulation.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Shetty23,
+<pre>@article{Shetty24IJRR,
 	author={Shetty, S. and Lembono, T. and L\"ow, T. and Calinon, S.},
-	title={Tensor Trains for Global Optimization Problems in Robotics},
-	journal={International Journal of Robotics Research (IJRR)},
-	year={2023},
-	pages={},
+	title={Tensor Train for Global Optimization Problems in Robotics},
+	journal={International Journal of Robotics Research ({IJRR})},
+	year={2024},
+	volume={43},
+	number={6},
+	pages={811--839},
 	doi={10.1177/02783649231217527}
 }</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
