@@ -105,21 +105,24 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='col-md-12'>
 
 <figure class='figure'>
-<img class='figure-img img-fluid' src='images/writingRobot01.jpg'>
+<div class='row'>
+<div class='col-md-6'><img class='figure-img img-fluid' src='images/writingRobot01.jpg'></div>
+<div class='col-md-6'><img class='figure-img img-fluid' src='images/lettering-daily-com.jpg'></div>
+</div>
+<figcaption class='figure-caption text-right'>Image: lettering-daily.com</figcaption>
 </figure>
 
 <p class='text-justify'>This project aims to generate trajectories for a robot to embellish text in an automatic manner.</p> 
 
 <p><b>Goals of the project:</b></p>
-<p class='text-justify'>An optimal control approach based on iterative linear quadratic regulator (iLQR) will be investigated for trajectory optimization. First, the problem will be approached by palcing a set of ellipses above and below the words to be flourished.
-
+<p class='text-justify'>An optimal control approach based on iterative linear quadratic regulator (iLQR) will be investigated for trajectory optimization. First, the problem will be approached by designing an algorithm for automatically placing a set of ellipses above and below the words to be flourished, by considering the empty spaces available based on the surrounding texts. A path optimization algorithm will then be created to generate movements by using the ellipses as guides (possibly formulated as virtual mass and gravitational forces). The objectives will be designed by transforming <a href='https://www.lettering-daily.com/calligraphy-flourishing/' target='_blank'>aesthetic guidelines for artists</a> into a set of cost functions that can be used in optimal control.</p>
  
-The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='https://www.ufactory.cc/lite-6-collaborative-robot' target='_blank'>https://www.ufactory.cc/lite-6-collaborative-robot</a>) available at Idiap.</p>
+<p class='text-justify'>The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='https://www.ufactory.cc/lite-6-collaborative-robot' target='_blank'>https://www.ufactory.cc/lite-6-collaborative-robot</a>) available at Idiap.</p>
 
 <p class='text-justify'><b>Prerequisites:</b> Linear algebra, programming in Python or C++</p>
 
 <p><b>References:</b></p>
-<p class='text-justify'><a href='https://rcfs.ch/doc/rcfs.pdf' target='_blank'>Calinon, S. (2023). Learning and Optimization in Robotics - Lecture notes.</a></p>
+<p class='text-justify'><a href='https://rcfs.ch/doc/rcfs.pdf' target='_blank'>Calinon, S. (2023). Learning and Optimization in Robotics - Lecture notes</a></p>
 <p class='text-justify'><a href='https://rcfs.ch/' target='_blank'>Robotics codes from scratch (RCFS)</a></p>
 
 <p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
@@ -131,6 +134,81 @@ The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='ht
 </div>
 
 
+
+
+
+<br><hr><br><br>
+<h4><b>Ergodic drawing for a robot manipulator</b></h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/drozbot_setup_en01.jpg'>
+</figure>
+
+<p class='text-justify'>This project aims to generate trajectories for a drawing robot by using the principle of ergodicity.</p> 
+
+<p><b>Goals of the project:</b></p>
+<p class='text-justify'>An optimal control approach combining an iterative linear quadratic regulator (iLQR) and a cost on ergodicity will be investigated for trajectory optimization. The project will also investigate the use of <a href='https://www.mia.uni-saarland.de/Research/Electrostatic_Halftoning/algorithm.shtml' target='_blank'>electrostatic halftoning</a> or <a href='https://www.cs.cmu.edu/~kmcrane/Projects/RepulsiveCurves/index.html' target='_blank'>repulsive curves</a> as initialization process.</p>
+<p class='text-justify'>The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='https://www.ufactory.cc/lite-6-collaborative-robot' target='_blank'>https://www.ufactory.cc/lite-6-collaborative-robot</a>) available at Idiap.</p>
+
+<p class='text-justify'><b>Prerequisites:</b> Linear algebra, programming in Python or C++</p>
+
+<p><b>References:</b></p>
+<p class='text-justify'><a href='https://calinon.ch/paper4055.htm' target='_blank'>Löw, T., Maceiras, J. and Calinon, S. (2022). drozBot: Using Ergodic Control to Draw Portraits. IEEE Robotics and Automation Letters (RA-L), 7:4, 11728-34</a></p>
+<p class='text-justify'><a href='https://rcfs.ch/doc/rcfs.pdf' target='_blank'>Calinon, S. (2023). Learning and Optimization in Robotics - Lecture notes (Section 9 on ergodic control)</a></p>
+<p class='text-justify'><a href='https://rcfs.ch/' target='_blank'>Robotics codes from scratch (RCFS)</a></p>
+<p class='text-justify'><a href='https://calinon.ch/drozbot.htm' target='_blank'>drozBot, the portraitist robot</a></p>
+
+<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
+
+<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
+
+</div>
+
+</div>
+
+
+<br><hr><br><br>
+<h4><b>Deep learning for a portraitist robot application</b></h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/Einstein-DL01.jpg'>
+<figcaption class='figure-caption text-right'>Text-driven generation of caricatures in the form of drawing strokes</figcaption>
+</figure>
+
+<p class='text-justify'>This project aims to explore the use of generative deep learning techniques based on image diffusion for a robot portrait drawing application.</p> 
+
+<p><b>Goals of the project:</b></p>
+Most of the generative deep learning techniques use images as formats, but a few explored the use of vector graphics as output format, guided by text prompts for the rendering. This project will investigate the use and comparison of these techniques in the context of a robot portrait drawing application.</p>
+<p class='text-justify'>The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='https://www.ufactory.cc/lite-6-collaborative-robot' target='_blank'>https://www.ufactory.cc/lite-6-collaborative-robot</a>) available at Idiap.</p>
+
+<p class='text-justify'><b>Prerequisites:</b> Deep learning, programming in Python or C++</p>
+
+<p><b>References:</b></p>
+<p class='text-justify'><a href='https://github.com/ximinng/SVGDreamer' target='_blank'>SVGDreamer: Text Guided SVG Generation with Diffusion Model</a></p>
+<p class='text-justify'><a href='https://github.com/ximinng/DiffSketcher' target='_blank'>DiffSketcher: Text Guided Vector Sketch Synthesis through Latent Diffusion Models</a></p>
+<p class='text-justify'><a href='https://github.com/ximinng/VectorFusion-pytorch' target='_blank'>VectorFusion: Text-to-SVG by Abstracting Pixel-Based Diffusion Models</a></p>
+<p class='text-justify'><a href='https://github.com/ximinng/PyTorch-SVGRender' target='_blank'>SVG Differentiable Rendering: Generating vector graphics using neural networks</a></p>
+
+<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
+
+<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
+
+</div>
+
+</div>
+
+
+<!--https://files.is.tue.mpg.de/black/papers/SMPL2015.pdf-->
 
 
 
@@ -166,6 +244,39 @@ The project will be implemented with a 6-axis UFactory Lite-6 robot (<a href='ht
 </div>
 
 </div>
+
+
+
+
+
+
+
+<br><hr><br><br>
+<h4><b>Human body tracking as a signed distance field</b></h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+
+<p class='text-justify'>...</p> 
+
+<p><b>Goals of the project:</b></p>
+<p class='text-justify'>...</p>
+
+<p class='text-justify'><b>Prerequisites:</b> Linear algebra, programming in Python or C++</p>
+
+<p><b>References:</b></p>
+<p class='text-justify'><a href='https://calinon.ch/paper3099.htm' target='_blank'>Li, Y., Zhang, Y., Razmjoo, A. and Calinon, S. (2024). Representing Robot Geometry as Distance Fields: Applications to Whole-body Manipulation</strong>. In Proc. IEEE Intl Conf. on Robotics and Automation (ICRA), pp. 15351-15357</a></p>
+
+<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
+
+<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
+
+</div>
+
+</div>
+
 
 
 
@@ -938,3 +1049,4 @@ The project proposes to study this challenge by using a 7-axis Panda robot from 
 <!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
 </body>
 </html>
+Text flourishing for a robot writer: a learning and optimizatio
