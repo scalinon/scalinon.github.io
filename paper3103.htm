@@ -85,34 +85,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/1004.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/3103.jpg'></div>
 <div class='col-md-10'>
-<h5>Calinon, S. (2024)</h5>
-<h5><strong>A Math Cookbook for Robot Manipulation</strong></h5> 
-<h5>Idiap Research Institute.</h5>
+<h5>Löw, T. and Calinon, S. (2024)</h5>
+<h5><strong>Recursive Forward Dynamics for Serial Kinematic Chains using Conformal Geometric Algebra</strong></h5> 
+<h5>In Proc. Intl Workshop on the Algorithmic Foundations of Robotics (WAFR).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='https://rcfs.ch/doc/rcfs.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Lowe-WAFR2024.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://rcfs.ch/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
+<a href='https://geometric-algebra.tobiloew.ch/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='https://rcfs.ch/doc/rcfs.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Lowe-WAFR2024.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>This cookbook presents several learning and optimal control recipes for robotics (essentially for robot manipulators), complemented by simple toy problems that can be easily coded. It accompanies Robotics Codes From Scratch (RCFS), a website containing interactive sandbox examples and exercises, together with a set of standalone source code examples gathered in a git repository, which can be accessed at https://rcfs.ch. Each section in this document lists the corresponding source codes in Python and Matlab (ensuring full compatibility with GNU Octave), as well as in C++ and Julia for some of the principal examples, which can be accessed at https://gitlab.idiap.ch/rli/robotics-codes-from-scratch.</p>
+<p>The computation of the forward dynamics plays an important role in simulating the motion of interconnected rigid bodies while considering the physical properties and constraints of each part. The applications in graphics, animation, and robotics usually require fast computation, which leads to the usage of fast recursive algorithms. In this paper, we present a formulation of the recursive forward dynamics of serial kinematic chains that that is rooted in geometry, which allows coordinate-free view and geometrically meaningful interpretations of the involved quantities. The mathematical framework is called conformal geometric algebra (CGA) and it extends classical vector algebra by introducing a unified representation of a large array of geometric operations, transformations and mathematical objects, such as points, lines, and planes, in a rigorous yet intuitive manner. Hence, using CGA for the computation of the forward dynamics provides a unified mathematical framework that seamlessly integrates both the geometric and dynamic aspects of the system. We validate the computation numerically and provide an implementation of the results in an open-source library, making it immediately available in practice.
+</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@techreport{Calinon24RCFS,
-	author="Calinon, S.",
-	title="A Math Cookbook for Robot Manipulation",
-	institution="Idiap Research Institute",
-	year="2024"
-}</pre>
+<pre>@inproceedings{Loew24WAFR,
+	author={L\"ow, T. and Calinon, S.},
+	title={Recursive Forward Dynamics for Serial Kinematic Chains using Conformal Geometric Algebra},
+	booktitle={Proc.\ Intl Workshop on the Algorithmic Foundations of Robotics ({WAFR})},
+	year={2024}
+}
+</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 
