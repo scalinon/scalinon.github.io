@@ -85,33 +85,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/3103.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/3104.jpg'></div>
 <div class='col-md-10'>
-<h5>Löw, T. and Calinon, S. (2024)</h5>
-<h5><strong>Recursive Forward Dynamics for Serial Kinematic Chains using Conformal Geometric Algebra</strong></h5> 
-<h5>In Proc. Intl Workshop on the Algorithmic Foundations of Robotics (WAFR).</h5>
+<h5>Xue, T., Razmjoo, A., Shetty, S. and Calinon, S. (2024)</h5>
+<h5><strong>Robust Manipulation Primitive Learning via Domain Contraction</strong></h5> 
+<h5>In Proc. Conference on Robot Learning (CoRL).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Loew-WAFR2024.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Xue-CORL2024.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://geometric-algebra.tobiloew.ch/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
-</div>
-<div class='col-md-4'>
-<a href='papers/Loew-WAFR2024.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Xue-CORL2024.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>The computation of the forward dynamics plays an important role in simulating the motion of interconnected rigid bodies while considering the physical properties and constraints of each part. The applications in graphics, animation, and robotics usually require fast computation, which leads to the usage of fast recursive algorithms. In this paper, we present a formulation of the recursive forward dynamics of serial kinematic chains that that is rooted in geometry, which allows coordinate-free view and geometrically meaningful interpretations of the involved quantities. The mathematical framework is called conformal geometric algebra (CGA) and it extends classical vector algebra by introducing a unified representation of a large array of geometric operations, transformations and mathematical objects, such as points, lines, and planes, in a rigorous yet intuitive manner. Hence, using CGA for the computation of the forward dynamics provides a unified mathematical framework that seamlessly integrates both the geometric and dynamic aspects of the system. We validate the computation numerically and provide an implementation of the results in an open-source library, making it immediately available in practice.
-</p>
+<p>Contact-rich manipulation plays an important role in everyday life, but uncertain parameters pose significant challenges to model-based planning and control. To address this issue, domain adaptation and domain randomization have been proposed to learn robust policies. However, they either lose the generalization ability to diverse instances or perform conservatively due to neglecting instance-specific information. In this paper, we propose a bi-level approach to learn robust manipulation primitives, including parameter-augmented policy learning using multiple models with tensor approximation, and parameter-conditioned policy retrieval through domain contraction. This approach unifies domain randomization and domain adaptation, providing optimal behaviors while keeping generalization ability. We validate the proposed method on three contact-rich manipulation primitives: hitting, pushing, and reorientation. The experimental results showcase the superior performance of our approach in generating robust policies for instances with diverse physical parameters.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@inproceedings{Loew24WAFR,
-	author={L\"ow, T. and Calinon, S.},
-	title={Recursive Forward Dynamics for Serial Kinematic Chains using Conformal Geometric Algebra},
-	booktitle={Proc.\ Intl Workshop on the Algorithmic Foundations of Robotics ({WAFR})},
+<pre>@inproceedings{Xue24CORL,
+	author={Xue, T. and Razmjoo, A. and Shetty, S. and Calinon, S.},
+	title={Robust Manipulation Primitive Learning via Domain Contraction},
+	booktitle={Proc.\ Conference on Robot Learning ({CoRL})},
 	year={2024}
 }
 </pre>
