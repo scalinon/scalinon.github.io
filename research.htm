@@ -153,9 +153,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <figcaption class='figure-caption'><b>Geometric algebra</b> can also be used to encode geometric primitives in a uniform manner, such as points, lines, planes, spheres, ellipsoids or quadric surfaces  (depicted in red), as well as the associated transformations $M$ to move from an initial state $X$ to a desired state $X_d$, which are called motors (depicted in green). In practice, it means that $M=f(X,X_d)$ can be described uniquely for different geometric objects, which is useful in various skillful manipulation contexts such as bimanual coordination, whole-body motion and human-robot collaboration.</figcaption>
 </figure>
 
-<!--<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#manipulability'>Learning, tracking and transfer of manipulability ellipsoids <b>[open]</b></button><br><br>-->
+<!--<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#manipulability'>Learning, tracking and transfer of manipulability ellipsoids <b>[open]</b></button><br><br>
+<div id='manipulability' class='collapse'>-->
 <br><button class='btn btn-secondary btn-sm'>Learning, tracking and transfer of manipulability ellipsoids</button><br><br>
-<div id='manipulability' class='collapse'>
+<div id='manipulability'>
 <p class='text-justify'>Skills transfer can exploit <b>stiffness and manipulability ellipsoids</b>, in the form of <b>geometric descriptors</b> representing the skills to be transferred to the robot. As these ellipsoids lie on <b>symmetric positive definite (SPD) manifolds</b>, Riemannian geometry can be used to learn and reproduce these descriptors in a probabilistic manner.</p>
 <figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/manipulability-small02.png'></center></figure>
 <div class='p-3 bg-light text-dark border'>
@@ -164,9 +165,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </div><br>
 </div>
 
-<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#GA'>Geometric algebra <b>[open]</b></button><br><br>--> 
+<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#GA'>Geometric algebra <b>[open]</b></button><br><br>
+<div id='GA' class='collapse'>--> 
 <button class='btn btn-secondary btn-sm'>Geometric algebra</button><br><br>
-<div id='GA' class='collapse'>
+<div id='GA'>
 <p class='text-justify'>Another promising candidate for handling geometric structures in robotics is the framework of <b>geometric algebra</b>, whose roots can be found in Clifford algebra, which can be seen as a fusion of quaternion and Grassmann algebras. Geometric algebra provides a unification of various frameworks popular in robotics, such as screw theory, Lie algebra or dual quaternions, while offering great generalization and extension perspectives.</p>
 <p class='text-justify'>As a crude illustration of geometric algebra, think first of the way we represent the position of datapoints in a Cartesian space as a 3D vector. If we set some of these vector entries to 0, we can represent points in specific 2D planes of the 3D space (e.g, by representing a planar path in x-y by ignoring the z axis). In geometric algebra, we will store data in a vector of higher dimension (e.g., 32D), which will allow us to describe a richer variety of geometric objects, including constraints specified as spheres, circles, lines or segments. In analogy to the 3D vector, the non-zero values in this 32D vector will determine which geometric object it represents. Interestingly, both translation and rotation will be expressed in the same manner. Moreover, both states and actions will use the same formulation. These two properties provide a generic and homogeneous formulation for various robotics problems (kinematic and dynamic control, optimization, learning and planning).</p> 
 <p class='text-justify'>Another informal parallel to illustrate the use of a 32-dimensional space is to consider the use of a unit quaternion to describe an orientation, whose components can be stored as a 4D vector. With this representation, for the very common task of moving both the position and orientation of a robot end effector, we need linear algebra for the translation part and quaternion algebra for the rotation part, which also most often involves a series a conversion from one to the other (e.g., to go through the different links of a kinematic chain). The use of dual quaternion is a step forward to avoid this situation, by embedding position information as another quaternion, resulting in a 8D vector that can be homogeneously treated with quaternion algebra. Geometric algebra follows a similar idea, but provides a more generic formulation, by using more dimensions to represent a richer set of objects. There are several variants described by a different number of dimensions, which offers to treat different categories of geometric problems, while keeping the same base formulation.</p>
@@ -202,9 +204,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class='text-justify'>Another type of structure that we exploit relates to the organization of data as <b>multidimensional arrays</b> (also called tensors). These data appear in various robotic tasks, either as the natural organization of sensory/motor data (tactile arrays, images, kinematic chains), as the result of standardized preprocessing steps (moving time windows, covariance features), data in multiple coordinate systems, or in the form of basis functions decompositions. Developed in the fields of <b>multilinear algebra</b> and <b>tensor methods</b>, these approaches extend linear factorization techniques such as singular value decomposition to <b>multilinear decomposition</b>, without requiring the transformation of the tensors to vectors or matrices. We exploit these techniques to provide robots with the capability <b>to learn tasks from only few tensor datapoints</b>, by relying on the multidimensional nature of the data.</p> 
 <figure class='figure p-3'><img class='figure-img img-fluid' src='images/tensor-small02.png'></figure>
 
-<!--<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#TTGO'>Global optimization with tensor train decomposition <b>[open]</b></button><br><br>-->
+<!--<br><button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#TTGO'>Global optimization with tensor train decomposition <b>[open]</b></button><br><br>
+<div id='TTGO' class='collapse'>-->
 <br><button class='btn btn-secondary btn-sm'>Global optimization with tensor train decomposition</button><br><br>
-<div id='TTGO' class='collapse'>
+<div id='TTGO'>
 <figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/TT-pipeline-small01.jpg'></center>
 <figcaption class='figure-caption'>Combination of global and local optimization for fast adaptation to new situations, by leveraging offline and online computation. 
 <b>(a)</b> Local optimization algorithms such as iterative linear quadratic regulators (iLQR) requires good initial estimates to speed up convergence, to reach good local minima and to find diverse solutions. The figure shows an illustration with two decision variables and four local minima of a cost function.
@@ -230,9 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#ergodic'>Ergodic control applied to insertion tasks <b>[open]</b></button><br><br>-->
+<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#ergodic'>Ergodic control applied to insertion tasks <b>[open]</b></button><br><br>
+<div id='ergodic' class='collapse'>-->
 <button class='btn btn-secondary btn-sm'>Ergodic control applied to insertion tasks</button><br><br>  
-<div id='ergodic' class='collapse'>
+<div id='ergodic'>
 <figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/ergodic-small02.png'></center></figure>
 <p class='text-justify'>In robotics, <b>ergodic control</b> extends the tracking principle by specifying a probability distribution over an area to cover instead of a trajectory to track. The original problem is formulated as a spectral multiscale coverage problem, typically requiring the <b>spatial distribution to be decomposed as Fourier series</b>. This approach does not scale well to control problems requiring exploration in search space of more than 2 dimensions. To address this issue, we propose the use of <b>tensor trains</b>, a recent <b>low-rank tensor decomposition</b> technique from the field of multilinear algebra. The proposed solution is efficient, both computationally and storage-wise, hence making it suitable for its online implementation in robotic systems. The approach is applied to a peg-in-hole insertion task requiring full 6D end-effector poses (see second reference below).</p>
 </div>
@@ -264,9 +268,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class='text-justify'>This approach allows the <b>orchestration of different controllers</b>, which can be learned separately or altogether (by variational inference). With this formulation, the robot can counteract perturbations that have an impact on the fulfillment of the task, while ignoring other perturbations. It also allows us to create bridges with research in biomechanics and motor control, with formulations including minimal intervention principles, uncontrolled manifolds or optimal feedback control.</p>
 <!--This approach allows us to combine control, planning and perception features in an efficient manner, by allowing multiple behavior primitives to be orchestrated in parallel (including prioritization with null-space projection structures). In this framework, each behavior primitive contributes to the task by taking into account the (co)variations allowed in a task and the uncertainty of the expertise.-->
 
-<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#taskparameterized'>Task-parameterized movements <b>[open]</b></button><br><br>-->
+<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#taskparameterized'>Task-parameterized movements <b>[open]</b></button><br><br>
+<div id='taskparameterized' class='collapse'>-->
 <button class='btn btn-secondary btn-sm'>Task-parameterized movements</button><br><br> 
-<div id='taskparameterized' class='collapse'>
+<div id='taskparameterized'>
 <figure class='figure p-3'><img class='figure-img img-fluid' src='images/TPmodels01.jpg'></figure>
 <p class='text-justify'>To facilitate the acquisition of manipulation skills, <b>task-parameterized models</b> can be exploited to take into account that <b>motions typically relates to objects, tools or landmarks</b> in the robot's workspace. The approach consists of <b>encoding a movement in multiple coordinate systems</b> (e.g., from the perspectives of different objects), in the form of trajectory distributions. In a new situation (e.g., for new object locations), the reproduction problem corresponds to a fusion problem, where the variations in the different coordinate systems are exploited to generate a movement reference tracked with variable gains, providing the robot with a <b>variable impedance behavior</b> that automatically adapts to the precision required in the different phases of the task. For example, in a pick-and-place task, the robot will be stiff if the object needs to be reached/dropped in a precise way, and will remain compliant in the other parts of the task.</p> 
 <p class='text-justify'>Our ongoing work explores the extension of the task-parameterized principle to a richer set of behaviors, including <b>coordinate systems that take into account symmetries</b> (e.g., cylindrical and spherical coordinate systems) and <b>nullspace projection structures</b>.</p>
@@ -277,10 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </div><br>
 </div>
 
-<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br>-->
+<!--<button class='btn btn-secondary btn-sm' data-toggle='collapse' data-target='#optimalcontrol'>Probabilistic optimal control <b>[open]</b></button><br><br>
+<div id='optimalcontrol' class='collapse'> -->
 <button class='btn btn-secondary btn-sm'>Probabilistic optimal control</button><br><br> 
-<div id='optimalcontrol' class='collapse'> 
-<div id='optimalcontrol' class='collapse'>
+<div id='optimalcontrol'>
 <figure class='figure p-3'><center><img class='figure-img img-fluid' style='width:70%;' src='images/LQT-small02.png'></center></figure>
 <p class='text-justify'><b>Linear quadratic tracking (LQT)</b> is a simple form of optimal control that trades off tracking and control costs expressed as quadratic terms over a time horizon, with the evolution of the state described in a linear form. This constrained problem can be solved by expressing the state and the control commands as trajectories, corresponding to a least squares solution. A <b>probabilistic interpretation of the LQT solution</b> can be built by using the residuals of this estimate.</p>
 <p class='text-justify'>This approach allows the <b>creation of bridges between learning and control</b>. For example, in learning from demonstration, the observed (co)variations in a task can be formulated as an LQT objective function, which then provides a trajectory distribution in control space that can be converted to a trajectory distribution in state space. All the operations are analytic and only exploit basic linear algebra.</p>
