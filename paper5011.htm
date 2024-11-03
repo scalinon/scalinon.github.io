@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
 <li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
 <li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
-<li class='nav-item active'><a class='nav-link' href='contact.htm'>Contact/Links <span class='sr-only'>(current)</span></a></li>	
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
 </ul>
 </div>
 </nav>
@@ -84,48 +84,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-<p class='float-right'><b>English</b> / <a href='drozbot_fr.htm'>Français</a></p>
-
-<h1>drozBot, the portraitist robot</h1>
-
 <div class='row'>
-<div class='col-md-6'><img class='figure-img img-fluid' src='images/drozbot_museum01.jpg'></div>
-<div class='col-md-6'><img class='figure-img img-fluid' src='images/drozbot_museum02.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/5011.jpg'></div>
+<div class='col-md-10'>
+<h5>Blanc, C., Jankowski, J., Sonderegger, A., Calinon, S. and Dégallier Rochat, S. (2025)</h5>
+<h5><strong>Intuitive Robot Programming</strong></h5> 
+<h5>Barresi, G. and Wischniewski, S. (eds). Ergonomics in Robotics: Advances and Innovations. Springer.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Blanc-ERGOROB2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Blanc-ERGOROB2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/K-WPry8ltXU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</div></div></div>
 
-<p class='text-justify'>drozBot draws portraits with a conventional pen and paper. It first takes a snapshot of the person by framing the face through recognition of the principal facial features (eyes, nose, mouth). The portrait in a digital format is then converted to a <b>fluid movement mimicking the gestures of an artist</b>.</p>
-
-<p class='text-justify'>This installation aspires <b>to explore the frontiers between optimality and randomness</b> in Artificial Intelligence (AI) applications. The learning mechanisms behind AI often use random processes to search for solutions (stochastic sampling during optimization). This randomization component behind these learning algorithms for example allow a robot to find solutions quickly without having to test each possible option. drozBot instead relies on a different perspective, by solving an <b>optimal control problem</b> aiming at determining the pen strokes to generate to best cover the canvas for each portrait to draw. Interestingly, this generative process does not rely on randomness while the result appears to be composed of aleatory strokes, with <b>doodles revealing the global objective only when the drawing is finished</b>. These doodles appear to be random when they are observed from close distance, but they are in reality optimal, with a unique result with respect to the global objective given to the robot.</p>
-
-<p class='text-justify'>To reach this drawing capability, the objectives of the robot are multiple. First, it has to generate smooth gestures while controlling the orientation and pressure of the pen on the paper. Then, it has to define a series of strokes reproducing the different contrasts in the image, by forecasting a greater number of overlapping paths in darker regions of the image, while reducing the overall length of the movement.</p>
-
-<p class='text-justify'>When observing the robot at work, the doodles appear meaningless at first sight. The global objective is only revealed with the progression of the drawing. Indeed, the <b>appearing chaos of the first strokes disappear with the ensemble view of the final portrait</b>.</p> 
-
-<img class='figure-img img-fluid' src='images/drozBot-portraits02-web.jpg'><br><br>
-<img class='figure-img img-fluid' src='images/drozbot_setup_en01.jpg'><br><br>
-
-<!--
-<img class='figure-img img-fluid' src='images/drozBot-part1.jpg'><br><br>
-avec un bras articulé produisant une série de gribouillis révélant progressivement l'identité de la personne
-<img class='figure-img img-fluid' src='images/drozBot-part2.jpg'><br><br>
-<img class='figure-img img-fluid' src='images/drozBot-part3.jpg'><br><br>-->
-
-
-<div class='p-3 bg-light text-dark border border-secondary text-justify'>
-In robotics, this technique is called <b>ergodic control</b>. It stands out from standard approaches in control that define the task in the form of a point (or a series of points) to reach precisely. In the ergodic control approach, instead of a point, <b>a region to explore is given as instruction to the robot</b>.
-The objective of the robot is then to move in order <b>to cover this region in an optimal manner</b>. We use these same algorithms in our research work to handle insertion tasks in industrial applications, which allow the robot to automatically compensate for imprecise sensing information with a search behavior around the insertion points.
-</div>
-<br>
-
-<div class='p-3 bg-light text-dark border border-secondary text-justify'>
-drozBot was part of the exhibition <a href='https://www.museedelamain.ch/fr/1591/Intelligence-Artificielle' target='_blank'>Intelligence Artificielle: Nos Reflets Dans La Machine</a>, UNIL-CHUV Museum of the Hand in Lausanne, from April 2022 to September 2023.
-</div>
-
-</div><!-- /.main-template -->
+<h3>Abstract</h3>
+<p>The introduction of robots in SMEs requires a drastic reconsideration of existing programming techniques and interfaces. The growing versatility of the market essentially demands the robots to be re-programmed frequently, requiring a revision of the existing industrial interfaces. Rather than limiting the intervention of the workers, the technology should empower them to take control over the machine. Only then, the human-machine complementarity can be leveraged, combining the efficiency of automation with the flexibility of human work. Ergonomics and human factors are critical to the development of these new programming interfaces, which should typically be developed and tested in a cyclic fashion with the end-users. In this chapter, we highlight the differences between easy-to-learn and easy-to-use interfaces, as well as the differences between interfaces targeting naive/casual users and interfaces targeting expert/professional workers. We discuss the design of robot programming interfaces based on a user-centric perspective. The research developments in this project target different methods to collect demonstrations (including tracked devices and kinesthetic teaching), different graphical user interfaces (including block-based and timeline representations), and different approaches to augmented reality (including tablets/smartphones, headsets or actuated projection devices). Through this multi-modular approach, we aim at providing to the workers with the most natural way possible to interact with the robot depending on the task or their preferences.</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@incollection{Blanc25,
+	author="Blanc, C. and Jankowski, J. and Sonderegger, A. and Calinon, S. and D\'egallier Rochat, S.",
+	title="Intuitive Robot Programming",
+	booktitle="Ergonomics in Robotics: Advances and Innovations",
+	publisher="Springer",
+	editor="Barresi, G. and Wischniewski, S.", 
+	year="2025",
+	pages="",
+	doi=""
+}</pre>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 
 
@@ -138,3 +127,7 @@ drozBot was part of the exhibition <a href='https://www.museedelamain.ch/fr/1591
 <!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
 </body>
 </html>
+
+	
+
+
