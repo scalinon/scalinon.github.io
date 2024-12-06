@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<meta name='description' content='Sylvain Calinon'>
+<meta name='author' content='Sylvain Calinon'>
+<meta name='keywords' content='Sylvain Calinon, robotics, machine learning, robot learning, human-robot interaction, human-robot collaboration, learning from demonstration, programming by demonstration, artificial intelligence, Idiap, model-based optimization, Riemannian geometry, tensor methods, tensor factorization, optimal control, ergodic control'>
+<meta name='theme-color' content='#343a40'>
+<link rel='icon' href='images/favicon.ico'>
+<title>Sylvain Calinon</title>
+<link href='css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main-template.css' rel='stylesheet'>
+<link href='font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Raleway' rel='stylesheet'> 
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css' integrity='sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X' crossorigin='anonymous'>
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js' integrity='sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz' crossorigin='anonymous'></script>
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js' integrity='sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05' crossorigin='anonymous'></script>
+<script>
+let macros = {
+	'\\tp': '\\text{\\tiny{#1}}',
+	'\\trsp' : '\\top',
+	'\\psin' : '\\dagger',
+	'\\eqref': '\\href{###1}{(\\text{#1})}',
+	'\\ref': '\\href{###1}{\\text{#1}}',
+	'\\label': '\\htmlId{#1}{}'
+};
+document.addEventListener('DOMContentLoaded', function() {
+	renderMathInElement(document.body, {
+		// customised options
+		trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+		macros: macros,
+		// • auto-render specific keys, e.g.:
+		delimiters: [
+			{left: '$$', right: '$$', display: true},
+			{left: '$', right: '$', display: false},
+			{left: '\\(', right: '\\)', display: false},
+			{left: '\\begin{equation}', right: '\\end{equation}', display: true},
+			{left: '\\begin{equation*}', right: '\\end{equation*}', display: true},
+			{left: '\\begin{align}', right: '\\end{align}', display: true},
+			{left: '\\begin{align*}', right: '\\end{align*}', display: true},
+			{left: '\\begin{alignat}', right: '\\end{alignat}', display: true},
+			{left: '\\begin{gather}', right: '\\end{gather}', display: true},
+			{left: '\\begin{CD}', right: '\\end{CD}', display: true},
+			{left: '\\[', right: '\\]', display: true}
+		],
+		// • rendering keys, e.g.:
+		throwOnError : false
+	});
+});
+</script>
+
+</head>
+
+<body>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
+<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<a class='navbar-brand' href='index.htm'>
+<h3 style='display: inline-block;'>Sylvain Calinon</h3>
+<img src='images/pbd-thumbnail02.png' style='display: inline-block; margin-left: 10px;'>
+</a>
+
+<div class='collapse navbar-collapse' id='navbarsExampleDefault'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'><a class='nav-link' href='index.htm'>News</a></li>
+<li class='nav-item'><a class='nav-link' href='cv.htm'>CV</a></li>
+<li class='nav-item'><a class='nav-link' href='research.htm'>Research</a></li>
+<li class='nav-item'><a class='nav-link' href='publications.htm'>Publications</a></li>
+<li class='nav-item'><a class='nav-link' href='teaching.htm'>Teaching</a></li>
+<li class='nav-item'><a class='nav-link' href='book.htm'>Book</a></li>
+<li class='nav-item'><a class='nav-link' href='videos.htm'>Videos</a></li>
+<li class='nav-item'><a class='nav-link' href='codes.htm'>Codes</a></li>
+<li class='nav-item'><a class='nav-link' href='open-positions.htm'>Open positions </a></li>
+<li class='nav-item'><a class='nav-link' href='contact.htm'>Contact/Links</a></li>	
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='main-template'>
+
+
+
+<div class='row'>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/7009.jpg'></div>
+<div class='col-md-10'>
+<h5>Li, Y., Qiu, J. and Calinon, S. (2025)</h5>
+<h5><strong>A Riemannian Task on Distance Fields and Geodesic Flows in Robotics</strong></h5> 
+<h5>arXiv.</h5>
+<div class='row'>
+<div class='col-md-4'>
+<a href='papers/Li-arXiv2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+</div>
+<div class='col-md-4'>
+<a href='papers/Li-arXiv2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+</div>
+
+</div></div></div>
+
+<h3>Abstract</h3>
+<p>Distance functions are crucial in robotics for representing spatial relationships between the robot and the environment. It provides an implicit representation of continuous and differentiable shapes, which can seamlessly be combined with control, optimization, and learning techniques. While standard distance fields rely on the Euclidean metric, many robotic tasks inherently involve non-Euclidean structures.  To this end, we generalize the use of Euclidean distance fields to more general metric spaces by solving a Riemannian eikonal equation, a first-order partial differential equation, whose solution defines a distance field and its associated gradient flow on the manifold, enabling the computation of geodesics and globally length-minimizing paths. We show that this geodesic distance field can also be exploited in the robot configuration space. To realize this concept, we exploit physics-informed neural networks to solve the eikonal equation for high-dimensional spaces, which provides a flexible and scalable representation without the need for discretization. Furthermore, a variant of our neural eikonal solver is introduced, which enables the gradient flow to march across both task and configuration spaces. As an example of application, we validate the proposed approach in an energy-aware motion generation task. This is achieved by considering a manifold defined by a Riemannian metric in configuration space, effectively taking the property of the robot's dynamics into account. Our approach produces minimal-energy trajectories for a 7-axis Franka robot by iteratively backtracking geodesics through gradient flow propagation.
+</p>
+	
+<h3>Bibtex reference</h3>
+<pre>@article{Li25arXiv,
+	author={Li, Y. and Qiu, J. and Calinon, S.},
+	title={A Riemannian Task on Distance Fields and Geodesic Flows in Robotics},
+	journal={arXiv},
+	year={2025},
+}
+</pre>
+	
+<h3>Video</h3>
+<center>
+<iframe width="560" height="3105" src="https://www.youtube.com/watch?v=FArj9vKF7C4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+<p><b>Related publication:</b> <a href='paper7009.htm' class='nodecor'>Li, Y., Qiu, J. and Calinon S. (2024). <strong>A Riemannian Task on Distance Fields and Geodesic Flows in Robotics</strong>. arXiv.</a></p>
+	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
+
+	
+
+
