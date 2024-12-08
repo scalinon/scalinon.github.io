@@ -292,11 +292,15 @@ Most of the generative deep learning techniques use images as formats, but a few
 </div>
 
 
-
-
-
-
 <!--
+Motion generation from a geodesic distance field
+
+Many applications require the modeling of shapes and paths as an implicit representation based on distance fields, including robotics, vision and computer graphics. Often, the derivatives of this distance function are exploited for learning, optimization, planning or control problems. The classical use case considers Euclidean distances, with the shortest path between two points corresponding to a line segment. More generally, we can define a smoothly varying weight matrix that can for example priviledge some directions over others to compute distances, which corresponds to a Riemannian metric. This is for example the case in robotics if we want to consider the effect of inertia for the generaiton of motion. In such a case, the geodesic path between two points will typically be curved. One way to compute such path is to start from one of the two points and build a potential field with an anisotropic diffusion process. After this, the path can be recovered by following the gradient of this potential field.
+
+Several approaches exist to build these geodesic paths, which will be investigated in this project for the case of 3D motion to move between two pairs of points while avoiding an obstacle. The obstacle will be modeled as a distance field, with the Riemannian metric build from this distance field.
+
+https://nbviewer.org/github/Mirebeau/AdaptiveGridDiscretizations_showcase/blob/master/Summary.ipynb  
+
 
 
 <br><hr><br><br>
