@@ -338,14 +338,22 @@ Most of the generative deep learning techniques use images as formats, but a few
 <br>
 <div class='row'>
 
-<div class='col-md-12'>
-
+<div class='col-md-6'>
 <figure class='figure'>
 <img class='figure-img img-fluid' src='images/obstacleGeodesics01.jpg'>
 </figure>
+</div>
 
+<div class='col-md-6'>
 <p class='text-justify'>Many applications require the modeling of shapes and paths as an implicit representation based on distance fields, including robotics, vision and computer graphics. Often, the derivatives of this distance function are exploited for learning, optimization, planning or control problems. The classical use case considers Euclidean distances, with the shortest path between two points corresponding to a line segment. More generally, we can define a smoothly varying weight matrix that can for example priviledge some directions over others to compute distances, which corresponds to a Riemannian metric. This is for example the case in robotics if we want to consider the effect of inertia for the generaiton of motion. In such a case, the geodesic path between two points will typically be curved. One way to compute such path is to start from one of the two points and build a potential field with an anisotropic diffusion process. After this, the path can be recovered by following the gradient of this potential field.
 </p>
+</div>
+
+</div>
+
+<div class='row'>
+
+<div class='col-md-12'>
 
 <p><b>Goals of the project:</b></p>
 <p class='text-justify'>Several approaches exist to build these geodesic paths, which will be investigated in this project for the case of 3D motion to move between two pairs of points while avoiding an obstacle (blue paths on the image). The obstacle will be modeled as a distance field, with the Riemannian metric built from this distance field (ellipses on the image).</p>
