@@ -254,6 +254,43 @@ Most of the generative deep learning techniques use images as formats, but a few
 
 
 
+<br><hr><br><br>
+<h4><b>Tensor Networks for human-guided optimization in robotics</b></h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/TT-pipeline-small02.jpg'>
+</figure>
+
+<p class='text-justify'>The project proposes to extend the Tensor Train for Global Optimization (TTGO) approach (see reference below) to a human-guided learning strategy. The approach will be tested with control and planning problems using robot manipulators. The formulation transforms the minimization of a cost function into the maximization of a  probability density function. Hence, the problem of finding the minima of a cost function is transformed into the problem of sampling the maxima of the density function. The approach does not require gradients to be computed and can find multiple optima, which can be used for global optimization problems.</p> 
+
+<p class='text-justify'>Learning and optimization problems in robotics are characterized by two types of variables: 1) task parameters representing the situation that the robot encounters, typically related to environment variables such as locations of objects, users or obstacles; and 2) decision variables related to actions that the robot takes, typically related to a controller acting within a given time window, or the use of basis functions to describe trajectories in control or state spaces. For each change of task parameters, decision variables need to be recomputed as fast as possible, so that the robot can fluently collaborate with users and can swiftly react to changes in its environment. In TTGO, the density function is modeled in the offline phase using a tensor train (TT) that learns the structure between the task parameters and the decision variables. It then allows conditional sampling over the task parameters with priority for higher-density regions. This property is used for fast online decision-making, with local Gauss-Newton optimization to refine the results, see the above figure for an overview. TTGO allows the distribution of computation into offline and online phases. It can cope with a mix of continuous and discrete variables for optimization thus providing an alternative to mixed-integer programming.</p>
+
+<p><b>Goals of the project:</b></p>
+<p class='text-justify'>An important advantage of TTGO is that the underlying TT-cross method used to approximate the distribution in TT format can easily be extended to various forms of human-guided learning, which will be investigated in this project. The goal will be to test whether the original autonomous learning strategy of TT-Cross can be extended to a human-guided learning strategy, by letting the user sporadically specify task parameters or decision variables within the iterative process. The first case can be used to provide a scaffolding mechanism for robot skill acquisition. The second case can be used for the robot to ask for help in specific situations.</p>
+
+<p class='text-justify'><b>Prerequisites:</b> Linear algebra, optimization, programming in Python or Matlab/Otave</p>
+
+<p><b>Reference:</b></p>
+<p class='text-justify'><a href='https://sites.google.com/view/ttgo' target='_blank'>Shetty, S., Lembono, T., Löw, T. and Calinon, S. (2023). Tensor Train for Global Optimization Problems in Robotics. arXiv:2206.05077.</a></p>
+
+<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
+
+<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
 
 <br><hr><br><br>
 <h4><b>Human body tracking with signed distance fields</b></h4>
@@ -292,16 +329,45 @@ Most of the generative deep learning techniques use images as formats, but a few
 </div>
 
 
+
+
+
+<br><hr><br><br>
+<h4><b>Motion generation from a geodesic distance field</b></h4>
+
+<br>
+<div class='row'>
+
+<div class='col-md-12'>
+
+<figure class='figure'>
+<img class='figure-img img-fluid' src='images/obstacleGeodesics01.jpg'>
+</figure>
+
+<p class='text-justify'>Many applications require the modeling of shapes and paths as an implicit representation based on distance fields, including robotics, vision and computer graphics. Often, the derivatives of this distance function are exploited for learning, optimization, planning or control problems. The classical use case considers Euclidean distances, with the shortest path between two points corresponding to a line segment. More generally, we can define a smoothly varying weight matrix that can for example priviledge some directions over others to compute distances, which corresponds to a Riemannian metric. This is for example the case in robotics if we want to consider the effect of inertia for the generaiton of motion. In such a case, the geodesic path between two points will typically be curved. One way to compute such path is to start from one of the two points and build a potential field with an anisotropic diffusion process. After this, the path can be recovered by following the gradient of this potential field.
+</p>
+
+<p><b>Goals of the project:</b></p>
+<p class='text-justify'>Several approaches exist to build these geodesic paths, which will be investigated in this project for the case of 3D motion to move between two pairs of points while avoiding an obstacle (blue paths on the image). The obstacle will be modeled as a distance field, with the Riemannian metric built from this distance field (ellipses on the image).</p>
+
+<p class='text-justify'><b>Prerequisites:</b> Linear algebra, programming in Python or Matlab/Octave</p>
+
+<p><b>References:</b></p>
+<p class='text-justify'><a href='https://rcfs.ch/doc/rcfs.pdf' target='_blank'>Calinon, S. (2024). Learning and Optimization in Robotics - Lecture notes (Section 9 on ergodic control)</a></p>
+
+<p class='text-justify'><a href='https://nbviewer.org/github/Mirebeau/AdaptiveGridDiscretizations_showcase/blob/master/Summary.ipynb' target='_blank'></a></p>
+
+<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
+
+<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
+
+</div>
+
+</div>
+
+
+
 <!--
-Motion generation from a geodesic distance field
-
-Many applications require the modeling of shapes and paths as an implicit representation based on distance fields, including robotics, vision and computer graphics. Often, the derivatives of this distance function are exploited for learning, optimization, planning or control problems. The classical use case considers Euclidean distances, with the shortest path between two points corresponding to a line segment. More generally, we can define a smoothly varying weight matrix that can for example priviledge some directions over others to compute distances, which corresponds to a Riemannian metric. This is for example the case in robotics if we want to consider the effect of inertia for the generaiton of motion. In such a case, the geodesic path between two points will typically be curved. One way to compute such path is to start from one of the two points and build a potential field with an anisotropic diffusion process. After this, the path can be recovered by following the gradient of this potential field.
-
-Several approaches exist to build these geodesic paths, which will be investigated in this project for the case of 3D motion to move between two pairs of points while avoiding an obstacle. The obstacle will be modeled as a distance field, with the Riemannian metric build from this distance field.
-
-https://nbviewer.org/github/Mirebeau/AdaptiveGridDiscretizations_showcase/blob/master/Summary.ipynb  
-
-
 
 <br><hr><br><br>
 <h4><b>Ergodic control for robot exploration</b></h4>
@@ -408,39 +474,6 @@ https://nbviewer.org/github/Mirebeau/AdaptiveGridDiscretizations_showcase/blob/m
 </div>
 
 
-
-
-<br><hr><br><br>
-<h4><b>Tensor trains for human-guided optimization in robotics applications</b></h4>
-
-<br>
-<div class='row'>
-
-<div class='col-md-12'>
-
-<figure class='figure'>
-<img class='figure-img img-fluid' src='images/TT-pipeline-small02.jpg'>
-</figure>
-
-<p class='text-justify'>The project proposes to extend the Tensor Train for Global Optimization (TTGO) approach (see reference below) to a human-guided learning strategy. The approach will be tested with control and planning problems using robot manipulators. The formulation transforms the minimization of a cost function into the maximization of a  probability density function. Hence, the problem of finding the minima of a cost function is transformed into the problem of sampling the maxima of the density function. The approach does not require gradients to be computed and can find multiple optima, which can be used for global optimization problems.</p> 
-
-<p class='text-justify'>Learning and optimization problems in robotics are characterized by two types of variables: 1) task parameters representing the situation that the robot encounters, typically related to environment variables such as locations of objects, users or obstacles; and 2) decision variables related to actions that the robot takes, typically related to a controller acting within a given time window, or the use of basis functions to describe trajectories in control or state spaces. For each change of task parameters, decision variables need to be recomputed as fast as possible, so that the robot can fluently collaborate with users and can swiftly react to changes in its environment. In TTGO, the density function is modeled in the offline phase using a tensor train (TT) that learns the structure between the task parameters and the decision variables. It then allows conditional sampling over the task parameters with priority for higher-density regions. This property is used for fast online decision-making, with local Gauss-Newton optimization to refine the results, see the above figure for an overview. TTGO allows the distribution of computation into offline and online phases. It can cope with a mix of continuous and discrete variables for optimization thus providing an alternative to mixed-integer programming.</p>
-
-<p><b>Goals of the project:</b></p>
-<p class='text-justify'>An important advantage of TTGO is that the underlying TT-cross method used to approximate the distribution in TT format can easily be extended to various forms of human-guided learning, which will be investigated in this project. The goal will be to test whether the original autonomous learning strategy of TT-Cross can be extended to a human-guided learning strategy, by letting the user sporadically specify task parameters or decision variables within the iterative process. The first case can be used to provide a scaffolding mechanism for robot skill acquisition. The second case can be used for the robot to ask for help in specific situations.</p>
-
-<p class='text-justify'><b>Prerequisites:</b> Linear algebra, optimization, programming in Python</p>
-
-<p><b>Reference:</b></p>
-<p class='text-justify'><a href='https://sites.google.com/view/ttgo' target='_blank'>Shetty, S., Lembono, T., Löw, T. and Calinon, S. (2023). Tensor Train for Global Optimization Problems in Robotics. arXiv:2206.05077.</a></p>
-
-<p><b>Level:</b> Bachelor/Master (semester project or PDM)</p>
-
-<p><b>Contact:</b> sylvain.calinon<i class="fa fa-at fa-fw"></i>epfl.ch</p>
-
-</div>
-
-</div>
 
 
 
