@@ -85,36 +85,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/7013.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/7014.jpg'></div>
 <div class='col-md-10'>
-<h5>Li, Y. and Calinon, S. (2025)</h5>
-<h5><strong>From Movement Primitives to Distance Fields to Dynamical Systems</strong></h5> 
-<h5>arXiv:2504.09705.</h5>
+<h5>Mühlbauer, M., Stulp, F., Calinon, S., Albu-Schäffer, A. and Silvério, J. (2025)</h5>
+<h5><strong>A Unified Framework for Probabilistic Dynamic-, Trajectory- and Vision-based Virtual Fixtures</strong></h5> 
+<h5>arXiv:2506.10239.</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Li-arXiv2025b.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Muehlbauer-arXiv2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://idiap.github.io/mp-df-ds/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
+<a href='https://arxiv.org/pdf/2506.10239' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Li-arXiv2025b.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Muehlbauer-arXiv2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>Developing autonomous robots capable of learning and reproducing complex motions from demonstrations remains a fundamental challenge in robotics. On the one hand, movement primitives (MPs) provide a compact and modular representation of continuous trajectories. On the other hand, autonomous systems provide control policies that are time independent. We propose in this paper a simple and flexible approach that gathers the advantages of both representations by transforming MPs into autonomous systems. The key idea is to transform the explicit representation of a trajectory as an implicit shape encoded as a distance field. This conversion from a time-dependent motion to a spatial representation enables the definition of an autonomous dynamical system with modular reactions to perturbation. Asymptotic stability guarantees are provided by using Bernstein basis functions in the MPs, representing trajectories as concatenated quadratic Bézier curves, which provide an analytical method for computing distance fields. This approach bridges conventional MPs with distance fields, ensuring smooth and precise motion encoding, while maintaining a continuous spatial representation. By simply leveraging the analytic gradients of the curve and its distance field, a stable dynamical system can be computed to reproduce the demonstrated trajectories while handling perturbations, without requiring a model of the dynamical system to be estimated. Numerical simulations and real-world robotic experiments validate our method's ability to encode complex motion patterns while ensuring trajectory stability, together with the flexibility of designing the desired reaction to perturbations.
-
-</p>
+<p>Probabilistic Virtual Fixtures (VFs) enable the adaptive selection of the most suitable haptic feedback for each phase of a task, based on learned or perceived uncertainty. While keeping the human in the loop remains essential, for instance, to ensure high precision, partial automation of certain task phases is critical for productivity. We present a unified framework for probabilistic VFs that seamlessly switches between manual fixtures, semi-automated fixtures (with the human handling precise tasks), and full autonomy. We introduce a novel probabilistic Dynamical System-based VF for coarse guidance, enabling the robot to autonomously complete certain task phases while keeping the human operator in the loop. For tasks requiring precise guidance, we extend probabilistic position-based trajectory fixtures with automation allowing for seamless human interaction as well as geometry-awareness and optimal impedance gains. For manual tasks requiring very precise guidance, we also extend visual servoing fixtures with the same geometry-awareness and impedance behaviour. We validate our approach experimentally on different robots, showcasing multiple operation modes and the ease of programming fixtures.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Li25arXiv,
-	author={Li, Y. and Calinon, S.},
-	title={From Movement Primitives to Distance Fields to Dynamical Systems},
-	journal={arXiv:2504.09705},
+<pre>@article{Muehlbauer25,
+	author={M{\"u}hlbauer, M. and Stulp, F. and Calinon, S. and Albu-Sch{\"a}ffer, A. and Silv{\'e}rio, J.},
+	title={A Unified Framework for Probabilistic Dynamic-, Trajectory- and Vision-based Virtual Fixtures},
+	journal={arXiv:2506.10239},
 	year={2025}
 }
+
 </pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
