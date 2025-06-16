@@ -85,35 +85,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/3111.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/3115.jpg'></div>
 <div class='col-md-10'>
-<h5>Berio, D., Clivaz, G., Stroh, M., Deussen, O., Plamondon, R., Calinon, S. and Leymarie, F.F. (2025)</h5>
-<h5><strong>Image-driven robot drawing with rapid lognormal movements</strong></h5> 
-<h5>In Proc. IEEE Intl Symp. on Robot and Human Interactive Communication (Ro-Man).</h5>
+<h5>Chi, X., Girgin, H., Löw, T., Xie, Y., Xue, T., Huang, J., Hu, C., Liu, Z. and Calinon, S. (2025)</h5>
+<h5><strong>Efficient and Real-Time Motion Planning for Robotics Using Projection-Based Optimization</strong></h5> 
+<h5>In Proc. IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Berio-ROMAN2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Chi-IROS2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://www.ro-man2025.org/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
+<a href='https://www.iros25.org/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Berio-ROMAN2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Chi-IROS2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>The democratization of cobots makes them accessible for physically producing paintings and drawings in collaboration with artists. At the same time, large deep-learning models are becoming increasingly common tools for a variety of complex image generation tasks. We present a method that combines these two advancements by enabling gradient-based optimization of natural human-like motions guided by cost functions defined in image space. To this end, we use the sigma-lognormal model of human hand/arm movements with an adaptation that enables its use in conjunction with a differentiable vector graphics (DiffVG) renderer. We demonstrate how this pipeline can be used to generate feasible trajectories for a robot by combining image-driven objectives with a minimum-time smoothing criterion. We demonstrate applications with generation and robotic reproduction of synthetic graffiti as well as image abstraction.
-</p>
+<p>Generating motions for robots interacting with objects of various shapes is a complex challenge, further complicated by the robot’s geometry and multiple desired behaviors. While current robot programming tools (such as inverse kinematics, collision avoidance, and manipulation planning) often treat these problems as constrained optimization, many existing solvers focus on specific problem domains or do not exploit geometric constraints effectively. We propose an efficient first-order method, Augmented Lagrangian Spectral Projected Gradient Descent (ALSPG), which leverages geometric projections via Euclidean projections, Minkowski sums, and basis functions. We show that by using geometric constraints rather than full constraints and gradients, ALSPG significantly improves real-time performance. Compared to second-order methods like iLQR, ALSPG remains competitive in the unconstrained case. We validate our method through toy examples and extensive simulations, and demonstrate its effectiveness on a 7-axis Franka robot, a 6-axis P-Rob robot and a 1:10 scale car in real-world experiments. Source codes, experimental data and videos are available on the project webpage: https://sites.google.com/view/alspg-oc</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@inproceedings{Berio25ROMAN,
-	author={Berio, D. and Clivaz, G. and Stroh, M. and Deussen, O. and Plamondon, R. and Calinon, S. and Leymarie, F. F.},
-	title={Image-driven robot drawing with rapid lognormal movements},
-	booktitle={Proc.\ {IEEE} Intl Symp.\ on Robot and Human Interactive Communication ({Ro-Man})},
+<pre>@inproceedings{Chi25IROS,
+	author={Chi, X. and Girgin, H. and L{\"o}w, T. and Xie, Y. and Xue, T. and Huang, J. and Hu, C. and Liu, Z. and Calinon, S.},
+	title={Efficient and Real-Time Motion Planning for Robotics Using Projection-Based Optimization},
+	booktitle={Proc.\ {IEEE/RSJ} Intl Conf.\ on Intelligent Robots and Systems ({IROS})},
 	year={2025}
-}</pre>
+}
+</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 

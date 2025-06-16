@@ -85,35 +85,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/3111.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/3113.jpg'></div>
 <div class='col-md-10'>
-<h5>Berio, D., Clivaz, G., Stroh, M., Deussen, O., Plamondon, R., Calinon, S. and Leymarie, F.F. (2025)</h5>
-<h5><strong>Image-driven robot drawing with rapid lognormal movements</strong></h5> 
-<h5>In Proc. IEEE Intl Symp. on Robot and Human Interactive Communication (Ro-Man).</h5>
+<h5>Li, Z., Liu, J., Li, D., Teng, T., Li, M., Calinon, S., Caldwell, D.G. and Chen, F. (2025)</h5>
+<h5><strong>ManiDP: Manipulability-Aware Diffusion Policy for Posture-Dependent Bimanual Manipulation</strong></h5> 
+<h5>In Proc. IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Berio-ROMAN2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/ZLi-IROS2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://www.ro-man2025.org/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
+<a href='https://www.iros25.org/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Berio-ROMAN2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/ZLi-IROS2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>The democratization of cobots makes them accessible for physically producing paintings and drawings in collaboration with artists. At the same time, large deep-learning models are becoming increasingly common tools for a variety of complex image generation tasks. We present a method that combines these two advancements by enabling gradient-based optimization of natural human-like motions guided by cost functions defined in image space. To this end, we use the sigma-lognormal model of human hand/arm movements with an adaptation that enables its use in conjunction with a differentiable vector graphics (DiffVG) renderer. We demonstrate how this pipeline can be used to generate feasible trajectories for a robot by combining image-driven objectives with a minimum-time smoothing criterion. We demonstrate applications with generation and robotic reproduction of synthetic graffiti as well as image abstraction.
-</p>
+<p>Recent work has demonstrated the potential of diffusion models in robot bimanual skill learning. However, existing methods ignore the learning of posture-dependent task features, which are crucial for adapting dual-arm configurations to meet specific force and velocity requirements in dexterous bimanual manipulation. To address this limitation, we propose Manipulability-Aware Diffusion Policy (ManiDP), a novel imitation learning method that not only generates plausible bimanual trajectories, but also optimizes dual-arm configurations to better satisfy posture-dependent task requirements. ManiDP achieves this by extracting bimanual manipulability from expert demonstrations and encoding the encapsulated posture features using Riemannian-based probabilistic models. These encoded posture features are then incorporated into a conditional diffusion process to guide the generation of task-compatible bimanual motion sequences. We evaluate ManiDP on six real-world bimanual tasks, where the experimental results demonstrate a 39.33% increase in average manipulation success rate and a 0.45 improvement in task compatibility compared to baseline methods. This work highlights the importance of integrating posture-relevant robotic priors into bimanual skill diffusion to enable human-like adaptability and dexterity. </p>
 	
 <h3>Bibtex reference</h3>
-<pre>@inproceedings{Berio25ROMAN,
-	author={Berio, D. and Clivaz, G. and Stroh, M. and Deussen, O. and Plamondon, R. and Calinon, S. and Leymarie, F. F.},
-	title={Image-driven robot drawing with rapid lognormal movements},
-	booktitle={Proc.\ {IEEE} Intl Symp.\ on Robot and Human Interactive Communication ({Ro-Man})},
+<pre>@inproceedings{ZLi25IROS,
+	author={Li, Z. and Liu, J. and Li, D. and Teng, T. and Li, M. and Calinon, S. and Caldwell, D. G. and Chen, F.},
+	title={{ManiDP}: Manipulability-Aware Diffusion Policy for Posture-Dependent Bimanual Manipulation},
+	booktitle={Proc.\ {IEEE/RSJ} Intl Conf.\ on Intelligent Robots and Systems ({IROS})},
 	year={2025}
-}</pre>
+}
+</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
 
