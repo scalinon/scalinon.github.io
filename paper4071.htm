@@ -85,34 +85,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/7013.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/4071.jpg'></div>
 <div class='col-md-10'>
 <h5>Li, Y. and Calinon, S. (2025)</h5>
 <h5><strong>From Movement Primitives to Distance Fields to Dynamical Systems</strong></h5> 
-<h5>arXiv:2504.09705.</h5>
+<h5>IEEE Robotics and Automation Letters (RA-L).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Li-arXiv2025b.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Li-RAL2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
 <a href='https://idiap.github.io/mp-df-ds/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
 </div>
 <div class='col-md-4'>
-<a href='papers/Li-arXiv2025b.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Li-RAL2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>Developing autonomous robots capable of learning and reproducing complex motions from demonstrations remains a fundamental challenge in robotics. On the one hand, movement primitives (MPs) provide a compact and modular representation of continuous trajectories. On the other hand, autonomous systems provide control policies that are time independent. We propose in this paper a simple and flexible approach that gathers the advantages of both representations by transforming MPs into autonomous systems. The key idea is to transform the explicit representation of a trajectory as an implicit shape encoded as a distance field. This conversion from a time-dependent motion to a spatial representation enables the definition of an autonomous dynamical system with modular reactions to perturbation. Asymptotic stability guarantees are provided by using Bernstein basis functions in the MPs, representing trajectories as concatenated quadratic Bézier curves, which provide an analytical method for computing distance fields. This approach bridges conventional MPs with distance fields, ensuring smooth and precise motion encoding, while maintaining a continuous spatial representation. By simply leveraging the analytic gradients of the curve and its distance field, a stable dynamical system can be computed to reproduce the demonstrated trajectories while handling perturbations, without requiring a model of the dynamical system to be estimated. Numerical simulations and real-world robotic experiments validate our method's ability to encode complex motion patterns while ensuring trajectory stability, together with the flexibility of designing the desired reaction to perturbations.
-
-</p>
+<p>Developing autonomous robots capable of learning and reproducing complex motions from demonstrations remains a fundamental challenge in robotics. On the one hand, movement primitives (MPs) provide a compact and modular representation of continuous trajectories. On the other hand, autonomous systems provide control policies that are time-independent. We propose in this paper a simple and flexible approach that gathers the advantages of both representations by transforming MPs into autonomous systems. The key idea is to transform the explicit representation of a trajectory as an implicit shape encoded as a distance field. This conversion from a time-dependent motion to a spatial representation enables the definition of an autonomous dynamical system with modular reactions to perturbation. Asymptotic stability guarantees are provided by using Bernstein basis functions in the MPs, representing trajectories as concatenated quadratic Bézier curves, which provide an analytical method for computing distance fields. This approach bridges conventional MPs with distance fields, ensuring smooth and precise motion encoding, while maintaining a continuous spatial representation. By simply leveraging the analytic gradients of the curve and its distance field, a stable dynamical system can be computed to reproduce the demonstrated trajectories while handling perturbations, without requiring a model of the dynamical system to be estimated. Numerical simulations and real-world robotic experiments validate our method's ability to encode complex motion patterns while ensuring trajectory stability, together with the flexibility of designing the desired reaction to perturbations. An interactive project page demonstrating our approach is available at https://idiap.github.io/mp-df-ds/.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Li25arXiv,
+<pre>@article{Li25RAL,
 	author={Li, Y. and Calinon, S.},
 	title={From Movement Primitives to Distance Fields to Dynamical Systems},
-	journal={arXiv:2504.09705},
+	journal={{IEEE} Robotics and Automation Letters ({RA-L})},
 	year={2025}
 }
 </pre>
