@@ -377,6 +377,32 @@ Most of the generative deep learning techniques use images as formats, but a few
 
 <!--
 
+Grassmann manifolds for sEMG signal processing in robot telemanipulation 
+
+Riemannian geometry is an important mathematical framework for robotics because it provides a principled and simple way to extend algorithms initially developed for Euclidean data to other manifolds, by exploiting their local resemblance to Euclidean spaces and by efficiently taking into account prior geometric knowledge about these manifolds. The most common use of Riemannian manifolds in robotics is for orientation tracking, which requires the distance between two orientations to be computed and the corresponding actions to be executed in order to reduce this distance. The symmetric positive definite (SPD) matrix is another example of representation also widely used in robotics. They can represent stiffness, manipulability, inertia ellipsoids, or weighting matrices. Riemannian manifolds can be connected to a wide range of problems in robotics, including learning and optimization problems relying on distances and Gaussian distributions, thus including techniques requiring uncertainty and statistical modeling to be computed using non-Euclidean data. This is relevant since data in robotics consist of values that are often constrained in a way that adheres to a particular geometry. 
+
+This project aims to test the practical feasibility of leveraging Grassmann manifolds [1,2] for robot telemanipulation tasks from surface electromyography signals [3]. The motivation of using Grassmann manifolds is that it allows us to analyse the subspaces spanned by the data rather than the data itself, which opens several new research directions in robotics. Indeed, the Grassmann manifold remains largely underexploited in robotics, despite the fact that it is mathematically well understood and also characterized by simple analytic expressions. Grassmann manifolds seem particularly promising to handle problems with high dimensional datapoints and only few training data, where projections and subspaces are required in the computation to keep the most essential characteristics of the data (low rank factorization). The approach will be tested by analyzing surface electromyography within a sliding time window, which will be viewed and processed as points moving on a Grassmann manifold (see [3] for a similar interpretation).
+
+[1] S. Hauberg, A. Feragen, R. Enficiaud and M.J. Black (2016). Scalable Robust Principal Component Analysis Using Grassmann Averages. IEEE Transactions on Pattern Analysis and Machine Intelligence, 38:11, 2298-2311. 
+
+[2] X. Li, H. Zeng, Y. Li and A. Song (2024). Quantification of Upper-Limb Motor Function for Stroke Rehabilitation Through Manifold Similarity of Muscle Synergy. IEEE Robotics and Automation Letters, 9:2, 1859-1866.
+
+[3] Jaquier, N. and Calinon, S. (2017). Gaussian Mixture Regression on Symmetric Positive Definite Matrices Manifolds: Application to Wrist Motion Estimation with sEMG. In Proc. of the IEEE/RSJ Intl Conf. on Intelligent Robots and Systems (IROS), pp. 59-64.
+
+----
+
+Vision-based robot control with a dynamical system defined in the latent space of a neural network
+
+In robotics, there are two main categories of approaches to encode and generate movements: time-dependent (trajectory-based) and time-independent (policy-based). The latter is often viewed as a more robust choice because it can handle perturbations, pauses or changes of options. However, it is hard to provide a convenient model for this option. Proposed models either tend to be poorly interpretable, to come without guarantees, or to be limited to low dimensional problems. In [1], we proposed an approach that encompasses both categories. We start with a model at trajectory level by using concatenated Bézier curves. By using this basis functions approach, the conversion from a trajectory (or a list of viapoints) to the curve parameters in the form of control points is straightforward (linear relation). This simple encoding strategy (sometime called movement primitives) is compatible with a wide range of techniques based on trajectories. For example, an optimal control approach can be specified with concatenated Bézier curves as parameters to optimize, by exploiting practically the fact that the derivatives of a Bézier curve is analytic. 
+
+In [1], we chose quadratic Bézier curves because they can be converted to a distance function, together with the derivatives of this distance function (both analytic). This is exploited to generate an autonomous system. Thus, instead of using a model to estimate a time-independent policy, we used a simple time-dependent model at trajectory level that was then converted to a time independent flow field. We demonstrated in [1] that the approach can be easily extended to trajectories composed of different variables (e.g., the position of an object concatenated with the position of the robot hand). We also showed that the computation is easily parallelizable, so that we can work with high-dimension curves and with many concatenated curves to build complex trajectories. 
+
+The project aims to test an extension of this principle to trajectories composed of two types of variables, describing the evolution of a point in the latent space of a neural network (e.g., variational autoencoder) together with the evolution of the robot in the joint angle space. The approach will be exploited in the context vision-based robot control, where a movement is learned from demonstration and is then generalized to various initial situations and sources of perturbation. 
+
+[1] Li, Y. and Calinon, S. (2025). From Movement Primitives to Distance Fields to Dynamical Systems. IEEE Robotics and Automation Letters (RA-L).
+
+
+
 <br><hr><br><br>
 <h4><b>Ergodic control for robot exploration</b></h4>
 

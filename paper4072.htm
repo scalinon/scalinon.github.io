@@ -85,37 +85,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class='row'>
-<div class='col-md-2 text-center'><img class='borderthumb' src='images/4071.jpg'></div>
+<div class='col-md-2 text-center'><img class='borderthumb' src='images/4072.jpg'></div>
 <div class='col-md-10'>
-<h5>Li, Y. and Calinon, S. (2025)</h5>
-<h5><strong>From Movement Primitives to Distance Fields to Dynamical Systems</strong></h5> 
-<h5>IEEE Robotics and Automation Letters (RA-L), 10(9), 9550-9556.</h5>
+<h5>Lanča, L., Jakac, K., Calinon, S. and Ivić, S. (2025)</h5>
+<h5><strong>Ergodic exploration of dynamic distribution</strong></h5> 
+<h5>IEEE Robotics and Automation Letters (RA-L).</h5>
 <div class='row'>
 <div class='col-md-4'>
-<a href='papers/Li-RAL2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
+<a href='papers/Lanca-RAL2025.pdf' target='_BLANK'><i class='fa fa-file-pdf-o fa-fw'></i> PDF</a>
 </div>
 <div class='col-md-4'>
-<a href='https://idiap.github.io/mp-df-ds/' target='_BLANK'><i class='fa fa-external-link fa-fw'></i> Website</a>
-</div>
-<div class='col-md-4'>
-<a href='papers/Li-RAL2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
+<a href='papers/Lanca-RAL2025.bib' class='bibtex' target='_BLANK'><i class='fa fa-file-text-o fa-fw'></i> Reference as bib file</a>
 </div>
 
 </div></div></div>
 
 <h3>Abstract</h3>
-<p>Developing autonomous robots capable of learning and reproducing complex motions from demonstrations remains a fundamental challenge in robotics. On the one hand, movement primitives (MPs) provide a compact and modular representation of continuous trajectories. On the other hand, autonomous systems provide control policies that are time-independent. We propose in this paper a simple and flexible approach that gathers the advantages of both representations by transforming MPs into autonomous systems. The key idea is to transform the explicit representation of a trajectory as an implicit shape encoded as a distance field. This conversion from a time-dependent motion to a spatial representation enables the definition of an autonomous dynamical system with modular reactions to perturbation. Asymptotic stability guarantees are provided by using Bernstein basis functions in the MPs, representing trajectories as concatenated quadratic Bézier curves, which provide an analytical method for computing distance fields. This approach bridges conventional MPs with distance fields, ensuring smooth and precise motion encoding, while maintaining a continuous spatial representation. By simply leveraging the analytic gradients of the curve and its distance field, a stable dynamical system can be computed to reproduce the demonstrated trajectories while handling perturbations, without requiring a model of the dynamical system to be estimated. Numerical simulations and real-world robotic experiments validate our method's ability to encode complex motion patterns while ensuring trajectory stability, together with the flexibility of designing the desired reaction to perturbations. An interactive project page demonstrating our approach is available at https://idiap.github.io/mp-df-ds/.</p>
+<p>This research addresses the challenge of performing search missions in dynamic environments, particularly for drifting targets whose movement is dictated by a flow field. This is accomplished through a dynamical system that integrates two partial differential equations: one governing the dynamics and uncertainty of the probability distribution, and the other regulating the potential field for ergodic multi-agent search. The target probability field evolves in response to the target dynamics imposed by the environment and accomplished sensing efforts, while being explored by multiple robot agents guided by the potential field gradient. The proposed methodology was tested on two simulated search scenarios, one of which features a synthetically generated domain and showcases better performance when compared to the baseline method with static target probability over a range of agent to flow field velocity ratios. The second search scenario represents a realistic sea search and rescue mission where the search start is delayed, the search is performed in multiple robot flight missions, and the procedure for target drift uncertainty compensation is demonstrated. Furthermore, the proposed method provides an accurate survey completion metric, based on the known detection/sensing parameters, that correlates with the actual number of targets found independently.</p>
 	
 <h3>Bibtex reference</h3>
-<pre>@article{Li25RAL,
-	author={Li, Y. and Calinon, S.},
-	title={From Movement Primitives to Distance Fields to Dynamical Systems},
+<pre>@article{Lanca25,
+	author={Lan{\ˇc}a, L. and Jakac, K. and Calinon, S. and Ivi{\'c}, S.},
+	title={Ergodic exploration of dynamic distribution},
 	journal={{IEEE} Robotics and Automation Letters ({RA-L})},
-	year={2025},
-	volume={10}, 
-	number={9},
-	pages={9550--9556},
-	doi={10.1109/LRA.2025.3595073}
+	year={2025}
 }</pre>
 	<center><a class='btn btn-primary' href='publications.htm'>Go back to the list of publications</a></center></div><!-- /.main-template -->
 </div><!-- /.container -->
