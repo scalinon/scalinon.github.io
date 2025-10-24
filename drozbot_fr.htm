@@ -89,6 +89,90 @@ document.addEventListener('DOMContentLoaded', function() {
 <h1>drozBot, le robot portraitiste</h1>
 
 <div class='row'>
+<div class='col-md-3'>
+<img class='figure-img img-fluid' src='images/drozbot-setup01.jpg'>
+</div>
+<div class='col-md-9'>
+<p class='text-justify'>drozBot est un robot qui dessine avec des gestes rapides et fluides proches de ceux d'un·e artiste. A partir d'une photo, il tire le portrait de la personne en traçant une série de traits à l'encre de Chine sur une feuille de papier.</p> 
+<p class='text-justify'>Guidé par l’intelligence artificielle et un modèle de mouvements inspirés de l'écriture humaine, il peut transformer une image en dessin abstrait. Le résultat est surprenant : des traits expressifs, dynamiques et naturels, qui donnent l’impression que le robot sait dessiner plutôt que d'exécuter une série de commandes.</p>
+</div>
+</div>
+
+
+<div class='row'>
+<div class='col-md-12'>
+
+<p class='text-justify'>drozBot utilise des technologies développées par le groupe <i>Robot Learning & Interaction</i> de l'Idiap. Le but est de générer des portraits rapidement avec trois objectifs principaux :
+<ul> 
+<li>pouvoir reconnaître la personne qui a été dessinée</li> 
+<li>pouvoir reconnaître le style distinctif défini par l'artiste</li>
+<li>pouvoir reconnaître la qualité des traits sur la base du portrait finalisé</li>
+</ul> 
+</p>
+
+<p class='text-justify'>Le dernier objectif est obtenu en combinant des approches de plusieurs disciplines scientifiques, mêlant robotique, contrôle optimal et sciences du mouvement. Comme pour de la calligraphie, même si une personne ne regarde que le portrait final (aperçu figé), une esquisse réussie doit refléter la fluidité et l'habileté du mouvement qui a permis la réalisation du portrait.</p> 
+
+<p class='text-justify'>Cet aspect de génération de mouvement est au coeur du travail de recherche du groupe <i>Robot Learning & Interaction</i> de l'Idiap. Le groupe se concentre sur la collaboration homme-robot et sur la représentation de mouvements pour faciliter le transfert de tâches de manipulation, pour diverses applications allant de l'industrie à l'assistance de personnes.</p> 
+
+
+<h3>Collaboration Internationale : Entre Art, Science & Technologie</h3>
+
+<p class='text-justify'>En collaboration avec divers chercheurs internationaux venant de l'<i>Université de Londres, Goldsmiths College</i> (<a href="https://www.gold.ac.uk/computing/people/berio-daniel-/" target="_blank">Daniel Berio</a> et <a href="https://www.gold.ac.uk/computing/people/f-folleymarie/" target="_blank">Frederic Fol Leymarie</a>) ou de l'<i>Université de Constance</i> (<a href="https://www.cgmi.uni-konstanz.de/" target="_blank">Michael Stroh et Oliver Deussen</a>), dans le cadre de projets tels que <a href="https://www.doc.gold.ac.uk/eacva/wp/index.php/collaborations/" target="_blank">EACVA (Embodied Agents in Contemporary Visual Art)</a>, le groupe <i>Robot Learning & Interaction</i> de l'Idiap explore comment étendre la collaboration homme-robot à des domaines touchant à l'art et à la créativité. Le robot est ici vu comme un nouvel outil pour les artistes, en étudiant de nouvelles méthodes de création.</p>
+
+<p class='text-justify'>De la même manière qu'un·e artiste décide des pinceaux, stylos ou crayons utilisés, ainsi que de guides supplémentaires comme l'utilisation d'une règle pour tracer des traits plus droits ou d'un compas pour tracer des arcs de cercle plus réguliers, le robot peut être utilisé comme un nouveau type de guide et d'assistance.</p> 
+
+<p class='text-justify'>Pour réaliser ceci, nos travaux de recherche explorent quelles interfaces peuvent permettre d'enseigner facilement à un robot l'assistance souhaitée par l'artiste. Par exemple, sous forme d'un style qu'on montre au robot (apprentissage par la démonstration), que ce dernier doit ensuite répéter pour de nouveaux contenus ou sur de nouvelles parties du canvas.<p> 
+
+<p class='text-justify'>Dans cette vision de recherche, notre groupe s'intéresse au développement de technologies intuitives pour qu'un robot puisse apprendre par imitation, combiné avec des interfaces pour pouvoir re-programmer facilement ces machines, sans faire appel à des connaissances en robotique ou en langage informatique (approche "no-code").</p>
+
+
+<h3>Collaboration Interdisciplinaire à l'Idiap</h3>
+
+<p class='text-justify'>drozBot vise des thèmes de recherche variés de l'Idiap autour de l'intelligence artificielle, s'inspirant par exemple des résultats de recherche sur l'interaction sociale homme-robot (<a href="https://emmanuel-senft.github.io/" target="_blank">Emmanuel Senft</a>), sur la biométrie (<a href="https://www.idiap.ch/en/scientific-research/biometrics-security-and-privacy/index_html" target="_blank">Sébastien Marcel</a>), sur la perception (<a href="https://www.idiap.ch/~odobez/" target="_blank">Jean-Marc Odobez</a>) ou sur les représentations sémantiques et symboliques pour des modèles de réseaux de neurones (<a href="https://www.idiap.ch/~afreitas/" target="_blank">André Freitas</a>, <a href="https://www.idiap.ch/en/about/people/1124" target="_blank">Paola Merlo</a>).</p>  
+
+
+<h3>Mouvements et Gestes Fluides</h3>
+
+<p class='text-justify'>Dans le domaine artistique, les approches de deep learning, avec des modèles génératifs, ont démocratisé (pour le meilleur ou pour le pire) la génération d'images à partir de descriptions textuelles. Ces modèles d'IA génèrent des images sous forme de pixels. Un robot génère au contraire des tracés et des trajectoires, avec un contrôle au niveau de ses articulations. De plus, au contraire de l'art numérique, le robot doit faire face au monde réel, avec des contraintes géométriques et physiques, devant par exemple compenser les effets de la gravité lorsqu'il déplace son bras tenant un pinceau imbibé d'encre.</p> 
+
+<p class='text-justify'>Le défi scientifique est de définir des représentations mathématiques pour imiter les capacités du mouvement humain, avec des gestes fluides et rapides pour un rendu esthétique des tracés à l'encre de Chine. Pour ceci, le mouvement à générer est un aspect crucial, en contrôlant à la fois l'orientation et la trajectoire du pinceau, ainsi que la pression appliquée sur le papier.</p> 
+
+
+<h3>IA et Robotique</h3>
+
+<p class='text-justify'>Pour aider le robot à planifer les séries de traits qu'il doit générer, d'autres outils d'IA sont utilisés pour détecter automatiquement, à partir de l'image provenant d'une caméra, quelle est la pose de la personne sur l'image, et où se situent les éléments les plus importants du visage tels que les yeux, la bouche et le nez. Les autres éléments de l'image tels que l'arrière-plan, les cheveux ou les lunettes sont détectés d'une manière similaire. Ces informations sont utiles au robot pour déterminer quelle concentration et précision de traits sont requises dans le portrait, en se concentrant sur les éléments les plus importants et en gardant une esquisse plus rapide pour des informations moins importantes.<p>
+
+<p class='text-justify'>Les tracés planifiés par le robot doivent ensuite être transformés en mouvements fluides pour mimiquer les gestes de l'artiste, en manipulant le pinceau de manière habile et en utilisant un encrier de manière adroite pour maintenir la quantité idéale d'encre.</p>
+
+
+<h3>Publications Scientifiques :</h3>
+
+<p><a href='https://calinon.ch/paper3111.htm' target='_blank'>Berio, D., Clivaz, G., Stroh, M., Deussen, O., Plamondon, R., Calinon, S. and Leymarie, F.F. (2025). <strong>Image-driven robot drawing with rapid lognormal movements</strong>. In Proc. IEEE Intl Symp. on Robot and Human Interactive Communication (Ro-Man).</a></p>
+
+<p><a href='https://calinon.ch/paper4074.htm' class='nodecor'>Berio, D., Stroh, M., Calinon, S., Fol Leymarie, F., Deussen, O. and Shamir, A. (2025). <strong>Neural Image Abstraction Using Long Smoothing B-splines</strong>. ACM Transactions on Graphics (ToG).</a></p>
+
+<p><a href='https://calinon.ch/paper3111.htm' target='_blank'>Berio, D., Clivaz, G., Stroh, M., Deussen, O., Plamondon, R., Calinon, S. and Leymarie, F.F. (2025). <strong>Image-driven robot drawing with rapid lognormal movements</strong>. In Proc. IEEE Intl Symp. on Robot and Human Interactive Communication (Ro-Man).</a></p> 
+
+<p><a href='https://calinon.ch/paper3110.htm' target='_blank'>Berio, D., Calinon, S., Plamondon, R. and Leymarie, F. F. (2025). <strong>Differentiable rasterization of minimum-time sigma-lognormal trajectories</strong>. In Proc. 22nd Conference of the International Graphonomics Society (IGS).</a></p>
+
+<p><a href='https://calinon.ch/paper3109.htm' target='_blank'>Calinon, S. (2025). <strong>Movement Generation and Drawing in Robotics</strong>. In Proc. 22nd Conference of the International Graphonomics Society (IGS).</a></p> 
+
+<p><a href='https://calinon.ch/paper4055.htm' target='_blank'>Löw, T., Maceiras, J. and Calinon, S. (2022). <strong>drozBot: Using Ergodic Control to Draw Portraits</strong>. IEEE Robotics and Automation Letters (RA-L), 7:4, 11728-34.</a></p>
+
+
+<h3>Contact :</h3> 
+
+<p class='text-justify'><a href="https://calinon.ch/" target="_blank">Sylvain Calinon</a>, Senior Research Scientist à l'Idiap, responsable du groupe <i>Robot Learning & Interaction</i>. Email : <a href="mailto:sylvain.calinon@idiap.ch" target="_blank">sylvain.calinon@idiap.ch</a></p>
+
+<p class='text-justify'>drozBot est le fruit d'une collaboration entre <a href="https://www.idiap.ch/~gclivaz/" target="_blank">Guillaume Clivaz</a>, <a href="https://www.idiap.ch/~jmaceiras/" target="_blank">Jérémy Maceiras</a>, <a href="https://tobiloew.ch/" target="_blank">Tobias Löw</a>, <a href="https://www.enist.org/" target="_blank">Daniel Berio</a>, et <a href="https://calinon.ch/" target="_blank">Sylvain Calinon</a>.</p>
+
+<p class='text-justify'>Ce projet est soutenu par le <a href="https://www.snf.ch/fr" target="_blank">Fonds national suisse (FNS)</a> dans le cadre d'un projet Agora avec <a href="https://www.phaenomena.ch/fr" target="_blank">Phänomena</a>.</p>  
+
+</div>
+</div>
+
+<!--
+<div class='row'>
 <div class='col-md-6'><img class='figure-img img-fluid' src='images/drozbot_museum01.jpg'></div>
 <div class='col-md-6'><img class='figure-img img-fluid' src='images/drozbot_museum02.jpg'></div>
 </div>
@@ -110,11 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <img class='figure-img img-fluid' src='images/drozBot-portraits02-web.jpg'><br><br>
 <img class='figure-img img-fluid' src='images/drozbot_setup_fr01.jpg'><br><br>
 
-<!--
-<img class='figure-img img-fluid' src='images/drozBot-part1.jpg'><br><br>
-avec un bras articulé produisant une série de gribouillis révélant progressivement l'identité de la personne
-<img class='figure-img img-fluid' src='images/drozBot-part2.jpg'><br><br>
-<img class='figure-img img-fluid' src='images/drozBot-part3.jpg'><br><br>-->
+
 
 
 <div class='p-3 bg-light text-dark border border-secondary text-justify'>
@@ -125,6 +205,13 @@ En robotique, cette technique s'appelle <b>contrôle ergodique</b>. Elle se dém
 <div class='p-3 bg-light text-dark border border-secondary text-justify'>
 drozBot a fait partie de l'exposition <a href='https://www.museedelamain.ch/fr/1591/Intelligence-Artificielle' target='_blank'>Intelligence Artificielle: Nos Reflets Dans La Machine</a>, au Musée de la Main UNIL-CHUV à Lausanne, d'avril 2022 à septembre 2023.
 </div>
+-->
+
+<!--
+<img class='figure-img img-fluid' src='images/drozBot-part1.jpg'><br><br>
+avec un bras articulé produisant une série de gribouillis révélant progressivement l'identité de la personne
+<img class='figure-img img-fluid' src='images/drozBot-part2.jpg'><br><br>
+<img class='figure-img img-fluid' src='images/drozBot-part3.jpg'><br><br>-->
 
 </div><!-- /.main-template -->
 </div><!-- /.container -->
