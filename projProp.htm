@@ -377,6 +377,35 @@ Most of the generative deep learning techniques use images as formats, but a few
 
 <!--
 
+Whole-Body Manipulation with Explicit Self-Balancing Control for Humanoid Robots
+
+This project aims to develop a whole-body control strategy for a humanoid robot that explicitly integrates self-balancing with manipulation
+Goals of the project:
+A whole-body control framework will be investigated in which balance and manipulation are treated jointly, rather than relying on a predefined walking or balance controller. The controller will explicitly account for the mass and inertia of the arms and manipulated objects, allowing the robot to adapt its balance while lifting, carrying, or manipulating boxes. Momentum- or optimization-based control formulations will be explored to regulate center-of-mass motion, contact forces, and end-effector tasks simultaneously.
+The project will be validated on the humanoid platform Unitree G1, with part of the work conducted on-site at Swiss Cobotics Competence Center (S3C) in Biel.
+
+Prerequisites:
+Linear algebra, rigid-body dynamics, programming in Python or C++, basic knowledge of robot control
+
+Level: Master
+
+----
+
+Ergodic Imitation for Adaptive Exploration around Demonstrations
+
+Description:
+In robotics, a common challenge in imitation learning is the mismatch between training and deployment conditions, caused for example by environmental changes or imperfect sensing and control. When a robot follows a nominal trajectory under such mismatches, it may become stuck and fail to complete the task. This project proposes to develop principled exploration strategies that leverage the geometry and statistics of demonstrations, together with online sensing, in order for the robot to adapt to such situations. At runtime, the robot's likelihood of being stuck can be estimated using onboard sensing. This estimate can be used to modulate the uncertainty of a target trajectory distribution, expressed through its covariance, which is then passed to a controller. The controller is ergodic: it takes a target distribution as input and automatically produces a combination of tracking and exploration behaviour according to the provided distribution. In the limiting case, a Dirac delta distribution yields pure tracking. A uniform distribution yields pure exploration. Intermediate cases smoothly interpolate between these behaviours. 
+
+For the project, we will consider a nut and bolt assembly task in which neither pure tracking nor pure exploration is sufficient. Demonstrations will e collected to record the nut and bolt poses, as well as the wrench and end effector poses (restricted to SE(2) for simplicity). At runtime, we will use the measured wrench and end effector pose to retrieve the k-closest demonstrations and infer the robot's current phase along the task. We will then use the phase discrepancy between the current execution and the retrieved demonstrations as a signal to determine if the robot is stuck. For example, when the discrepancy grows, we could increase the covariance of the target trajectory distribution to promote exploration and recovery maneuvers, and when the discrepancy shrinks again, we could reduce the covariance to return to accurate tracking. Evaluation will be conducted on one of the robot manipulator available at Idiap.
+
+----
+
+Online control of robot hands from sEMG armbands and datagloves
+
+The project proposes to develop an online imitation interface to control a revo2 robot hand (11 DoF, 6 active joints) from a Myo Armband composed of an array of surface electromyography (sEMG) sensors. The system will first be trained by using a 15-DoF Nansense BioMed glove, in order to create a mapping between the sEMG signals and a human hand pose. The sEMG will be processed by analyzing the local correlations between the different sensor channels. To do this, a covariance matrix will be computed with a sliding time window, which will be decomposed by a spectral decomposition (eigen analyis) to keep only the most essential information in the covariance matrix. These data will be treated as points on a Grassmann manifolds, which will allow us to treat the problem geometrically. The project will then investigate how the human hand pose can be mapped to the revo2 robot hand pose, by taking into account that the two models have a different number of articulations.
+
+----
+
 Grassmann manifolds for sEMG signal processing in robot telemanipulation 
 
 Riemannian geometry is an important mathematical framework for robotics because it provides a principled and simple way to extend algorithms initially developed for Euclidean data to other manifolds, by exploiting their local resemblance to Euclidean spaces and by efficiently taking into account prior geometric knowledge about these manifolds. The most common use of Riemannian manifolds in robotics is for orientation tracking, which requires the distance between two orientations to be computed and the corresponding actions to be executed in order to reduce this distance. The symmetric positive definite (SPD) matrix is another example of representation also widely used in robotics. They can represent stiffness, manipulability, inertia ellipsoids, or weighting matrices. Riemannian manifolds can be connected to a wide range of problems in robotics, including learning and optimization problems relying on distances and Gaussian distributions, thus including techniques requiring uncertainty and statistical modeling to be computed using non-Euclidean data. This is relevant since data in robotics consist of values that are often constrained in a way that adheres to a particular geometry. 
